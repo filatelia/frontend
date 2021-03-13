@@ -1,0 +1,23 @@
+::selection {
+    background: $amarillo;
+    color: $negro;
+  }
+
+  ::-webkit-scrollbar {
+      width: 9px;     /* Tamaño del scroll en vertical */
+      height: 8px;    /* Tamaño del scroll en horizontal */
+  }
+  ::-webkit-scrollbar-thumb {
+      background: $negro;
+      border-radius: 6px;
+  }
+  /* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
+  ::-webkit-scrollbar-thumb:hover {
+      background: $amarillo;
+     // box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Cambiamos el fondo cuando esté en active */
+  ::-webkit-scrollbar-thumb:active {
+      background-color: $amarillo;
+  }

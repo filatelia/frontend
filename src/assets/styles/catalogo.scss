@@ -1,0 +1,58 @@
+.catalogo{
+    padding: 45px 0px;
+    .titulo{
+        margin-bottom: 42px;
+    }
+    &__content{
+        margin-top: 74px;
+        &__pais{
+            text-align: center;
+            padding-top: 4px;
+            padding-bottom: 34px;
+            display: block;
+            img{
+                width: 66px;
+                margin-bottom: 24px;
+            }
+            h4{
+                font-size: 22px;
+                color: $negro;
+            }
+        }
+    }
+    .tema{
+        margin-top: 74px;
+        &__item{
+            position: relative;
+            width: 67%;
+            height: 89px;
+            margin-bottom: 83px;
+            overflow: hidden;
+            &__color{
+                position: absolute;
+                content: "";
+                width: 100%;
+                height: 100%;
+                top:0;
+                background: linear-gradient(to right, rgba(255, 255, 255,0.7%) 0%, #2e2e2e 46%, #2e2e2e 100%);
+            }
+            img{
+                transition: all 0.5s;
+            }
+            &:hover img{
+                transform: scale(1.1);
+            }
+            h3{
+                position: absolute;
+                color: $blanco;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+                right: 27px;
+                height: 27px;
+                font-size: 25px;
+                font-family: $DMregular;
+            }
+        }
+    }
+}

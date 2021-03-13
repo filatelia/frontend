@@ -1,0 +1,45 @@
+.titulo{
+    font-family: $DMregular;
+    color: $negro;
+    span{
+        color:$amarillo;
+    }
+    &--grande{
+        font-size: 85px;
+    }
+    &--grande2{
+        font-size: 60px;
+        line-height: 70px;
+    }
+    &--mediano{
+        font-size:30px;
+        margin: 0;
+    }
+    &--chico{
+        font-size: 35px;
+    }
+}
+
+.parrafo{
+    color: $negro;
+    &--grande{
+        font-size: 29px;
+        font-family: $prata;
+    }
+    &--mediano{
+        font-family: $lato;
+        font-size: 16px;
+        letter-spacing: 0px;
+    }
+}
+
+.seccion{
+    .parrafo{
+        line-height: 30px;
+        width: 99%;
+        margin-bottom: 65px;
+    }
+    .titulo{
+        margin-bottom: 23px;
+    }
+}

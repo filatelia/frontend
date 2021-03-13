@@ -1,0 +1,82 @@
+<!-- header-user -->
+<section class="dashboard m-top">
+    <div class="dashboard__color">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="dashboard__color__nombre">
+                        <a href="" class="boton">
+                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                    viewBox="0 0 256 256" style="enable-background:new 0 0 256 256;" xml:space="preserve">
+                                <g>
+                                    <g>
+                                        <polygon points="79.093,0 48.907,30.187 146.72,128 48.907,225.813 79.093,256 207.093,128 		"/>
+                                    </g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                </svg>
+
+                        </a>
+                        <h2 class="titulo titulo--mediano">Revisa y actualiza tu colección. </h2>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="dashboard__tabs">
+                        <a routerLink="subasta" class="active"><img src="assets/img/iconos/subasta.svg" alt=""> <span>Subastas</span></a>
+                        <a routerLink="tienda"><img src="assets/img/iconos/tienda.svg" alt="">  <span>Tienda</span></a>
+                        <a routerLink="mancolista"><img src="assets/img/iconos/mancolista.svg" alt="">  <span>Mi Mancolista</span></a>
+                        <a routerLink="configuracion" ><img src="assets/img/iconos/configuracion.svg" alt=""> <span>Configuración</span></a>
+                    </div>
+                    <div class="buscador">
+                        <form>
+                             <div class="buscador__content">
+                                 <input type="text">
+                                 <button><img src="assets/img/iconos/buscador.png" alt=""></button>
+                               </div>
+                         </form>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard__contenido">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                  <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<app-footer></app-footer>

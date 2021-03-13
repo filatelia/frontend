@@ -1,0 +1,111 @@
+<header class="header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 header--amarillo">
+                 <div class="row">
+                     <div class="col-lg-3 p-0 d-flex align-items-center">
+                         <div class="header__logo">
+                             <img src="../assets/img/logo.png" class="img-fluid" alt="">
+                         </div>
+                     </div>
+                     <div class="col-lg-9 d-flex justify-content-end align-items-center">
+                         <div class="header__left">
+                             <ul>
+                                 <li ><a href="" >Inicio</a></li>
+                                 <li ><a href="/tienda">Tienda</a></li>
+                                 <li><a >Subasta</a></li>
+                                 <li><a href="/catalogo">Catálogo</a></li>
+                             </ul>
+                         </div>
+                     </div>
+                 </div>
+            </div>
+            <div class="col-lg-6 header--negro">
+             <div class="row">
+                 <div class="col-lg-9 p-0 d-flex align-items-center">
+                     <div class="header__right">
+                         <ul>
+                             <li><a href="">Contacto</a></li>
+                             <li><a href="/auth/register" *ngIf="!isLoggedIn" >Registrate</a></li>
+                             <li><a href="/auth/login" *ngIf="!isLoggedIn">Iniciar Sesión</a></li>
+                            
+                             <li><a href="/auth/login" (click)="logout()" *ngIf="isLoggedIn">Cerrar sesión</a></li>
+                           
+                            
+                             <li class="perfil" *ngIf="showAdminBoard">
+                                <div class="perfil__icono">
+                                 <img src="../assets/img/iconos/user.png" alt="">
+                                </div>
+                                <a href="/admin/dashboard" >{{name}}</a> 
+                            
+                            </li>
+                       
+                        
+                             <li *ngIf="showClientBoard"><a href="/user/dashboard" >Dashboard Cliente</a></li>
+                             
+                         </ul>
+                     </div>
+                 </div>
+                 <div class="col-lg-3">
+                      <div class="notificacion">
+                          <ul>
+                            <li *ngIf="isLoggedIn">
+                                <a  href="">
+                                    <img src="../assets/img/iconos/notificacion.svg" alt="">
+                                </a>
+                            </li>
+                              <li>
+                                
+                                  <a href="" class="carrito">
+                                      <img src="../assets/img/iconos/carrito.svg" alt="">
+                                  </a>
+                              </li>
+                          </ul>
+                      </div>
+                 </div>
+             </div>
+            </div>
+        </div>
+    </div>
+  </header>
+  <!-- menu responsive -->
+  <div class="header__mobile">
+     <div class="header__mobile__logo">
+       <a class="navbar-brand" href="#"><img src="../assets/img/logo-blanco.png" alt="" class="img-fluid"></a>
+     </div>
+     <div class="buscador">
+         <form>
+             <div class="">
+                 <div class="input-group">
+                     <input type="text" class="form-control" placeholder="Buscar comics, animes, artistas, estudios">
+                 <div class="input-group-prepend">
+                     <div class="input-group-text">
+                         <img src="../assets/img/iconos/lupa.svg" alt="">
+                     </div>
+                 </div>
+                 </div>
+             </div>
+         </form>
+     </div>
+     <div class="burger">
+       <span></span>
+     </div>
+  </div>
+  <nav class="header__responsive">
+     <div class="usuario">
+         <div class="icono"><img src="../assets/img/iconos/user.png" alt=""></div>
+         <span>Visitante</span>
+     </div>
+     <ul class="login">
+         <li><a href="auth/login" data-toggle="modal" data-target="#modal__login">Login</a></li>
+         <li><a href="auth/register" data-toggle="modal" data-target="#modal__registrar">Registrar</a></li>
+     </ul>
+     <ul class="main" *ngIf="showAdminBoard">
+       <li><a href="index.html">Home</a></li>
+       <li><a href="explora.html">Explora</a></li>
+       <li><a href="">Foro</a></li>
+       <li><a href="">Listas</a></li>
+     </ul>
+  </nav>
+   <router-outlet></router-outlet>
+<app-footer></app-footer>

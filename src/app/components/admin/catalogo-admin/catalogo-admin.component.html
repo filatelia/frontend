@@ -1,0 +1,75 @@
+<div class="row">    
+    <div class="col-lg-10 m-auto">
+      <a  href="javascript:void(0)" (click)="openVerticallyCentered(content)" class="mainAdmin__boton">
+        
+      <div class="icono">
+          <svg height="426.66667pt" viewBox="0 0 426.66667 426.66667" width="426.66667pt" xmlns="http://www.w3.org/2000/svg"><path d="m405.332031 192h-170.664062v-170.667969c0-11.773437-9.558594-21.332031-21.335938-21.332031-11.773437 0-21.332031 9.558594-21.332031 21.332031v170.667969h-170.667969c-11.773437 0-21.332031 9.558594-21.332031 21.332031 0 11.777344 9.558594 21.335938 21.332031 21.335938h170.667969v170.664062c0 11.777344 9.558594 21.335938 21.332031 21.335938 11.777344 0 21.335938-9.558594 21.335938-21.335938v-170.664062h170.664062c11.777344 0 21.335938-9.558594 21.335938-21.335938 0-11.773437-9.558594-21.332031-21.335938-21.332031zm0 0"/></svg>
+      </div>
+            <h3>Importar</h3>
+        </a>
+        <table class="table table--normal">  
+          <thead>
+            <tr>
+              <th >Codigo</th>
+              <th >Año</th> 
+              <th>Tema</th> 
+              <th >Pais</th> 
+              <th >Valor_del_Catalogo</th>  
+              <th >Estado</th>                                 
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let datos of datos">
+              <th >{{  datos.Codigo}}</th>
+              <td >{{ datos.Anio }}</td>
+              <td >{{ datos.Tema}}</td>
+              <td >{{ datos.Pais }}</td>
+              <td >{{ datos.Valor_del_Catalogo }}</td>
+              <td >{{ datos.estado}}</td>
+          </tr>
+          </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- modal -->
+
+
+
+
+
+<ng-template #content let-modal ngClass="modal__admin">
+  <div class="modal-header">
+    <h4 class="modal-title">Importar </h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    
+  </div>
+  <div class="modal-body">
+    <form class="row">
+      <div class="form-group col-lg-12">
+          <label for="">Subir archivo</label>
+          <input (change)="capturarFile($event)" type="file" class="form-control">
+        </div>
+        <div class="preview-img" *ngIf="previsualizacion">
+          <button class="clear-image" type="button" (click)="clearImage()">Clear</button>
+          <img  [src]="previsualizacion" alt="">
+      </div>
+    
+      <div class="p-1">
+          <small>Se aceptan archivos imágenes de tipo .excel</small>
+      </div>
+               
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn--negro" [disabled]="loading" (click)="subirArchivo()">
+      {{(loading) ? 'Cargando.....' : 'Subir Archivo'}}
+  </button>
+  </div>
+</ng-template>
+
+
+
+

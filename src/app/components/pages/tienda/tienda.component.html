@@ -1,0 +1,351 @@
+<div class="bannerPrincipal m-top" style="background-image: url(assets/img/bg/bg-tienda.png);">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <h2 class="titulo titulo--mediano">Bienvenido a nuestra tienda</h2>
+        <p> ¿Qué estás buscando hoy?</p>
+        <form>
+          <div class="">
+            <div class="input-group mb-2">
+              <input type="text" class="form-control" id="inlineFormInputGroup">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <img src="assets/img/iconos/buscador.png" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+        <span>Más de 10,678 Artículos hoy</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="filtros">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-2">
+        <div class="filtros__aside">
+          <h2 class="titulo titulo--chico">Filtros</h2>
+          <div class="accordion" id="accordionExample">
+            <div class="card">
+              <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+                <ngb-panel [ngClass]="['owl-vendido','owl-theme']">
+                  <ng-template ngbPanelTitle>
+                    <span>Filatelia</span>
+                  </ng-template>
+                  <ng-template ngbPanelContent>
+                    <div class="check">
+                      <input type="checkbox" name="category" id="c_1" class="css-checkbox" />
+                      <label for="c_1" class="css-label">Albumes <span>(345)</span></label>
+                    </div>
+                    <div class="check">
+                      <input type="checkbox" name="category" id="c_2" class="css-checkbox" />
+                      <label for="c_2" class="css-label">Accesorios <span>(130)</span></label>
+                    </div>
+                    <div class="check">
+                      <input type="checkbox" name="category" id="c_3" class="css-checkbox" />
+                      <label for="c_3" class="css-label">Estampillas <span>(45)</span></label>
+                    </div>
+
+                  </ng-template>
+                </ngb-panel>
+                <ngb-panel>
+                  <ng-template ngbPanelTitle>
+                    <span>Numismática</span>
+                  </ng-template>
+                  <ng-template ngbPanelContent>
+                    <div class="check">
+                      <input type="checkbox" name="category" id="c_1" class="css-checkbox" />
+                      <label for="c_1" class="css-label">Álbunes <span>(345)</span></label>
+                    </div>
+                    <div class="check">
+                      <input type="checkbox" name="category" id="c_2" class="css-checkbox" />
+                      <label for="c_2" class="css-label">Accesorios <span>(130)</span></label>
+                    </div>
+                    <div class="check">
+                      <input type="checkbox" name="category" id="c_3" class="css-checkbox" />
+                      <label for="c_3" class="css-label">Estampillas <span>(45)</span></label>
+                    </div>
+                  </ng-template>
+                </ngb-panel>
+              </ngb-accordion>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-10">
+        <div class="filtros__content">
+          <ul class="nav nav-pills">
+            <li><a class="active" data-toggle="pill" href="#grid"><img src="assets/img/iconos/vistaGrid.svg" alt=""></a>
+            </li>
+            <li><a data-toggle="pill" href="#lista"><img src="assets/img/iconos/vistaList.svg" alt=""></a></li>
+          </ul>
+
+          <div class="tab-content">
+            <div id="grid" class="tab-pane fade in active show">
+              <div class="row">
+                <div class="col-lg-11">
+                  <div class="row">
+                    <div class="col-lg-4 pr-0">
+                      <div class="cardPlomo">
+                        <div class="cardPlomo__img">
+                          <img src="assets/img/productos/2.png" alt="">
+                        </div>
+                        <div class="cardPlomo__content">
+                          <ul>
+                            <li>S/278</li>
+                            <li><img src="assets/img/iconos/corazon-sinrelleno.svg" alt=""></li>
+                          </ul>
+                          <p>4 Coleccionadores con funda marca premium</p>
+                          <a href="">Ver más</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 pr-0">
+                      <div class="cardPlomo">
+                        <div class="cardPlomo__img">
+                          <img src="assets/img/productos/2.png" alt="">
+                        </div>
+                        <div class="cardPlomo__content">
+                          <ul>
+                            <li>S/278</li>
+                            <li><img src="assets/img/iconos/corazon-sinrelleno.svg" alt=""></li>
+                          </ul>
+                          <p>4 Coleccionadores con funda marca premium</p>
+                          <a href="">Ver más</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 pr-0">
+                      <div class="cardPlomo">
+                        <div class="cardPlomo__img">
+                          <img src="assets/img/productos/2.png" alt="">
+                        </div>
+                        <div class="cardPlomo__content">
+                          <ul>
+                            <li>S/278</li>
+                            <li><img src="assets/img/iconos/corazon-sinrelleno.svg" alt=""></li>
+                          </ul>
+                          <p>4 Coleccionadores con funda marca premium</p>
+                          <a href="">Ver más</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 pr-0">
+                      <div class="cardPlomo">
+                        <div class="cardPlomo__img">
+                          <img src="assets/img/productos/2.png" alt="">
+                        </div>
+                        <div class="cardPlomo__content">
+                          <ul>
+                            <li>S/278</li>
+                            <li><img src="assets/img/iconos/corazon-sinrelleno.svg" alt=""></li>
+                          </ul>
+                          <p>4 Coleccionadores con funda marca premium</p>
+                          <a href="">Ver más</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 pr-0">
+                      <div class="cardPlomo">
+                        <div class="cardPlomo__img">
+                          <img src="assets/img/productos/2.png" alt="">
+                        </div>
+                        <div class="cardPlomo__content">
+                          <ul>
+                            <li>S/278</li>
+                            <li><img src="assets/img/iconos/corazon-sinrelleno.svg" alt=""></li>
+                          </ul>
+                          <p>4 Coleccionadores con funda marca premium</p>
+                          <a href="">Ver más</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 pr-0">
+                      <div class="cardPlomo">
+                        <div class="cardPlomo__img">
+                          <img src="assets/img/productos/2.png" alt="">
+                        </div>
+                        <div class="cardPlomo__content">
+                          <ul>
+                            <li>S/278</li>
+                            <li><img src="assets/img/iconos/corazon-sinrelleno.svg" alt=""></li>
+                          </ul>
+                          <p>4 Coleccionadores con funda marca premium</p>
+                          <a href="">Ver más</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 pr-0">
+                      <div class="cardPlomo">
+                        <div class="cardPlomo__img">
+                          <img src="assets/img/productos/2.png" alt="">
+                        </div>
+                        <div class="cardPlomo__content">
+                          <ul>
+                            <li>S/278</li>
+                            <li><img src="assets/img/iconos/corazon-sinrelleno.svg" alt=""></li>
+                          </ul>
+                          <p>4 Coleccionadores con funda marca premium</p>
+                          <a href="">Ver más</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 pr-0">
+                      <div class="cardPlomo">
+                        <div class="cardPlomo__img">
+                          <img src="assets/img/productos/2.png" alt="">
+                        </div>
+                        <div class="cardPlomo__content">
+                          <ul>
+                            <li>S/278</li>
+                            <li><img src="assets/img/iconos/corazon-sinrelleno.svg" alt=""></li>
+                          </ul>
+                          <p>4 Coleccionadores con funda marca premium</p>
+                          <a href="">Ver más</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 pr-0">
+                      <div class="cardPlomo">
+                        <div class="cardPlomo__img">
+                          <img src="assets/img/productos/2.png" alt="">
+                        </div>
+                        <div class="cardPlomo__content">
+                          <ul>
+                            <li>S/278</li>
+                            <li><img src="assets/img/iconos/corazon-sinrelleno.svg" alt=""></li>
+                          </ul>
+                          <p>4 Coleccionadores con funda marca premium</p>
+                          <a href="">Ver más</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-12 text-center">
+                      <a href="" class="btn btn--negro">Siguente</a>
+                      <ul class="numero">
+                        <li>
+                          <a href="" class="activo">1</a>
+                        </li>
+                        <li>
+                          <a href="">2</a>
+                        </li>
+                        <li>
+                          <a href="">3...</a>
+                        </li>
+                        <li>
+                          <a href="">145</a>
+                        </li>
+
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="lista" class="tab-pane fade">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="lista">
+                    <div class="lista__item">
+                      <div class="corazon">
+                        <img src="assets/img/iconos/corazon-sinrelleno.svg" alt="">
+                      </div>
+                      <img src="assets/img/productos/2.png" alt="">
+                    </div>
+                    <div class="lista__item">
+                      <h3>4 Coleccionadores con funda marca premium</h3>
+                      <div class="puntaje">
+                        <div class="estrella">
+                          <img src="assets/img/iconos/estrella.svg" alt="">
+                          <img src="assets/img/iconos/estrella.svg" alt="">
+                          <img src="assets/img/iconos/estrella.svg" alt="">
+                          <img src="assets/img/iconos/estrella.svg" alt="">
+                          <img src="assets/img/iconos/estrella.svg" alt="">
+                        </div>
+                        <span>67 opiniones</span>
+                      </div>
+                    </div>
+                    <div class="lista__item">
+                      <p>Recíbelo el 22-Dic-2020</p>
+                    </div>
+                    <div class="lista__item">
+                      <span>S/278</span>
+                    </div>
+                    <div class="lista__item">
+                      <a href="" class="botones botones--negro">Ver más</a>
+                      <a href="" class="botones botones--linea">Añadir Carrito</a>
+                    </div>
+                  </div>
+                  <div class="lista">
+                    <div class="lista__item">
+                      <div class="corazon">
+                        <img src="assets/img/iconos/corazon-sinrelleno.svg" alt="">
+                      </div>
+                      <img src="assets/img/productos/2.png" alt="">
+                    </div>
+                    <div class="lista__item">
+                      <h3>4 Coleccionadores con funda marca premium</h3>
+                      <div class="puntaje">
+                        <div class="estrella">
+                          <img src="assets/img/iconos/estrella.svg" alt="">
+                          <img src="assets/img/iconos/estrella.svg" alt="">
+                          <img src="assets/img/iconos/estrella.svg" alt="">
+                          <img src="assets/img/iconos/estrella.svg" alt="">
+                          <img src="assets/img/iconos/estrella.svg" alt="">
+                        </div>
+                        <span>67 opiniones</span>
+                      </div>
+                    </div>
+                    <div class="lista__item">
+                      <p>Recíbelo el 22-Dic-2020</p>
+                    </div>
+                    <div class="lista__item">
+                      <span>S/278</span>
+                    </div>
+                    <div class="lista__item">
+                      <a href="" class="botones botones--negro">Ver más</a>
+                      <a href="" class="botones botones--linea">Añadir Carrito</a>
+                    </div>
+                  </div>
+                  <div class="lista">
+                    <div class="lista__item">
+                      <div class="corazon">
+                        <img src="assets/img/iconos/corazon-sinrelleno.svg" alt="">
+                      </div>
+                      <img src="assets/img/productos/2.png" alt="">
+                    </div>
+                    <div class="lista__item">
+                      <h3>4 Coleccionadores con funda marca premium</h3>
+                      <div class="puntaje">
+                        <div class="estrella">
+                          <img src="assets/img/iconos/estrella.svg" alt="">
+                          <img src="assets/img/iconos/estrella.svg" alt="">
+                          <img src="assets/img/iconos/estrella.svg" alt="">
+                          <img src="assets/img/iconos/estrella.svg" alt="">
+                          <img src="assets/img/iconos/estrella.svg" alt="">
+                        </div>
+                        <span>67 opiniones</span>
+                      </div>
+                    </div>
+                    <div class="lista__item">
+                      <p>Recíbelo el 22-Dic-2020</p>
+                    </div>
+                    <div class="lista__item">
+                      <span>S/278</span>
+                    </div>
+                    <div class="lista__item">
+                      <a href="" class="botones botones--negro">Ver más</a>
+                      <a href="" class="botones botones--linea">Añadir Carrito</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
