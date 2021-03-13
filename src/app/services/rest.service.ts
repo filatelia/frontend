@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {CatalogoListAdmin, CatalogoAll, CatalogoCompleto} from '../models/catalogo.interface'
+import {CatalogoCompleto} from '../models/catalogo.interface'
 import {MacolistaListPublic} from '../models/mancolista.interface'
 import { TokenInterceptorService } from '../services/token-interceptor.service';
 import { map } from 'rxjs/operators';
