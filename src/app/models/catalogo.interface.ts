@@ -32,7 +32,7 @@ export interface CatalogoAll {
 
 export interface CatalogoCompleto {
     estado:                  boolean;
-    Codigo:                  string;
+    Codigo:                  string; 
     Pais:                    string;
     Anio:                    number;
     Tema:                    string;

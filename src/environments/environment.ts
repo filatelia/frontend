@@ -4,7 +4,7 @@
 
 export const environment = {
   production: true,
-  conect_url: 'https://filatelia.herokuapp.com',
+  conect_url: 'https://filatelia.doubleflyindustries.com',
   api: '/api',
   api_login: '/login',
   api_signup: '/usuarios'

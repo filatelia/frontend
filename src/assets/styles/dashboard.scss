@@ -218,11 +218,12 @@
             h2{
                 display: inline-block;
                 margin-left: 95px;
-                line-height: 74px;
+                line-height: 60px;
+                font-size: 40px;
             }
             .boton{ 
-                width: 70px;
-                height: 70px;
+                width: 40px;
+                height: 40px;
                 background-color: $negro;
                 border-radius: 50%;
                 transform: rotate(180deg);            
@@ -245,12 +246,12 @@
     }
     &__tabs{
         margin-top: 73px;
-        padding-left: 18px;
+        padding-left: 8px;
         a{
             color: $negro;
-            font-size: 25px;
+            font-size: 19px;
             font-family: $DMregular;
-            padding: 0px 43px;
+            padding: 5px 20px;
             position: relative;
             display: inline-block;
             text-decoration: none;
@@ -321,7 +322,7 @@
                         span{
                             color: $plomo;
                             position: absolute;
-                            font-size: 25px;
+                            font-size: 15px;
                             top: -12px;
                             margin: 0;
                             font-family: $DMregular;
@@ -397,7 +398,7 @@
                     }
                     label{
                         color: $plomoOscuro;
-                        font-size: 25px;
+                        font-size: 15px;
                         font-family: $DMregular;
                     }
                     input{
