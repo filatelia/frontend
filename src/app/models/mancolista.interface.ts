@@ -1,8 +1,8 @@
 export interface MacolistaListPublic{
+    Foto_JPG_800x800_px: string;
     Codigo: string;
     Anio: string;
-    Tema:string;
-    Pais:string;
-    Valor_del_Catalogo:string;
-    estado:boolean;
+    Descripcion_de_la_serie: string;
+    Numero_de_catalogo: string;
+    Descripcion:string;
 }

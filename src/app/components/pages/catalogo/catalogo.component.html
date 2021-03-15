@@ -75,12 +75,12 @@
                                 <h4>Paraguay</h4>
                             </a>
                         </div>-->
-                        <div class="col-lg-3">
+                        <div class="col-lg-3" *ngFor="let datos of datospaises">
                             <a href="/catalogo-interna" class="catalogo__content__pais">
-                                <img src="assets/img/pais/peru.png"  alt="">
-                                <h4>Perú</h4>
+                                <img  src= "http://localhost:3000/{{datos.img}}"  alt="">
+                                <h4>{{datos.name}}</h4>
                             </a>
-                        </div>
+                        </div> 
                     </div>
                 </div>
             </div>

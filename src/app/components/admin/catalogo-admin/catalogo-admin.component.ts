@@ -2,7 +2,7 @@
 import { Component, OnInit} from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { RestService } from '../../../services/rest.service'
-import {CatalogoListAdmin, Catalogo, CatalogoCompleto} from '../../../models/catalogo.interface'
+import {CatalogoCompleto} from '../../../models/catalogo.interface'
 
 import { Router } from '@angular/router';
 
@@ -133,10 +133,10 @@ this.mostrarDatos();
           console.log('Respuesta del servidor', res);
 
           if(res.ok == true){
-            alert("El archivo se a cargado con éxito");
+            alert(res.msg);
           }
           else{
-            alert("Error al cargar el archivo, intentelo nuevamente en unos momentos");
+            alert(res.msg);
           }
           
 

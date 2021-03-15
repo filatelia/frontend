@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {CatalogoListAdmin, CatalogoAll, CatalogoCompleto} from '../models/catalogo.interface'
+import {CatalogoCompleto} from '../models/catalogo.interface'
 import {MacolistaListPublic} from '../models/mancolista.interface'
 import { TokenInterceptorService } from '../services/token-interceptor.service';
+import {PaisesAll, SelectPais} from '../models/paises.interface';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -35,7 +36,7 @@ export class RestService {
     //let direccion = this.url + "api/catalogo/uploads/excel?"+ "token:"+this.usuario.token;
     //return this.http.get<Catalogo[]>(direccion);
 
-    let direccion = this.url + "api/catalogo/uploads/excel";
+    let direccion = this.url + "api/catalogo/uploads/excel?"+ "token:"+this.usuario.token;
     return this.http.get<CatalogoCompleto[]>(direccion).pipe(
       
       map(resp =>{
@@ -59,9 +60,65 @@ export class RestService {
       })
     );
   }
-  /*getAllMancolista(page:number):Observable<MacolistaListPublic[]>{
+ /* getAllPaises(page:number):Observable<PaisesAll[]>{
+    this.isLoggedIn = !!this.tokenInterceptorService.getToken();
+    if (this.isLoggedIn) {
+      const user = this.tokenInterceptorService.getUser(); 
+      this.usuario = user;
+     
+    }
+    //let direccion = this.url + "api/catalogo/uploads/excel?"+ "token:"+this.usuario.token;
+    //return this.http.get<Catalogo[]>(direccion);
+
+    let direccion = this.url + "api/catalogo/paises/all";
+    return this.http.get<PaisesAll[]>(direccion).pipe(
+      map(resp =>{
+        var asd:any = [];
+
+        for (const key in resp) {
+
+        asd = resp[key];
+
+
+        }
+
+        return asd;
+
+      })
+    );
+  }*/
+
+  getSelectPais(pais:string):Observable<PaisesAll[]>{
+    this.isLoggedIn = !!this.tokenInterceptorService.getToken();
+    if (this.isLoggedIn) {
+      const user = this.tokenInterceptorService.getUser(); 
+      this.usuario = user;
+     
+    }
+    //let direccion = this.url + "api/catalogo/uploads/excel?"+ "token:"+this.usuario.token;
+    //return this.http.get<Catalogo[]>(direccion);
+
+    let direccion = this.url + "api/catalogo/paises/"+pais;
+    return this.http.get<PaisesAll[]>(direccion).pipe(
+      map(resp =>{
+        var asd:any = [];
+
+        for (const key in resp) {
+
+        asd = resp[key];
+
+
+        }
+
+        return asd;
+
+      })
+    );
+  }
+
+  getAllMancolistaPublic(page:number):Observable<MacolistaListPublic[]>{
    
     let direccion = this.url + "api/catalogo/uploads/excel?"+ "token:"+this.usuario.token;
-    //return this.http.get<CM[]>(direccion);
-  }*/
+    return this.http.get<MacolistaListPublic[]>(direccion);
+  }
 }

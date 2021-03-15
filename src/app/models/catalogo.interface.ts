@@ -1,4 +1,4 @@
-export interface Catalogo{
+/*export interface Catalogo{
     Anio: number;
 Codigo: string;
 Descripcion: string;
@@ -14,7 +14,7 @@ Valor_Facial: string;
 Valor_del_Catalogo: string;
 estado: string;
 uid: string;
-}
+}*/
 export interface CatalogoListAdmin{
 
 Codigo: string;
@@ -32,7 +32,7 @@ export interface CatalogoAll {
 
 export interface CatalogoCompleto {
     estado:                  boolean;
-    Codigo:                  string;
+    Codigo:                  string; 
     Pais:                    string;
     Anio:                    number;
     Tema:                    string;
