@@ -7,8 +7,9 @@ import {CatalogoCompleto} from '../../../models/catalogo.interface'
 import { Router } from '@angular/router';
 
 import { trigger, state, style, animate, transition } from '@angular/animations';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-catalogo-admin',
@@ -31,7 +32,7 @@ export class CatalogoAdminComponent implements OnInit {
    datos: CatalogoCompleto[] = [];
    intermedio: any = [];
   public loading: boolean | any
-  
+  api = environment.conect_url;
   constructor(
     private modalService: NgbModal, private sanitizer: DomSanitizer, private rest: RestService, private router:Router
   ) { }
@@ -48,10 +49,15 @@ this.mostrarDatos();
 
       console.log("catalogo recibido: ", catalogocompleto);
 
+    
+
       this.datos = catalogocompleto;
 
    })
   }
+  sanitizeImageUrl(imageUrl: string): SafeUrl {
+    return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
+}
    // editar catalogo
   editarCatalogo(id : any){
     this.router.navigate(['editar', id]);
@@ -134,6 +140,7 @@ this.mostrarDatos();
 
           if(res.ok == true){
             alert(res.msg);
+            this.mostrarDatos();
           }
           else{
             alert(res.msg);

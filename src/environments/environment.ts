@@ -4,12 +4,10 @@
 
 export const environment = {
   production: true,
-<<<<<<< HEAD
+
   conect_url: 'https://api-filatelia.azurewebsites.net',
   conect_url_api: 'https://api-filatelia.azurewebsites.net/api',
-=======
-  conect_url: 'https://filatelia.doubleflyindustries.com',
->>>>>>> 85b8f0ab7ee7fd80595073a6cefd9b9d7edb36e7
+
   api: '/api',
   login: '/login',
   api_login: '/login',

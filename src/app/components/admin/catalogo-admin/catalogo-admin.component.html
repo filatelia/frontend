@@ -10,22 +10,26 @@
         <table class="table table--normal">  
           <thead>
             <tr>
+              <th >Imagen</th>
               <th >Codigo</th>
               <th >Año</th> 
               <th>Tema</th> 
               <th >Pais</th> 
-              <th >Valor_del_Catalogo</th>  
-              <th >Estado</th>                                 
+              <th >Numero Catálogo</th>  
+              <th >Tipo</th>                                 
+              <th >Acciones</th>                                 
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let datos of datos">
+              <td >  <img class="miniatura" [src]="sanitizeImageUrl(api+datos.Foto_JPG_800x800_px)" /> </td>
               <th >{{  datos.Codigo}}</th>
               <td >{{ datos.Anio }}</td>
               <td >{{ datos.Tema}}</td>
               <td >{{ datos.Pais }}</td>
-              <td >{{ datos.Valor_del_Catalogo }}</td>
-              <td >{{ datos.estado}}</td>
+              <td >{{ datos.Numero_de_catalogo }}</td>
+              <td >{{ datos.Tipo}}</td>
+              <td > Editar / Eliminar</td>
           </tr>
           </tbody>
         </table>

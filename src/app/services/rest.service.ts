@@ -6,6 +6,7 @@ import {MacolistaListPublic} from '../models/mancolista.interface'
 import { TokenInterceptorService } from '../services/token-interceptor.service';
 import {PaisesAll, SelectPais} from '../models/paises.interface';
 import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class RestService {
   isLoggedIn = false;
   public usuario: any;
   //url:string = "https://filateliab.doubleflyindustries.com/";
-  url:string = "http://localhost:3000/";
+  url:string = environment.conect_url_api;
 
   constructor(private http: HttpClient, private tokenInterceptorService: TokenInterceptorService) { }
 
@@ -23,7 +24,7 @@ export class RestService {
   }
 
   public postCatalogoAdmin(body: any){
-    return this.http.post(this.url + "api/catalogo/uploads/excel",body); // POST  
+    return this.http.post(this.url + "/catalogo/uploads/excel",body); // POST  
   }
 
   getAllCatalogoAdmin(page:number):Observable<CatalogoCompleto[]>{
@@ -36,7 +37,7 @@ export class RestService {
     //let direccion = this.url + "api/catalogo/uploads/excel?"+ "token:"+this.usuario.token;
     //return this.http.get<Catalogo[]>(direccion);
 
-    let direccion = this.url + "api/catalogo/uploads/excel?"+ "token:"+this.usuario.token;
+    let direccion = this.url + "/catalogo/uploads/excel?"+ "token:"+this.usuario.token;
     return this.http.get<CatalogoCompleto[]>(direccion).pipe(
       
       map(resp =>{
