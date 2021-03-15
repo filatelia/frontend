@@ -12,6 +12,7 @@ export class TokenInterceptorService{
   
   constructor() { 
   }
+  public logeado:boolean = false;
   signOut(): void {
     window.sessionStorage.clear();
   }

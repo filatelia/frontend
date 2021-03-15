@@ -41,6 +41,7 @@ import { authInterceptorProviders } from './helpers/auth.interceptor';
 import { DashboardAdminCrudComponent } from './components/admin/dashboard-admin-crud/dashboard-admin-crud.component';
 import { ChartsAdminComponent } from './components/admin/charts-admin/charts-admin.component';
 import { CatalogoAdminComponent } from './components/admin/catalogo-admin/catalogo-admin.component';
+import { CabeceraComponent } from './components/cabecera/cabecera.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,7 @@ import { CatalogoAdminComponent } from './components/admin/catalogo-admin/catalo
     SubastaComponent,
     TiendauserComponent,
     DashboardUserComponent,
-    FooterComponent, DashboardAdminCrudComponent, ChartsAdminComponent, CatalogoAdminComponent, TiendaAdminComponent
+    FooterComponent, DashboardAdminCrudComponent, ChartsAdminComponent, CatalogoAdminComponent, TiendaAdminComponent, CabeceraComponent
   ],
   imports: [
     HttpClientModule,

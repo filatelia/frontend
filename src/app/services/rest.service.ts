@@ -37,17 +37,24 @@ export class RestService {
 
     let direccion = this.url + "api/catalogo/uploads/excel";
     return this.http.get<CatalogoCompleto[]>(direccion).pipe(
+      
       map(resp =>{
-        var asd:any = [];
+        console.log("Respuesta del enpoint", resp);
+
+        var arrayObjetoCatalogo:any = [];
 
         for (const key in resp) {
 
-        asd = resp[key];
+          console.log("for in key: ", resp[key]);
+          
+
+
+        arrayObjetoCatalogo = resp[key];
 
 
         }
 
-        return asd;
+        return arrayObjetoCatalogo;
 
       })
     );

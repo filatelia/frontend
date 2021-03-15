@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { TokenInterceptorService } from './services/token-interceptor.service';
 
@@ -19,20 +20,29 @@ export class AppComponent implements OnInit{
   showClientBoard = false;
   name?: string;
 
-  constructor(private tokenInterceptorService: TokenInterceptorService) { }
+  constructor(private tokenInterceptorService: TokenInterceptorService,
+    private router: Router, ) {
+   
+   }
 
 
   ngOnInit(){
+    console.log("ngOnInit");
     this.IsLogin();
+    
    
   }
   
-  IsLogin():void{
-    this.isLoggedIn = !!this.tokenInterceptorService.getToken();
+  IsLogin(){
 
-    if (this.isLoggedIn) {
+    const getToken = this.tokenInterceptorService.getToken();
+    console.log("resultado de islogin f:", getToken);
+    
+
+    if (getToken != null) {
+      this.isLoggedIn = true;
       const user = this.tokenInterceptorService.getUser(); 
-      //console.log(user);
+      console.log("User ->",user);
       this.roleuser = user.role;
       console.log(this.roleuser)
 

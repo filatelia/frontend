@@ -4,8 +4,10 @@
 
 export const environment = {
   production: true,
-  conect_url: 'https://filatelia.herokuapp.com',
+  conect_url: 'https://api-filatelia.azurewebsites.net',
+  conect_url_api: 'https://api-filatelia.azurewebsites.net/api',
   api: '/api',
+  login: '/login',
   api_login: '/login',
   api_signup: '/usuarios'
 };

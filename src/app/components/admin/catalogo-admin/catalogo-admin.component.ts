@@ -48,12 +48,7 @@ this.mostrarDatos();
 
       console.log("catalogo recibido: ", catalogocompleto);
 
-      this.datos =catalogocompleto;
-
-    
-      
-     // Al recibir un array, se deben pasar todos los elementos
-   console.log("lista: "+this.datos) 
+      this.datos = catalogocompleto;
 
    })
   }
