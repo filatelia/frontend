@@ -27,6 +27,12 @@ export class RestService {
     return this.http.post(this.url + "/catalogo/uploads/excel",body); // POST  
   }
 
+  //Eliminando elemento de catalogo
+  public deleteCatalogoAdmin(params: any){
+    
+    return this.http.delete(this.url + "/catalogo/uploads/excel/"+params); // DELETE
+  }
+
   getAllCatalogoAdmin(page:number):Observable<CatalogoCompleto[]>{
     this.isLoggedIn = !!this.tokenInterceptorService.getToken();
     if (this.isLoggedIn) {
