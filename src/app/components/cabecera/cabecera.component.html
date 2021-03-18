@@ -11,10 +11,10 @@
                      <div class="col-lg-9 d-flex justify-content-end align-items-center">
                          <div class="header__left">
                              <ul>
-                                 <li ><a href="" >Inicio</a></li>
-                                 <li ><a href="/tienda">Tienda</a></li>
+                                 <li ><a [routerLink]="['/']" >Inicio</a></li>
+                                 <li ><a [routerLink]= "['/tienda']" >Tienda</a></li>
                                  <li><a >Subasta</a></li>
-                                 <li><a href="/catalogo">Catálogo</a></li>
+                                 <li><a [routerLink]= "['/catalogo']">Catálogo</a></li>
                              </ul>
                          </div>
                      </div>
@@ -27,7 +27,7 @@
                          <ul>
                              <li><a href="">Contacto</a></li>
                              <li><a [routerLink]= "['/auth/register']" *ngIf="!isLoggedIn" >Registrate</a></li>
-                             <li><a [routerLink]="['/auth/login']" *ngIf="!isLoggedIn">Iniciar Sesión</a></li>
+                             <li><a [routerLink]= "['/auth/login']" *ngIf="!isLoggedIn">Iniciar Sesión</a></li>
                             
                              <li><a href="/auth/login" (click)="logout()" *ngIf="isLoggedIn">Cerrar sesión</a></li>
                            
@@ -36,12 +36,12 @@
                                 <div class="perfil__icono">
                                  <img src="../assets/img/iconos/user.png" alt="">
                                 </div>
-                                <a href="/admin/dashboard" >{{name}}</a> 
+                                <a [routerLink]= "['/admin/dashboard']">{{name}}</a> 
                             
                             </li>
                        
                         
-                             <li *ngIf="showClientBoard"><a href="/user/dashboard" >Dashboard Cliente</a></li>
+                             <li *ngIf="showClientBoard"><a [routerLink]= "['/user/dashboard']" >Dashboard Cliente</a></li>
                              
                          </ul>
                      </div>
@@ -87,10 +87,9 @@
              </div>
          </form>
      </div>
-     <div class="burger">
-       <span></span>
-     </div>
   </div>
+  <div class="burger">
+    <span >
   <nav class="header__responsive">
      <div class="usuario">
          <div class="icono"><img src="../assets/img/iconos/user.png" alt=""></div>
@@ -107,3 +106,5 @@
        <li><a [routerLink]="">Listas</a></li> -->
      </ul>
   </nav>
+</span>
+</div>
