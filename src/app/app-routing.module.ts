@@ -6,7 +6,9 @@ import { ConfiguracionCatalogoComponent } from './components/admin/anio-catalogo
 import { PaisCatalogoComponent } from './components/admin/pais-catalogo/pais-catalogo.component';
 import { TemasCatalogoComponent } from './components/admin/temas-catalogo/temas-catalogo.component';
 import { CatalogoAdminComponent } from './components/admin/catalogo-admin/catalogo-admin.component';
+import { BlogAdminComponent } from './components/admin/blog-admin/blog-admin.component';
 import { TiendaAdminComponent } from './components/admin/tienda-admin/tienda-admin.component';
+import { AjustesAdminComponent } from './components/admin/ajustes-admin/ajustes-admin.component';
 
 import { TiendaComponent } from './components/pages/tienda/tienda.component';
 import { RegistrateComponent } from './components/pages/registrate/registrate.component';
@@ -58,7 +60,9 @@ const routes: Routes = [
       { path: 'pais', component: PaisCatalogoComponent },
       { path: 'temas', component: TemasCatalogoComponent},
       { path: 'catalogo-admin', component: CatalogoAdminComponent },
-      { path: 'tienda-admin', component: TiendaAdminComponent }
+      { path: 'tienda-admin', component: TiendaAdminComponent },
+      { path: 'blog-admin', component: BlogAdminComponent },
+      { path: 'ajustes-admin', component: AjustesAdminComponent }
     ],
   },
 

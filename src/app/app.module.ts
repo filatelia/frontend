@@ -45,6 +45,10 @@ import { CabeceraComponent } from './components/cabecera/cabecera.component';
 
 import { DataTablesModule } from "angular-datatables";
 import { TablaCatalogoComponent } from './components/admin/tabla-catalogo/tabla-catalogo.component';
+import { BlogAdminComponent } from './components/admin/blog-admin/blog-admin.component';
+import { TiendaAdminLinkComponent } from './components/admin/tienda-admin-link/tienda-admin-link.component';
+import { AjustesAdminLinkComponent } from './components/admin/ajustes-admin-link/ajustes-admin-link.component';
+import { AjustesAdminComponent } from './components/admin/ajustes-admin/ajustes-admin.component';
 @NgModule({
   declarations: [
     
@@ -67,7 +71,16 @@ import { TablaCatalogoComponent } from './components/admin/tabla-catalogo/tabla-
     TiendauserComponent,
     
     DashboardUserComponent,
-    FooterComponent, DashboardAdminCrudComponent, ChartsAdminComponent, CatalogoAdminComponent, TiendaAdminComponent, CabeceraComponent, TablaCatalogoComponent
+    FooterComponent, 
+    DashboardAdminCrudComponent, 
+    ChartsAdminComponent, 
+    CatalogoAdminComponent, 
+    TiendaAdminComponent, 
+    CabeceraComponent, 
+    TablaCatalogoComponent, 
+    BlogAdminComponent,
+    TiendaAdminLinkComponent, 
+    AjustesAdminLinkComponent, AjustesAdminComponent
   ],
   imports: [
     HttpClientModule,
