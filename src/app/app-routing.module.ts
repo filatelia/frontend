@@ -22,6 +22,7 @@ import { SubastaComponent } from './components/user/subasta/subasta.component';
 import { TiendauserComponent } from './components/user/tiendauser/tiendauser.component';
 
 import {AuthGuard} from './guard/auth.guard'
+import { TablaCatalogoComponent } from './components/admin/tabla-catalogo/tabla-catalogo.component';
 
 const routes: Routes = [
   
@@ -52,6 +53,8 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: '', component: ConfiguracionCatalogoComponent },
+      
+      { path: 'tabla', component: TablaCatalogoComponent },
       { path: 'pais', component: PaisCatalogoComponent },
       { path: 'temas', component: TemasCatalogoComponent},
       { path: 'catalogo-admin', component: CatalogoAdminComponent },
@@ -74,11 +77,5 @@ const routes: Routes = [
 
 ];
 
-@NgModule({
-  imports: [
-  
-  RouterModule.forRoot(routes)
-  ],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
+
+export const AppRoutingModule = RouterModule.forRoot(routes, { useHash: true });

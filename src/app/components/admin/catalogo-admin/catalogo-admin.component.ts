@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { RestService } from '../../../services/rest.service';
 import { CatalogoCompleto } from '../../../models/catalogo.interface';
-
 import { Router } from '@angular/router';
 
 import {
@@ -13,7 +14,6 @@ import {
   transition,
 } from '@angular/animations';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 
@@ -28,13 +28,21 @@ import Swal from 'sweetalert2';
     ]),
   ],
 })
-export class CatalogoAdminComponent implements OnInit {
+
+export class CatalogoAdminComponent implements OnDestroy, OnInit  {
+
   public previsualizacion: string | any;
   public archivos: any = [];
   datos: CatalogoCompleto[] = [];
   intermedio: any = [];
   public loading: boolean | any;
   api = environment.conect_url;
+
+  
+  dtOptions: DataTables.Settings = {};
+  data: any;
+  dtTrigger = new Subject<any>();
+
   constructor(
     private modalService: NgbModal,
     private sanitizer: DomSanitizer,
@@ -45,7 +53,21 @@ export class CatalogoAdminComponent implements OnInit {
   ngOnInit(): void {
     // cargar todos los catalogos
 
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 5,
+      language: {
+        url: "https://cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json"
+      }
+    };
+
+
+
     this.mostrarDatos();
+  }
+  ngOnDestroy(): void {
+    // Do not forget to unsubscribe the event
+    this.dtTrigger.unsubscribe();
   }
 
   mostrarDatos() {
@@ -53,8 +75,10 @@ export class CatalogoAdminComponent implements OnInit {
       console.log('catalogo recibido: ', catalogocompleto);
 
       this.datos = catalogocompleto;
+      this.dtTrigger.next();
     });
   }
+
   sanitizeImageUrl(imageUrl: string): SafeUrl {
     return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
   }
@@ -169,7 +193,7 @@ export class CatalogoAdminComponent implements OnInit {
   /**
    * Subir archivo
    */
-
+  
   subirArchivo(): any {
     try {
       this.loading = true;
