@@ -43,6 +43,8 @@ import { ChartsAdminComponent } from './components/admin/charts-admin/charts-adm
 import { CatalogoAdminComponent } from './components/admin/catalogo-admin/catalogo-admin.component';
 import { CabeceraComponent } from './components/cabecera/cabecera.component';
 
+import { DataTablesModule } from "angular-datatables";
+import { TablaCatalogoComponent } from './components/admin/tabla-catalogo/tabla-catalogo.component';
 @NgModule({
   declarations: [
     
@@ -63,8 +65,9 @@ import { CabeceraComponent } from './components/cabecera/cabecera.component';
     MancolistaComponent,
     SubastaComponent,
     TiendauserComponent,
+    
     DashboardUserComponent,
-    FooterComponent, DashboardAdminCrudComponent, ChartsAdminComponent, CatalogoAdminComponent, TiendaAdminComponent, CabeceraComponent
+    FooterComponent, DashboardAdminCrudComponent, ChartsAdminComponent, CatalogoAdminComponent, TiendaAdminComponent, CabeceraComponent, TablaCatalogoComponent
   ],
   imports: [
     HttpClientModule,
@@ -78,7 +81,8 @@ import { CabeceraComponent } from './components/cabecera/cabecera.component';
     CarouselModule,
     NgbAccordionModule,
     NgbNavModule,
-    MaterialModule
+    MaterialModule,
+    DataTablesModule
   ],
   exports : [
     SidebarComponent, ConfiguracionCatalogoComponent, FooterComponent

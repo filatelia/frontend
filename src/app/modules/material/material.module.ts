@@ -5,6 +5,8 @@ import { MatTreeModule } from '@angular/material/tree';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule,} from '@angular/material/progress-spinner';
 import {MatIconModule} from '@angular/material/icon';
+import {MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [],
@@ -14,7 +16,9 @@ import {MatIconModule} from '@angular/material/icon';
     MatIconModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
-    DragDropModule
+    DragDropModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   exports: [
     CdkTableModule,
@@ -22,7 +26,9 @@ import {MatIconModule} from '@angular/material/icon';
     MatIconModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
-    DragDropModule
+    DragDropModule,
+    MatTableModule,
+    MatPaginatorModule
   ]
 })
 export class MaterialModule { }

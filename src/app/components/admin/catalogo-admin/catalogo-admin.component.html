@@ -1,39 +1,57 @@
-<div class="row">    
-    <div class="col-lg-10 m-auto">
-      <a  href="javascript:void(0)" (click)="openVerticallyCentered(content)" class="mainAdmin__boton">
-        
+<div class="row">
+  <div class="col-lg-11 m-auto">
+    <a href="javascript:void(0)" (click)="openVerticallyCentered(content)" class="mainAdmin__boton">
+
       <div class="icono">
-          <svg height="426.66667pt" viewBox="0 0 426.66667 426.66667" width="426.66667pt" xmlns="http://www.w3.org/2000/svg"><path d="m405.332031 192h-170.664062v-170.667969c0-11.773437-9.558594-21.332031-21.335938-21.332031-11.773437 0-21.332031 9.558594-21.332031 21.332031v170.667969h-170.667969c-11.773437 0-21.332031 9.558594-21.332031 21.332031 0 11.777344 9.558594 21.335938 21.332031 21.335938h170.667969v170.664062c0 11.777344 9.558594 21.335938 21.332031 21.335938 11.777344 0 21.335938-9.558594 21.335938-21.335938v-170.664062h170.664062c11.777344 0 21.335938-9.558594 21.335938-21.335938 0-11.773437-9.558594-21.332031-21.335938-21.332031zm0 0"/></svg>
+        <svg height="426.66667pt" viewBox="0 0 426.66667 426.66667" width="426.66667pt"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="m405.332031 192h-170.664062v-170.667969c0-11.773437-9.558594-21.332031-21.335938-21.332031-11.773437 0-21.332031 9.558594-21.332031 21.332031v170.667969h-170.667969c-11.773437 0-21.332031 9.558594-21.332031 21.332031 0 11.777344 9.558594 21.335938 21.332031 21.335938h170.667969v170.664062c0 11.777344 9.558594 21.335938 21.332031 21.335938 11.777344 0 21.335938-9.558594 21.335938-21.335938v-170.664062h170.664062c11.777344 0 21.335938-9.558594 21.335938-21.335938 0-11.773437-9.558594-21.332031-21.335938-21.332031zm0 0" />
+        </svg>
       </div>
-            <h3>Importar</h3>
-        </a>
-        <table class="table table--normal">  
-          <thead>
-            <tr>
-              <th >Imagen</th>
-              <th >Codigo</th>
-              <th >Año</th> 
-              <th>Tema</th> 
-              <th >Pais</th> 
-              <th >Numero Catálogo</th>  
-              <th >Tipo</th>                                 
-              <th >Acciones</th>                                 
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let datos of datos">
-              <td >  <img class="miniatura" [src]="sanitizeImageUrl(api+datos.Foto_JPG_800x800_px)" /> </td>
-              <th >{{  datos.Codigo}}</th>
-              <td >{{ datos.Anio }}</td>
-              <td >{{ datos.Tema}}</td>
-              <td >{{ datos.Pais }}</td>
-              <td >{{ datos.Numero_de_catalogo }}</td>
-              <td >{{ datos.Tipo}}</td>
-              <td > <a class="pointer" (click) ="editarElemento()" ><img src="assets/img/iconos/edit.png" title="Editar"></a> / <a class="pointer" name="{{ datos.Codigo }}" id="{{ datos.uid }}" (click)="eliminarElemento(Eliminar.id, Eliminar.name)" #Eliminar><img title="Eliminar" src="assets/img/iconos/tash.png" alt=""></a></td>
+      <h3 class="d-flex">Importar</h3>
+    </a>
+    <br>
+<hr>
+
+    <div class="shadow p-3 mb-5 bg-body rounded">
+
+      <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+        <thead>
+          <tr>
+            <th>Imagen</th>
+            <th>Codigo</th>
+            <th>Año</th>
+            <th>Tema</th>
+            <th>Pais</th>
+            <th>Numero Catálogo</th>
+            <th>Tipo</th>
+            <th>Acciones</th>
           </tr>
-          </tbody>
-        </table>
+        </thead>
+        <tbody>
+          <tr *ngFor="let datos of datos">
+            <td> <img class="miniatura" [src]="sanitizeImageUrl(api+datos.Foto_JPG_800x800_px)" /> </td>
+            <th>{{ datos.Codigo}}</th>
+            <td>{{ datos.Anio }}</td>
+            <td>{{ datos.Tema}}</td>
+            <td>{{ datos.Pais }}</td>
+            <td>{{ datos.Numero_de_catalogo }}</td>
+            <td>{{ datos.Tipo}}</td>
+            <td> <a class="pointer" (click)="editarElemento()"><img src="assets/img/iconos/edit.png" title="Editar"></a> /
+              <a class="pointer" name="{{ datos.Codigo }}" id="{{ datos.uid }}"
+                (click)="eliminarElemento(Eliminar.id, Eliminar.name)" #Eliminar><img title="Eliminar"
+                  src="assets/img/iconos/tash.png" alt=""></a></td>
+          </tr>
+        </tbody>
+      </table>
+    
     </div>
+  </div>
+
+
+
+
 </div>
 
 <!-- modal -->
@@ -48,32 +66,28 @@
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
-    
+
   </div>
   <div class="modal-body">
     <form class="row">
       <div class="form-group col-lg-12">
-          <label for="">Subir archivo</label>
-          <input (change)="capturarFile($event)" type="file" class="form-control">
-        </div>
-        <div class="preview-img" *ngIf="previsualizacion">
-          <button class="clear-image" type="button" (click)="clearImage()">Clear</button>
-          <img  [src]="previsualizacion" alt="">
+        <label for="">Subir archivo</label>
+        <input (change)="capturarFile($event)" type="file" class="form-control">
       </div>
-    
+      <div class="preview-img" *ngIf="previsualizacion">
+        <button class="clear-image" type="button" (click)="clearImage()">Clear</button>
+        <img [src]="previsualizacion" alt="">
+      </div>
+
       <div class="p-1">
-          <small>Se aceptan archivos de tipo .excel</small>
+        <small>Se aceptan archivos de tipo .excel</small>
       </div>
-               
+
     </form>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn--negro" [disabled]="loading" (click)="subirArchivo()">
       {{(loading) ? 'Cargando.....' : 'Subir Archivo'}}
-  </button>
+    </button>
   </div>
 </ng-template>
-
-
-
-
