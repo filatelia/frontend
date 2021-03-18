@@ -5,12 +5,18 @@
 export const environment = {
   production: true,
 
+  //conect_url: 'https://api.filateliaperu.com/',
+  //conect_url_api: 'https://api.filateliaperu.com/api',
    //conect_url: 'https://api-filatelia.azurewebsites.net',
    //conect_url_api: 'https://api-filatelia.azurewebsites.net/api',
   //conect_url: 'http://128.199.0.136:3000',
   //conect_url_api: 'http://128.199.0.136:3000/api',
+  
+    //conect_url: 'https://api.filateliaperu.com/',
+  //conect_url_api: 'https://api.filateliaperu.com/api',
   conect_url: 'https://filateliab.doubleflyindustries.com',
   conect_url_api: 'https://filateliab.doubleflyindustries.com/api',
+
 
   api: '/api',
   login: '/login',

@@ -29,7 +29,7 @@
               <td >{{ datos.Pais }}</td>
               <td >{{ datos.Numero_de_catalogo }}</td>
               <td >{{ datos.Tipo}}</td>
-              <td > Editar / Eliminar</td>
+              <td > <a class="pointer" (click) ="editarElemento()" ><img src="assets/img/iconos/edit.png" title="Editar"></a> / <a class="pointer" name="{{ datos.Codigo }}" id="{{ datos.uid }}" (click)="eliminarElemento(Eliminar.id, Eliminar.name)" #Eliminar><img title="Eliminar" src="assets/img/iconos/tash.png" alt=""></a></td>
           </tr>
           </tbody>
         </table>
@@ -62,7 +62,7 @@
       </div>
     
       <div class="p-1">
-          <small>Se aceptan archivos imágenes de tipo .excel</small>
+          <small>Se aceptan archivos de tipo .excel</small>
       </div>
                
     </form>
