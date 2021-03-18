@@ -5,6 +5,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { RestService } from '../../../services/rest.service';
 import { CatalogoCompleto } from '../../../models/catalogo.interface';
 import { Router } from '@angular/router';
+import { SelectPais } from '../../../models/paises.interface';
 
 import {
   trigger,
@@ -16,6 +17,7 @@ import {
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-catalogo-admin',
@@ -29,16 +31,18 @@ import Swal from 'sweetalert2';
   ],
 })
 
-export class CatalogoAdminComponent implements OnDestroy, OnInit  {
+export class CatalogoAdminComponent implements OnDestroy, OnInit {
 
   public previsualizacion: string | any;
   public archivos: any = [];
   datos: CatalogoCompleto[] = [];
-  intermedio: any = [];
+  intermedio: CatalogoCompleto[] = [];
   public loading: boolean | any;
   api = environment.conect_url;
 
-  
+  pais:SelectPais[] = [];
+
+
   dtOptions: DataTables.Settings = {};
   data: any;
   dtTrigger = new Subject<any>();
@@ -48,7 +52,7 @@ export class CatalogoAdminComponent implements OnDestroy, OnInit  {
     private sanitizer: DomSanitizer,
     private rest: RestService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     // cargar todos los catalogos
@@ -69,10 +73,19 @@ export class CatalogoAdminComponent implements OnDestroy, OnInit  {
     // Do not forget to unsubscribe the event
     this.dtTrigger.unsubscribe();
   }
+  reiniciarTabla(){
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 5,
+      language: {
+        url: "https://cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json"
+      }
+    };
+
+  }
 
   mostrarDatos() {
     this.rest.getAllCatalogoAdmin(1).subscribe((catalogocompleto) => {
-      console.log('catalogo recibido: ', catalogocompleto);
 
       this.datos = catalogocompleto;
       this.dtTrigger.next();
@@ -90,7 +103,7 @@ export class CatalogoAdminComponent implements OnDestroy, OnInit  {
       'Funcionalidad aún en desarrollo',
       'info'
     )
-  
+
 
   }
   eliminarElemento(id: any, codigo: any) {
@@ -107,26 +120,28 @@ export class CatalogoAdminComponent implements OnDestroy, OnInit  {
       if (result.isConfirmed) {
         this.rest.deleteCatalogoAdmin(id).subscribe((resp) => {
           console.log('eliminadoooo', resp);
-
-          const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 2000,
+ 
+          Swal.fire({
+            title: 'Procesando...',
+            html: 'Eliminado....',
+            timer: 1000,
             timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener('mouseenter', Swal.stopTimer);
-              toast.addEventListener('mouseleave', Swal.resumeTimer);
+            didOpen: () => {
+              Swal.showLoading()
+          this.router.navigate(['admin/dashboard/tabla']);
+
+              
             },
-          });
-          Toast.fire({
-            icon: 'success',
-            title: 'Elemento elimiado ' + codigo,
-          }).then((result) => {
-            if (result.dismiss === Swal.DismissReason.timer) {
-              this.mostrarDatos();
+            willClose: () => {
+             
             }
-          });
+          }).then((result) => {
+
+            /* Read more about handling dismissals below */
+            if (result.dismiss === Swal.DismissReason.timer) {
+            }
+          })
+
         });
       }
     });
@@ -193,7 +208,7 @@ export class CatalogoAdminComponent implements OnDestroy, OnInit  {
   /**
    * Subir archivo
    */
-  
+
   subirArchivo(): any {
     try {
       this.loading = true;
@@ -210,7 +225,8 @@ export class CatalogoAdminComponent implements OnDestroy, OnInit  {
 
           if (res.ok == true) {
             alert(res.msg);
-            this.mostrarDatos();
+            this.router.navigate(['admin/dashboard/tabla']);
+
           } else {
             alert(res.msg);
           }

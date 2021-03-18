@@ -19,11 +19,11 @@
       <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
         <thead>
           <tr>
-            <th>Imagen</th>
+            <th>Img estampilla</th>
+            <th>Pais</th>
             <th>Codigo</th>
             <th>Año</th>
             <th>Tema</th>
-            <th>Pais</th>
             <th>Numero Catálogo</th>
             <th>Tipo</th>
             <th>Acciones</th>
@@ -31,11 +31,11 @@
         </thead>
         <tbody>
           <tr *ngFor="let datos of datos">
-            <td> <img class="miniatura" [src]="sanitizeImageUrl(api+datos.Foto_JPG_800x800_px)" /> </td>
-            <th>{{ datos.Codigo}}</th>
+            <td> <img width="70px" height="70px" class="rounded-circle" [src]="sanitizeImageUrl(api+datos.Foto_JPG_800x800_px)" /> </td>
+            <th> <img title="{{ datos.Pais }}" width="70px" height="70px" class="rounded-circle" [src]="sanitizeImageUrl(api+datos.BanderaPais)" /></th>
+            <td>{{ datos.Codigo }}</td>
             <td>{{ datos.Anio }}</td>
             <td>{{ datos.Tema}}</td>
-            <td>{{ datos.Pais }}</td>
             <td>{{ datos.Numero_de_catalogo }}</td>
             <td>{{ datos.Tipo}}</td>
             <td> <a class="pointer" (click)="editarElemento()"><img src="assets/img/iconos/edit.png" title="Editar"></a> /

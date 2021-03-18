@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tabla-catalogo',
@@ -9,34 +10,15 @@ import { Subject } from 'rxjs';
 
 })
 
-export class TablaCatalogoComponent implements OnDestroy, OnInit {
+export class TablaCatalogoComponent implements  OnInit {
 
-  dtOptions: DataTables.Settings = {};
-  data: any;
-  dtTrigger = new Subject<any>();
 
-  
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
+    this.router.navigate(['admin/dashboard/catalogo-admin']);
 
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 5,
-      language: {
-        url: "https://cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json"
-      }
-    };
 
-    this.http.get('https://jsonplaceholder.typicode.com/todos/').subscribe((resp: any) => {
-      this.data = resp;
-      this.dtTrigger.next();
-    });
-
-  }
-  ngOnDestroy(): void {
-    // Do not forget to unsubscribe the event
-    this.dtTrigger.unsubscribe();
   }
 
 }

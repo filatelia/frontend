@@ -45,5 +45,6 @@ export interface CatalogoCompleto {
     Descripcion:             string;
     Tipo:                    string;
     Foto_JPG_800x800_px:     string;
+    BanderaPais:             string;
     uid:                     string;
 }
