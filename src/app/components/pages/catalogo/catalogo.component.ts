@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from '../../../services/rest.service'
-import {PaisesAll} from '../../../models/paises.interface'
+import {PaisesAll, SelectPais} from '../../../models/paises.interface'
 import {CatalogoCompleto} from '../../../models/catalogo.interface'
 
 @Component({
@@ -10,7 +10,7 @@ import {CatalogoCompleto} from '../../../models/catalogo.interface'
 })
 export class CatalogoComponent implements OnInit {
    
-  datospaises: PaisesAll[] = [];
+  datospaises: any;
   datoscatalogo: CatalogoCompleto[] = [];
 
   constructor(private rest: RestService) { }

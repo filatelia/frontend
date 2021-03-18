@@ -95,7 +95,7 @@ export class RestService {
     );
   }*/
 
-  getSelectPais(pais:string):Observable<PaisesAll[]>{
+  getSelectPais(pais:string):Observable<PaisesAll>{
     this.isLoggedIn = !!this.tokenInterceptorService.getToken();
     if (this.isLoggedIn) {
       const user = this.tokenInterceptorService.getUser(); 
@@ -105,22 +105,11 @@ export class RestService {
     //let direccion = this.url + "api/catalogo/uploads/excel?"+ "token:"+this.usuario.token;
     //return this.http.get<Catalogo[]>(direccion);
 
-    let direccion = this.url + "api/catalogo/paises/"+pais;
-    return this.http.get<PaisesAll[]>(direccion).pipe(
-      map(resp =>{
-        var asd:any = [];
+    let direccion = this.url + "/catalogo/paises/"+pais;
+  
+    var paisSeleccionado:PaisesAll;
 
-        for (const key in resp) {
-
-        asd = resp[key];
-
-
-        }
-
-        return asd;
-
-      })
-    );
+    return this.http.get<PaisesAll>(direccion);
   }
 
   getAllMancolistaPublic(page:number):Observable<MacolistaListPublic[]>{
