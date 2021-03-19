@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tienda-admin.component.scss']
 })
 export class TiendaAdminComponent implements OnInit {
+  modalService: any;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+  openVerticallyCentered(content : any) {
+    this.modalService.open(content, { centered: true, windowClass: "modal__admin"});
+
   }
 
 }
