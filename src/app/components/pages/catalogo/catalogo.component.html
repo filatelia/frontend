@@ -77,8 +77,9 @@
                             </a>
                         </div>-->
                         <div class="col-lg-3" *ngFor="let datos of datoscatalogo">
-                            <a href="/catalogo-interna" class="catalogo__content__pais">
-                                <img width="70px" height="70px" class="rounded-circle"  [src]="sanitizeImageUrl(api+datos.Pais.img)"  alt="">
+                            <a name="{{datos.Pais.name}}" (click) = "buscar(Pais.name)" #Pais class="catalogo__content__pais pointer">
+                                <img   class="circulo"  [src]="sanitizeImageUrl(api+datos.Pais.img)"  alt="">
+                            <span>{{ datos.Pais.name }}</span>
                                
                             </a>
                         </div> 
