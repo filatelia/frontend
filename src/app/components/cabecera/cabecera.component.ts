@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TokenInterceptorService } from 'src/app/services/token-interceptor.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cabecera',
@@ -52,7 +53,8 @@ export class CabeceraComponent implements OnInit {
 
   logout(): void {
     this.tokenInterceptorService.signOut();
-    window.location.reload();
+
+
   }
 
 }
