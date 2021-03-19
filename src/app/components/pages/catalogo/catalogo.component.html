@@ -9,6 +9,7 @@
                 <div class="catalogo__content">
                     <h3 class="titulo titulo--chico">Búsqueda por país</h3>
                     <div class="row">
+
                        <!-- <div class="col-lg-3">
                             <a class="catalogo__content__pais">
                                 <img src="assets/img/pais/canada.png"  alt="">
@@ -75,10 +76,11 @@
                                 <h4>Paraguay</h4>
                             </a>
                         </div>-->
-                        <div class="col-lg-3" *ngFor="let datos of datospaises">
-                            <a href="/catalogo-interna" class="catalogo__content__pais">
-                                <img  src= "http://localhost:3000/{{datos.img}}"  alt="">
-                                <h4>{{datos.name}}</h4>
+                        <div class="col-lg-3" *ngFor="let datos of datoscatalogo">
+                            <a name="{{datos.Pais.name}}" (click) = "buscar(Pais.name)" #Pais class="catalogo__content__pais pointer">
+                                <img   class="circulo"  [src]="sanitizeImageUrl(api+datos.Pais.img)"  alt="">
+                            <span>{{ datos.Pais.name }}</span>
+                               
                             </a>
                         </div> 
                     </div>

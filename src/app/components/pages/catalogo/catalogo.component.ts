@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { RestService } from '../../../services/rest.service'
 import {PaisesAll, SelectPais} from '../../../models/paises.interface'
 import {CatalogoCompleto} from '../../../models/catalogo.interface'
-
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 @Component({
   selector: 'app-catalogo',
   templateUrl: './catalogo.component.html',
@@ -10,48 +12,65 @@ import {CatalogoCompleto} from '../../../models/catalogo.interface'
 })
 export class CatalogoComponent implements OnInit {
    
-  datospaises: any;
+   datospaises:any []=[];
   datoscatalogo: CatalogoCompleto[] = [];
+  api = environment.conect_url;
 
-  constructor(private rest: RestService) { }
+  constructor(private rest: RestService, private sanitizer: DomSanitizer,
+    private router: Router) { }
 
   ngOnInit(): void {
     // cargar todos los catalogos
 
-this.mostrarDatosPais();
-  }
+    this.mostrarDatosCatalogo();
 
+  }
+  buscar(name:string){
+    console.log("name", name);
+    this.router.navigate(['/catalogo-interna']);
+
+  }
   mostrarDatosCatalogo(){
         
-    this.rest.getAllCatalogoAdmin(1).subscribe(data =>{
+    this.rest.getAllCatalogo().subscribe(data =>{
 
       console.log("catalogo recibido: ", data);
 
-      this.datoscatalogo =data;
 
+
+       var datosPre: CatalogoCompleto[] = []; ;
+     for (let index = 0; index < data.length; index++) {
+      const element = data[index];
     
-      
-     // Al recibir un array, se deben pasar todos los elementos
-   console.log("lista: "+this.datoscatalogo) 
+      if(!datosPre.find(res=> res.Pais.name == element.Pais.name)){
+      datosPre.push(element);
 
-   })
-  }
-  mostrarDatosPais(){
-
-    this.mostrarDatosCatalogo();
+        console.log("resultado datos paises:->", this.datospaises.includes(element.Pais));
         
-    this.rest.getSelectPais("Colombia").subscribe(data =>{
 
-      console.log("pais recibido: ", data);
+        console.log("element pais", element.Pais);
+        
+  
+  
+  
+        console.log("this.datospaises", datosPre);
+        
 
-      this.datospaises =data;
+      }else{
+        console.log("resultado datos paises en else......:->", datosPre.includes(element));
 
-    
+      }
+      this.datoscatalogo = datosPre;
       
-     // Al recibir un array, se deben pasar todos los elementos
-   console.log("lista: "+this.datospaises) 
+    }    
+
 
    })
+
+
+  }
+  sanitizeImageUrl(imageUrl: string): SafeUrl {
+    return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
   }
   
 
