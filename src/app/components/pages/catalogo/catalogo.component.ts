@@ -4,7 +4,7 @@ import {PaisesAll, SelectPais} from '../../../models/paises.interface'
 import {CatalogoCompleto} from '../../../models/catalogo.interface'
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
-
+import { ActivatedRoute, Params, Router } from '@angular/router';
 @Component({
   selector: 'app-catalogo',
   templateUrl: './catalogo.component.html',
@@ -12,20 +12,24 @@ import { environment } from 'src/environments/environment';
 })
 export class CatalogoComponent implements OnInit {
    
-   datospaises:any =[];
+   datospaises:any []=[];
   datoscatalogo: CatalogoCompleto[] = [];
   api = environment.conect_url;
 
-  constructor(private rest: RestService, private sanitizer: DomSanitizer) { }
+  constructor(private rest: RestService, private sanitizer: DomSanitizer,
+    private router: Router) { }
 
   ngOnInit(): void {
     // cargar todos los catalogos
 
     this.mostrarDatosCatalogo();
-    this.mostrarDatosPais();
 
   }
+  buscar(name:string){
+    console.log("name", name);
+    this.router.navigate(['/catalogo-interna']);
 
+  }
   mostrarDatosCatalogo(){
         
     this.rest.getAllCatalogo().subscribe(data =>{
@@ -33,18 +37,30 @@ export class CatalogoComponent implements OnInit {
       console.log("catalogo recibido: ", data);
 
 
-     this.datoscatalogo =data;
 
-        
-     for (let index = 0; index < this.datoscatalogo.length; index++) {
-      const element = this.datoscatalogo[index];
+       var datosPre: CatalogoCompleto[] = []; ;
+     for (let index = 0; index < data.length; index++) {
+      const element = data[index];
     
-      if(!this.datospaises.includes.call(arguments, element.Pais)){
-        this.datospaises[index].pais = element.Pais;
-        console.log("this.datospaises", this.datospaises);
+      if(!datosPre.find(res=> res.Pais.name == element.Pais.name)){
+      datosPre.push(element);
+
+        console.log("resultado datos paises:->", this.datospaises.includes(element.Pais));
         
+
+        console.log("element pais", element.Pais);
+        
+  
+  
+  
+        console.log("this.datospaises", datosPre);
+        
+
+      }else{
+        console.log("resultado datos paises en else......:->", datosPre.includes(element));
 
       }
+      this.datoscatalogo = datosPre;
       
     }    
 
@@ -53,26 +69,6 @@ export class CatalogoComponent implements OnInit {
 
 
   }
-  mostrarDatosPais(){
-console.log("En paises");
-
-    this.datoscatalogo;
-    console.log("en pasieses datos catalogo", this.datoscatalogo);
-    
-    for (let index = 0; index < this.datoscatalogo.length; index++) {
-      const element = this.datoscatalogo[index];
-    
-      if(!this.datospaises.includes.call(arguments, element.Pais)){
-        this.datospaises[index].pais = element.Pais;
-        console.log("this.datospaises", this.datospaises);
-        
-
-      }
-      
-    }    
-
-  }
-
   sanitizeImageUrl(imageUrl: string): SafeUrl {
     return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
   }
