@@ -86,7 +86,7 @@ export class CatalogoAdminComponent implements OnDestroy, OnInit {
 
   mostrarDatos() {
     this.rest.getAllCatalogoAdmin(1).subscribe((catalogocompleto) => {
-
+      console.log(catalogocompleto)
       this.datos = catalogocompleto;
       this.dtTrigger.next();
     });
@@ -175,7 +175,7 @@ export class CatalogoAdminComponent implements OnDestroy, OnInit {
     })*/
     this.archivos.push(archivoCapturado);
     //
-    console.log('Archivo capturado: ' + event.target.files[0]);
+    console.log(event.target.files[0]);
   }
 
   /* extraerBase64 = async ($event: any) => new Promise((resolve, reject) => {
@@ -221,9 +221,9 @@ export class CatalogoAdminComponent implements OnDestroy, OnInit {
       const formularioDeDatos = new FormData();
       this.archivos.forEach((archivo: string) => {
         formularioDeDatos.append('sampleFile', archivo);
+        console.log(archivo);
+
       });
-      console.log('archivo previsualizado' + formularioDeDatos);
-      // formularioDeDatos.append('_id', 'MY_ID_123')
       this.rest.postCatalogoAdmin(formularioDeDatos).subscribe(
         (res: any) => {
           this.loading = false;

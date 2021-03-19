@@ -22,7 +22,7 @@ export class CatalogoComponent implements OnInit {
     // cargar todos los catalogos
 
     this.mostrarDatosCatalogo();
-    this.mostrarDatosPais();
+    
 
   }
 
@@ -30,21 +30,19 @@ export class CatalogoComponent implements OnInit {
         
     this.rest.getAllCatalogo().subscribe(data =>{
 
-      console.log("catalogo recibido: ", data);
-
-
-     this.datoscatalogo =data;
+       this.datoscatalogo =data;
 
         
      for (let index = 0; index < this.datoscatalogo.length; index++) {
       const element = this.datoscatalogo[index];
-    
-      if(!this.datospaises.includes.call(arguments, element.Pais)){
-        this.datospaises[index].pais = element.Pais;
-        console.log("this.datospaises", this.datospaises);
-        
-
+      var isPais=this.datospaises.find((el:any)=>el.Pais._id==element.Pais._id)
+      if(!isPais){
+        console.log(element)
+        // this.datospaises[index].pais = element.Pais;
+        this.datospaises.push(element)
       }
+
+      
       
     }    
 
@@ -54,17 +52,14 @@ export class CatalogoComponent implements OnInit {
 
   }
   mostrarDatosPais(){
-console.log("En paises");
 
     this.datoscatalogo;
-    console.log("en pasieses datos catalogo", this.datoscatalogo);
     
     for (let index = 0; index < this.datoscatalogo.length; index++) {
       const element = this.datoscatalogo[index];
     
       if(!this.datospaises.includes.call(arguments, element.Pais)){
         this.datospaises[index].pais = element.Pais;
-        console.log("this.datospaises", this.datospaises);
         
 
       }
