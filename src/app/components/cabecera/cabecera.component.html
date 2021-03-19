@@ -29,7 +29,7 @@
                              <li><a [routerLink]= "['/auth/register']" *ngIf="!isLoggedIn" >Registrate</a></li>
                              <li><a [routerLink]= "['/auth/login']" *ngIf="!isLoggedIn">Iniciar Sesión</a></li>
                             
-                             <li><a href="/auth/login" (click)="logout()" *ngIf="isLoggedIn">Cerrar sesión</a></li>
+                             <li><a  (click)="logout()" *ngIf="isLoggedIn">Cerrar sesión</a></li>
                            
                             
                              <li class="perfil" *ngIf="showAdminBoard">

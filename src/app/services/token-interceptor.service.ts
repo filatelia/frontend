@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import {User} from '../models/user.interface.ts';
 
 const TOKEN_KEY = 'auth-token';
@@ -10,11 +12,37 @@ const USER_KEY = 'auth-user';
 })
 export class TokenInterceptorService{
   
-  constructor() { 
+  constructor(private router: Router) { 
   }
   public logeado:boolean = false;
   signOut(): void {
     window.sessionStorage.clear();
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+    
+    Toast.fire({
+      icon: 'success',
+      title: 'Se ha cerrado sesión'
+    }).then(
+      result=>{
+        if(result.dismiss === Swal.DismissReason.timer){
+
+
+        }
+        
+      }
+    );
+    this.router.navigate(['/auth/login']);
+    
   }
 
   //valida datos de acceso
