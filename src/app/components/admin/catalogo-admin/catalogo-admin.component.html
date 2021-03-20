@@ -14,7 +14,7 @@
       <h3 class="d-flex">Importar</h3>
     </a>
     <br>
-<hr>
+    <hr>
 
     <div class="shadow p-3 mb-5 bg-body rounded">
 
@@ -57,21 +57,26 @@
 </div>
 
 <!-- modal -->
-
-
-
-
-
 <ng-template #content let-modal ngClass="modal__admin">
   <div class="modal-header">
-    <h4 class="modal-title">Importar </h4>
+    <h4 class="modal-title"  *ngIf="repetidasData.length==0||repetidasData==null; else titleOmitidas">Importar </h4>
+    <ng-template style="display: flex;" #titleOmitidas >
+      <div>
+        Subidos: {{responseExcel.archivos_subidos}}
+      </div>
+      &nbsp;
+      &nbsp;
+      <div>
+        Faltantes: {{responseExcel.total_estampillas_omitidas}}
+      </div>
+    </ng-template>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
-
+    
   </div>
   <div class="modal-body">
-    <form class="row">
+    <form class="row" *ngIf="repetidasData.length==0||repetidasData==null; else tabOmitidas">
       <div class="form-group col-lg-12">
         <label for="">Subir archivo</label>
         <input (change)="capturarFile($event)" type="file" class="form-control">
@@ -86,11 +91,39 @@
       </div>
 
     </form>
+    <ng-template #tabOmitidas>
+        <div  class="J-container-checbox">
+          <div class="J-container-checbox-item custom-control custom-checkbox">
+            <input class="custom-control-input" [(ngModel)]="selectall" type="checkbox" id="selectall" (change)="selectedAll()"/>
+            <label class="custom-control-label" for="selectall">
+                Selecionar todo
+            </label>
+        </div>
+          <div class="J-container-checbox-item custom-control custom-checkbox"  *ngFor="let repetidas of repetidasData;let i=index">
+              <input class="custom-control-input" type="checkbox" id="{{i}}" [(ngModel)]="repetidas.active"/>
+              <label class="custom-control-label" for="{{i}}">
+                <span>{{repetidas.Codigo}}  &nbsp; &nbsp;</span>
+                <span>{{repetidas.Anio}}  &nbsp; &nbsp;</span>
+                <span>{{repetidas.Tema}}  &nbsp; &nbsp;</span>
+                <span>{{repetidas.Numero_de_catalogo}}  &nbsp; &nbsp;</span>
+                <span>{{repetidas.Tipo}}  &nbsp; &nbsp;</span>
+              </label>
+          </div>
+        </div>
+    </ng-template>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn--negro" [disabled]="loading" (click)="subirArchivo()">
+    <div class="alert alert-info alert-dismissible fade show" *ngIf="responseExcel.msg_visible" role="alert">
+      <strong></strong>{{responseExcel.msg}}.
+    </div>
+    <button *ngIf="repetidasData.length==0||repetidasData==null;else btnOmitidas" type="button" class="btn btn--negro" [disabled]="loading" (click)="subirArchivo()">
       {{(loading) ? 'Cargando.....' : 'Subir Archivo'}}
     </button>
+    <ng-template #btnOmitidas>
+      <button type="button" class="btn btn--negro" [disabled]="loading" (click)="guardarOmitidas()">
+        {{(loading) ? 'Cargando.....' : 'Actualizar seleccionados'}}
+      </button>
+    </ng-template>
   </div>
 </ng-template>
 

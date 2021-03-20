@@ -15,6 +15,7 @@ export class CatalogoComponent implements OnInit {
    datospaises:any =[];
   datoscatalogo: CatalogoCompleto[] = [];
   api = environment.conect_url;
+  datosTema: any []=[]
 
   constructor(private rest: RestService, private sanitizer: DomSanitizer) { }
 
@@ -30,6 +31,7 @@ export class CatalogoComponent implements OnInit {
        this.datoscatalogo =data;
        for (let index = 0; index < this.datoscatalogo.length; index++) {
         const element = this.datoscatalogo[index];
+        this.mostrarDatosTema(element)
         var isPais=this.datospaises.find((el:any)=>el.Pais._id==element.Pais._id)
         if(!isPais){
           console.log(element)
@@ -37,7 +39,6 @@ export class CatalogoComponent implements OnInit {
           this.datospaises.push(element)
         }
 
-      
       
     }    
 
@@ -61,6 +62,12 @@ export class CatalogoComponent implements OnInit {
       
     }    
 
+  }
+  mostrarDatosTema(element:any){
+     var tema=this.datosTema.find((el:any)=>el.ParaBuscar==element.Tema.ParaBuscar);
+     if(!tema){
+        this.datosTema.push(element.Tema)
+     }
   }
 
   sanitizeImageUrl(imageUrl: string): SafeUrl {

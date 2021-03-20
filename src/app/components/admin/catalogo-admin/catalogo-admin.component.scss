@@ -5,10 +5,39 @@
 .pointer {
     cursor:pointer 
 }
+.J-container-checbox{
+    height: 65vh;
+    overflow-y: auto;
+    &-item{
+        cursor: pointer;
+        margin: 10px;
+        
+        background-color: #f7f6e9;
+        label{
+            cursor: pointer;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            span{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+    
+}
+.alert{
+    margin: 5px auto;
+}
 /* Structure */
 table {
     width: 100%;
   }
   
-
+.btn--negro{
+    width: 100%;
+}
   

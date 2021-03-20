@@ -34,7 +34,9 @@ import Swal from 'sweetalert2';
 export class CatalogoAdminComponent implements OnDestroy, OnInit {
 
   public previsualizacion: string | any;
+  public repetidasData: any=[];
   public archivos: any = [];
+  public responseExcel: any={};
   datos: CatalogoCompleto[] = [];
   intermedio: CatalogoCompleto[] = [];
   public loading: boolean | any;
@@ -86,7 +88,6 @@ export class CatalogoAdminComponent implements OnDestroy, OnInit {
 
   mostrarDatos() {
     this.rest.getAllCatalogoAdmin(1).subscribe((catalogocompleto) => {
-      console.log(catalogocompleto)
       this.datos = catalogocompleto;
       this.dtTrigger.next();
     });
@@ -175,7 +176,6 @@ export class CatalogoAdminComponent implements OnDestroy, OnInit {
     })*/
     this.archivos.push(archivoCapturado);
     //
-    console.log(event.target.files[0]);
   }
 
   /* extraerBase64 = async ($event: any) => new Promise((resolve, reject) => {
@@ -221,20 +221,36 @@ export class CatalogoAdminComponent implements OnDestroy, OnInit {
       const formularioDeDatos = new FormData();
       this.archivos.forEach((archivo: string) => {
         formularioDeDatos.append('sampleFile', archivo);
-        console.log(archivo);
+       
 
       });
       this.rest.postCatalogoAdmin(formularioDeDatos).subscribe(
         (res: any) => {
           this.loading = false;
-          console.log('Respuesta del servidor', res);
 
           if (res.ok == true) {
-            alert(res.msg);
+            if(res.estampillas_repetidas){
+              this.repetidasData=res.estampillas_repetidas;
+            }
+            this.responseExcel={
+              archivos_subidos:res.archivos_subidos,
+              total_estampillas_omitidas:res.total_estampillas_omitidas,
+              msg:res.msg,
+            }
+            
+            this.responseExcel.msg_visible=true;
             this.router.navigate(['admin/dashboard/tabla']);
-
+            if(this.repetidasData.length==0){
+                setTimeout(()=>{
+                },6000)
+            }
+            setTimeout(()=>{
+              this.responseExcel.msg_visible=false;
+            },5000)
+            //this.router.navigate(['admin/dashboard/tabla']);
           } else {
             alert(res.msg);
+
           }
         },
         () => {
@@ -246,5 +262,42 @@ export class CatalogoAdminComponent implements OnDestroy, OnInit {
       this.loading = false;
       console.log('ERROR', e);
     }
+  }
+  guardarOmitidas(){
+    this.loading = true;
+    var dataFind=this.repetidasData.filter((e:any)=>e.active);
+    if(this.repetidasData){
+      this.rest.putCatalogoAdminOmitidas(dataFind).subscribe(
+        (res:any)=>{
+         
+          this.loading = false;
+          this.repetidasData=this.repetidasData.filter((e:any)=>!e.active);
+          this.responseExcel={
+            archivos_subidos:this.responseExcel.archivos_subidos+(dataFind.length+1),
+            total_estampillas_omitidas:this.repetidasData.length+1,
+            msg:res.msg||"Datos actualizados"
+          }
+          this.responseExcel.msg_visible=true;
+          this.router.navigate(['admin/dashboard/tabla']);
+          if(this.repetidasData.length==0){
+             
+          }
+          setTimeout(()=>{
+            this.responseExcel.msg_visible=false;
+          },5000)
+        },
+        () => {
+          this.loading = false;
+          alert('Error');
+        }
+      )
+    } 
+  }
+  selectall: boolean=false;
+  selectedAll(){
+      console.log(this.selectall)
+      this.repetidasData.forEach((element:any) => {
+        element.active=this.selectall;
+      });
   }
 }

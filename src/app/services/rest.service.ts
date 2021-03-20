@@ -31,6 +31,10 @@ export class RestService {
   public postCatalogoAdmin(body: any) {
     return this.http.post(this.url + '/catalogo/uploads/excel', body); // POST
   }
+  
+  public putCatalogoAdminOmitidas(body: any){
+    return this.http.put(this.url + '/catalogo/uploads/excel/actualizar-cat-excel', body); // POST
+  }
 
   //Eliminando elemento de catalogo
   public deleteCatalogoAdmin(params: any) {
