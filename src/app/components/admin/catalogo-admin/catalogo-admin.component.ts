@@ -231,6 +231,16 @@ export class CatalogoAdminComponent implements OnDestroy, OnInit {
 
           if (res.ok == true) {
             alert(res.msg);
+            const respuesta = res.estampillas_repetidas;
+
+            console.log("respuesta para editar", respuesta);
+            this.rest.editarCatalogo(respuesta).subscribe(
+              resta=>{
+                console.log("resta", resta);
+              }
+            );
+
+
             this.router.navigate(['admin/dashboard/tabla']);
 
           } else {

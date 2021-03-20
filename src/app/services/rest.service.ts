@@ -79,6 +79,7 @@ export class RestService {
       })
     );
   }
+
   /* getAllPaises(page:number):Observable<PaisesAll[]>{
     this.isLoggedIn = !!this.tokenInterceptorService.getToken();
     if (this.isLoggedIn) {
@@ -119,6 +120,7 @@ export class RestService {
      
     );
   }
+
   getSelectPais(pais: string): Observable<PaisesAll> {
     this.isLoggedIn = !!this.tokenInterceptorService.getToken();
     if (this.isLoggedIn) {
@@ -140,4 +142,10 @@ export class RestService {
       this.url + 'api/catalogo/uploads/excel?' + 'token:' + this.usuario.token;
     return this.http.get<MacolistaListPublic[]>(direccion);
   }
+
+  editarCatalogo(body:any):Observable<any>{
+  return  this.http.put('http://localhost:3000/api/catalogo/uploads/excel/actualizar-cat-excel', body);
+  }
+
+ 
 }
