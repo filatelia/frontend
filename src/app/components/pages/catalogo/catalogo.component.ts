@@ -20,10 +20,7 @@ export class CatalogoComponent implements OnInit {
 
   ngOnInit(): void {
     // cargar todos los catalogos
-
     this.mostrarDatosCatalogo();
-    
-
   }
 
   mostrarDatosCatalogo(){
@@ -31,16 +28,14 @@ export class CatalogoComponent implements OnInit {
     this.rest.getAllCatalogo().subscribe(data =>{
 
        this.datoscatalogo =data;
-
-        
-     for (let index = 0; index < this.datoscatalogo.length; index++) {
-      const element = this.datoscatalogo[index];
-      var isPais=this.datospaises.find((el:any)=>el.Pais._id==element.Pais._id)
-      if(!isPais){
-        console.log(element)
-        // this.datospaises[index].pais = element.Pais;
-        this.datospaises.push(element)
-      }
+       for (let index = 0; index < this.datoscatalogo.length; index++) {
+        const element = this.datoscatalogo[index];
+        var isPais=this.datospaises.find((el:any)=>el.Pais._id==element.Pais._id)
+        if(!isPais){
+          console.log(element)
+          // this.datospaises[index].pais = element.Pais;
+          this.datospaises.push(element)
+        }
 
       
       
