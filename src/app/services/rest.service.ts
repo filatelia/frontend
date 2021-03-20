@@ -79,33 +79,6 @@ export class RestService {
       })
     );
   }
-  /* getAllPaises(page:number):Observable<PaisesAll[]>{
-    this.isLoggedIn = !!this.tokenInterceptorService.getToken();
-    if (this.isLoggedIn) {
-      const user = this.tokenInterceptorService.getUser(); 
-      this.usuario = user;
-     
-    }
-    //let direccion = this.url + "api/catalogo/uploads/excel?"+ "token:"+this.usuario.token;
-    //return this.http.get<Catalogo[]>(direccion);
-
-    let direccion = this.url + "api/catalogo/paises/all";
-    return this.http.get<PaisesAll[]>(direccion).pipe(
-      map(resp =>{
-        var asd:any = [];
-
-        for (const key in resp) {
-
-        asd = resp[key];
-
-
-        }
-
-        return asd;
-
-      })
-    );
-  }*/
 
   getSelectPais(pais: string): Observable<PaisesAll> {
     this.isLoggedIn = !!this.tokenInterceptorService.getToken();
@@ -128,4 +101,10 @@ export class RestService {
       this.url + 'api/catalogo/uploads/excel?' + 'token:' + this.usuario.token;
     return this.http.get<MacolistaListPublic[]>(direccion);
   }
+
+  editarCatalogo(body:any):Observable<any>{
+  return  this.http.put('http://localhost:3000/api/catalogo/uploads/excel/actualizar-cat-excel', body);
+  }
+
+ 
 }
