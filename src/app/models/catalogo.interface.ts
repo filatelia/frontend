@@ -4,22 +4,22 @@ export interface CatalogoAll {
 }
 
 export interface CatalogoCompleto {
-    estado:                  boolean;
-    Codigo:                  string;
-    Pais:                    Pais;
-    Anio:                    number;
-    Tema:                    Tema;
-    Grupo:                   number;
-    Nro_Estampillas:         number;
-    Descripcion_de_la_serie: string;
-    Valor_Facial:            string;
-    Numero_de_catalogo:      string;
-    Valor_del_Catalogo:      string;
-    Descripcion:             string;
-    Tipo:                    string;
-    Foto_JPG_800x800_px:     string;
-    ParaBuscar:              string;
-    uid:                     string;
+    estado:                 boolean;
+    Codigo:                 string;
+    Pais:                   Pais;
+    Anio:                   number;
+    Tema:                   Tema;
+    Grupo:                  number;
+    Nro_Estampillas:        number;
+    Descripcion_de_la_serie:string;
+    Valor_Facial:           string;
+    Numero_de_catalogo:     string;
+    Valor_del_Catalogo:     string;
+    Descripcion:            string;
+    Tipo:                   string;
+    Foto_JPG_800x800_px:    string;
+    ParaBuscar:             string;
+    uid:                    string;
 }
 
 

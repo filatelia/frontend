@@ -35,7 +35,7 @@ const routes: Routes = [
       { path: '', component: HomeComponent},
       { path: 'tienda',component: TiendaComponent},
       { path: 'catalogo', component:CatalogoComponent},
-      { path: 'catalogo-interna', component:CatalogoInternoComponent},
+      { path: 'catalogo-interna/:pais', component:CatalogoInternoComponent},
 
       //auth
       { path: 'auth/register',component: RegistrateComponent, 

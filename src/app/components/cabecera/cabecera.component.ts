@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { RestService } from 'src/app/services/rest.service';
 import { TokenInterceptorService } from 'src/app/services/token-interceptor.service';
 import Swal from 'sweetalert2';
 
@@ -18,13 +19,16 @@ export class CabeceraComponent implements OnInit {
   public isCollapse= false
 
   constructor(private tokenInterceptorService: TokenInterceptorService,
-    private router: Router) {
+    private router: Router,
+    private rest: RestService) {
     console.log("estamos en el contructor de cabecera");
 
   }
 
   ngOnInit(): void {
     this.verLogeo();
+
+
   }
 
   //Funciones
@@ -36,7 +40,7 @@ export class CabeceraComponent implements OnInit {
 
     if (user.ok) {
       console.log("Logueo correcto");
-      
+   
       this.isLoggedIn = true;
       this.roleuser = user.role;
       this.name = user.name;
