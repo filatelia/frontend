@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-tienda-admin',
-  templateUrl: './tienda-admin.component.html',
-  styleUrls: ['./tienda-admin.component.scss']
+  selector: 'app-ajustes-admin',
+  templateUrl: './ajustes-admin.component.html',
+  styleUrls: ['./ajustes-admin.component.scss']
 })
-export class TiendaAdminComponent implements OnInit {
+export class AjustesAdminComponent implements OnInit {
   modalService: any;
 
   constructor() { }
@@ -16,5 +16,4 @@ export class TiendaAdminComponent implements OnInit {
     this.modalService.open(content, { centered: true, windowClass: "modal__admin"});
 
   }
-
 }

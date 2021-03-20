@@ -1,3 +1,5 @@
+
+<div class="mainAdmin__listado"> </div>
 <div class="row">
   <div class="col-lg-11 m-auto">
     <a href="javascript:void(0)" (click)="openVerticallyCentered(content)" class="mainAdmin__boton">
@@ -16,7 +18,7 @@
 
     <div class="shadow p-3 mb-5 bg-body rounded">
 
-      <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+      <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table--normal">
         <thead>
           <tr>
             <th>Img estampilla</th>
@@ -38,7 +40,7 @@
             <td>{{ datos.Tema.name}}</td>
             <td>{{ datos.Numero_de_catalogo }}</td>
             <td>{{ datos.Tipo}}</td>
-            <td> <a class="pointer" (click)="editarElemento()"><img src="assets/img/iconos/edit.png" title="Editar"></a> /
+            <td> <a class="pointer" (click)="openEditCentered(contenido)"><img src="assets/img/iconos/edit.png" title="Editar"></a> /
               <a class="pointer" name="{{ datos.Codigo }}" id="{{ datos.uid }}"
                 (click)="eliminarElemento(Eliminar.id, Eliminar.name)" #Eliminar><img title="Eliminar"
                   src="assets/img/iconos/tash.png" alt=""></a></td>
@@ -88,6 +90,38 @@
   <div class="modal-footer">
     <button type="button" class="btn btn--negro" [disabled]="loading" (click)="subirArchivo()">
       {{(loading) ? 'Cargando.....' : 'Subir Archivo'}}
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #contenido let-modal ngClass="modal__admin">
+  <div class="modal-header">
+    <h4 class="modal-title">Actualizar </h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+
+  </div>
+  <div class="modal-body">
+    <form class="row">
+      <div class="form-group col-lg-12">
+        <label for="">Cargar archivo</label>
+        <input (change)="capturarFile($event)" type="file" class="form-control">
+      </div>
+      <div class="preview-img" *ngIf="previsualizacion">
+        <button class="clear-image" type="button" (click)="clearImage()">Clear</button>
+        <img [src]="previsualizacion" alt="">
+      </div>
+
+      <div class="p-1">
+        <small>Se aceptan archivos de tipo .excel</small>
+      </div>
+
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn--negro" [disabled]="loading" (click)="editarElemento()">
+      {{(loading) ? 'Cargando.....' : 'Actualizar Archivo'}}
     </button>
   </div>
 </ng-template>

@@ -9,9 +9,16 @@ export const environment = {
   //conect_url_api: 'https://api.filateliaperu.com/api',
    //conect_url: 'https://api-filatelia.azurewebsites.net',
    //conect_url_api: 'https://api-filatelia.azurewebsites.net/api',
+
   //conect_url: 'http://128.199.0.136:3000',
   //conect_url_api: 'http://128.199.0.136:3000/api',
  
+
+
+  // conect_url: 'http://localhost:3000',
+  // conect_url_api: 'http://localhost:3000/api',
+  
+
   conect_url: 'https://api.filateliaperu.com/',
  conect_url_api: 'https://api.filateliaperu.com/api',
 /* conect_url: 'http://localhost:3000/',

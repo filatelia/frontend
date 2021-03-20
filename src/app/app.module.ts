@@ -23,8 +23,6 @@ import { CatalogoComponent } from './components/pages/catalogo/catalogo.componen
 import { CatalogoInternoComponent } from './components/pages/catalogo-interno/catalogo-interno.component';
 
 import { SidebarComponent } from './components/admin/sidebar/sidebar.component';
-import { ConfiguracionCatalogoComponent } from './components/admin/anio-catalogo/configuracion-catalogo.component';
-import { PaisCatalogoComponent } from './components/admin/pais-catalogo/pais-catalogo.component';
 import { TemasCatalogoComponent } from './components/admin/temas-catalogo/temas-catalogo.component';
 import { TiendaAdminComponent } from './components/admin/tienda-admin/tienda-admin.component';
 import { DashboardAdminComponent } from './components/admin/dashboard-admin/dashboard-admin.component';
@@ -38,21 +36,25 @@ import { DashboardUserComponent } from './components/user/dashboard-user/dashboa
 
 import { FooterComponent } from './components/footer/footer.component';
 import { authInterceptorProviders } from './helpers/auth.interceptor';
-import { DashboardAdminCrudComponent } from './components/admin/dashboard-admin-crud/dashboard-admin-crud.component';
 import { ChartsAdminComponent } from './components/admin/charts-admin/charts-admin.component';
 import { CatalogoAdminComponent } from './components/admin/catalogo-admin/catalogo-admin.component';
 import { CabeceraComponent } from './components/cabecera/cabecera.component';
 
 import { DataTablesModule } from "angular-datatables";
 import { TablaCatalogoComponent } from './components/admin/tabla-catalogo/tabla-catalogo.component';
+import { BlogAdminComponent } from './components/admin/blog-admin/blog-admin.component';
+import { TiendaAdminLinkComponent } from './components/admin/tienda-admin-link/tienda-admin-link.component';
+import { AjustesAdminLinkComponent } from './components/admin/ajustes-admin-link/ajustes-admin-link.component';
+import { AjustesAdminComponent } from './components/admin/ajustes-admin/ajustes-admin.component';
+import { PedidosAdminComponent } from './components/admin/pedidos-admin/pedidos-admin.component';
+import { ClientesAdminComponent } from './components/admin/clientes-admin/clientes-admin.component';
+import { CuponesAdminComponent } from './components/admin/cupones-admin/cupones-admin.component';
 @NgModule({
   declarations: [
     
     AppComponent, 
     DashboardAdminComponent,  
     SidebarComponent, 
-    ConfiguracionCatalogoComponent, 
-    PaisCatalogoComponent,
     TemasCatalogoComponent,  
     TiendaAdminComponent,
     HomeComponent, 
@@ -67,7 +69,15 @@ import { TablaCatalogoComponent } from './components/admin/tabla-catalogo/tabla-
     TiendauserComponent,
     
     DashboardUserComponent,
-    FooterComponent, DashboardAdminCrudComponent, ChartsAdminComponent, CatalogoAdminComponent, TiendaAdminComponent, CabeceraComponent, TablaCatalogoComponent
+    FooterComponent, 
+    ChartsAdminComponent, 
+    CatalogoAdminComponent, 
+    TiendaAdminComponent, 
+    CabeceraComponent, 
+    TablaCatalogoComponent, 
+    BlogAdminComponent,
+    TiendaAdminLinkComponent, 
+    AjustesAdminLinkComponent, AjustesAdminComponent, PedidosAdminComponent, ClientesAdminComponent, CuponesAdminComponent
   ],
   imports: [
     HttpClientModule,
@@ -85,7 +95,7 @@ import { TablaCatalogoComponent } from './components/admin/tabla-catalogo/tabla-
     DataTablesModule
   ],
   exports : [
-    SidebarComponent, ConfiguracionCatalogoComponent, FooterComponent
+    SidebarComponent, FooterComponent
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
