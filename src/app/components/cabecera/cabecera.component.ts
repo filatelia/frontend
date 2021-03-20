@@ -15,6 +15,7 @@ export class CabeceraComponent implements OnInit {
   showAdminBoard = false;
   showClientBoard = false;
   name?: string;
+  public isCollapse= false
 
   constructor(private tokenInterceptorService: TokenInterceptorService,
     private router: Router) {
@@ -53,8 +54,17 @@ export class CabeceraComponent implements OnInit {
 
   logout(): void {
     this.tokenInterceptorService.signOut();
+    //this.reloadPage();
 
 
   }
-
+  toggleState():void { // manejador del evento
+        let foo = this.isCollapse;
+        this.isCollapse = foo === false ? true : false; 
+    }
+    reloadPage(){
+      window.location.href ="/";
+    }
 }
+
+

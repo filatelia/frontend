@@ -26,6 +26,7 @@
     "@angular/router": "^11.1.2",
     "@ng-bootstrap/ng-bootstrap": "^9.0.2",
     "@types/owl.carousel": "^2.3.2",
+    "angular-bootstrap-md": "^11.0.0",
     "angular-chart.js": "^1.1.1",
     "angular-datatable": "^2.2.1",
     "angular-datatables": "^11.1.1",

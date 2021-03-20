@@ -1408,7 +1408,7 @@ body{
 ===============================*/
 
 
-@media (max-width: 991.98px){
+@media (max-width: 1080px){
     .overlay {
         position: fixed;
         top: 0;
@@ -1427,7 +1427,7 @@ body{
         }
     }
 
-    nav {
+    nav { 
         background-color:#36363c;
         position: fixed;
         z-index: 3;
@@ -1627,25 +1627,7 @@ body{
         top: 9px;
         right: 0px;
         z-index: 10;
-        &.clicked{
-            span{
-                background-color: transparent;
-                &::before{
-                    -webkit-transform: translateY(9px) rotate(45deg);
-                    -moz-transform: translateY(9px) rotate(45deg);
-                    -ms-transform: translateY(9px) rotate(45deg);
-                    -o-transform: translateY(9px) rotate(45deg);
-                    transform: translateY(9px) rotate(45deg);
-                }
-                &::after{
-                    -webkit-transform: translateY(-9px) rotate(-45deg);
-                    -moz-transform: translateY(-9px) rotate(-45deg);
-                    -ms-transform: translateY(-9px) rotate(-45deg);
-                    -o-transform: translateY(-9px) rotate(-45deg);
-                    transform: translateY(-9px) rotate(-45deg);
-                }
-            }
-        }
+    
         span{
             margin-top: 9px;
             margin-bottom: 9px;
