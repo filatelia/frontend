@@ -106,7 +106,19 @@ export class RestService {
       })
     );
   }*/
-
+  
+  getSelectCatalogPais(pais: string) {
+    //let direccion = this.url + "api/catalogo/uploads/excel?"+ "token:"+this.usuario.token;
+    //return this.http.get<Catalogo[]>(direccion);
+    let direccion = this.url + '/catalogo/uploads/excel';
+    //let direccion = this.url + 'api/catalogo/uploads/excel?tipo_busqueda=pais&pais='+pais;
+    return this.http.get<CatalogoAll>(direccion).pipe(
+      map((resp) => {
+        return resp.catalogoCompleto;
+      }),
+     
+    );
+  }
   getSelectPais(pais: string): Observable<PaisesAll> {
     this.isLoggedIn = !!this.tokenInterceptorService.getToken();
     if (this.isLoggedIn) {
