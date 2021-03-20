@@ -2,8 +2,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardAdminComponent } from './components/admin/dashboard-admin/dashboard-admin.component';
-import { ConfiguracionCatalogoComponent } from './components/admin/anio-catalogo/configuracion-catalogo.component';
-import { PaisCatalogoComponent } from './components/admin/pais-catalogo/pais-catalogo.component';
 import { TemasCatalogoComponent } from './components/admin/temas-catalogo/temas-catalogo.component';
 import { CatalogoAdminComponent } from './components/admin/catalogo-admin/catalogo-admin.component';
 import { BlogAdminComponent } from './components/admin/blog-admin/blog-admin.component';
@@ -54,10 +52,8 @@ const routes: Routes = [
     component: DashboardAdminComponent,
     canActivate: [AuthGuard],
     children: [
-      { path: '', component: ConfiguracionCatalogoComponent },
       
       { path: 'tabla', component: TablaCatalogoComponent },
-      { path: 'pais', component: PaisCatalogoComponent },
       { path: 'temas', component: TemasCatalogoComponent},
       { path: 'catalogo-admin', component: CatalogoAdminComponent },
       { path: 'tienda-admin', component: TiendaAdminComponent },
