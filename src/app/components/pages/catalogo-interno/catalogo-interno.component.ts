@@ -13,7 +13,8 @@ import { element } from 'protractor';
 })
 export class CatalogoInternoComponent implements OnInit {
   public pais: PaisesAll={};
-  datoscatalogo: CatalogoCompleto[] = [];
+  public datoscatalogo: CatalogoCompleto[] = [];
+  public dataAnio: any=[];
   public  buscarPais ='';
   public dataCatalog: any=[];
   constructor(
@@ -41,10 +42,10 @@ export class CatalogoInternoComponent implements OnInit {
     });
 
   }
+
   grupoCatalogo(){
     var anio=0;
     var sum=10
-
     var increment=0
     this.datoscatalogo.forEach((element)=>{
         if(element.Pais.para_buscar!=this.buscarPais) return;
@@ -61,6 +62,7 @@ export class CatalogoInternoComponent implements OnInit {
                 element,
               ]
             });
+            this.dataAnio.push(anio)
         }
         else{
           anio=element.Anio;
@@ -80,9 +82,17 @@ export class CatalogoInternoComponent implements OnInit {
                 element,
               ]
             });
+            this.dataAnio.push(anio)
           }
         }
+
+        
     })
   }
+  // anioCatalogo(){
+  //   this.datoscatalogo.forEach((element)=>{
+  //     if(element.Pais.anio!=this.buscarPais) return;
+  //   })
+  // }
 
 }
