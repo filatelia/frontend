@@ -165,6 +165,12 @@ export class CatalogoAdminComponent implements OnDestroy, OnInit {
       windowClass: 'modal__admin',
     });
   }
+  openlistarCentered(conten: any) {
+    this.modalService.open(conten, {
+      centered: true,
+      windowClass: 'modal__admin',
+    });
+  }
 
   capturarFile(event: any): any {
     const archivoCapturado = event.target.files[0];
