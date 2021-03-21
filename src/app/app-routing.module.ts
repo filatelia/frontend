@@ -23,6 +23,14 @@ import { TiendauserComponent } from './components/user/tiendauser/tiendauser.com
 
 import {AuthGuard} from './guard/auth.guard'
 import { TablaCatalogoComponent } from './components/admin/tabla-catalogo/tabla-catalogo.component';
+import {PedidosAdminComponent} from './components/admin/pedidos-admin/pedidos-admin.component';
+import {ClientesAdminComponent} from './components/admin/clientes-admin/clientes-admin.component';
+import {CuponesAdminComponent} from './components/admin/cupones-admin/cupones-admin.component';
+import {ProductosAdminComponent} from './components/admin/productos-admin/productos-admin.component';
+import {PagosAdminComponent} from './components/admin/pagos-admin/pagos-admin.component';
+import {EnvioAdminComponent} from './components/admin/envio-admin/envio-admin.component';
+import {CorreoAdminComponent} from './components/admin/correo-admin/correo-admin.component';
+import {MimancolistapublicaPageComponent} from './components/pages/mimancolistapublica-page/mimancolistapublica-page.component'
 
 const routes: Routes = [
   
@@ -45,6 +53,10 @@ const routes: Routes = [
       
     ],
   },
+  {
+    path: 'mimancolistapublica', component: MimancolistapublicaPageComponent
+  },
+
 
   {
    
@@ -56,9 +68,21 @@ const routes: Routes = [
       { path: 'tabla', component: TablaCatalogoComponent },
       { path: 'temas', component: TemasCatalogoComponent},
       { path: 'catalogo-admin', component: CatalogoAdminComponent },
-      { path: 'tienda-admin', component: TiendaAdminComponent },
+      { path: 'tienda-admin', component: TiendaAdminComponent, 
+       children:[
+        { path: '',component: ProductosAdminComponent },
+        { path: 'pedidos',component: PedidosAdminComponent },
+        { path: 'clientes',component: ClientesAdminComponent },
+        { path: 'cupones',component: CuponesAdminComponent }
+      ]
+    },
       { path: 'blog-admin', component: BlogAdminComponent },
-      { path: 'ajustes-admin', component: AjustesAdminComponent }
+      { path: 'ajustes-admin', component: AjustesAdminComponent,
+      children:[
+        { path: 'pagos',component: PagosAdminComponent },
+        { path: 'envio',component: EnvioAdminComponent },
+        { path: 'correo',component: CorreoAdminComponent }
+      ]}
     ],
   },
 

@@ -162,7 +162,7 @@
                         position: absolute;
                         width: 15px;
                         height: 15px;  
-                        background-image: url(./../img/iconos/flecha.svg);                      
+                        background-image: url(../../img/iconos/flecha.svg);                      
                         transform: rotate(270deg);
                         right: 25px;
                         bottom: 0;
@@ -476,7 +476,7 @@
                               }
                             }
                             input[type=checkbox].css-checkbox + label.css-label {
-                                background-image: url("../img/iconos/ckeck-desactivado.png");
+                                background-image: url("../../img/iconos/ckeck-desactivado.png");
                                 background-repeat: no-repeat;
                                 background-position: 0 0;
                              /* &:hover {
@@ -485,7 +485,7 @@
                               }*/
                            }
                            input[type=checkbox].css-checkbox:checked + label.css-label {
-                              background-image: url("../img/iconos/ckeck-activado.png");
+                              background-image: url("../../img/iconos/ckeck-activado.png");
                               background-repeat: no-repeat;
                               // color: #000;
                            }                           
