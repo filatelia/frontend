@@ -76,7 +76,7 @@
   <!-- menu responsive -->
  <div class="header__mobile">
      <div class="header__mobile__logo">
-       <a class="navbar-brand" href="#"><img src="../assets/img/logo-blanco.png" alt="" class="img-fluid"></a>
+       <a class="navbar-brand" href="#"><img src="../../../assets/img/logo-blanco.png" alt="" class="img-fluid"></a>
      </div>
      <div class="buscador">
          <form>
@@ -92,7 +92,7 @@
              </div>
          </form>
      </div>
-      <div class="burger" type="button" (click)="isCollapse = !isCollapse" >
+      <div class="burger" (click)="isCollapse = !isCollapse" >
        <span ></span>
       </div>
   </div>
@@ -114,7 +114,7 @@
        <li><a *ngIf="showClientBoard" [routerLink]= "['/user/dashboard']">Dashboard</a></li>
        <li><a *ngIf="showAdminBoard" [routerLink]= "['/admin/dashboard']">Dashboard</a></li>
        <li><a (click)="logout()" *ngIf="isLoggedIn">Cerrar Sesión</a></li>
-       <li><a [routerLink]= "['/auth/login']" *ngIf="!isLoggedIn" data-toggle="modal" data-target="#modal__login">Login</a></li>
+       <li><a [routerLink]= "['auth/login']" *ngIf="!isLoggedIn" data-toggle="modal" data-target="#modal__login">Login</a></li>
        <li><a [routerLink]="['auth/register']" *ngIf="!isLoggedIn" data-toggle="modal" data-target="#modal__registrar">Registrar</a></li>
        
        
