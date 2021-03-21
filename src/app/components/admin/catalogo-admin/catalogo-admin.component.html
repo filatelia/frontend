@@ -51,6 +51,8 @@
     </div>
   </div>
 
+  
+
 
 
 
@@ -88,6 +90,7 @@
 
       <div class="p-1">
         <small>Se aceptan archivos de tipo .excel</small>
+        <!-- <button  (click)="openlistarCentered(conten)" >listar</button> -->
       </div>
 
     </form>
@@ -102,10 +105,14 @@
           <div class="J-container-checbox-item custom-control custom-checkbox"  *ngFor="let repetidas of repetidasData;let i=index">
               <input class="custom-control-input" type="checkbox" id="{{i}}" [(ngModel)]="repetidas.active"/>
               <label class="custom-control-label" for="{{i}}">
+                  <div>
+                      <img width="70px" height="70px" class="rounded-circle" [src]="sanitizeImageUrl(api+repetidas.Foto_JPG_800x800_px)" alt="">
+                      
+                  </div>
                 <span>{{repetidas.Codigo}}  &nbsp; &nbsp;</span>
                 <span>{{repetidas.Anio}}  &nbsp; &nbsp;</span>
                 <span>{{repetidas.Tema}}  &nbsp; &nbsp;</span>
-                <span>{{repetidas.Numero_de_catalogo}}  &nbsp; &nbsp;</span>
+                <span>{{repetidas.Descripcion}}  &nbsp; &nbsp;</span>
                 <span>{{repetidas.Tipo}}  &nbsp; &nbsp;</span>
               </label>
           </div>
@@ -157,4 +164,43 @@
       {{(loading) ? 'Cargando.....' : 'Actualizar Archivo'}}
     </button>
   </div>
+
+
+</ng-template>
+
+<ng-template #conten let-modal ngClass="modal__admin">
+  <div class="shadow p-3 mb-5 bg-body rounded">
+
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table--normal">
+      <thead>
+        <tr>
+          
+          <th>Codigo</th>
+          <th>Img estampilla</th>
+          <th>Año</th>
+          <th>Tema</th>
+          <th>Numero Catálogo</th>
+          <th>Tipo</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let datos of datos">
+
+          <td> 
+            <input type="checkbox" name="category" id="c_1" class="css-checkbox" />
+            <label for="c_1" class="css-label"></label>
+           codigo</td>
+           <td> <img width="70px" height="70px" class="rounded-circle" [src]="sanitizeImageUrl(api+datos.Foto_JPG_800x800_px)" /> </td>
+          <td>año</td>
+          <td>nombre</td>
+          <td>numero</td>
+          <td>tipo</td>
+          
+        </tr>
+      </tbody>
+    </table>
+  
+  </div>
+
 </ng-template>

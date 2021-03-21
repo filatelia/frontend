@@ -1,4 +1,4 @@
-<header class="header">
+ <header class="header">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-6 header--amarillo">
@@ -39,9 +39,14 @@
                                 <a [routerLink]= "['/admin/dashboard']">{{name}}</a> 
                             
                             </li>
-                       
-                        
-                             <li *ngIf="showClientBoard"><a [routerLink]= "['/user/dashboard']" >Dashboard Cliente</a></li>
+
+                            <li class="perfil" *ngIf="showClientBoard">
+                                <div class="perfil__icono">
+                                 <img src="../assets/img/iconos/user.png" alt="">
+                                </div>
+                                <a [routerLink]= "['/user/dashboard']">{{name}}</a> 
+                            
+                            </li>
                              
                          </ul>
                      </div>
@@ -69,7 +74,7 @@
     </div>
   </header>
   <!-- menu responsive -->
-  <div class="header__mobile">
+ <div class="header__mobile">
      <div class="header__mobile__logo">
        <a class="navbar-brand" href="#"><img src="../assets/img/logo-blanco.png" alt="" class="img-fluid"></a>
      </div>
@@ -87,24 +92,35 @@
              </div>
          </form>
      </div>
+      <div class="burger" type="button" (click)="isCollapse = !isCollapse" >
+       <span ></span>
+      </div>
   </div>
-  <div class="burger">
-    <span >
-  <nav class="header__responsive">
-     <div class="usuario">
+  <nav class="header__responsive" [ngbCollapse]="!isCollapse">
+     <div class="usuario" *ngIf="['showAdminBoard']">
          <div class="icono"><img src="../assets/img/iconos/user.png" alt=""></div>
-         <span>Visitante</span>
+         <span>{{name}}</span>
      </div>
-     <ul class="login">
-         <li><a [routerLink]= "['/auth/login']" data-toggle="modal" data-target="#modal__login">Login</a></li>
-         <li><a [routerLink]="['auth/register']" data-toggle="modal" data-target="#modal__registrar">Registrar</a></li>
-     </ul>
-     <ul class="main" *ngIf="['showAdminBoard']">
-       <li><a [routerLink]="['/']">Home</a></li>
-       <!-- <li><a [routerLink]="explora.html">Explora</a></li>
-       <li><a [routerLink]="">Foro</a></li>
-       <li><a [routerLink]="">Listas</a></li> -->
-     </ul>
+     <div class="usuario" *ngIf="showClientBoard">
+        <div class="icono"><img src="../assets/img/iconos/user.png" alt=""></div>
+        <span>{{name}}</span>
+    </div>
+ 
+     <ul class="main">
+       <li><a [routerLink]="['/']">Inicio</a></li>
+       <li><a [routerLink]="['/tienda']">Tienda</a></li>
+       <li><a [routerLink]="['/subasta']">Subasta</a></li>
+       <li><a [routerLink]="['/catalogo']">Catalogo</a></li>
+       <li><a *ngIf="showClientBoard" [routerLink]= "['/user/dashboard']">Dashboard</a></li>
+       <li><a *ngIf="showAdminBoard" [routerLink]= "['/admin/dashboard']">Dashboard</a></li>
+       <li><a (click)="logout()" *ngIf="isLoggedIn">Cerrar Sesión</a></li>
+       <li><a [routerLink]= "['/auth/login']" *ngIf="!isLoggedIn" data-toggle="modal" data-target="#modal__login">Login</a></li>
+       <li><a [routerLink]="['auth/register']" *ngIf="!isLoggedIn" data-toggle="modal" data-target="#modal__registrar">Registrar</a></li>
+       
+       
+       
+   </ul>
+
   </nav>
-</span>
-</div>
+
+
