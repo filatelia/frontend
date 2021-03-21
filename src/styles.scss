@@ -41,7 +41,7 @@ body{
 }
 
 .m-top{
-    margin-top: 158px;
+    margin-top: 115px;
 }
 
 .numero{
@@ -746,7 +746,7 @@ body{
                         margin-bottom: 8px;
                         label{
                             color: $plomoOscuro;
-                            font-size: 25px;
+                            font-size: 1.5rem;
                             font-family: $DMregular;
                         }
                         input{
@@ -767,7 +767,7 @@ body{
             }
         }
         p{
-           font-size: 35px;            
+           font-size: 1.5rem;            
            margin-top: 16px;
            line-height: 48px;
            margin-bottom: 39px;
@@ -776,7 +776,7 @@ body{
         span{
             color: #9B9696;
             font-family: $DMregular;
-            font-size: 25px;
+            font-size: 1rem;
             line-height: 34px;
             width: 97%;
             display: block;
@@ -819,7 +819,7 @@ body{
                 width: 79%;
                 left: 2.5rem;
                 p{
-                    font-size: 35px;
+                    font-size: 1.5rem;
                     font-family: $DMregular;
                     color: $negro;
                     margin-top: 23px;

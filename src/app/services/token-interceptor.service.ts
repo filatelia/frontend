@@ -41,8 +41,7 @@ export class TokenInterceptorService{
         
       }
     );
-    this.router.navigate(['/auth/login']);
-    
+    window.location.href="/"
   }
 
   //valida datos de acceso

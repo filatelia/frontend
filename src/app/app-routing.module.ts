@@ -21,7 +21,7 @@ import { DashboardUserComponent } from './components/user/dashboard-user/dashboa
 import { SubastaComponent } from './components/user/subasta/subasta.component';
 import { TiendauserComponent } from './components/user/tiendauser/tiendauser.component';
 
-import {AuthGuard} from './guard/auth.guard'
+import {AuthGuard, RolGuard} from './guard/auth.guard'
 import { TablaCatalogoComponent } from './components/admin/tabla-catalogo/tabla-catalogo.component';
 import {PedidosAdminComponent} from './components/admin/pedidos-admin/pedidos-admin.component';
 import {ClientesAdminComponent} from './components/admin/clientes-admin/clientes-admin.component';
@@ -43,8 +43,8 @@ const routes: Routes = [
       { path: '', component: HomeComponent},
       { path: 'tienda',component: TiendaComponent},
       { path: 'catalogo', component:CatalogoComponent},
+      { path: 'subasta', component:CatalogoComponent},
       { path: 'catalogo-interna/:pais', component:CatalogoInternoComponent},
-
       //auth
       { path: 'auth/register',component: RegistrateComponent, 
         
@@ -62,7 +62,7 @@ const routes: Routes = [
    
     path: 'admin/dashboard',
     component: DashboardAdminComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard,RolGuard],
     children: [
       
       { path: 'tabla', component: TablaCatalogoComponent },

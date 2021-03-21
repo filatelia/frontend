@@ -1,0 +1,27 @@
+.header--amarillo {
+    height: 115px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .header__left {
+        margin-top: 0;
+        ul{
+            padding: 0;
+            margin-bottom: 0;
+            li{
+                padding: 0;
+                margin-left: 1em;
+            }
+        }
+    }
+    
+}
+.header--negro{
+    height: 115px;
+    ul{
+        margin-bottom: 0;
+    }
+    .m-top{
+        margin-top: 0;
+    }
+}
