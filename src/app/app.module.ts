@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MaterialModule} from './modules/material/material.module'
-import { CommonModule } from '@angular/common';
+import { APP_BASE_HREF, CommonModule, HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NgbAccordionModule, NgbNavModule} from '@ng-bootstrap/ng-bootstrap';
@@ -105,7 +105,7 @@ import { MimancolistapublicaPageComponent } from './components/pages/mimancolist
   exports : [
     SidebarComponent, FooterComponent
   ],
-  providers: [authInterceptorProviders],
+  providers: [authInterceptorProviders,{provide:APP_BASE_HREF,useValue:'/'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

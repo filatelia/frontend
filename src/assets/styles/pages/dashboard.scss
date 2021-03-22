@@ -207,19 +207,40 @@
         }
     }
 }
+.back-dashboard{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding-left: 40px;
+}
+.buscador-container{
+    align-items: center;
+    justify-content: flex-end;
+    display: flex;
+}
 .dashboard{
     &__color{
         background-color:#F5F2F2;
         height: 244px;
         padding: 20px 0px;
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
         &__nombre{   
-            padding-top:49px;   
-            padding-bottom: 10px;      
+            padding-top: 0;   
+            padding-bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             h2{
                 display: inline-block;
-                margin-left: 95px;
+                margin-left: 8px;
                 line-height: 60px;
-                font-size: 40px;
+                font-size: 2rem;
             }
             .boton{ 
                 width: 40px;
@@ -227,12 +248,9 @@
                 background-color: $negro;
                 border-radius: 50%;
                 transform: rotate(180deg);            
-                position: absolute;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                top: 63px;
-                left: 11px;
                 svg{                               
                     width: 30px;
                     fill:$blanco;
@@ -240,12 +258,12 @@
             }
         }
         .buscador{
-            width: 27%;            
-            margin-top: 30px;
+            width: 100%;            
+            margin-top: 0;
         }
     }
     &__tabs{
-        margin-top: 73px;
+        margin-top: 0;
         padding-left: 8px;
         a{
             color: $negro;

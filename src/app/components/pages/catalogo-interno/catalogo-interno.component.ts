@@ -5,6 +5,9 @@ import { RestService } from 'src/app/services/rest.service';
 import {PaisesAll, SelectPais} from '../../../models/paises.interface'
 import { CatalogoCompleto } from 'src/app/models/catalogo.interface';
 import { element } from 'protractor';
+import Swal from 'sweetalert2';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-catalogo-interno',
@@ -17,10 +20,13 @@ export class CatalogoInternoComponent implements OnInit {
   public dataAnio: any=[];
   public  buscarPais ='';
   public dataCatalog: any=[];
+  api = environment.conect_url;
+
   constructor(
     private rest: RestService,
     private route: ActivatedRoute,
     private location: Location,
+    private sanitizer: DomSanitizer
   ) {}
   ngOnInit(): void {
     //tipo_busqueda
@@ -57,7 +63,7 @@ export class CatalogoInternoComponent implements OnInit {
               Final: anio+sum,
               Descripcion_de_la_serie: element.Descripcion_de_la_serie,
               Descripcion: element.Descripcion,
-              Cantidad: increment+1,
+              Cantidad: 1,
               data:[
                 element,
               ]
@@ -68,6 +74,8 @@ export class CatalogoInternoComponent implements OnInit {
           anio=element.Anio;
           var dataAnio=this.dataCatalog.findIndex((el:any)=>element.Anio>=el.Inicio&&element.Anio<=el.Final)
           if(dataAnio!=-1){
+
+            this.dataCatalog[dataAnio].Cantidad=this.dataCatalog[dataAnio].Cantidad+1;
             this.dataCatalog[dataAnio].data.push(element);
           }
           else{
@@ -77,7 +85,7 @@ export class CatalogoInternoComponent implements OnInit {
               Final: anio+sum,
               Descripcion_de_la_serie: element.Descripcion_de_la_serie,
               Descripcion: element.Descripcion,
-              Cantidad: increment+1,
+              Cantidad: 1,
               data:[
                 element,
               ]
@@ -89,6 +97,43 @@ export class CatalogoInternoComponent implements OnInit {
         
     })
   }
+  sanitizeImageUrl(imageUrl: string): SafeUrl {
+    return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
+  }
+  addMancoLista(data:any){
+    console.log(data)
+    this.rest.addMancolista({id_estampilla:data.uid}).subscribe((res:any) =>{
+        console.log(res)
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        })
+        Toast.fire({
+          icon: 'success',
+          title: res.msg=='eliminado'?res.msg: "Agregado a mi mancolista"
+        }).then(
+          result=>{
+            if(result.dismiss === Swal.DismissReason.timer){
+  
+  
+            }
+            
+          }
+        );
+      },
+      (err)=>{
+        
+      }
+    );
+  }
+  
   // anioCatalogo(){
   //   this.datoscatalogo.forEach((element)=>{
   //     if(element.Pais.anio!=this.buscarPais) return;

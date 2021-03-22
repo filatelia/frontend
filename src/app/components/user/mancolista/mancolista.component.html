@@ -17,64 +17,16 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr *ngFor="let data of dataMancoLista">
         <th scope="row">
-            <div class="check">
-                <input type="checkbox" name="category" id="c_1" class="css-checkbox" />
-                <label for="c_1" class="css-label"></label>
-            </div>
+            
         </th>
-        <td><img src="assets/img/tabla/1.png" class="img-fluid" alt=""></td>
-        <td>Perú</td>
-        <td>1987</td>
-        <td>Hombres célebres</td>
-        <td>PE 2</td>
-        <td>Postage stamps of Pacific Steam Navigation Company  </td>
-        <td><button><img src="assets/img/iconos/eliminar.svg" alt=""></button> </td>
-      </tr>
-      <tr>
-        <th scope="row">
-            <div class="check">
-                <input type="checkbox" name="category" id="c_2" class="css-checkbox" />
-                <label for="c_2" class="css-label"></label>
-            </div>
-        </th>
-        <td><img src="assets/img/tabla/1.png" class="img-fluid" alt=""></td>
-        <td>Perú</td>
-        <td>1987</td>
-        <td>Hombres célebres</td>
-        <td>PE 2</td>
-        <td>Postage stamps of Pacific Steam Navigation Company  </td>
-        <td><button><img src="assets/img/iconos/eliminar.svg" alt=""></button> </td>
-      </tr>
-      <tr>
-        <th scope="row">
-            <div class="check">
-                <input type="checkbox" name="category" id="c_3" class="css-checkbox" />
-                <label for="c_3" class="css-label"></label>
-            </div>
-        </th>
-        <td><img src="assets/img/tabla/1.png" class="img-fluid" alt=""></td>
-        <td>Perú</td>
-        <td>1987</td>
-        <td>Hombres célebres</td>
-        <td>PE 2</td>
-        <td>Postage stamps of Pacific Steam Navigation Company  </td>
-        <td><button><img src="assets/img/iconos/eliminar.svg" alt=""></button> </td>
-      </tr>
-      <tr>
-        <th scope="row">
-            <div class="check">
-                <input type="checkbox" name="category" id="c_4" class="css-checkbox" />
-                <label for="c_4" class="css-label"></label>
-            </div>
-        </th>
-        <td><img src="assets/img/tabla/1.png" class="img-fluid" alt=""></td>
-        <td>Perú</td>
-        <td>1987</td>
-        <td>Hombres célebres</td>
-        <td>PE 2</td>
-        <td>Postage stamps of Pacific Steam Navigation Company  </td>
+        <td><img [src]="sanitizeImageUrl(api+data.Foto_JPG_800x800_px)" class="img-fluid" alt=""></td>
+        <td>{{data.Pais.name}}</td>
+        <td>{{data.Anio}}</td>
+        <td>{{data.Descripcion_de_la_serie}}</td>
+        <td>{{data.Numero_de_catalogo}}</td>
+        <td>{{data.Descripcion}}</td>
         <td><button><img src="assets/img/iconos/eliminar.svg" alt=""></button> </td>
       </tr>
     </tbody>

@@ -1,4 +1,14 @@
-.col-lg-3{
+.catalogo-item{
 	min-width: 300px;
     max-width: 300px;
+}
+.buscador-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    .buscador{
+        width: 80%;
+        float: right;
+        margin-top: 0;
+    }
 }

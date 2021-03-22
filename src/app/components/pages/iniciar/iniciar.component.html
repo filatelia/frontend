@@ -8,24 +8,44 @@
                     <p *ngIf="!isLoggedIn">Inicia sesión para continuar con tu experiencia.</p>
                     <p *ngIf="isLoggedIn">Usted Inició sesión Correctamente</p>
                     <div class="formulario__content__form">
-                        <form class="row" *ngIf="!isLoggedIn" #loginForm="ngForm" (ngSubmit)="loginForm.form.valid &&onSubmit()"  novalidate>
+                        <form class="row" [formGroup]="loginForm" *ngIf="!isLoggedIn" (ngSubmit)="onSubmit()" >
                             <div class="form-group col-lg-12">
-                              <label for="exampleInputEmail1">Correo electrónico</label>
-                              <input  type="email" #email="ngModel" [(ngModel)]="form.email" class="form-control" name="email">
+                                <label for="exampleInputEmail1">Correo electrónico</label>
+                                <input  type="email" class="form-control" name="email" formControlName="email" [ngClass]="{'is-valid':!email?.invalid&&(email?.dirty||email?.touched),'is-invalid':email?.invalid&&(email?.dirty||email?.touched)}">
+                                <div class="invalid-feedback" *ngIf="email?.invalid&&(email?.dirty||email?.touched)">
+                                    <div *ngIf="email?.errors?.required">Correo requerido</div>
+                                    <div *ngIf="email?.errors?.minlength; else message_correo" >Minímo es de 6 caracteres </div>
+                                    <ng-template #message_correo>
+                                        <div *ngIf="email?.errors?.pattern">Correo invalido</div>
+                                    </ng-template>
+                                </div>
                             </div>
                             <div class="form-group col-lg-12">
-                              <label for="exampleInputPassword1">Contraseña</label>
-                              <input type="password" 
-                                     #password="ngModel" 
-                                     class="form-control" 
-                                     id="password" 
-                                     [(ngModel)]="form.password" 
-                                     name="password"
-                                     required
-                                     minlength="6">
+                                <label for="exampleInputPassword1">Contraseña</label>
+                                <input type="password" 
+                                formControlName="password"
+                                class="form-control" 
+                                id="password" 
+                                name="password"
+                                required
+                                minlength="6"
+                                [ngClass]="{'is-valid':!password?.invalid&&(password?.dirty||password?.touched),'is-invalid':password?.invalid&&(password?.dirty||password?.touched)}"
+                                >
+                                <div class="invalid-feedback" *ngIf="password?.invalid&&(password?.dirty||password?.touched)">
+                                    <div *ngIf="password?.errors?.required">Contraseña de confirmación requerido</div>
+                                    <div *ngIf="password?.errors?.minlength">La contraseña mínima es de 6 caracteres </div>
+                               </div>
+
                             </div>
                             <div class="col-lg-12" >
-                                <button type="submit"  class="btn btn--negro" href="">Iniciar sesión</button>
+                                <div *ngIf="response?.msg" class="text-center">
+                                    <span [ngClass]="{'text-primary':response.ok,'text-danger':!response.ok}">
+                                        {{response.msg}}
+                                    </span>
+                                </div>
+                                <button type="submit"  class="btn btn--negro"  [disabled]="response.loading">                                    
+                                    {{(response.loading) ? 'Cargando.....' : 'Iniciar sesión'}}
+                                </button>
                             </div>
                             <div class="col-lg-12">
                                 <span>¿Aún no te registras? <a routerLink="/auth/register">Crea una cuenta</a> </span>

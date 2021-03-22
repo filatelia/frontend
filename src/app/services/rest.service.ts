@@ -141,14 +141,22 @@ export class RestService {
     return this.http.get<PaisesAll>(direccion);
   }
 
+  addMancolista(body: any){
+    return this.http.post(this.url + '/catalogo/manco_list', body); // POST
+  }
   getAllMancolistaPublic(page: number): Observable<MacolistaListPublic[]> {
     let direccion =
       this.url + 'api/catalogo/uploads/excel?' + 'token:' + this.usuario.token;
     return this.http.get<MacolistaListPublic[]>(direccion);
   }
+  
+  getMyAllMancolista() {
+    let direccion = this.url + '/catalogo/manco_list/listar';
+    return this.http.post(direccion,{});
+  }
 
   editarCatalogo(body:any):Observable<any>{
-  return  this.http.put('http://localhost:3000/api/catalogo/uploads/excel/actualizar-cat-excel', body);
+    return  this.http.put('http://localhost:3000/api/catalogo/uploads/excel/actualizar-cat-excel', body);
   }
 
  
