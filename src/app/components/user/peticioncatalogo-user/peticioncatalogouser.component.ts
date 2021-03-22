@@ -8,6 +8,7 @@ import { RestService } from 'src/app/services/rest.service';
 })
 export class PeticioncatalogouserComponent implements OnInit {
   form: FormGroup;
+  response: any={loading:false}
   
   constructor(private restService:RestService) {
     this.form=this.createFormGroup()
@@ -17,12 +18,18 @@ export class PeticioncatalogouserComponent implements OnInit {
   }
   registrar(){
     if(!this.form.valid) return;
+    this.response.loading=true
     var data=this.updateValue()
     this.restService.createSolicitud(data).subscribe(
       (res:any)=>{
+        this.response=res
+        this.response.loading=false
         console.log(res)
+        this.onResetForm()
       },
       (err:any)=>{
+        this.response=err
+        this.response.loading=false
         console.log(err)
       }
     )
@@ -35,11 +42,14 @@ export class PeticioncatalogouserComponent implements OnInit {
     });
   }
 
+  onResetForm(){
+    this.form.reset();
+  }
   updateValue(){
     return{
-      nombre:this.nombre?.value,
+      catalogo_nombre:this.nombre?.value,
       pais:this.pais?.value,
-      valor:this.valor?.value
+      valor_catalogo:this.valor?.value
     }
   }
   get nombre(){return this.form.get('nombre')}

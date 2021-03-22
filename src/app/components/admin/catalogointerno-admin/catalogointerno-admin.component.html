@@ -68,7 +68,7 @@
       &nbsp;
       &nbsp;
       <div>
-        Faltantes: {{responseExcel.total_estampillas_omitidas}}
+        Faltantes: {{responseExcel.numero_estampillas_repetidas}}
       </div>
     </ng-template>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -101,18 +101,28 @@
                 Selecionar todo
             </label>
         </div>
-          <div class="J-container-checbox-item custom-control custom-checkbox"  *ngFor="let repetidas of repetidasData;let i=index">
+          <div class="J-container-checbox-item custom-control custom-checkbox "  *ngFor="let repetidas of repetidasData;let i=index">
               <input class="custom-control-input" type="checkbox" id="{{i}}" [(ngModel)]="repetidas.active"/>
               <label class="custom-control-label" for="{{i}}">
+                <div class="img-check">
+                    <!-- <img width="70px" height="70px" class="rounded-circle" [src]="sanitizeImageUrl(api+repetidas.Foto_JPG_800x800_px)" alt=""> -->
+                    <img width="70px" height="70px" class="rounded-circle" src="/assets/img/pais/card/2.png" alt="">
+                    
+                </div>
+                <div class="img-letters">
                   <div>
-                      <img width="70px" height="70px" class="rounded-circle" [src]="sanitizeImageUrl(api+repetidas.Foto_JPG_800x800_px)" alt="">
-                      
+                    <span>Codigo:</span>&nbsp;&nbsp;{{repetidas.Codigo}}
                   </div>
-                <span>{{repetidas.Codigo}}  &nbsp; &nbsp;</span>
-                <span>{{repetidas.Anio}}  &nbsp; &nbsp;</span>
-                <span>{{repetidas.Tema}}  &nbsp; &nbsp;</span>
-                <span>{{repetidas.Descripcion}}  &nbsp; &nbsp;</span>
-                <span>{{repetidas.Tipo}}  &nbsp; &nbsp;</span>
+                  <div>
+                    <span>Año:</span>&nbsp;&nbsp;{{repetidas.Anio}}
+                  </div>
+                  <div>
+                    <span>Descripcion:</span> &nbsp;&nbsp;{{repetidas.Descripcion}}
+                  </div>
+                  <div>
+                    <span>Tipo:</span> &nbsp;&nbsp;{{repetidas.Tipo}}
+                  </div>
+                </div>
               </label>
           </div>
         </div>

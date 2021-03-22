@@ -27,13 +27,18 @@ export class MimancolistapublicaPageComponent implements OnInit {
     
     this.restService.getMancolistaPublic(this.id_user).subscribe(resp =>{
         var {msg}=resp;
-        var {id_estampilla,id_usuario} =msg
-        this.usuario=id_usuario
-        this.datoscatalogo.push(id_estampilla)
+
+       
+        this.addLista(msg);
+        this.datoscatalogo=msg
     },(err=>{
 
     }));
 
+  }
+  addLista(data:any){
+    this.datoscatalogo=data;
+    this.usuario=data[0].id_usuario;
   }
   sanitizeImageUrl(imageUrl: string): SafeUrl {
     return this.sanitizer.bypassSecurityTrustUrl(imageUrl);

@@ -33,6 +33,7 @@ import {EnvioAdminComponent} from './components/admin/envio-admin/envio-admin.co
 import {CorreoAdminComponent} from './components/admin/correo-admin/correo-admin.component';
 import {MimancolistapublicaPageComponent} from './components/pages/mimancolistapublica-page/mimancolistapublica-page.component'
 import { PeticioncatalogouserComponent } from './components/user/peticioncatalogo-user/peticioncatalogouser.component';
+import { CatalogointernoAdminComponent } from './components/admin/catalogointerno-admin/catalogointerno-admin.component';
 const routes: Routes = [
   
   {
@@ -63,10 +64,11 @@ const routes: Routes = [
     component: DashboardAdminComponent,
     canActivate: [AuthGuard,RolGuard],
     children: [
-      
+      { path: '', component: CatalogoAdminComponent },
       { path: 'tabla', component: TablaCatalogoComponent },
       { path: 'temas', component: TemasCatalogoComponent},
       { path: 'catalogo-admin', component: CatalogoAdminComponent },
+      { path: 'catalogo-seleccionado/:id_catalogo', component: CatalogointernoAdminComponent },
       { path: 'tienda-admin', component: TiendaAdminComponent, 
        children:[
         { path: '',component: ProductosAdminComponent },

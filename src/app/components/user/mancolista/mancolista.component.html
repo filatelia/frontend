@@ -21,12 +21,12 @@
         <th scope="row">
             
         </th>
-        <td><img [src]="sanitizeImageUrl(api+data.Foto_JPG_800x800_px)" class="img-fluid" alt=""></td>
-        <td>{{data.Pais.name}}</td>
-        <td>{{data.Anio}}</td>
-        <td>{{data.Descripcion_de_la_serie}}</td>
-        <td>{{data.Numero_de_catalogo}}</td>
-        <td>{{data.Descripcion}}</td>
+        <td><img [src]="sanitizeImageUrl(api+data.id_estampilla.Foto_JPG_800x800_px)" class="img-fluid" alt=""></td>
+        <td>{{data.id_estampilla.Pais.name}}</td>
+        <td>{{data.id_estampilla.Anio}}</td>
+        <td>{{data.id_estampilla.Descripcion_de_la_serie}}</td>
+        <td>{{data.id_estampilla.Numero_de_catalogo}}</td>
+        <td>{{data.id_estampilla.Descripcion}}</td>
         <td><button><img src="assets/img/iconos/eliminar.svg" alt=""></button> </td>
       </tr>
     </tbody>

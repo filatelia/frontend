@@ -126,7 +126,7 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
             timerProgressBar: true,
             didOpen: () => {
               Swal.showLoading()
-          this.router.navigate(['admin/dashboard/tabla']);
+              this.router.navigate(['/dashboard/atalogo-seleccionado/id']);
 
               
             },
@@ -237,12 +237,12 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
             }
             this.responseExcel={
               archivos_subidos:res.archivos_subidos,
-              total_estampillas_omitidas:res.total_estampillas_omitidas,
+              numero_estampillas_repetidas:res.numero_estampillas_repetidas,
               msg:res.msg,
             }
             
             this.responseExcel.msg_visible=true;
-            this.router.navigate(['admin/dashboard/tabla']);
+            this.router.navigate(['/dashboard/atalogo-seleccionado/id']);
             if(this.repetidasData.length==0){
                 setTimeout(()=>{
                 },6000)
@@ -250,7 +250,7 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
             setTimeout(()=>{
               this.responseExcel.msg_visible=false;
             },5000)
-            //this.router.navigate(['admin/dashboard/tabla']);
+            //this.router.navigate(['admin/dashboard/']);
           } else {
             alert(res.msg);
 
@@ -277,11 +277,11 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
           this.repetidasData=this.repetidasData.filter((e:any)=>!e.active);
           this.responseExcel={
             archivos_subidos:this.responseExcel.archivos_subidos+(dataFind.length+1),
-            total_estampillas_omitidas:this.repetidasData.length+1,
+            numero_estampillas_repetidas:this.repetidasData.length+1,
             msg:res.msg||"Datos actualizados"
           }
           this.responseExcel.msg_visible=true;
-          this.router.navigate(['admin/dashboard/tabla']);
+          this.router.navigate(['admin/dashboard/atalogo-seleccionado/id']);
           if(this.repetidasData.length==0){
              
           }

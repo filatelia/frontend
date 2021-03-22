@@ -33,8 +33,17 @@
                     <div *ngIf="valor?.errors?.required">Valor requerido</div>
                 </div>
               </div>
+                <div class="col-lg-12">
+                    <div *ngIf="response?.msg" class="text-center">
+                        <span [ngClass]="{'text-primary':response.ok,'text-danger':!response.ok}">
+                            {{response.msg}}
+                        </span>
+                    </div>
+                </div>
               <div class="col-lg-12">
-                  <button type="submit" class="btn btn--linea">Enviar Petición</button>
+                  <button type="submit"  [disabled]="response.loading" class="btn btn--linea">
+                    {{(response.loading) ? 'Cargando.....' : 'Enviar Petición'}}
+                  </button>
               </div>
           </div>
       </div>

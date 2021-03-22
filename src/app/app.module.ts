@@ -57,6 +57,7 @@ import { EnvioAdminComponent } from './components/admin/envio-admin/envio-admin.
 import { ProductosAdminComponent } from './components/admin/productos-admin/productos-admin.component';
 import { MimancolistapublicaPageComponent } from './components/pages/mimancolistapublica-page/mimancolistapublica-page.component';
 import { PeticioncatalogouserComponent } from './components/user/peticioncatalogo-user/peticioncatalogouser.component';
+import { CatalogointernoAdminComponent } from './components/admin/catalogointerno-admin/catalogointerno-admin.component';
 @NgModule({
   declarations: [
     
@@ -85,6 +86,7 @@ import { PeticioncatalogouserComponent } from './components/user/peticioncatalog
     TablaCatalogoComponent, 
     BlogAdminComponent,
     TiendaAdminLinkComponent, 
+    CatalogointernoAdminComponent,
     AjustesAdminLinkComponent, AjustesAdminComponent, PedidosAdminComponent, ClientesAdminComponent, CuponesAdminComponent, PagosAdminComponent, TemasAdminComponent, CorreoAdminComponent, EnvioAdminComponent, ProductosAdminComponent, MimancolistapublicaPageComponent
   ],
   imports: [

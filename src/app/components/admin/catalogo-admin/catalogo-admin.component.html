@@ -1,83 +1,93 @@
 
-      <p>Aquí podrás Crear Nuevos Catalogos</p>
-<form class="row">
+      <!-- <p>Aquí podrás Crear Nuevos Catalogos</p> -->
+<form class="row" [formGroup]="form" (ngSubmit)="registrar()">
     <div class="col-lg-4">
+        <!-- <h2 class="titulo titulo--chico text-center">Registrar Catálogo</h2> -->
         <div class="dashboard__contenido__formulario">
-            <h2 class="titulo titulo--chico">Registrar Catálogo</h2>
-            <div class="form row">
-                <div class="form-group col-lg-12">
-                  <label for="exampleInputNombre">Nombre</label>
-                  <input type="email" class="form-control">
-                </div>
-                <div class="form-group col-lg-12">
-                  <label for="exampleInputPais">Pais</label>
-                  <input type="email" class="form-control">
-                </div>
-                <div class="form-group col-lg-3">
-                  <label for="exampleInputEstado" >Estado </label>
-                </div>
-                <div class="form-group col-lg-9">
-                  <select name="comboEstado">
-                    <!-- Opciones de la lista -->
-                        <option value="Selecione una Opción" selected>Selecione una opción</option> <!-- Opción por defecto -->
-                        <option value="1">Activo</option>
-                        <option value="3">Inactivo</option>
-                    </select>
-                </div>
-                <div class="form-group col-lg-12">
-                  <label for="exampleInputFecha">Fecha</label>
-                  <input type="date" class="form-control">
-                </div>
-                <div class="col-lg-12">
-                    <button type="submit" class="btn btn--linea">Crear Catalogo</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-2"></div>
-
-    <div class="col-lg-4">
-        <div class="dashboard__contenido__formulario">
-            <h2 class="titulo titulo--chico">Ver Catálogos</h2>
-            <div class="form row">
-                <div class="form-group col-lg-12">
-                  <label for="exampleInputEmail1">Seleccione el catalogo que desea visualizar</label>
-                  
-                     <select name="combo">
-                     <!-- Opciones de la lista -->
-                         <option value="Seleccione un Catalogo de la lista" selected>Seleccione un Catalogo</option> <!-- Opción por defecto -->
-                         <option value="1">Opción 1</option>
-                         <option value="3">Opción 3</option>
-                     </select>
-                </div>
-                <div class="form-group col-lg-4">
-                  <label for="exampleInputNombre">Nombre:</label>
-                </div>
-                <div class="form-group col-lg-8">
-                  <label for="exampleInputNombre">data.Nombre</label>
-                </div>
-                <div class="form-group col-lg-4">
-                  <label for="exampleInputNombre">Pais:</label>
-                </div>
-                <div class="form-group col-lg-8">
-                  <label for="exampleInputNombre">data.Pais</label>
-                </div>
-                <div class="form-group col-lg-4">
-                  <label for="exampleInputNombre">Estado:</label>
-                </div>
-                <div class="form-group col-lg-8">
-                  <label for="exampleInputNombre">data.Estado</label>
-                </div>
-                <div class="form-group col-lg-4">
-                  <label for="exampleInputNombre">Fecha:</label>
-                </div>
-                <div class="form-group col-lg-8">
-                  <label for="exampleInputNombre">data.Fecha</label>
-                </div>
-                <div class="col-lg-15">
-                  <button type="submit" class="btn btn--linea">Ver detalle del Catalogo </button>
+          <div class="form row">
+            <div class="form-group col-lg-12">
+              <label for="exampleInputNombre">Nombre</label>
+              <input type="text" name="nombre" required class="form-control"
+              [ngClass]="{'is-valid':!nombre?.invalid&&(nombre?.dirty||nombre?.touched),'is-invalid':nombre?.invalid&&(nombre?.dirty||nombre?.touched)}"
+              ngModel
+              >
+              <div class="invalid-feedback" formControlName="nombre" *ngIf="nombre?.invalid&&(nombre?.dirty||nombre?.touched)">
+                <div *ngIf="nombre?.errors?.required">Nombre de catalogo requerido</div>
+                <div *ngIf="nombre?.errors?.minlength">El mínimo es de 5 caracteres </div>
               </div>
             </div>
+            <div class="form-group col-lg-12">
+                <label for="exampleInputPais">Pais</label>
+                <input type="text" formControlName="pais" name="pais" class="form-control" [ngClass]="{'is-valid':!pais?.invalid&&(pais?.dirty||pais?.touched),'is-invalid':pais?.invalid&&(pais?.dirty||pais?.touched)}" ngModel>
+                <div class="invalid-feedback" *ngIf="pais?.invalid&&(pais?.dirty||pais?.touched)">
+                    <div *ngIf="pais?.errors?.required">Pais es requerido</div>
+                    <div *ngIf="pais?.errors?.minlength">El mínimo es de 3 caracteres  </div>
+                </div>
+            </div>
+            <div class="form-group col-lg-12">
+              <label for="exampleInputValor">Valor</label>
+              <input name="valor" type="text" formControlName="valor" class="form-control"
+              [ngClass]="{'is-valid':!valor?.invalid&&(valor?.dirty||valor?.touched),'is-invalid':valor?.invalid&&(valor?.dirty||valor?.touched)}"
+              ngModel
+              >
+              <div class="invalid-feedback" *ngIf="valor?.invalid&&(valor?.dirty||valor?.touched)">
+                  <div *ngIf="valor?.errors?.required">Valor requerido</div>
+              </div>
+            </div>
+            <div class="catalogo-btn">
+                <button type="submit"  [disabled]="response.loading" class="btn btn--linea">
+                  {{(response.loading) ? 'Cargando.....' : 'Crear Catalogo'}}
+                </button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="col-lg-8">
+        <!-- <h2 class="titulo titulo--chico text-center">Catálogos</h2> -->
+        <div class=" container-catalogo">
+            <div class="dashboard__contenido__formulario container-catalogo-item " *ngFor="let data of dataCatalogo">
+                  <div class="catalogo-letter">
+                    <div class="catalogo-title">Nombre:</div>
+                    <div class="">{{data.catalogo_nombre}}</div>
+                  </div>
+                  <div class="catalogo-letter">
+                    <div class="catalogo-title">Pais:</div>
+                    <div class="">{{data.pais.name||''}}</div>
+                  </div>
+                  <div class="catalogo-letter">
+                    <div class="catalogo-title">Estado:</div>
+                    <div class="">{{data.tipoEstadoSolicitud_id.name}}</div>
+                  </div>
+                  <div class="catalogo-letter">
+                    <div class="catalogo-title">Estado:</div>
+                    <div class="">{{data.usuario_id.name}}</div>
+                  </div>
+                  <!-- <div class="catalogo-letter-estado">
+                    <div class="succsess" *ngIf="data.estado; else estado">Aprobado</div>
+                    <ng-template #estado>
+                      <div class="warning">Pendiente</div>
+                    </ng-template>
+                  </div> -->
+                  <!-- <div class="catalogo-letter">
+                    <div class="catalogo-title">Fecha:</div>
+                    <div class="">data.Fecha</div>
+                  </div> -->
+                  <div class="catalogo-btn" *ngIf="!data.tipoEstadoSolicitud_id.name.includes('espera'); else btnapro">
+                    <button (click)="redirect(data.uid)" type="submit" class="btn btn--linea">Ver detalle del Catalogo </button>
+                  </div>
+                  <ng-template #btnapro>
+                    <div class="btn-container">
+                      <div class="catalogo-btn">
+                        <button (click)="validar(data.uid,'acept')" type="submit" class="btn btn--linea">Aceptar </button>
+                      </div>
+                      <div class="catalogo-btn">
+                        <button (click)="validar(data.uid,'denied')" type="submit" class="btn btn--linea danger">Rechazar  </button>
+                      </div>
+                    </div>
+                  </ng-template>
+
+              </div>
         </div>
     </div>
    

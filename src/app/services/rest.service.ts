@@ -170,7 +170,10 @@ export class RestService {
   }
   
   createSolicitud(body:any):Observable<any>{
-    return  this.http.post(this.url+'/catalogo/solicitud', body);
+    return  this.http.post(this.url+'/solicitudes', body);
+  }
+  getSolicitudCatalogo(body:any):Observable<any>{
+    return  this.http.get(this.url+'/solicitudes');
   }
   editarCatalogo(body:any):Observable<any>{
     return  this.http.put(this.url+'/catalogo/uploads/excel/actualizar-cat-excel', body);

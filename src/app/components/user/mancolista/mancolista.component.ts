@@ -21,13 +21,18 @@ export class MancolistaComponent implements OnInit {
   }
   async getMancoLista() {
       this.restService.getMyAllMancolista().subscribe((resp:any)=>{
-        this.dataMancoLista.push(resp.msg.id_estampilla)
-        this.usuario=resp.msg.id_usuario
+        this.addLista(resp.msg);
+       
+       
       });
   }
   
   sanitizeImageUrl(imageUrl: string): SafeUrl {
     return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
+  }
+  addLista(data:any){
+    this.dataMancoLista=data;
+    this.usuario=data[0].id_usuario;
   }
  
   copyLink(){

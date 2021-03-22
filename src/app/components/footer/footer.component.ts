@@ -7,10 +7,17 @@ import { TokenInterceptorService } from 'src/app/services/token-interceptor.serv
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-
+  active=true;
   constructor(private tokenInterceptorService: TokenInterceptorService) { }
 
   ngOnInit(): void {
+    this.checkedRoute();
+  }
+  checkedRoute(){
+    var location=window.location.href;
+    if(location.includes("admin/dashboard")){
+      this.active=false
+    }
   }
   isLoggedIn = false;
   isLoginFailed = false;

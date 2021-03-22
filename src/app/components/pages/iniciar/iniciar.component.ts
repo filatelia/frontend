@@ -88,7 +88,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
               //Como se logró el login, se redirige. 
               if (usuarioBD.role == "admin" ) {
-                this.router.navigate(['/admin/dashboard']);
+                
+                window.location.href="/admin/dashboard"
               } 
               else {
                 window.location.href="/user/dashboard"

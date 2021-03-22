@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import {
   trigger,
@@ -8,6 +9,8 @@ import {
   transition,
 } from '@angular/animations';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { RestService } from 'src/app/services/rest.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -23,17 +26,56 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 
 export class CatalogoAdminComponent implements OnInit {
-  
-
- 
-
+  form: FormGroup;
+  response: any={loading:false}
+  dataCatalogo: any=[
+    
+  ]
   constructor(
+    private restService:RestService,
     private modalService: NgbModal,
-  ) { }
+    private router:Router
+  ) {
+    this.form=this.createFormGroup()
 
-  ngOnInit(): void {}
+  }
+  createFormGroup(){
+    return new FormGroup({
+      nombre:new FormControl('',[Validators.required,Validators.minLength(5)]),
+      pais:new FormControl('',[Validators.required,Validators.minLength(3)]),
+      valor:new FormControl('',[Validators.required,Validators.minLength(1)]),
+    });
+  }
+  ngOnInit(): void {
+    this.listar()
+  }
     // cargar todos los catalogos
-
+  registrar(){
+    if(!this.form.valid) return;
+    this.response.loading=true
+    var data=this.updateValue()
+    this.restService.createSolicitud(data).subscribe(
+      (res:any)=>{
+        this.response.loading=false
+        console.log(res)
+      },
+      (err:any)=>{
+        this.response.loading=false
+        console.log(err)
+      }
+    )
+  }
+  listar(){
+    this.restService.getSolicitudCatalogo({}).subscribe(
+      (res:any)=>{
+        this.dataCatalogo=res.todas_solicitudes
+      },
+      (err:any)=>{
+        console.log(err)
+      }
+    )
+    
+  }
   
 
   openVerticallyCentered(content: any) {
@@ -54,5 +96,21 @@ export class CatalogoAdminComponent implements OnInit {
       windowClass: 'modal__admin',
     });
   }
+  validar(data:any,type:string){
+  
+  }
+  updateValue(){
+    return{
+      nombre:this.nombre?.value,
+      pais:this.pais?.value,
+      valor:this.valor?.value
+    }
+  }
+  redirect(id:any){
+    this.router.navigate(['/admin/dashboard/catalogo-seleccionado/'+id]);
+  }
+  get nombre(){return this.form.get('nombre')}
+  get pais(){return this.form.get('pais')}
+  get valor(){return this.form.get('valor')}
 }
 

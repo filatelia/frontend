@@ -8,6 +8,7 @@ import { element } from 'protractor';
 import Swal from 'sweetalert2';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
+import { TokenInterceptorService } from 'src/app/services/token-interceptor.service';
 
 @Component({
   selector: 'app-catalogo-interno',
@@ -21,8 +22,10 @@ export class CatalogoInternoComponent implements OnInit {
   public  buscarPais ='';
   public dataCatalog: any=[];
   api = environment.conect_url;
+  isLoggedIn = false;
 
   constructor(
+    private tokenInterceptorService: TokenInterceptorService,
     private rest: RestService,
     private route: ActivatedRoute,
     private location: Location,
@@ -33,6 +36,22 @@ export class CatalogoInternoComponent implements OnInit {
     this.buscarPais = this.route.snapshot.paramMap.get('pais')||'/peru';
     this.buscarPorPais();
     this.buscarCatalogo();
+    this.verLogeo();
+  }
+  verLogeo() {
+    console.log("verificado logueo");
+
+    const user = this.tokenInterceptorService.getUser();
+    console.log("user", user);
+
+    if (user.ok) {
+      console.log("Logueo correcto");
+      this.isLoggedIn = true;
+
+    } else {
+      console.log("NO logueo ");
+
+    }
   }
   buscarPorPais(){
     this.rest.getSelectPais(this.buscarPais).subscribe(data =>{

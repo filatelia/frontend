@@ -1,0 +1,52 @@
+.miniatura{
+    height: 50px;
+    width: auto;
+}
+.pointer {
+    cursor:pointer 
+}
+.J-container-checbox{
+    height: 60vh;
+    overflow-y: auto;
+    &-item{
+        cursor: pointer;
+        margin: 10px;
+        
+        background-color: #f7f6e9;
+        label{
+            cursor: pointer;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            .img-check{
+                width: 20%;
+            }
+            .img-letters{
+                width: 80%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                span{
+                    font-weight: bold;
+                }
+            }
+            span{
+            }
+        }
+    }
+    
+}
+.alert{
+    margin: 5px auto;
+}
+/* Structure */
+table {
+    width: 100%;
+  }
+  
+.btn--negro{
+    width: 100%;
+}

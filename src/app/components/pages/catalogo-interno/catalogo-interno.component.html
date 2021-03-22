@@ -156,7 +156,7 @@
                                     <span>{{data.Anio}}</span>
                                     <img [src]="sanitizeImageUrl(api+data.Foto_JPG_800x800_px)" alt="">
                                 </div>
-                                <div class="filtros__contenido__card__center">
+                                <div class="filtros__contenido__card__center" *ngIf="isLoggedIn; else btnmanco">
                                     <a href="javascript:void(0)" (click)="addMancoLista(data)" class="plus">
                                         <div class="icono">
                                             <div class="icono__border">
@@ -169,6 +169,9 @@
                                         <p>Añadir a mis mancolistas</p>
                                     </a>
                                 </div>
+                                <ng-template #btnmanco>
+                                    <br>
+                                </ng-template>
                                 <div class="filtros__contenido__card__boton">
                                     <ul>
                                         <li>{{data.Descripcion}}</li>
