@@ -1,118 +1,102 @@
 
-
-            <div class="col-lg-8" >
-                <a routerLink="/catalogo" class="boton">
-                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                        viewBox="0 0 256 256" style="enable-background:new 0 0 256 256;" xml:space="preserve">
-                    <g>
-                        <g>
-                            <polygon points="79.093,0 48.907,30.187 146.72,128 48.907,225.813 79.093,256 207.093,128 		"/>
-                        </g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    </svg>
-
-            </a>
-                <div class="filtros__contenido ">
-                    <div class="row d-flex justify-content-center">
-                        <div class="col-lg-12 pr-0">
-                            <div class="bannerNegro">
-                                <div class="row">
-                                    <div class="col-lg-2 d-flex justify-content-center align-items-center">
-                                        <h4>Inicio fecha - Final fecha</h4>
-                                    </div>
-                                    <div class="col-lg-7 d-flex align-items-center">
-                                        <p>Descripcion_de_la_serie</p>
-                                    </div>
-                                    <div class="col-lg-3 d-flex justify-content-end align-items-center">
-                                        <span>cantidad</span>
-                                    </div>
-                                </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+    <div class="col-lg-12" >
+        <div class="filtros__contenido ">
+            <div class="row d-flex justify-content-center">
+                <!-- <div class="col-lg-12 pr-0">
+                    <div class="bannerNegro">
+                        <div class="row">
+                            <div class="col-lg-2 d-flex justify-content-center align-items-center">
+                                <h4>Inicio fecha - Final fecha</h4>
+                            </div>
+                            <div class="col-lg-7 d-flex align-items-center">
+                                
+                            </div>
+                            <div class="col-lg-3 d-flex justify-content-end align-items-center">
+                                <span>{{datoscatalogo.length}}</span>
                             </div>
                         </div>
-                        <div class="col-lg-3 pr-0">
-                            <div class="filtros__contenido__card">
-                                <div class="filtros__contenido__card__top">
-                                    <span>año</span>
-                                    <img src="assets/img/pais/card/1.png" alt="">
-                                </div>
-                                <div class="filtros__contenido__card__center">
-                                    <a href="#" class="plus">
-                                        <div class="icono">
-                                            <div class="icono__border">
-                                                <svg height="426.66667pt" viewBox="0 0 426.66667 426.66667" width="426.66667pt" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="m405.332031 192h-170.664062v-170.667969c0-11.773437-9.558594-21.332031-21.335938-21.332031-11.773437 0-
-                                                    21.332031 9.558594-21.332031 21.332031v170.667969h-170.667969c-11.773437 0-21.332031 9.558594-21.332031 21.332031 0 11.777344 9.558594 21.335938 21.332031 21.335938h170.667969v170.664062c0 11.777344 9.558594 21.335938 21.332031 21.335938 11.777344 0 21.335938-9.558594 21.335938-21.335938v-170.664062h170.664062c11.777344 0 21.335938-9.558594 21.335938-21.335938 0-11.773437-9.558594-21.332031-21.335938-21.332031zm0 0"/></svg>
-                                            </div>
-                                        </div>
-                                        <div class="plus__content">
-            
-                                        </div>
-                                        <p>Añadir a mis mancolistas</p>
-                                    </a>
-                                </div>
-                                <div class="filtros__contenido__card__boton">
-                                    <ul>
-                                        <li>data.Descripcion</li>
-                                        <li>data.Valor_Facial</li>
-                                        <li>data.Numero_de_catalogo</li>
-                                    </ul>
-                                    <a routerLink="/catalogo" class="link">Ver variantes y errores</a>
-                                </div>
+                    </div>
+                </div> -->
+                <div class="col-md-4">
+                    <div class="J-user-profile">
+                        <div class="J-user-profile-avatar">
+                            <img src="/assets/img/iconos/user.png" alt="">
+                        </div>
+                        <div class="J-user-container-data">
+                            <div>
+                                <h2>{{usuario.name}}</h2>
+                            </div>
+                            <div>
+                                Correo: {{usuario.email}}
                             </div>
                         </div>
-                        <div class="col-lg-12">
-                            <p class="parrafo parrafo--mediano">catalog.Descripcion</p>
-                        </div>
-                         <div class="col-lg-12 text-center">
-                            <a href="" class="btn btn--negro mt-5">Siguente</a>
-                            <ul class="numero">
-                                <li>
-                                    <a href="" class="activo">1</a>
-                                </li>
-                                <li>
-                                    <a href="">2</a>
-                                </li>
-                                <li>
-                                    <a href="">3...</a>
-                                </li>
-                                <li>
-                                    <a href="">145</a>
-                                </li>
-
-                            </ul>
-                        </div>  
                     </div>
                 </div>
+                <div class="col-md-8">
+                    <div class="col-lg-3 pr-0 catalogo-item" *ngFor="let data of datoscatalogo">
+                        <div class="filtros__contenido__card">
+                            <div class="filtros__contenido__card__top">
+                                <span>{{data.Anio}}</span>
+                                <img [src]="sanitizeImageUrl(api+data.Foto_JPG_800x800_px)" alt="">
+                            </div>
+                            <div class="filtros__contenido__card__center">
+                                <a href="#" class="plus">
+                                    <div class="icono">
+                                        <div class="icono__border">
+                                            <svg height="426.66667pt" viewBox="0 0 426.66667 426.66667" width="426.66667pt" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="m405.332031 192h-170.664062v-170.667969c0-11.773437-9.558594-21.332031-21.335938-21.332031-11.773437 0-
+                                                21.332031 9.558594-21.332031 21.332031v170.667969h-170.667969c-11.773437 0-21.332031 9.558594-21.332031 21.332031 0 11.777344 9.558594 21.335938 21.332031 21.335938h170.667969v170.664062c0 11.777344 9.558594 21.335938 21.332031 21.335938 11.777344 0 21.335938-9.558594 21.335938-21.335938v-170.664062h170.664062c11.777344 0 21.335938-9.558594 21.335938-21.335938 0-11.773437-9.558594-21.332031-21.335938-21.332031zm0 0"/></svg>
+                                        </div>
+                                    </div>
+                                    <div class="plus__content">
+        
+                                    </div>
+                                    <p>Añadir a mis mancolistas</p>
+                                </a>
+                            </div>
+                            <div class="filtros__contenido__card__boton">
+                                <ul>
+                                    <li>{{data.Descripcion}}</li>
+                                    <li>{{data.Valor_Facial}}</li>
+                                    <li>{{data.Numero_de_catalogo}}</li>
+                                </ul>
+                                <a routerLink="/catalogo" class="link">Ver variantes y errores</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-lg-12">
+                    <p class="parrafo parrafo--mediano">catalog.Descripcion</p>
+                </div> -->
+                <!-- <div class="col-lg-12 text-center">
+                <a href="" class="btn btn--negro mt-5">Siguente</a>
+                <ul class="numero">
+                    <li>
+                        <a href="" class="activo">1</a>
+                    </li>
+                    <li>
+                        <a href="">2</a>
+                    </li>
+                    <li>
+                        <a href="">3...</a>
+                    </li>
+                    <li>
+                        <a href="">145</a>
+                    </li>
+
+                </ul>
+                </div>   -->
             </div>
+        </div>
+    </div>
+</div>
   
 

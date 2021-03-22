@@ -124,6 +124,15 @@ export class RestService {
      
     );
   }
+  getSelectCatalogAnio(start:number,end:number){
+    let direccion = this.url + '/catalogo/uploads/excel/cat-anio/'+start+'&'+end;
+    return this.http.get<CatalogoAll>(direccion).pipe(
+      map((resp:any) => {
+        return resp.catalogoPorPais;
+      }),
+     
+    );
+  }
 
   getSelectPais(pais: string): Observable<PaisesAll> {
     this.isLoggedIn = !!this.tokenInterceptorService.getToken();
@@ -149,14 +158,22 @@ export class RestService {
       this.url + 'api/catalogo/uploads/excel?' + 'token:' + this.usuario.token;
     return this.http.get<MacolistaListPublic[]>(direccion);
   }
+
+  getMancolistaPublic(id:string):Observable<any>{
+    var direccion=this.url+'/catalogo/manco_list/listar/'+id
+    return this.http.get(direccion);
+  }
   
   getMyAllMancolista() {
     let direccion = this.url + '/catalogo/manco_list/listar';
     return this.http.post(direccion,{});
   }
-
+  
+  createSolicitud(body:any):Observable<any>{
+    return  this.http.post(this.url+'/catalogo/solicitud', body);
+  }
   editarCatalogo(body:any):Observable<any>{
-    return  this.http.put('http://localhost:3000/api/catalogo/uploads/excel/actualizar-cat-excel', body);
+    return  this.http.put(this.url+'/catalogo/uploads/excel/actualizar-cat-excel', body);
   }
 
  

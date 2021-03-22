@@ -48,6 +48,18 @@ export class CatalogoInternoComponent implements OnInit {
     });
 
   }
+  buscarCatalogoAnio(start:number,end:number){
+    if(end==-1){
+      end=new Date().getFullYear();
+    }
+    this.rest.getSelectCatalogAnio(start,end).subscribe(data =>{
+      console.log(data)
+        this.dataCatalog =[];
+        this.datoscatalogo =data;
+        this.grupoCatalogo()
+    });
+
+  }
 
   grupoCatalogo(){
     var anio=0;

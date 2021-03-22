@@ -17,6 +17,7 @@ import { CatalogoInternoComponent } from './components/pages/catalogo-interno/ca
 
 import { ConfiguracionComponent } from './components/user/configuracion/configuracion.component';
 import { MancolistaComponent } from './components/user/mancolista/mancolista.component';
+// import { MancolistaComponent } from './components/user/mancolista/mancolista.component';
 import { DashboardUserComponent } from './components/user/dashboard-user/dashboard-user.component';
 import { SubastaComponent } from './components/user/subasta/subasta.component';
 import { TiendauserComponent } from './components/user/tiendauser/tiendauser.component';
@@ -31,7 +32,7 @@ import {PagosAdminComponent} from './components/admin/pagos-admin/pagos-admin.co
 import {EnvioAdminComponent} from './components/admin/envio-admin/envio-admin.component';
 import {CorreoAdminComponent} from './components/admin/correo-admin/correo-admin.component';
 import {MimancolistapublicaPageComponent} from './components/pages/mimancolistapublica-page/mimancolistapublica-page.component'
-
+import { PeticioncatalogouserComponent } from './components/user/peticioncatalogo-user/peticioncatalogouser.component';
 const routes: Routes = [
   
   {
@@ -46,15 +47,13 @@ const routes: Routes = [
       { path: 'subasta', component:CatalogoComponent},
       { path: 'catalogo-interna/:pais', component:CatalogoInternoComponent},
       //auth
-      { path: 'auth/register',component: RegistrateComponent, 
-        
-    },
-      { path: 'auth/login',component: IniciarComponent }
+      { path: 'auth/register',component: RegistrateComponent},
+      { path: 'auth/login',component: IniciarComponent },
       
     ],
   },
   {
-    path: 'mimancolistapublica', component: MimancolistapublicaPageComponent
+    path: 'mancolista/:id_user', component: MimancolistapublicaPageComponent
   },
 
 
@@ -96,6 +95,7 @@ const routes: Routes = [
         { path: 'configuracion', component: ConfiguracionComponent },
         { path: 'mancolista', component: MancolistaComponent },
         { path: 'tienda', component: TiendauserComponent },
+        {path: 'peticion-catalogo',component: PeticioncatalogouserComponent}
     ]
   }
 
