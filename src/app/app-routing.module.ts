@@ -76,7 +76,7 @@ const routes: Routes = [
       { path: 'temas', component: TemasCatalogoComponent},
       { path: 'catalogo-admin', component: CatalogoAdminComponent },
       { path: 'detalle-catalogo-admin', component: CatalogointernoAdminComponent },
-      { path: 'peticiones', component: PeticionesAdminComponent },
+      { path: 'peticiones', component: PeticionesAdminComponent, }
       { path: 'tienda-admin', component: TiendaAdminComponent, 
        children:[
         { path: '',component: ProductosAdminComponent },

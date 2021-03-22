@@ -1,0 +1,23 @@
+.catalogo-item{
+	min-width: 300px;
+    max-width: 300px;
+}
+.J-user-profile{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #f5f2f2;
+    box-shadow: 0 0 5px rgba(0,0,0,.5);
+    padding: 10px;
+    border-radius: 10px;
+    &-avatar{
+        width: 60px;
+        height: auto;
+        overflow: hidden;
+        border-radius: 50%;
+        margin-left: 10px;
+        img{
+            width: 100%;
+        }
+    }
+}

@@ -118,7 +118,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
     
 
     reloadPage(): void {
-      window.location.href ="";
+      window.location.href ="/";
     }
     updateValue(){
       return{

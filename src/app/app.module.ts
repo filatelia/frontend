@@ -1,7 +1,7 @@
 import {HttpClientModule} from '@angular/common/http'
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -56,10 +56,14 @@ import { CorreoAdminComponent } from './components/admin/correo-admin/correo-adm
 import { EnvioAdminComponent } from './components/admin/envio-admin/envio-admin.component';
 import { ProductosAdminComponent } from './components/admin/productos-admin/productos-admin.component';
 import { MimancolistapublicaPageComponent } from './components/pages/mimancolistapublica-page/mimancolistapublica-page.component';
+<<<<<<< HEAD
 import { CatalogointernoAdminComponent } from './components/admin/catalogointerno-admin/catalogointerno-admin.component';
 import { PeticioncatalogoUserComponent } from './components/user/peticioncatalogo-user/peticioncatalogo-user.component';
 import { PeticionesAdminComponent } from './components/admin/peticiones-admin/peticiones-admin.component';
 import { SubastaPagesComponent } from './components/pages/subasta-pages/subasta-pages.component';
+=======
+import { PeticioncatalogouserComponent } from './components/user/peticioncatalogo-user/peticioncatalogouser.component';
+>>>>>>> 4becc6e1077191d4ae51e74b51f7e279c78564ae
 @NgModule({
   declarations: [
     
@@ -73,12 +77,12 @@ import { SubastaPagesComponent } from './components/pages/subasta-pages/subasta-
     RegistrateComponent, 
     IniciarComponent, 
     CatalogoComponent, 
-    CatalogoInternoComponent, 
+    CatalogoInternoComponent,
     ConfiguracionComponent,
     MancolistaComponent,
     SubastaComponent,
     TiendauserComponent,
-    
+    PeticioncatalogouserComponent,
     DashboardUserComponent,
     FooterComponent, 
     ChartsAdminComponent, 
