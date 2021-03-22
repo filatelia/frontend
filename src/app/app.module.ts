@@ -56,6 +56,10 @@ import { CorreoAdminComponent } from './components/admin/correo-admin/correo-adm
 import { EnvioAdminComponent } from './components/admin/envio-admin/envio-admin.component';
 import { ProductosAdminComponent } from './components/admin/productos-admin/productos-admin.component';
 import { MimancolistapublicaPageComponent } from './components/pages/mimancolistapublica-page/mimancolistapublica-page.component';
+import { CatalogointernoAdminComponent } from './components/admin/catalogointerno-admin/catalogointerno-admin.component';
+import { PeticioncatalogoUserComponent } from './components/user/peticioncatalogo-user/peticioncatalogo-user.component';
+import { PeticionesAdminComponent } from './components/admin/peticiones-admin/peticiones-admin.component';
+import { SubastaPagesComponent } from './components/pages/subasta-pages/subasta-pages.component';
 @NgModule({
   declarations: [
     
@@ -84,7 +88,7 @@ import { MimancolistapublicaPageComponent } from './components/pages/mimancolist
     TablaCatalogoComponent, 
     BlogAdminComponent,
     TiendaAdminLinkComponent, 
-    AjustesAdminLinkComponent, AjustesAdminComponent, PedidosAdminComponent, ClientesAdminComponent, CuponesAdminComponent, PagosAdminComponent, TemasAdminComponent, CorreoAdminComponent, EnvioAdminComponent, ProductosAdminComponent, MimancolistapublicaPageComponent
+    AjustesAdminLinkComponent, AjustesAdminComponent, PedidosAdminComponent, ClientesAdminComponent, CuponesAdminComponent, PagosAdminComponent, TemasAdminComponent, CorreoAdminComponent, EnvioAdminComponent, ProductosAdminComponent, MimancolistapublicaPageComponent, CatalogointernoAdminComponent, PeticioncatalogoUserComponent, PeticionesAdminComponent, SubastaPagesComponent
   ],
   imports: [
     HttpClientModule,

@@ -16,6 +16,7 @@ export class CabeceraComponent implements OnInit {
   showAdminBoard = false;
   showClientBoard = false;
   name?: string;
+  public isCollapsed = false;
   public isCollapse= false
 
   constructor(private tokenInterceptorService: TokenInterceptorService,

@@ -1,8 +1,28 @@
+
 <div class="mainAdmin__listado"> </div>
 <div class="row">
-  <div class="col-lg-11 m-auto">
+  <div class="col-lg-4 m-auto">
+    
+    <div class="dashboard__color__nombre">
+            <a [routerLink]="['/admin/dashboard/catalogo-admin']"  class="boton">
+              <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                  viewBox="0 0 256 256" style="enable-background:new 0 0 256 256;" xml:space="preserve">
+                  <g>
+                      <polygon points="79.093,0 48.907,30.187 146.72,128 48.907,225.813 79.093,256 207.093,128 		"/>
+                  </g>
+              </svg>
+  
+      </a>
+      <h3 class="titulo titulo--mediano">Volver a Catálogo </h3>
+  </div>
+    
+    <hr>
+  </div>
+  <div class="col-lg-4 m-auto"></div>
+  <div class="col-lg-3 m-auto">
+    
     <a href="javascript:void(0)" (click)="openVerticallyCentered(content)" class="mainAdmin__boton">
-
+      
       <div class="icono">
         <svg height="426.66667pt" viewBox="0 0 426.66667 426.66667" width="426.66667pt"
           xmlns="http://www.w3.org/2000/svg">
@@ -14,7 +34,9 @@
     </a>
     <br>
     <hr>
-
+  </div>
+  
+  <div class="col-lg-11 m-auto">
     <div class="shadow p-3 mb-5 bg-body rounded">
 
       <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table--normal">
