@@ -23,7 +23,7 @@
                 <td>{{data.usuario_id.name}}</td>    
                 <td>{{data.tipoEstadoSolicitud_id.name}}</td>  
                 <td class="editar">
-                  <div *ngIf="!data.tipoEstadoSolicitud_id.name.includes('etapa 2'); else viewpublic">
+                  <div *ngIf="!data.tipoEstadoSolicitud_id.name.includes('etapa 2')&&!data.tipoEstadoSolicitud_id.name.includes('etapa 1'); else viewpublic">
                     <a (click)="validar(data.uid,'accept')" href="javascript:void(0)" class="btn-table-rad success">
                       aceptar
                     </a>
@@ -32,7 +32,7 @@
                     </a>
                   </div>
                   <ng-template #viewpublic>
-                    <a [routerLink]="'/admin/dashboard/catalogo-seleccionado/'+data.uid" class="btn-table-rad info" >
+                    <a  [routerLink]="'/admin/dashboard/catalogo-seleccionado/'+data.uid" class="btn-table-rad info" >
                         Ver
                     </a>
                   </ng-template>

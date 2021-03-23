@@ -7,7 +7,7 @@
             <div class=" container-catalogo">
                 <div class="dashboard__contenido__formulario container-catalogo-item " *ngFor="let data of dataCatalogo">
                       <div class="catalogo-letter">
-                        <div class="catalogo-title">Nombre:</div>
+                        <div class="catalogo-title">Tipo:</div>
                         <div class="">{{data.catalogo_nombre}}</div>
                       </div>
                       <div class="catalogo-letter">
@@ -28,7 +28,7 @@
                         <div class="catalogo-title">Fecha:</div>
                         <div class="">data.Fecha</div>
                       </div> -->
-                      <div class="catalogo-btn" *ngIf="data.tipoEstadoSolicitud_id.name.includes('etapa 2');else btnestado">
+                      <div class="catalogo-btn" *ngIf="data.tipoEstadoSolicitud_id.name.includes('Aprobado catalogo etapa 1');else btnestado">
                         <button  type="submit" (click)="publicCatalog(data)" class="btn btn--linea">Publicar Catalogo </button>
                       </div>
                       <ng-template #btnestado >

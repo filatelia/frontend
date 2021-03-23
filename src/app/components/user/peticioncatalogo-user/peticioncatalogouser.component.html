@@ -6,10 +6,14 @@
           <div class="form row">
               <div class="form-group col-lg-12">
                 <label for="exampleInputNombre">Tipo Catalogo</label>
-                <input type="text" name="nombre" required class="form-control"
-                [ngClass]="{'is-valid':!nombre?.invalid&&(nombre?.dirty||nombre?.touched),'is-invalid':nombre?.invalid&&(nombre?.dirty||nombre?.touched)}"
-                ngModel
-                >
+                <select  name="nombre" required class="form-control"
+                  [ngClass]="{'is-valid':!nombre?.invalid&&(nombre?.dirty||nombre?.touched),'is-invalid':nombre?.invalid&&(nombre?.dirty||nombre?.touched)}"
+                  ngModel
+                  >
+                <option value="scott">Scott</option>
+                <option value="michel">Michel</option>
+                <option value="michel">Yvert</option>
+              </select>
                 <div class="invalid-feedback" formControlName="nombre" *ngIf="nombre?.invalid&&(nombre?.dirty||nombre?.touched)">
                   <div *ngIf="nombre?.errors?.required">Nombre de catalogo requerido</div>
                   <div *ngIf="nombre?.errors?.minlength">El mínimo es de 5 caracteres </div>

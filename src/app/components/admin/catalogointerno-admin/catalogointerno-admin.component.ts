@@ -4,7 +4,7 @@ import { Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { RestService } from '../../../services/rest.service';
 import { CatalogoCompleto } from '../../../models/catalogo.interface';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SelectPais } from '../../../models/paises.interface';
 
 import {
@@ -34,6 +34,7 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
   public repetidasData: any=[];
   public archivos: any = [];
   public responseExcel: any={};
+  id_catalogo: any='';
   datos: CatalogoCompleto[] = [];
   intermedio: CatalogoCompleto[] = [];
   public loading: boolean | any;
@@ -50,12 +51,13 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
     private modalService: NgbModal,
     private sanitizer: DomSanitizer,
     private rest: RestService,
-    private router: Router
+    private router: Router,
+    private activateRoute: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
     // cargar todos los catalogos
-
+    this.id_catalogo = this.activateRoute.snapshot.paramMap.get('id_catalogo')||'/';
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,
@@ -221,12 +223,17 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
   subirArchivo(): any {
     try {
       this.loading = true;
+      
+     
       const formularioDeDatos = new FormData();
+      
+
       this.archivos.forEach((archivo: string) => {
         formularioDeDatos.append('sampleFile', archivo);
        
 
       });
+      formularioDeDatos.append('id_catalogo', this.id_catalogo);
       this.rest.postCatalogoAdmin(formularioDeDatos).subscribe(
         (res: any) => {
           this.loading = false;

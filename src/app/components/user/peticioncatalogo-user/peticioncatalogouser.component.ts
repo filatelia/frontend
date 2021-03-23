@@ -47,14 +47,14 @@ export class PeticioncatalogouserComponent implements OnInit {
   }
   createFormGroup(){
     return new FormGroup({
-      nombre:new FormControl('',[Validators.required,Validators.minLength(5)]),
+      nombre:new FormControl('',[Validators.required,Validators.minLength(3)]),
       pais:new FormControl('',[Validators.required,Validators.minLength(3)]),
-      valor:new FormControl('',[Validators.required,Validators.minLength(1)]),
+      valor:new FormControl('',[]),
     });
   }
 
   onResetForm(){
-    this.router.navigate(['/user/dashboard/catalogo']);
+    location.reload();
     this.form.reset();
   }
   updateValue(){
