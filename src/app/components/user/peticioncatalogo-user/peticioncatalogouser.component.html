@@ -5,7 +5,7 @@
           <h2 class="titulo titulo--chico">Registrar Petición Catálogo</h2>
           <div class="form row">
               <div class="form-group col-lg-12">
-                <label for="exampleInputNombre">Nombre</label>
+                <label for="exampleInputNombre">Tipo Catalogo</label>
                 <input type="text" name="nombre" required class="form-control"
                 [ngClass]="{'is-valid':!nombre?.invalid&&(nombre?.dirty||nombre?.touched),'is-invalid':nombre?.invalid&&(nombre?.dirty||nombre?.touched)}"
                 ngModel
@@ -24,7 +24,7 @@
                   </div>
               </div>
               <div class="form-group col-lg-12">
-                <label for="exampleInputValor">Valor</label>
+                <label for="exampleInputValor">Valor Catalogo</label>
                 <input name="valor" type="text" formControlName="valor" class="form-control"
                 [ngClass]="{'is-valid':!valor?.invalid&&(valor?.dirty||valor?.touched),'is-invalid':valor?.invalid&&(valor?.dirty||valor?.touched)}"
                 ngModel
@@ -61,7 +61,7 @@
         <div class=" container-catalogo">
             <div class="dashboard__contenido__formulario container-catalogo-item " *ngFor="let data of dataCatalogo">
                   <div class="catalogo-letter">
-                    <div class="catalogo-title">Nombre:</div>
+                    <div class="catalogo-title">Tipo Catalogo:</div>
                     <div class="">{{data.catalogo_nombre}}</div>
                   </div>
                   <div class="catalogo-letter">
@@ -82,12 +82,13 @@
                     <div class="catalogo-title">Fecha:</div>
                     <div class="">data.Fecha</div>
                   </div> -->
-                  <div class="catalogo-btn" *ngIf="!data.tipoEstadoSolicitud_id.name.includes('espera');else btnestado">
-                    <button (click)="redirect(data.uid)" type="submit" class="btn btn--linea">Ver detalle del Catalogo </button>
+                  <div class="catalogo-btn" *ngIf="data.tipoEstadoSolicitud_id.name.includes('etapa 2');else btnestado">
+                    <button (click)="redirect(data.uid)" type="submit" class="btn btn--linea">Subir Catalogo </button>
                   </div>
                   <ng-template #btnestado >
-                        <button  *ngIf="data.tipoEstadoSolicitud_id.name.includes('rechazado')" (click)="viewStatus(data.uid)" type="button" class="btn btn--linea">Ver detalles de rechazo </button>
+                        <button  *ngIf="data.tipoEstadoSolicitud_id.name.includes('Rechazado')" (click)="viewStatus(data.uid)" type="button" class="btn btn--linea">Ver detalles de rechazo </button>
                   </ng-template>
+                  
               </div>
         </div>
     </ng-template>

@@ -6,11 +6,16 @@
         <div class="dashboard__contenido__formulario">
           <div class="form row">
             <div class="form-group col-lg-12">
-              <label for="exampleInputNombre">Nombre</label>
-              <input type="text" name="nombre" required class="form-control"
+              <label for="exampleInputNombre">Tipo de catalogo</label>
+              
+              <select  name="nombre" required class="form-control"
               [ngClass]="{'is-valid':!nombre?.invalid&&(nombre?.dirty||nombre?.touched),'is-invalid':nombre?.invalid&&(nombre?.dirty||nombre?.touched)}"
               ngModel
               >
+                <option value="scott">Scott</option>
+                <option value="michel">Michel</option>
+                <option value="michel">Yvert</option>
+              </select>
               <div class="invalid-feedback" formControlName="nombre" *ngIf="nombre?.invalid&&(nombre?.dirty||nombre?.touched)">
                 <div *ngIf="nombre?.errors?.required">Nombre de catalogo requerido</div>
                 <div *ngIf="nombre?.errors?.minlength">El mínimo es de 5 caracteres </div>
@@ -25,7 +30,7 @@
                 </div>
             </div>
             <div class="form-group col-lg-12">
-              <label for="exampleInputValor">Valor</label>
+              <label for="exampleInputValor">Valor Catalogo</label>
               <input name="valor" type="text" formControlName="valor" class="form-control"
               [ngClass]="{'is-valid':!valor?.invalid&&(valor?.dirty||valor?.touched),'is-invalid':valor?.invalid&&(valor?.dirty||valor?.touched)}"
               ngModel
@@ -46,7 +51,8 @@
     <div class="col-lg-8">
         <!-- <h2 class="titulo titulo--chico text-center">Catálogos</h2> -->
         <div class=" container-catalogo">
-            <div class="dashboard__contenido__formulario container-catalogo-item " *ngFor="let data of dataCatalogo">
+            <ng-container *ngFor="let data of dataCatalogo">
+                <div *ngIf="data.tipoEstadoSolicitud_id.name.includes('etapa 2')" class="dashboard__contenido__formulario container-catalogo-item " >
                   <div class="catalogo-letter">
                     <div class="catalogo-title">Nombre:</div>
                     <div class="">{{data.catalogo_nombre}}</div>
@@ -73,21 +79,13 @@
                     <div class="catalogo-title">Fecha:</div>
                     <div class="">data.Fecha</div>
                   </div> -->
-                  <div class="catalogo-btn" *ngIf="!data.tipoEstadoSolicitud_id.name.includes('espera'); else btnapro">
-                    <button (click)="redirect(data.uid)" type="button" class="btn btn--linea">Ver detalle del Catalogo </button>
+                  <div class="catalogo-btn" *ngIf="data.tipoEstadoSolicitud_id.name.includes('etapa 2')">
+                    <button (click)="redirect(data.uid)" type="button" class="btn btn--linea">Ir a catalogo </button>
                   </div>
-                  <ng-template #btnapro>
-                    <div class="btn-container">
-                      <div class="catalogo-btn">
-                        <button (click)="validar(data.uid,'accept')" type="button" class="btn btn--linea">Aceptar </button>
-                      </div>
-                      <div class="catalogo-btn">
-                        <button (click)="validar(data.uid,'denied')" type="button" class="btn btn--linea danger">Rechazar  </button>
-                      </div>
-                    </div>
-                  </ng-template>
 
-              </div>
+                </div>
+            </ng-container>
+            
         </div>
     </div>
    

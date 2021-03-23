@@ -44,7 +44,7 @@ export class CatalogoAdminComponent implements OnInit {
     return new FormGroup({
       nombre:new FormControl('',[Validators.required,Validators.minLength(5)]),
       pais:new FormControl('',[Validators.required,Validators.minLength(3)]),
-      valor:new FormControl('',[Validators.required,Validators.minLength(1)]),
+      valor:new FormControl('',[]),
     });
   }
   ngOnInit(): void {
@@ -57,10 +57,14 @@ export class CatalogoAdminComponent implements OnInit {
     var data=this.updateValue()
     this.restService.createSolicitud(data).subscribe(
       (res:any)=>{
+        this.response=res
         this.response.loading=false
         console.log(res)
+        this.onResetForm()
+        
       },
       (err:any)=>{
+        this.response=err
         this.response.loading=false
         console.log(err)
       }
@@ -142,6 +146,10 @@ export class CatalogoAdminComponent implements OnInit {
       pais:this.pais?.value,
       valor:this.valor?.value
     }
+  }
+  onResetForm(){
+    this.listar()
+    this.form.reset();
   }
   redirect(id:any){
     this.router.navigate(['/admin/dashboard/catalogo-seleccionado/'+id]);

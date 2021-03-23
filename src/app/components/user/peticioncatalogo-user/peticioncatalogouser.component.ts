@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { RestService } from 'src/app/services/rest.service';
 @Component({
   selector: 'app-peticioncatalogo-user',
@@ -12,12 +13,11 @@ export class PeticioncatalogouserComponent implements OnInit {
   dataCatalogo: any=[
     
   ]
-  constructor(private restService:RestService) {
+  constructor(private restService:RestService, private router: Router) {
     this.form=this.createFormGroup()
   }
 
   ngOnInit(): void {
-    this.listar()
   }
   registrar(){
     if(!this.form.valid) return;
@@ -38,19 +38,8 @@ export class PeticioncatalogouserComponent implements OnInit {
       }
     )
   }
-  listar(){
-    this.restService.getSolicitudMyCatalogo({}).subscribe(
-      (res:any)=>{
-        this.dataCatalogo=res.solicitudes
-      },
-      (err:any)=>{
-        console.log(err)
-      }
-    )
-    
-  }
   redirect(id:any){
-
+      
   }
   viewStatus(id:any){
 
@@ -65,7 +54,7 @@ export class PeticioncatalogouserComponent implements OnInit {
   }
 
   onResetForm(){
-    this.listar();
+    this.router.navigate(['/user/dashboard/catalogo']);
     this.form.reset();
   }
   updateValue(){

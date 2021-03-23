@@ -12,11 +12,14 @@ import Swal from 'sweetalert2';
 })
 export class PeticionesAdminComponent implements OnInit {
   form: FormGroup;
+  id_solicitud: string='';
   response: any={loading:false}
   dataCatalogo: any=[
     
   ]
-    constructor(private router:Router,private modalService: NgbModal,private restService:RestService) { }
+    constructor(private router:Router,private modalService: NgbModal,private restService:RestService) {
+      this.form=this.createFormGroup()
+    }
 
   ngOnInit(): void {
     this.listar()
@@ -42,6 +45,25 @@ export class PeticionesAdminComponent implements OnInit {
       this.restService.estadoSolicitudCatalogo({id_solicitud:data}).subscribe((resp)=>{
         this.message_alert('success','solicitud aceptada')
         this.listar()
+      },
+      (er)=>{
+        this.message_alert('error','Ocurrio un error inesperado')
+      });
+    }
+    else if(type==''){
+        this.id_solicitud=data
+    }
+    else if(type=='dennied'){
+      var {message}=this.updateValue()
+      this.restService.estadoSolicitudCatalogo({id_solicitud:this.id_solicitud,mensaje_rechazo:message}).subscribe((resp)=>{
+        if(resp.ok){
+          this.message_alert('success','solicitud rechazada')
+          this.listar()
+              
+        }
+        else{
+          this.message_alert('error',resp.msg)
+        }
       },
       (er)=>{
         this.message_alert('error','Ocurrio un error inesperado')
@@ -82,6 +104,11 @@ export class PeticionesAdminComponent implements OnInit {
     return new FormGroup({
       message:new FormControl('',[Validators.required,Validators.minLength(1)]),
     });
+  }
+  updateValue(){
+    return{
+      message:this.message?.value,
+    }
   }
   get message(){return this.form.get('message')}
 
