@@ -32,6 +32,7 @@ export class MancolistaComponent implements OnInit {
   }
   addLista(data:any){
     this.dataMancoLista=data;
+    console.log(this.dataMancoLista)
     this.usuario=data[0].id_usuario;
   }
  

@@ -168,13 +168,22 @@ export class RestService {
     let direccion = this.url + '/catalogo/manco_list/listar';
     return this.http.post(direccion,{});
   }
-  
+
+ 
+  estadoSolicitudCatalogo(body:any):Observable<any>{
+    console.log(this.url+'/solicitudes/aprobacion')
+    return  this.http.post(this.url+'/solicitudes/aprobacion', body);
+  }
   createSolicitud(body:any):Observable<any>{
     return  this.http.post(this.url+'/solicitudes', body);
   }
   getSolicitudCatalogo(body:any):Observable<any>{
     return  this.http.get(this.url+'/solicitudes');
   }
+  getSolicitudMyCatalogo(body:any):Observable<any>{
+    return  this.http.get(this.url+'/solicitudes/mis-solicitudes');
+  }
+  
   editarCatalogo(body:any):Observable<any>{
     return  this.http.put(this.url+'/catalogo/uploads/excel/actualizar-cat-excel', body);
   }

@@ -11,6 +11,7 @@ import {
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { RestService } from 'src/app/services/rest.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -68,7 +69,8 @@ export class CatalogoAdminComponent implements OnInit {
   listar(){
     this.restService.getSolicitudCatalogo({}).subscribe(
       (res:any)=>{
-        this.dataCatalogo=res.todas_solicitudes
+        // var data=res.todas_solicitudes.map(()=> {index:if, value:})
+        this.dataCatalogo=res.todas_solicitudes.sort()
       },
       (err:any)=>{
         console.log(err)
@@ -76,6 +78,7 @@ export class CatalogoAdminComponent implements OnInit {
     )
     
   }
+
   
 
   openVerticallyCentered(content: any) {
@@ -97,7 +100,41 @@ export class CatalogoAdminComponent implements OnInit {
     });
   }
   validar(data:any,type:string){
-  
+    if(type=='accept'){
+      this.restService.estadoSolicitudCatalogo({id_solicitud:data}).subscribe((resp)=>{
+        this.message('success','solicitud aceptada')
+        this.listar()
+      },
+      (er)=>{
+
+      });
+    }
+  }
+  message(type:any,message:any){
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+    
+    Toast.fire({
+      icon: type,
+      title: message,
+    }).then(
+      result=>{
+        if(result.dismiss === Swal.DismissReason.timer){
+
+
+        }
+        
+      }
+    );
   }
   updateValue(){
     return{

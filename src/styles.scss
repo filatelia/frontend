@@ -8,7 +8,35 @@ body{
     color: $negro;
     overflow-x: hidden;
 }
-
+.notificacion{
+    .dropdown-menu.show{
+        width: 300px !important;
+        left: -120px !important;
+        max-height: 500px;
+        overflow-y: auto;
+    }
+    .notify-content{
+        margin:10px;
+        min-height: 100px;
+        display: flex;
+        width: 93%;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        &:hover{
+            
+        }
+        &:focus{
+            background:none;
+        }
+        .title{
+            font-weight: bold;
+        }
+        &.active{
+            background-color: #f5f2f2;
+        }
+    }
+}
 .activo{
     &:before{
         content: "";

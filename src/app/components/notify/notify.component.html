@@ -1,0 +1,10 @@
+<div>
+    <a class="notify-content active" *ngFor="let data of dataNotify"  [routerLink]= "['/admin/dashboard/peticiones/'+data._id]" (click)="$event.preventDefault()">
+        <div class="title">
+            Solicitud de catalogo
+        </div>
+        <div class="name">
+            Cliente {{data.usuario_id.name}}
+        </div>
+    </a>
+</div>

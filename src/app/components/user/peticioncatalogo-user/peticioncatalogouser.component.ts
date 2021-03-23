@@ -9,12 +9,15 @@ import { RestService } from 'src/app/services/rest.service';
 export class PeticioncatalogouserComponent implements OnInit {
   form: FormGroup;
   response: any={loading:false}
-  
+  dataCatalogo: any=[
+    
+  ]
   constructor(private restService:RestService) {
     this.form=this.createFormGroup()
   }
 
   ngOnInit(): void {
+    this.listar()
   }
   registrar(){
     if(!this.form.valid) return;
@@ -26,6 +29,7 @@ export class PeticioncatalogouserComponent implements OnInit {
         this.response.loading=false
         console.log(res)
         this.onResetForm()
+        
       },
       (err:any)=>{
         this.response=err
@@ -33,6 +37,24 @@ export class PeticioncatalogouserComponent implements OnInit {
         console.log(err)
       }
     )
+  }
+  listar(){
+    this.restService.getSolicitudMyCatalogo({}).subscribe(
+      (res:any)=>{
+        this.dataCatalogo=res.solicitudes
+      },
+      (err:any)=>{
+        console.log(err)
+      }
+    )
+    
+  }
+  redirect(id:any){
+
+  }
+  viewStatus(id:any){
+
+
   }
   createFormGroup(){
     return new FormGroup({
@@ -43,6 +65,7 @@ export class PeticioncatalogouserComponent implements OnInit {
   }
 
   onResetForm(){
+    this.listar();
     this.form.reset();
   }
   updateValue(){

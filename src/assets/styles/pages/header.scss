@@ -60,10 +60,12 @@
     }    
     .notificacion{
         text-align: right;
+        
         &:last-child{
             margin-left: 10px;
         }
         a{
+            color: black;
             img{
                 width: 33px;
             }
@@ -127,6 +129,13 @@
             }
         }
     }
+}
+.notificacioneslink{
+    font-size: 10px;
+    background-color: #ffffff;
+    background: #ffffff;
+    font-family: 'Courier New', Courier, monospace;
+
 }
 
 

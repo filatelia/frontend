@@ -60,7 +60,7 @@
                     <div class="">{{data.tipoEstadoSolicitud_id.name}}</div>
                   </div>
                   <div class="catalogo-letter">
-                    <div class="catalogo-title">Estado:</div>
+                    <div class="catalogo-title">Cliente:</div>
                     <div class="">{{data.usuario_id.name}}</div>
                   </div>
                   <!-- <div class="catalogo-letter-estado">
@@ -74,15 +74,15 @@
                     <div class="">data.Fecha</div>
                   </div> -->
                   <div class="catalogo-btn" *ngIf="!data.tipoEstadoSolicitud_id.name.includes('espera'); else btnapro">
-                    <button (click)="redirect(data.uid)" type="submit" class="btn btn--linea">Ver detalle del Catalogo </button>
+                    <button (click)="redirect(data.uid)" type="button" class="btn btn--linea">Ver detalle del Catalogo </button>
                   </div>
                   <ng-template #btnapro>
                     <div class="btn-container">
                       <div class="catalogo-btn">
-                        <button (click)="validar(data.uid,'acept')" type="submit" class="btn btn--linea">Aceptar </button>
+                        <button (click)="validar(data.uid,'accept')" type="button" class="btn btn--linea">Aceptar </button>
                       </div>
                       <div class="catalogo-btn">
-                        <button (click)="validar(data.uid,'denied')" type="submit" class="btn btn--linea danger">Rechazar  </button>
+                        <button (click)="validar(data.uid,'denied')" type="button" class="btn btn--linea danger">Rechazar  </button>
                       </div>
                     </div>
                   </ng-template>

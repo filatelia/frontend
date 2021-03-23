@@ -56,8 +56,11 @@ import { CorreoAdminComponent } from './components/admin/correo-admin/correo-adm
 import { EnvioAdminComponent } from './components/admin/envio-admin/envio-admin.component';
 import { ProductosAdminComponent } from './components/admin/productos-admin/productos-admin.component';
 import { MimancolistapublicaPageComponent } from './components/pages/mimancolistapublica-page/mimancolistapublica-page.component';
-import { PeticioncatalogouserComponent } from './components/user/peticioncatalogo-user/peticioncatalogouser.component';
 import { CatalogointernoAdminComponent } from './components/admin/catalogointerno-admin/catalogointerno-admin.component';
+import { PeticionesAdminComponent } from './components/admin/peticiones-admin/peticiones-admin.component';
+import { SubastaPagesComponent } from './components/pages/subasta-pages/subasta-pages.component';
+import { PeticioncatalogouserComponent } from './components/user/peticioncatalogo-user/peticioncatalogouser.component';
+import { NotifyComponent } from './components/notify/notify.component';
 @NgModule({
   declarations: [
     
@@ -76,7 +79,6 @@ import { CatalogointernoAdminComponent } from './components/admin/catalogointern
     MancolistaComponent,
     SubastaComponent,
     TiendauserComponent,
-    PeticioncatalogouserComponent,
     DashboardUserComponent,
     FooterComponent, 
     ChartsAdminComponent, 
@@ -87,7 +89,8 @@ import { CatalogointernoAdminComponent } from './components/admin/catalogointern
     BlogAdminComponent,
     TiendaAdminLinkComponent, 
     CatalogointernoAdminComponent,
-    AjustesAdminLinkComponent, AjustesAdminComponent, PedidosAdminComponent, ClientesAdminComponent, CuponesAdminComponent, PagosAdminComponent, TemasAdminComponent, CorreoAdminComponent, EnvioAdminComponent, ProductosAdminComponent, MimancolistapublicaPageComponent
+    PeticioncatalogouserComponent,
+    AjustesAdminLinkComponent, AjustesAdminComponent, PedidosAdminComponent, ClientesAdminComponent, CuponesAdminComponent, PagosAdminComponent, TemasAdminComponent, CorreoAdminComponent, EnvioAdminComponent, ProductosAdminComponent, MimancolistapublicaPageComponent, CatalogointernoAdminComponent, PeticionesAdminComponent, SubastaPagesComponent, NotifyComponent
   ],
   imports: [
     HttpClientModule,

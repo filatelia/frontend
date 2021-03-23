@@ -48,8 +48,8 @@
           </div>
       </div>
   </div>
-  <div class="col-lg-6 p-0">
-    <div class="formulario__img" style="background-image: url(../assets/img/bg/bg-registrate.png);">
+  <div class="col-lg-6 p-0" >
+    <div class="formulario__img" style="background-image: url(../assets/img/bg/bg-registrate.png);" *ngIf="dataCatalogo.length==0;else lista">
         <div class="formulario__img__content formulario__img__content--botom">
             <div>
                 <h2 class="titulo titulo--mediano">¿Tienes un catalogo?</h2>
@@ -57,6 +57,40 @@
             </div>
         </div>
     </div>
+    <ng-template #lista>
+        <div class=" container-catalogo">
+            <div class="dashboard__contenido__formulario container-catalogo-item " *ngFor="let data of dataCatalogo">
+                  <div class="catalogo-letter">
+                    <div class="catalogo-title">Nombre:</div>
+                    <div class="">{{data.catalogo_nombre}}</div>
+                  </div>
+                  <div class="catalogo-letter">
+                    <div class="catalogo-title">Pais:</div>
+                    <div class="">{{data.pais.name||''}}</div>
+                  </div>
+                  <div class="catalogo-letter">
+                    <div class="catalogo-title">Estado:</div>
+                    <div class="">{{data.tipoEstadoSolicitud_id.name}}</div>
+                  </div>
+                  <!-- <div class="catalogo-letter-estado">
+                    <div class="succsess" *ngIf="data.estado; else estado">Aprobado</div>
+                    <ng-template #estado>
+                      <div class="warning">Pendiente</div>
+                    </ng-template>
+                  </div> -->
+                  <!-- <div class="catalogo-letter">
+                    <div class="catalogo-title">Fecha:</div>
+                    <div class="">data.Fecha</div>
+                  </div> -->
+                  <div class="catalogo-btn" *ngIf="!data.tipoEstadoSolicitud_id.name.includes('espera');else btnestado">
+                    <button (click)="redirect(data.uid)" type="submit" class="btn btn--linea">Ver detalle del Catalogo </button>
+                  </div>
+                  <ng-template #btnestado >
+                        <button  *ngIf="data.tipoEstadoSolicitud_id.name.includes('rechazado')" (click)="viewStatus(data.uid)" type="button" class="btn btn--linea">Ver detalles de rechazo </button>
+                  </ng-template>
+              </div>
+        </div>
+    </ng-template>
 </div>
   
 </form>

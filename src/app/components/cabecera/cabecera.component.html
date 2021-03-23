@@ -47,10 +47,13 @@
                                 <a [routerLink]= "['/user/dashboard']">{{name}}</a> 
                             
                             </li>
-                            <li *ngIf="isLoggedIn" class="notificacion">
-                                <a  href="">
+                            <li *ngIf="isLoggedIn" class="notificacion" ngbDropdown>
+                                <a ngbDropdownToggle>
                                     <img src="../assets/img/iconos/notificacion.svg" alt="">
                                 </a>
+                                  <div ngbDropdownMenu class="notificacioneslink">
+                                      <app-notify></app-notify>
+                                  </div>
                             </li>
                               <li  class="notificacion">
                                 

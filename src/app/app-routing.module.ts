@@ -7,22 +7,6 @@ import { CatalogoAdminComponent } from './components/admin/catalogo-admin/catalo
 import { BlogAdminComponent } from './components/admin/blog-admin/blog-admin.component';
 import { TiendaAdminComponent } from './components/admin/tienda-admin/tienda-admin.component';
 import { AjustesAdminComponent } from './components/admin/ajustes-admin/ajustes-admin.component';
-
-import { TiendaComponent } from './components/pages/tienda/tienda.component';
-import { RegistrateComponent } from './components/pages/registrate/registrate.component';
-import { IniciarComponent } from './components/pages/iniciar/iniciar.component';
-import { HomeComponent } from './components/pages/home/home.component';
-import { CatalogoComponent } from './components/pages/catalogo/catalogo.component';
-import { CatalogoInternoComponent } from './components/pages/catalogo-interno/catalogo-interno.component';
-
-import { ConfiguracionComponent } from './components/user/configuracion/configuracion.component';
-import { MancolistaComponent } from './components/user/mancolista/mancolista.component';
-// import { MancolistaComponent } from './components/user/mancolista/mancolista.component';
-import { DashboardUserComponent } from './components/user/dashboard-user/dashboard-user.component';
-import { SubastaComponent } from './components/user/subasta/subasta.component';
-import { TiendauserComponent } from './components/user/tiendauser/tiendauser.component';
-
-import {AuthGuard, RolGuard} from './guard/auth.guard'
 import { TablaCatalogoComponent } from './components/admin/tabla-catalogo/tabla-catalogo.component';
 import {PedidosAdminComponent} from './components/admin/pedidos-admin/pedidos-admin.component';
 import {ClientesAdminComponent} from './components/admin/clientes-admin/clientes-admin.component';
@@ -31,9 +15,30 @@ import {ProductosAdminComponent} from './components/admin/productos-admin/produc
 import {PagosAdminComponent} from './components/admin/pagos-admin/pagos-admin.component';
 import {EnvioAdminComponent} from './components/admin/envio-admin/envio-admin.component';
 import {CorreoAdminComponent} from './components/admin/correo-admin/correo-admin.component';
+import {CatalogointernoAdminComponent} from './components/admin/catalogointerno-admin/catalogointerno-admin.component';
+import {PeticionesAdminComponent} from './components/admin/peticiones-admin/peticiones-admin.component'
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+import { TiendaComponent } from './components/pages/tienda/tienda.component';
+import { RegistrateComponent } from './components/pages/registrate/registrate.component';
+import { IniciarComponent } from './components/pages/iniciar/iniciar.component';
+import { HomeComponent } from './components/pages/home/home.component';
+import { CatalogoComponent } from './components/pages/catalogo/catalogo.component';
+import { CatalogoInternoComponent } from './components/pages/catalogo-interno/catalogo-interno.component';
 import {MimancolistapublicaPageComponent} from './components/pages/mimancolistapublica-page/mimancolistapublica-page.component'
-import { PeticioncatalogouserComponent } from './components/user/peticioncatalogo-user/peticioncatalogouser.component';
-import { CatalogointernoAdminComponent } from './components/admin/catalogointerno-admin/catalogointerno-admin.component';
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+import { ConfiguracionComponent } from './components/user/configuracion/configuracion.component';
+import { MancolistaComponent } from './components/user/mancolista/mancolista.component';
+import { DashboardUserComponent } from './components/user/dashboard-user/dashboard-user.component';
+import { SubastaComponent } from './components/user/subasta/subasta.component';
+import { TiendauserComponent } from './components/user/tiendauser/tiendauser.component';
+import {PeticioncatalogouserComponent} from './components/user/peticioncatalogo-user/peticioncatalogouser.component'
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+import {AuthGuard, RolGuard} from './guard/auth.guard'
+
+
 const routes: Routes = [
   
   {
@@ -48,13 +53,18 @@ const routes: Routes = [
       { path: 'subasta', component:CatalogoComponent},
       { path: 'catalogo-interna/:pais', component:CatalogoInternoComponent},
       //auth
-      { path: 'auth/register',component: RegistrateComponent},
-      { path: 'auth/login',component: IniciarComponent },
+      { path: 'auth/register',component: RegistrateComponent, 
+        
+    },
+      { path: 'auth/login',component: IniciarComponent }
       
     ],
   },
   {
     path: 'mancolista/:id_user', component: MimancolistapublicaPageComponent
+  },
+  {
+    path: 'mimancolistapublica', component: MimancolistapublicaPageComponent
   },
 
 
@@ -69,9 +79,12 @@ const routes: Routes = [
       { path: 'temas', component: TemasCatalogoComponent},
       { path: 'catalogo-admin', component: CatalogoAdminComponent },
       { path: 'catalogo-seleccionado/:id_catalogo', component: CatalogointernoAdminComponent },
-      { path: 'tienda-admin', component: TiendaAdminComponent, 
+      { path: 'detalle-catalogo-admin', component: CatalogointernoAdminComponent },
+      { path: 'peticiones', component: PeticionesAdminComponent, },
+      { path: 'tienda-admin', component: TiendaAdminComponent,
        children:[
         { path: '',component: ProductosAdminComponent },
+        { path: 'productos',component: ProductosAdminComponent },
         { path: 'pedidos',component: PedidosAdminComponent },
         { path: 'clientes',component: ClientesAdminComponent },
         { path: 'cupones',component: CuponesAdminComponent }
@@ -97,7 +110,7 @@ const routes: Routes = [
         { path: 'configuracion', component: ConfiguracionComponent },
         { path: 'mancolista', component: MancolistaComponent },
         { path: 'tienda', component: TiendauserComponent },
-        {path: 'peticion-catalogo',component: PeticioncatalogouserComponent}
+        { path: 'peticion-catalogo', component: PeticioncatalogouserComponent },
     ]
   }
 

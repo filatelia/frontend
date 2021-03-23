@@ -10,24 +10,25 @@
         <th scope="col">Imagen</th>
         <th scope="col">País</th>
         <th scope="col">Año</th>
-        <th scope="col">Descripción de la serie</th>
-        <th scope="col">Número de catálogo</th>
+        <th scope="col">Desc. serie</th>
+        <th scope="col">N° catálogo</th>
         <th scope="col">Descripción</th>
         <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let data of dataMancoLista">
-        <th scope="row">
-            
-        </th>
-        <td><img [src]="sanitizeImageUrl(api+data.id_estampilla.Foto_JPG_800x800_px)" class="img-fluid" alt=""></td>
-        <td>{{data.id_estampilla.Pais.name}}</td>
-        <td>{{data.id_estampilla.Anio}}</td>
-        <td>{{data.id_estampilla.Descripcion_de_la_serie}}</td>
-        <td>{{data.id_estampilla.Numero_de_catalogo}}</td>
-        <td>{{data.id_estampilla.Descripcion}}</td>
-        <td><button><img src="assets/img/iconos/eliminar.svg" alt=""></button> </td>
-      </tr>
+        <tr *ngFor="let data of dataMancoLista">
+          <th scope="row">
+              
+          </th>
+          <td><img [src]="sanitizeImageUrl(api+data.id_estampilla?.Foto_JPG_800x800_px||'')" class="img-fluid" alt=""></td>
+          <td>{{data.id_estampilla.Pais.name}}</td>
+          <td>{{data.id_estampilla.Anio}}</td>
+          <td>{{data.id_estampilla.Descripcion_de_la_serie}}</td>
+          <td style="width: 15%">{{data.id_estampilla.Numero_de_catalogo}}</td>
+          <td>{{data.id_estampilla.Descripcion}}</td>
+          <td><button><img src="assets/img/iconos/eliminar.svg" alt=""></button> </td>
+        </tr>
+      
     </tbody>
   </table>

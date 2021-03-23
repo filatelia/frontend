@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-blog-admin',
@@ -6,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./blog-admin.component.scss']
 })
 export class BlogAdminComponent implements OnInit {
-  modalService: any;
 
-  constructor() { }
+
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit(): void {
   }

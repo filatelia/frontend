@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-productos-admin',
-  templateUrl: './productos-admin.component.html',
-  styleUrls: ['./productos-admin.component.scss']
+  selector: 'app-peticiones-admin',
+  templateUrl: './peticiones-admin.component.html',
+  styleUrls: ['./peticiones-admin.component.scss']
 })
-export class ProductosAdminComponent implements OnInit {
-
+export class PeticionesAdminComponent implements OnInit {
 
   constructor(private modalService: NgbModal) { }
 

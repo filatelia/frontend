@@ -44,9 +44,9 @@ export class CatalogoComponent implements OnInit {
   }
   mostrarDatosCatalogo(){
         
-    this.rest.getAllCatalogo().subscribe(data =>{
-
-       this.datoscatalogo =data;
+    this.rest.getAllCatalogo().subscribe((data: any) =>{
+        
+       this.datoscatalogo =data[0];
        for (let index = 0; index < this.datoscatalogo.length; index++) {
         const element = this.datoscatalogo[index];
         this.mostrarDatosTema(element)
