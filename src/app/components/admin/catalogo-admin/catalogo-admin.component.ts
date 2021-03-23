@@ -106,7 +106,7 @@ export class CatalogoAdminComponent implements OnInit {
         this.listar()
       },
       (er)=>{
-
+        this.message('error','Ocurrio un error inesperado')
       });
     }
   }
