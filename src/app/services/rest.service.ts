@@ -154,7 +154,7 @@ export class RestService {
     return  this.http.get(this.url+'/solicitudes');
   }
   getIdCatalogo(body:any):Observable<any>{
-    return  this.http.get(this.url+'/catalogo?'+'solicitud='+body);
+    return  this.http.get(this.url+'/catalogo/uploads/excel/catalogos/'+body);
   }
   getSolicitudMyCatalogo(body:any):Observable<any>{
     return  this.http.get(this.url+'/solicitudes/mis-solicitudes');

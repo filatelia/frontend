@@ -17,6 +17,9 @@ export class PeticionesAdminComponent implements OnInit {
   dataCatalogo: any=[
     
   ]
+  dataCatalogoTemp: any=[
+    
+  ]
     constructor(private router:Router,private modalService: NgbModal,private restService:RestService) {
       this.form=this.createFormGroup()
     }
@@ -32,7 +35,8 @@ export class PeticionesAdminComponent implements OnInit {
     this.restService.getSolicitudCatalogo({}).subscribe(
       (res:any)=>{
         // var data=res.todas_solicitudes.map(()=> {index:if, value:})
-        this.dataCatalogo=res.todas_solicitudes.sort()
+        this.dataCatalogoTemp=res.todas_solicitudes.sort()
+        this.dataCatalogo=this.dataCatalogoTemp
       },
       (err:any)=>{
         console.log(err)
@@ -97,10 +101,9 @@ export class PeticionesAdminComponent implements OnInit {
     );
   }
   viewCatalog(data:any){
-    var {message}=this.updateValue()
     this.restService.getIdCatalogo(data).subscribe((resp)=>{
       if(resp.ok){
-        this.redirect(resp.msg._id)
+        this.redirect(resp.catalogo.uid)
       }
     },
     (er)=>{
@@ -115,6 +118,11 @@ export class PeticionesAdminComponent implements OnInit {
     return new FormGroup({
       message:new FormControl('',[Validators.required,Validators.minLength(1)]),
     });
+  }
+  searchStatus(){
+      var search='';
+      var filterData=this.dataCatalogoTemp.filter((resp:any)=>resp.tipoEstadoSolicitud_id.abreviacion.includes(search));
+      this.dataCatalogo=filterData
   }
   updateValue(){
     return{
