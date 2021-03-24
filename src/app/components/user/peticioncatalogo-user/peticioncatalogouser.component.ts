@@ -51,7 +51,7 @@ export class PeticioncatalogouserComponent implements OnInit {
   createFormGroup(){
     return new FormGroup({
       nombre:new FormControl('',[Validators.required,Validators.minLength(3)]),
-      pais:new FormControl('',[Validators.required,Validators.minLength(3)]),
+      pais:new FormControl('',[Validators.required,Validators.minLength(1)]),
       valor:new FormControl('',[]),
     });
   }

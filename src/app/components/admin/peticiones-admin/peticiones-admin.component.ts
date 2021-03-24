@@ -14,6 +14,7 @@ export class PeticionesAdminComponent implements OnInit {
   form: FormGroup;
   id_solicitud: string='';
   response: any={loading:false}
+  estado: string=''
   dataCatalogo: any=[
     
   ]
@@ -120,7 +121,9 @@ export class PeticionesAdminComponent implements OnInit {
     });
   }
   searchStatus(){
-      var search='';
+      var search=this.estado;
+      console.log(search)
+      if(search=='') return;
       var filterData=this.dataCatalogoTemp.filter((resp:any)=>resp.tipoEstadoSolicitud_id.abreviacion.includes(search));
       this.dataCatalogo=filterData
   }

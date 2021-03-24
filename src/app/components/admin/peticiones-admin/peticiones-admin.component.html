@@ -12,14 +12,13 @@
                 <th>Pais</th>  
                 <th>Cliente</th> 
                 <th>
-                  <select name="" id="">
-                      <option>Estado</option>
-                      <option class="EACE1">Pendiente</option>
-                      <option class="ACE1">Esperando catalgo</option>
-                      <option class="EACE2">Para publicar</option>
-                      <option class="ACE2">Publicado</option>
-                      <option class="RCE">Rechazado</option>
-                      <option></option>
+                  <select  [(ngModel)]="estado" (change)="searchStatus()">
+                      <option value="" selected>Estado</option>
+                      <option value="EACE1">Pendiente</option>
+                      <option value="ACE1">Esperando catalgo</option>
+                      <option value="EACE2">Para publicar</option>
+                      <option value="ACE2">Publicado</option>
+                      <option value="RCE">Rechazado</option>
                   </select>
                 </th>                  
                 <th></th>                  
