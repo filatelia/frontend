@@ -144,7 +144,7 @@ export class RestService {
 
  
   estadoSolicitudCatalogo(body:any):Observable<any>{
-    console.log(this.url+'/solicitudes/aprobacion')
+  
     return  this.http.post(this.url+'/solicitudes/aprobacion', body);
   }
   createSolicitud(body:any):Observable<any>{
@@ -152,6 +152,9 @@ export class RestService {
   }
   getSolicitudCatalogo(body:any):Observable<any>{
     return  this.http.get(this.url+'/solicitudes');
+  }
+  getIdCatalogo(body:any):Observable<any>{
+    return  this.http.get(this.url+'/catalogo?'+'solicitud='+body);
   }
   getSolicitudMyCatalogo(body:any):Observable<any>{
     return  this.http.get(this.url+'/solicitudes/mis-solicitudes');

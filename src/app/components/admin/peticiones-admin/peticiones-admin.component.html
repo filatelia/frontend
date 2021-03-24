@@ -11,7 +11,17 @@
                 <th>Valor cat.</th>  
                 <th>Pais</th>  
                 <th>Cliente</th> 
-                <th>Estado </th>                  
+                <th>
+                  <select name="" id="">
+                      <option>Estado</option>
+                      <option class="EACE1">Pendiente</option>
+                      <option class="ACE1">Esperando catalgo</option>
+                      <option class="EACE2">Para publicar</option>
+                      <option class="ACE2">Publicado</option>
+                      <option class="RCE">Rechazado</option>
+                      <option></option>
+                  </select>
+                </th>                  
                 <th></th>                  
               </tr>
             </thead>
@@ -32,7 +42,7 @@
                     </a>
                   </div>
                   <ng-template #viewpublic>
-                    <a  [routerLink]="'/admin/dashboard/catalogo-seleccionado/'+data.uid" class="btn-table-rad info" >
+                    <a href="javascript:void(0)" (click)="viewCatalog(data.uid)" class="btn-table-rad info" >
                         Ver
                     </a>
                     <a *ngIf="data.tipoEstadoSolicitud_id.abreviacion=='EACE2'" (click)="validar(data.uid,'accept')" href="javascript:void(0)" class="btn-table-rad success">

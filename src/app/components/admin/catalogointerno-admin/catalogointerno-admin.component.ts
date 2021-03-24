@@ -250,7 +250,7 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
             this.responseExcel={
               archivos_subidos:res.archivos_subidos,
               numero_estampillas_repetidas:res.numero_estampillas_repetidas,
-              msg:res.archivos_subidos>0?'Archivo guardado'+res.msg:res.msg,
+              msg:res.archivos_subidos>0?'Archivo guardado '+res.msg:res.msg,
             }
             
             this.responseExcel.msg_visible=true;

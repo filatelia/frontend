@@ -28,10 +28,13 @@
                         <div class="">data.Fecha</div>
                       </div> -->
                       <div class="catalogo-btn" *ngIf="data.solicitud.tipoEstadoSolicitud_id.abreviacion=='ACE1';else btnestado">
-                        <button  type="submit" (click)="publicCatalog(data)" class="btn btn--linea">Publicar Catalogo </button>
+                        <button  type="button" (click)="publicCatalog(data)" class="btn btn--linea">Publicar Catalogo </button>
                       </div>
                       <ng-template #btnestado >
-                            <button  *ngIf="data.tipoEstadoSolicitud_id.name.includes('Rechazado')" (click)="viewStatus(data.uid)" type="button" class="btn btn--linea">Ver detalles de rechazo </button>
+                            <button  *ngIf="data.solicitud.tipoEstadoSolicitud_id.abreviacion=='RCE2';else view" (click)="viewStatus(data.uid)" type="button" class="btn btn--linea">Ver detalles de rechazo </button>
+                            <ng-template #view>
+                              <button (click)="publicCatalog(data)"  *ngIf="data.solicitud.tipoEstadoSolicitud_id.abreviacion=='ACE2'" (click)="viewStatus(data.uid)" type="button" class="btn btn--linea">Ver catalago</button>
+                            </ng-template>
                       </ng-template>
                       
                   </div>

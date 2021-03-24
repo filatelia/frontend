@@ -96,6 +96,17 @@ export class PeticionesAdminComponent implements OnInit {
       }
     );
   }
+  viewCatalog(data:any){
+    var {message}=this.updateValue()
+    this.restService.getIdCatalogo(data).subscribe((resp)=>{
+      if(resp.ok){
+        this.redirect(resp.msg._id)
+      }
+    },
+    (er)=>{
+      
+    });
+  }
   redirect(id:any){
     this.router.navigate(['/admin/dashboard/catalogo-seleccionado/'+id]);
   }
