@@ -13,6 +13,9 @@ export class PeticioncatalogouserComponent implements OnInit {
   dataCatalogo: any=[
     
   ]
+  paisValue= new FormControl('');
+  para_buscar:string='';
+
   constructor(private restService:RestService, private router: Router) {
     this.form=this.createFormGroup()
   }
@@ -57,10 +60,14 @@ export class PeticioncatalogouserComponent implements OnInit {
     location.reload();
     this.form.reset();
   }
+  select(data:any){
+    this.paisValue.setValue(data.name);
+    this.para_buscar=data.para_buscar
+  }
   updateValue(){
     return{
       catalogo_nombre:this.nombre?.value,
-      pais:this.pais?.value,
+      pais:this.para_buscar,
       valor_catalogo:this.valor?.value
     }
   }

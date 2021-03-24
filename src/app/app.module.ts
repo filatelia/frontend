@@ -62,6 +62,7 @@ import { SubastaPagesComponent } from './components/pages/subasta-pages/subasta-
 import { PeticioncatalogouserComponent } from './components/user/peticioncatalogo-user/peticioncatalogouser.component';
 import { NotifyComponent } from './components/notify/notify.component';
 import { CatalogoUserComponent } from './components/user/catalogo-user/catalogo-user.component';
+import { SearchPaisesComponent } from './components/partials/search-paises/search-paises.component';
 @NgModule({
   declarations: [
     
@@ -91,7 +92,7 @@ import { CatalogoUserComponent } from './components/user/catalogo-user/catalogo-
     TiendaAdminLinkComponent, 
     CatalogointernoAdminComponent,
     PeticioncatalogouserComponent,
-    AjustesAdminLinkComponent, AjustesAdminComponent, PedidosAdminComponent, ClientesAdminComponent, CuponesAdminComponent, PagosAdminComponent, TemasAdminComponent, CorreoAdminComponent, EnvioAdminComponent, ProductosAdminComponent, MimancolistapublicaPageComponent, CatalogointernoAdminComponent, PeticionesAdminComponent, SubastaPagesComponent, NotifyComponent, CatalogoUserComponent
+    AjustesAdminLinkComponent, AjustesAdminComponent, PedidosAdminComponent, ClientesAdminComponent, CuponesAdminComponent, PagosAdminComponent, TemasAdminComponent, CorreoAdminComponent, EnvioAdminComponent, ProductosAdminComponent, MimancolistapublicaPageComponent, CatalogointernoAdminComponent, PeticionesAdminComponent, SubastaPagesComponent, NotifyComponent, CatalogoUserComponent, SearchPaisesComponent
   ],
   imports: [
     HttpClientModule,

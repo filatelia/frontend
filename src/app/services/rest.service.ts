@@ -80,33 +80,15 @@ export class RestService {
     );
   }
 
-  /* getAllPaises(page:number):Observable<PaisesAll[]>{
-    this.isLoggedIn = !!this.tokenInterceptorService.getToken();
-    if (this.isLoggedIn) {
-      const user = this.tokenInterceptorService.getUser(); 
-      this.usuario = user;
-     
-    }
-    //let direccion = this.url + "api/catalogo/uploads/excel?"+ "token:"+this.usuario.token;
-    //return this.http.get<Catalogo[]>(direccion);
+  getAllPaises(page:number):Observable<PaisesAll[]>{
 
-    let direccion = this.url + "api/catalogo/paises/all";
+    let direccion = this.url + "/catalogo/paises/all";
     return this.http.get<PaisesAll[]>(direccion).pipe(
       map(resp =>{
-        var asd:any = [];
-
-        for (const key in resp) {
-
-        asd = resp[key];
-
-
-        }
-
-        return asd;
-
+        return resp;
       })
     );
-  }*/
+  }
   
   getSelectCatalogPais(pais: string) {
     //let direccion = this.url + "api/catalogo/uploads/excel?"+ "token:"+this.usuario.token;
@@ -122,12 +104,7 @@ export class RestService {
   }
   getSelectCatalogAnio(start:number,end:number){
     let direccion = this.url + '/catalogo/uploads/excel/cat-anio/'+start+'&'+end;
-    return this.http.get<CatalogoAll>(direccion).pipe(
-      map((resp:any) => {
-        return resp.catalogoPorPais;
-      }),
-     
-    );
+    return this.http.get<CatalogoAll>(direccion);
   }
 
   getSelectPais(pais: string): Observable<PaisesAll> {

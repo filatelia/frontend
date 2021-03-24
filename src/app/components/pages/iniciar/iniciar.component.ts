@@ -108,7 +108,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
             },
             (err) => {
               console.log(err.error.msg)
-              err.msg=err.error.msg?err.error.msg:"El correo ya existe"
+              err.msg=err.error.msg?err.error.msg:"Error al iniciar sesión"
               this.response.loading=false
               this.response=err
       

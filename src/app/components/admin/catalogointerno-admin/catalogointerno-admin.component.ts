@@ -242,7 +242,7 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
       this.rest.postCatalogoAdmin(formularioDeDatos).subscribe(
         (res: any) => {
           this.loading = false;
-
+          this.mostrarDatos();
           if (res.ok == true) {
             if(res.estampillas_repetidas){
               this.repetidasData=res.estampillas_repetidas;

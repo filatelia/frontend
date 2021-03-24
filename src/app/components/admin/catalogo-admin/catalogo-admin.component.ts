@@ -27,8 +27,10 @@ import Swal from 'sweetalert2';
 })
 
 export class CatalogoAdminComponent implements OnInit {
+  paisValue= new FormControl('');
   form: FormGroup;
   response: any={loading:false}
+  para_buscar:string='';
   dataCatalogo: any=[
     
   ]
@@ -43,7 +45,7 @@ export class CatalogoAdminComponent implements OnInit {
   createFormGroup(){
     return new FormGroup({
       nombre:new FormControl('',[Validators.required,Validators.minLength(5)]),
-      pais:new FormControl('',[Validators.required,Validators.minLength(3)]),
+      pais:new FormControl('',[Validators.required,Validators.minLength(1)]),
       valor:new FormControl('',[]),
     });
   }
@@ -53,8 +55,14 @@ export class CatalogoAdminComponent implements OnInit {
     // cargar todos los catalogos
   registrar(){
     if(!this.form.valid) return;
-    this.response.loading=true
     var data=this.updateValue()
+    this.response.loading=true
+    if(data.pais==''){
+      this.response.ok=false;
+      this.response.msg='Pais no seleccionado';
+      this.response.loading=false;
+      return;
+    }
     this.restService.createSolicitud(data).subscribe(
       (res:any)=>{
         this.response=res
@@ -114,6 +122,10 @@ export class CatalogoAdminComponent implements OnInit {
       });
     }
   }
+  select(data:any){
+    this.paisValue.setValue(data.name);
+    this.para_buscar=data.para_buscar
+  }
   message(type:any,message:any){
     const Toast = Swal.mixin({
       toast: true,
@@ -142,8 +154,8 @@ export class CatalogoAdminComponent implements OnInit {
   }
   updateValue(){
     return{
-      nombre:this.nombre?.value,
-      pais:this.pais?.value,
+      catalogo_nombre:this.nombre?.value,
+      pais:this.para_buscar,
       valor:this.valor?.value
     }
   }
