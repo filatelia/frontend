@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -29,12 +29,11 @@ import Swal from 'sweetalert2';
   ],
 })
 export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
-
+  @Input() id_catalogo='';
   public previsualizacion: string | any;
   public repetidasData: any=[];
   public archivos: any = [];
   public responseExcel: any={};
-  id_catalogo: any='';
   datos: CatalogoCompleto[] = [];
   intermedio: CatalogoCompleto[] = [];
   public loading: boolean | any;
@@ -57,7 +56,10 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
 
   ngOnInit(): void {
     // cargar todos los catalogos
-    this.id_catalogo = this.activateRoute.snapshot.paramMap.get('id_catalogo')||'/';
+    if(this.id_catalogo==''){
+      this.id_catalogo = this.activateRoute.snapshot.paramMap.get('id_catalogo')||'/';  
+    }
+    console.log(this.id_catalogo);
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,
@@ -86,7 +88,7 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
   }
 
   mostrarDatos() {
-    this.rest.getAllCatalogoAdmin(1).subscribe((catalogocompleto) => {
+    this.rest.getAllCatalogoAdmin({id_catalogo:this.id_catalogo}).subscribe((catalogocompleto) => {
       this.datos = catalogocompleto;
       this.dtTrigger.next();
     });
@@ -158,6 +160,9 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
       centered: true,
       windowClass: 'modal__admin',
     });
+  }
+  closeVerticallyCentered() {
+    this.modalService.dismissAll();
   }
   openEditCentered(contenido: any) {
     this.modalService.open(contenido, {
@@ -245,17 +250,19 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
             this.responseExcel={
               archivos_subidos:res.archivos_subidos,
               numero_estampillas_repetidas:res.numero_estampillas_repetidas,
-              msg:res.msg,
+              msg:res.archivos_subidos>0?'Archivo guardado'+res.msg:res.msg,
             }
             
             this.responseExcel.msg_visible=true;
-            this.router.navigate(['/dashboard/atalogo-seleccionado/id']);
+            // this.router.navigate(['/dashboard/atalogo-seleccionado/id']);
+
             if(this.repetidasData.length==0){
                 setTimeout(()=>{
                 },6000)
             }
             setTimeout(()=>{
               this.responseExcel.msg_visible=false;
+              this.closeVerticallyCentered();
             },5000)
             //this.router.navigate(['admin/dashboard/']);
           } else {

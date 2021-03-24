@@ -59,17 +59,10 @@ export class RestService {
       return  this.http.get(this.url+'/catalogo/uploads/excel/mis-catalogos');
   }
 
-  getAllCatalogoAdmin(page: number): Observable<CatalogoCompleto[]> {
+  getAllCatalogoAdmin(body:any): Observable<CatalogoCompleto[]> {
     this.isLoggedIn = !!this.tokenInterceptorService.getToken();
-    if (this.isLoggedIn) {
-      const user = this.tokenInterceptorService.getUser();
-      this.usuario = user;
-    }
-    //let direccion = this.url + "api/catalogo/uploads/excel?"+ "token:"+this.usuario.token;
-    //return this.http.get<Catalogo[]>(direccion);
 
-    let direccion =
-      this.url + '/catalogo/uploads/excel?' + 'token:' + this.usuario.token;
+    let direccion =this.url + '/catalogo/uploads/excel/mis-estampillas?id_catalogo='+body.id_catalogo;
     return this.http.get<CatalogoCompleto[]>(direccion).pipe(
       map((resp) => {
         console.log('Respuesta del enpoint', resp);

@@ -23,17 +23,23 @@
                 <td>{{data.usuario_id.name}}</td>    
                 <td>{{data.tipoEstadoSolicitud_id.name}}</td>  
                 <td class="editar">
-                  <div *ngIf="!data.tipoEstadoSolicitud_id.name.includes('etapa 2')&&!data.tipoEstadoSolicitud_id.name.includes('etapa 1'); else viewpublic">
+                  <div *ngIf="data.tipoEstadoSolicitud_id.abreviacion=='EACE1'; else viewpublic">
                     <a (click)="validar(data.uid,'accept')" href="javascript:void(0)" class="btn-table-rad success">
                       aceptar
                     </a>
-                    <a href="javascript:void(0)" (click)="validar(data.uid,'')" class="btn-table-rad danger ">
+                    <a href="javascript:void(0)" (click)="validar(data.uid,'')" (click)="openVerticallyCentered(content)" class="btn-table-rad danger ">
                       rechazar
                     </a>
                   </div>
                   <ng-template #viewpublic>
                     <a  [routerLink]="'/admin/dashboard/catalogo-seleccionado/'+data.uid" class="btn-table-rad info" >
                         Ver
+                    </a>
+                    <a *ngIf="data.tipoEstadoSolicitud_id.abreviacion=='EACE2'" (click)="validar(data.uid,'accept')" href="javascript:void(0)" class="btn-table-rad success">
+                      aceptar
+                    </a>
+                    <a *ngIf="data.tipoEstadoSolicitud_id.abreviacion=='EACE2'||data.tipoEstadoSolicitud_id.abreviacion=='ACE1'" href="javascript:void(0)" (click)="validar(data.uid,'')" (click)="openVerticallyCentered(content)" class="btn-table-rad danger ">
+                      rechazar
                     </a>
                   </ng-template>
               </td>

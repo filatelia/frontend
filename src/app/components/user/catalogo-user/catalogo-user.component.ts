@@ -9,6 +9,7 @@ import { RestService } from 'src/app/services/rest.service';
 })
 export class CatalogoUserComponent implements OnInit {
   activePage: any='catalog';
+  catalogo: any={};
   dataCatalogo: any=[]
   constructor(
     private router:Router,
@@ -33,7 +34,7 @@ export class CatalogoUserComponent implements OnInit {
     
   }
   publicCatalog(data:any){
-      console.log(data)
+      this.catalogo=data
       this.activePage="upload"
   }
   viewStatus(id:any){

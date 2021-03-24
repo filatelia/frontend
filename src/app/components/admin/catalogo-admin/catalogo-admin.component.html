@@ -52,10 +52,10 @@
         <!-- <h2 class="titulo titulo--chico text-center">Catálogos</h2> -->
         <div class=" container-catalogo">
             <ng-container *ngFor="let data of dataCatalogo">
-                <div *ngIf="data.tipoEstadoSolicitud_id.name.includes('etapa 2')" class="dashboard__contenido__formulario container-catalogo-item " >
+                <div class="dashboard__contenido__formulario container-catalogo-item " >
                   <div class="catalogo-letter">
-                    <div class="catalogo-title">Nombre:</div>
-                    <div class="">{{data.catalogo_nombre}}</div>
+                    <div class="catalogo-title">Tipo:</div>
+                    <div class="">{{data.name}}</div>
                   </div>
                   <div class="catalogo-letter">
                     <div class="catalogo-title">Pais:</div>
@@ -63,11 +63,11 @@
                   </div>
                   <div class="catalogo-letter">
                     <div class="catalogo-title">Estado:</div>
-                    <div class="">{{data.tipoEstadoSolicitud_id.name}}</div>
+                    <div class="">{{data.solicitud.tipoEstadoSolicitud_id.descripcion}}</div>
                   </div>
                   <div class="catalogo-letter">
-                    <div class="catalogo-title">Cliente:</div>
-                    <div class="">{{data.usuario_id.name}}</div>
+                    <div class="catalogo-title">Usuario:</div>
+                    <div class="">{{data.solicitud.usuario_id.name}}</div>
                   </div>
                   <!-- <div class="catalogo-letter-estado">
                     <div class="succsess" *ngIf="data.estado; else estado">Aprobado</div>
@@ -79,8 +79,8 @@
                     <div class="catalogo-title">Fecha:</div>
                     <div class="">data.Fecha</div>
                   </div> -->
-                  <div class="catalogo-btn" *ngIf="data.tipoEstadoSolicitud_id.name.includes('etapa 2')">
-                    <button (click)="redirect(data.uid)" type="button" class="btn btn--linea">Ir a catalogo </button>
+                  <div class="catalogo-btn" *ngIf="data.solicitud.tipoEstadoSolicitud_id.abreviacion=='ACE2'">
+                    <a  type="submit" [routerLink]="'/admin/dashboard/catalogo-seleccionado/'+data.uid" class="btn btn--linea">Ver Catalogo </a>
                   </div>
 
                 </div>
@@ -90,5 +90,3 @@
     </div>
    
 </form>
-
-<!-- modal -->

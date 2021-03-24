@@ -71,10 +71,10 @@ export class CatalogoAdminComponent implements OnInit {
     )
   }
   listar(){
-    this.restService.getSolicitudCatalogo({}).subscribe(
+    this.restService.getMyCatalog({}).subscribe(
       (res:any)=>{
         // var data=res.todas_solicitudes.map(()=> {index:if, value:})
-        this.dataCatalogo=res.todas_solicitudes.sort()
+        this.dataCatalogo=res.catalogo.sort()
       },
       (err:any)=>{
         console.log(err)
