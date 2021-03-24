@@ -7,7 +7,7 @@
           <div class="form row">
             <div class="form-group col-lg-12">
               <label for="exampleInputNombre">Nombre</label>
-              <input type="text" name="nombre" required class="form-control"
+              <input type="combo" name="nombre" required class="form-control"
               [ngClass]="{'is-valid':!nombre?.invalid&&(nombre?.dirty||nombre?.touched),'is-invalid':nombre?.invalid&&(nombre?.dirty||nombre?.touched)}"
               ngModel
               >
@@ -18,12 +18,11 @@
             </div>
             <div class="form-group col-lg-12">
                 <label for="exampleInputPais">Pais</label>
-                <td>  <select name="comboEstado">
-                  <!-- Opciones de la lista -->
-                      <option value="Selecione una Opción" selected>En espera</option> <!-- Opción por defecto -->
-                      <option value="1">Aprobado</option>
-                      <option value="3">Desaprobado</option>
-                  </select></td>   
+                 <select class="form-control pesquisa__select col-12 selectCustom">
+                  <option>teste 01</option>
+                  <option>teste 02</option>
+                  <option>teste 03</option>
+                </select> 
             </div>
             <div class="form-group col-lg-12">
               <label for="exampleInputValor">Valor</label>
