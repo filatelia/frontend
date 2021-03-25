@@ -1,1 +1,40 @@
-<p>pagos-admin works!</p>
+
+<div class="row">    
+    <div class="col-lg-10 m-auto">
+      
+        <table class="table table--normal">  
+            <thead>
+              <tr>
+                <th>Método</th> 
+                <th>Estado</th> 
+                <th>Descripción</th> 
+                <th></th>                    
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                
+                <td> Transferencias bancarias directas</td> 
+                <td> <div class="nhabep__check">
+                    <input id = "quatnb1" class = "toggle toggle-flat" type = "checkbox">
+                    <label for = "quatnb1"> </label>
+                </div></td>    
+                <td>Obtén pagos en persona mediante transferencia bancaria. También conocida como transferencia directa al banco o por cable</td>   
+                <td><a [routerLink]= "['/admin/dashboard/ajustes-admin/pagos-transferencia']">Configurar</a></td>      
+              </tr>
+              <tr>
+                
+                <td> Paypal Estandar</td> 
+                <td> <div class="nhabep__check">
+                    <input id = "quatnb2" class = "toggle toggle-flat" type = "checkbox">
+                    <label for = "quatnb2"> </label>
+                </div></td>    
+                <td>Obtén pagos en persona mediante transferencia bancaria. También conocida como transferencia directa al banco o por cable</td>   
+                <td><a [routerLink]= "['/admin/dashboard/ajustes-admin/pagos-paypal']">Configurar</a></td>                              
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
+
+<!--<button class="btn btn-outline-primary mb-2 mr-2" (click)="openVerticallyCentered(content)">Modal vertically centered</button>-->

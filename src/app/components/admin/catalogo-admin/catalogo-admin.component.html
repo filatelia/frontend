@@ -6,9 +6,14 @@
         <div class="dashboard__contenido__formulario">
           <div class="form row">
             <div class="form-group col-lg-12">
+<<<<<<< HEAD
+              <label for="exampleInputNombre">Nombre</label>
+              <input type="combo" name="nombre" required class="form-control"
+=======
               <label for="exampleInputNombre">Tipo de catalogo</label>
               
               <select  formControlName="nombre" required class="form-control"
+>>>>>>> 8ec5490c49f0bfbce63f058fa7d100725aab5e4b
               [ngClass]="{'is-valid':!nombre?.invalid&&(nombre?.dirty||nombre?.touched),'is-invalid':nombre?.invalid&&(nombre?.dirty||nombre?.touched)}"
               ngModel
               >
@@ -23,12 +28,20 @@
             </div>
             <div class="form-group col-lg-12">
                 <label for="exampleInputPais">Pais</label>
+<<<<<<< HEAD
+                 <select class="form-control pesquisa__select col-12 selectCustom">
+                  <option>teste 01</option>
+                  <option>teste 02</option>
+                  <option>teste 03</option>
+                </select> 
+=======
                 <input [formControl]="paisValue" type="text" formControlName="pais"  class="form-control" [ngClass]="{'is-valid':!pais?.invalid&&(pais?.dirty||pais?.touched),'is-invalid':pais?.invalid&&(pais?.dirty||pais?.touched)}" ngModel>
                 <app-search-paises [pais]="pais"  (select)="select($event)"></app-search-paises>
                 <div class="invalid-feedback" *ngIf="pais?.invalid&&(pais?.dirty||pais?.touched)">
                     <div *ngIf="pais?.errors?.required">Pais es requerido</div>
                     <div *ngIf="pais?.errors?.minlength">El mínimo es de 3 caracteres  </div>
                 </div>
+>>>>>>> 8ec5490c49f0bfbce63f058fa7d100725aab5e4b
             </div>
             <div class="form-group col-lg-12">
               <label for="exampleInputValor">Valor Catalogo</label>
