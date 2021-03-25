@@ -1,10 +1,16 @@
 <div>
     <div *ngIf="activePage=='peticion';else view">
-        <app-peticioncatalogo-user></app-peticioncatalogo-user>
+        <app-peticioncatalogo-user [back]="true" (activePage)="activePage=$event"></app-peticioncatalogo-user>
     </div>
     <ng-template #view>
+        
         <div *ngIf="activePage=='catalog'; else viewupload">
             <div class=" container-catalogo">
+                <div class="dashboard__contenido__formulario container-catalogo-item ">
+                    <div class="catalogo-btn">
+                      <button (click)="activePage='peticion'"  type="button"  class="btn btn--linea">Crear solicitud nueva</button>
+                    </div>
+                </div>
                 <div class="dashboard__contenido__formulario container-catalogo-item " *ngFor="let data of dataCatalogo">
                       <div class="catalogo-letter">
                         <div class="catalogo-title">Tipo:</div>
@@ -31,10 +37,13 @@
                         <button  type="button" (click)="publicCatalog(data)" class="btn btn--linea">Publicar Catalogo </button>
                       </div>
                       <ng-template #btnestado >
-                            <button  *ngIf="data.solicitud.tipoEstadoSolicitud_id.abreviacion=='RCE2';else view" (click)="viewStatus(data.uid)" type="button" class="btn btn--linea">Ver detalles de rechazo </button>
-                            <ng-template #view>
-                              <button (click)="publicCatalog(data)"  *ngIf="data.solicitud.tipoEstadoSolicitud_id.abreviacion=='ACE2'" (click)="viewStatus(data.uid)" type="button" class="btn btn--linea">Ver catalago</button>
-                            </ng-template>
+                            <div class="catalogo-btn">
+                              <button  class="catalogo-btn" *ngIf="data.solicitud.tipoEstadoSolicitud_id.abreviacion=='RCE2';else view" (click)="viewStatus(data.uid)" type="button" class="btn btn--linea">Ver detalles de rechazo </button>
+                              <ng-template #view>
+                                <button (click)="publicCatalog(data)"  *ngIf="data.solicitud.tipoEstadoSolicitud_id.abreviacion=='ACE2'||data.solicitud.tipoEstadoSolicitud_id.abreviacion=='EACE2'" (click)="viewStatus(data.uid)" type="button" class="btn btn--linea">Ver catalago</button>
+                              </ng-template>
+                              
+                            </div>
                       </ng-template>
                       
                   </div>

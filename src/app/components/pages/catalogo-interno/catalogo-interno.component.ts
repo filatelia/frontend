@@ -73,7 +73,7 @@ export class CatalogoInternoComponent implements OnInit {
     }
     this.rest.getSelectCatalogAnio(start,end).subscribe((data:any) =>{
         this.dataCatalog =[];
-        this.datoscatalogo =data;
+        this.datoscatalogo =data.catalogoPorPais;
         this.grupoCatalogo()
     });
 

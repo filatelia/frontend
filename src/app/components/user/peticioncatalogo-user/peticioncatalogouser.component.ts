@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output,EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RestService } from 'src/app/services/rest.service';
@@ -8,6 +8,8 @@ import { RestService } from 'src/app/services/rest.service';
   styleUrls: ['./peticioncatalogouser.component.scss']
 })
 export class PeticioncatalogouserComponent implements OnInit {
+  @Input() back: Boolean=false;
+  @Output() activePage =new EventEmitter();
   form: FormGroup;
   response: any={loading:false}
   dataCatalogo: any=[
@@ -55,7 +57,9 @@ export class PeticioncatalogouserComponent implements OnInit {
       valor:new FormControl('',[]),
     });
   }
-
+  backPage(){
+      this.activePage.emit('catalog')
+  }
   onResetForm(){
     location.reload();
     this.form.reset();

@@ -13,21 +13,29 @@
         <th scope="col">Desc. serie</th>
         <th scope="col">N° catálogo</th>
         <th scope="col">Descripción</th>
+        <th scope="col">Estado</th>
         <th scope="col"></th>
       </tr>
     </thead>
-    <tbody>
-        <tr *ngFor="let data of dataMancoLista">
+    <tbody *ngFor="let data of dataMancoLista">
+        <tr>
           <th scope="row">
               
           </th>
           <td><img [src]="sanitizeImageUrl(api+data.id_estampilla?.Foto_JPG_800x800_px||'')" class="img-fluid" alt=""></td>
-          <td>{{data.id_estampilla.Pais.name}}</td>
+          <td>{{data.id_estampilla?.Pais.name}}</td>
           <td>{{data.id_estampilla.Anio}}</td>
           <td>{{data.id_estampilla.Descripcion_de_la_serie}}</td>
           <td style="width: 15%">{{data.id_estampilla.Numero_de_catalogo}}</td>
           <td>{{data.id_estampilla.Descripcion}}</td>
-          <td><button><img src="assets/img/iconos/eliminar.svg" alt=""></button> </td>
+          <td>
+            <select [value]="data.estado_estampilla" [(ngModel)]="data.estado_estampilla" (change)="changeStatus(data)">
+                <option value="nuevo">Nuevo</option>
+                <option value="usado">Usado</option>
+                <option value="Es indiferente">Es indiferente</option>
+            </select>
+          </td>
+          <td><button (click)="deleteMancolista(data)"><img src="assets/img/iconos/eliminar.svg" alt=""></button> </td>
         </tr>
       
     </tbody>

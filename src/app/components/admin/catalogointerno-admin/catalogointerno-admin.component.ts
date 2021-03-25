@@ -17,6 +17,7 @@ import {
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-catalogointerno-admin',
   templateUrl: './catalogointerno-admin.component.html',
@@ -51,6 +52,7 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
     private sanitizer: DomSanitizer,
     private rest: RestService,
     private router: Router,
+    private location: Location,
     private activateRoute: ActivatedRoute,
   ) { }
 
@@ -309,6 +311,9 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
         }
       )
     } 
+  }
+  backPage(){
+    this.location.back();
   }
   selectall: boolean=false;
   selectedAll(){
