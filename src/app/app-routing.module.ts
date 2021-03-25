@@ -37,6 +37,7 @@ import {PeticioncatalogouserComponent} from './components/user/peticioncatalogo-
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 import {AuthGuard, RolGuard} from './guard/auth.guard'
+import { CatalogoUserComponent } from './components/user/catalogo-user/catalogo-user.component';
 
 
 const routes: Routes = [
@@ -74,7 +75,7 @@ const routes: Routes = [
     component: DashboardAdminComponent,
     canActivate: [AuthGuard,RolGuard],
     children: [
-      { path: '', component: CatalogoAdminComponent },
+      { path: '', component: PeticionesAdminComponent },
       { path: 'tabla', component: TablaCatalogoComponent },
       { path: 'temas', component: TemasCatalogoComponent},
       { path: 'catalogo-admin', component: CatalogoAdminComponent },
@@ -110,6 +111,7 @@ const routes: Routes = [
         { path: 'configuracion', component: ConfiguracionComponent },
         { path: 'mancolista', component: MancolistaComponent },
         { path: 'tienda', component: TiendauserComponent },
+        { path: 'catalogo', component: CatalogoUserComponent },
         { path: 'peticion-catalogo', component: PeticioncatalogouserComponent },
     ]
   }

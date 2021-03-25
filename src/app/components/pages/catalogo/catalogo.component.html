@@ -9,78 +9,16 @@
                 <div class="catalogo__content">
                     <h3 class="titulo titulo--chico">Búsqueda por país</h3>
                     <div class="row">
-
-                       <!-- <div class="col-lg-3">
-                            <a class="catalogo__content__pais">
-                                <img src="assets/img/pais/canada.png"  alt="">
-                                <h4>Canadá</h4>
-                            </a>
+                        <div class="spinner-border text-primary" role="status" *ngIf="datospaises.length<=0;else catalogo">
+                            <span class="sr-only">Loading...</span>
                         </div>
-                        <div class="col-lg-3">
-                            <a href="" class="catalogo__content__pais">
-                                <img src="assets/img/pais/mexico.png"  alt="">
-                                <h4>México</h4>
-                            </a>
-                        </div>
-                        <div class="col-lg-3">
-                            <a href="" class="catalogo__content__pais">
-                                <img src="assets/img/pais/usa.png"  alt="">
-                                <h4>U.S.A</h4>
-                            </a>
-                        </div>
-                        <div class="col-lg-3">
-                            <a href="" class="catalogo__content__pais">
-                                <img src="assets/img/pais/argentina.png"  alt="">
-                                <h4>Argentina</h4>
-                            </a>
-                        </div>
-                        <div class="col-lg-3">
-                            <a href="" class="catalogo__content__pais">
-                                <img src="assets/img/pais/bolivia.png"  alt="">
-                                <h4>Bolivia</h4>
-                            </a>
-                        </div>
-                        <div class="col-lg-3">
-                            <a href="" class="catalogo__content__pais">
-                                <img src="assets/img/pais/brazil.png"  alt="">
-                                <h4>Brasil</h4>
-                            </a>
-                        </div>
-                        <div class="col-lg-3">
-                            <a href="" class="catalogo__content__pais">
-                                <img src="assets/img/pais/chile.png"  alt="">
-                                <h4>Chile</h4>
-                            </a>
-                        </div>
-                        <div class="col-lg-3">
-                            <a href="" class="catalogo__content__pais">
-                                <img src="assets/img/pais/colombia.png"  alt="">
-                                <h4>Colombia</h4>
-                            </a>
-                        </div>
-                        <div class="col-lg-3">
-                            <a href="" class="catalogo__content__pais">
-                                <img src="assets/img/pais/ecuador.png"  alt="">
-                                <h4>Ecuador</h4>
-                            </a>
-                        </div>
-                        <div class="col-lg-3">
-                            <a href="" class="catalogo__content__pais">
-                                <img src="assets/img/pais/guyana.png"  alt="">
-                                <h4>Guyana</h4>
-                            </a>
-                        </div>
-                        <div class="col-lg-3">
-                            <a href="" class="catalogo__content__pais">
-                                <img src="assets/img/pais/paraguay.png"  alt="">
-                                <h4>Paraguay</h4>
-                            </a>
-                        </div>-->
-                        <div class="col-lg-3" *ngFor="let datos of datospaises">
-                            <a routerLink="/catalogo-interna/{{datos.Pais.para_buscar}}" class="catalogo__content__pais">
-                                <img width="70px" height="70px" class="rounded-circle"  [src]="sanitizeImageUrl(api+datos.Pais.img)"  alt="">
-                            </a>
-                        </div> 
+                        <ng-template #catalogo>
+                            <div class="col-lg-3" *ngFor="let datos of datospaises">
+                                <a routerLink="/catalogo-interna/{{datos.Pais.para_buscar}}" class="catalogo__content__pais">
+                                    <img width="70px" height="70px" class="rounded-circle"  [src]="sanitizeImageUrl(api+datos.Pais.img)"  alt="">
+                                </a>
+                            </div>
+                        </ng-template>
                     </div>
                 </div>
             </div>

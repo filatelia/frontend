@@ -1,0 +1,26 @@
+.btn-table-rad{
+    border-radius: 30px;
+    color: #fff;
+    padding: 20px;
+    margin: 3px;
+    font-size: 14px;
+    background-color: transparent;
+    text-decoration: none;
+    &:hover{
+        opacity: 0.8;
+    }
+    &:focus{
+        opacity: 0.8;
+
+    }
+    &.danger{
+        background-color: #dc3545;
+
+    }
+    &.info{
+        background-color: #007bff;;
+    }
+    &.success{
+        background-color: #28a745;;
+    }
+}

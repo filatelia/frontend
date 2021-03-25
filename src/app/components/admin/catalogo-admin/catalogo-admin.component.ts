@@ -27,8 +27,10 @@ import Swal from 'sweetalert2';
 })
 
 export class CatalogoAdminComponent implements OnInit {
+  paisValue= new FormControl('');
   form: FormGroup;
   response: any={loading:false}
+  para_buscar:string='';
   dataCatalogo: any=[
     
   ]
@@ -43,8 +45,8 @@ export class CatalogoAdminComponent implements OnInit {
   createFormGroup(){
     return new FormGroup({
       nombre:new FormControl('',[Validators.required,Validators.minLength(5)]),
-      pais:new FormControl('',[Validators.required,Validators.minLength(3)]),
-      valor:new FormControl('',[Validators.required,Validators.minLength(1)]),
+      pais:new FormControl('',[Validators.required,Validators.minLength(1)]),
+      valor:new FormControl('',[]),
     });
   }
   ngOnInit(): void {
@@ -53,24 +55,34 @@ export class CatalogoAdminComponent implements OnInit {
     // cargar todos los catalogos
   registrar(){
     if(!this.form.valid) return;
-    this.response.loading=true
     var data=this.updateValue()
+    this.response.loading=true
+    if(data.pais==''){
+      this.response.ok=false;
+      this.response.msg='Pais no seleccionado';
+      this.response.loading=false;
+      return;
+    }
     this.restService.createSolicitud(data).subscribe(
       (res:any)=>{
+        this.response=res
         this.response.loading=false
         console.log(res)
+        this.onResetForm()
+        
       },
       (err:any)=>{
+        this.response=err
         this.response.loading=false
         console.log(err)
       }
     )
   }
   listar(){
-    this.restService.getSolicitudCatalogo({}).subscribe(
+    this.restService.getMyCatalog({}).subscribe(
       (res:any)=>{
         // var data=res.todas_solicitudes.map(()=> {index:if, value:})
-        this.dataCatalogo=res.todas_solicitudes.sort()
+        this.dataCatalogo=res.catalogo.sort()
       },
       (err:any)=>{
         console.log(err)
@@ -106,9 +118,13 @@ export class CatalogoAdminComponent implements OnInit {
         this.listar()
       },
       (er)=>{
-
+        this.message('error','Ocurrio un error inesperado')
       });
     }
+  }
+  select(data:any){
+    this.paisValue.setValue(data.name);
+    this.para_buscar=data.para_buscar
   }
   message(type:any,message:any){
     const Toast = Swal.mixin({
@@ -138,10 +154,14 @@ export class CatalogoAdminComponent implements OnInit {
   }
   updateValue(){
     return{
-      nombre:this.nombre?.value,
-      pais:this.pais?.value,
+      catalogo_nombre:this.nombre?.value,
+      pais:this.para_buscar,
       valor:this.valor?.value
     }
+  }
+  onResetForm(){
+    this.listar()
+    this.form.reset();
   }
   redirect(id:any){
     this.router.navigate(['/admin/dashboard/catalogo-seleccionado/'+id]);

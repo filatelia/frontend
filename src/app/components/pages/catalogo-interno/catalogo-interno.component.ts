@@ -71,8 +71,7 @@ export class CatalogoInternoComponent implements OnInit {
     if(end==-1){
       end=new Date().getFullYear();
     }
-    this.rest.getSelectCatalogAnio(start,end).subscribe(data =>{
-      console.log(data)
+    this.rest.getSelectCatalogAnio(start,end).subscribe((data:any) =>{
         this.dataCatalog =[];
         this.datoscatalogo =data;
         this.grupoCatalogo()

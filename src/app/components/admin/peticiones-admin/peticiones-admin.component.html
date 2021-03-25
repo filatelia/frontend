@@ -1,53 +1,56 @@
-<div class="mainAdmin__listado"> </div>
+<div class="text-center">
+      <h3>Bandeja de Peticiones</h3>
+</div>
 <div class="row">    
-    <div class="col-lg-10 m-auto">
-        <a  href="javascript:void(0)" (click)="openVerticallyCentered(content)" class="mainAdmin__boton">
-            
-            <h3>Bandeja de Peticiones</h3>
-        </a>
-    </div>
-    <div class="col-lg-10 m-auto">
+    
+    <div class="col-lg-12 m-auto">
         <table class="table table--normal">  
             <thead>
               <tr>
-                <th>Valor del catálogo</th> 
-                <th></th>  
-                <th>Usuario</th> 
-                <th>Nombre del catálogo</th> 
-                <th>Estado </th>                  
+                <th>Nombre de catalogo</th> 
+                <th>Valor cat.</th>  
+                <th>Pais</th>  
+                <th>Cliente</th> 
+                <th>
+                  <select  [(ngModel)]="estado" (change)="searchStatus()">
+                      <option value="" selected>Estado</option>
+                      <option value="EACE1">Pendiente</option>
+                      <option value="ACE1">Esperando catalgo</option>
+                      <option value="EACE2">Para publicar</option>
+                      <option value="ACE2">Publicado</option>
+                      <option value="RCE">Rechazado</option>
+                  </select>
+                </th>                  
+                <th></th>                  
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                
-                <td> Mark</td>
-                <td></td>    
-                <td>Mark</td>    
-                <td>Mark</td>  
+            <tbody *ngFor="let data of dataCatalogo">
+              <tr *ngIf="!data.tipoEstadoSolicitud_id.name.includes('Rechazado')">
+                <td style="width:25%;"> {{data.catalogo_nombre}}</td>  
+                <td style="width:15%;">{{data.valor_catalogo||''}}</td>  
+                <td>{{data.pais.name||''}}</td>  
+                <td>{{data.usuario_id.name}}</td>    
+                <td>{{data.tipoEstadoSolicitud_id.name}}</td>  
                 <td class="editar">
-                  <a href=""><img src="assets/img/iconos/edit.png" alt=""></a>
-                  <a href=""><img src="assets/img/iconos/tash.png" alt=""></a>
-              </td>
-              </tr>
-              <tr>
-                
-                <td> Mark</td> 
-                <td></td>   
-                <td>Mark</td>    
-                <td>Mark</td>  
-                <td class="editar">
-                  <a href=""><img src="assets/img/iconos/edit.png" alt=""></a>
-                  <a href=""><img src="assets/img/iconos/tash.png" alt=""></a>
-              </td>                            
-              </tr>
-              <tr>
-                <td> Mark</td>  
-                <td></td>  
-                <td>Mark</td>    
-                <td>Mark</td>  
-                <td class="editar">
-                  <a href=""><img src="assets/img/iconos/edit.png" alt=""></a>
-                  <a href=""><img src="assets/img/iconos/tash.png" alt=""></a>
+                  <div *ngIf="data.tipoEstadoSolicitud_id.abreviacion=='EACE1'; else viewpublic">
+                    <a (click)="validar(data.uid,'accept')" href="javascript:void(0)" class="btn-table-rad success">
+                      aceptar
+                    </a>
+                    <a href="javascript:void(0)" (click)="validar(data.uid,'')" (click)="openVerticallyCentered(content)" class="btn-table-rad danger ">
+                      rechazar
+                    </a>
+                  </div>
+                  <ng-template #viewpublic>
+                    <a href="javascript:void(0)" (click)="viewCatalog(data.uid)" class="btn-table-rad info" >
+                        Ver
+                    </a>
+                    <a *ngIf="data.tipoEstadoSolicitud_id.abreviacion=='EACE2'" (click)="validar(data.uid,'accept')" href="javascript:void(0)" class="btn-table-rad success">
+                      aceptar
+                    </a>
+                    <a *ngIf="data.tipoEstadoSolicitud_id.abreviacion=='EACE2'||data.tipoEstadoSolicitud_id.abreviacion=='ACE1'" href="javascript:void(0)" (click)="validar(data.uid,'')" (click)="openVerticallyCentered(content)" class="btn-table-rad danger ">
+                      rechazar
+                    </a>
+                  </ng-template>
               </td>
               </tr>
             </tbody>
@@ -58,34 +61,21 @@
 
 <ng-template #content let-modal ngClass="modal__admin">
     <div class="modal-header">
-      <h4 class="modal-title">Nuevo Artículo</h4>
+      <h4 class="modal-title">Razon del rechazo</h4>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="modal-body">
-      <form class="row">
-       
+      <form class="row" [formGroup]="form" (ngSubmit)="validar(-1,'dennied')">
           <div class="form-group col-lg-12">
-            <label for="">Titulo</label>
-            <input type="text" class="form-control">
-          </div>
-          <div class="form-group col-lg-12">
-            <label for="">Autor</label>
-            <input type="text" class="form-control">
-          </div>
-          <div class="form-group col-lg-12">
-            <label for="">Etiquetas</label>
-            <input type="text" class="form-control">
-          </div>   
-          <div class="form-group col-lg-12">
-            <label for="">Fechas</label>
-            <input type="text" class="form-control">
-          </div>        
+            <label for="">Mensaje</label>
+            <input type="text" formControlName="message" required name="message" class="form-control" ngModel>
+          </div> 
+         <div class="text-center" style="    width: 100%;">
+          <button type="submit" class="btn btn--negro" (click)="modal.close('Close click')">Enviar rechazo</button>      
+         </div>
       </form>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn--negro" (click)="modal.close('Close click')">Guardar</button>
     </div>
   </ng-template>
 

@@ -55,18 +55,14 @@ export class RestService {
      
     );
   }
+  getMyCatalog(body:any):Observable<any>{
+      return  this.http.get(this.url+'/catalogo/uploads/excel/mis-catalogos');
+  }
 
-  getAllCatalogoAdmin(page: number): Observable<CatalogoCompleto[]> {
+  getAllCatalogoAdmin(body:any): Observable<CatalogoCompleto[]> {
     this.isLoggedIn = !!this.tokenInterceptorService.getToken();
-    if (this.isLoggedIn) {
-      const user = this.tokenInterceptorService.getUser();
-      this.usuario = user;
-    }
-    //let direccion = this.url + "api/catalogo/uploads/excel?"+ "token:"+this.usuario.token;
-    //return this.http.get<Catalogo[]>(direccion);
 
-    let direccion =
-      this.url + '/catalogo/uploads/excel?' + 'token:' + this.usuario.token;
+    let direccion =this.url + '/catalogo/uploads/excel/mis-estampillas?id_catalogo='+body.id_catalogo;
     return this.http.get<CatalogoCompleto[]>(direccion).pipe(
       map((resp) => {
         console.log('Respuesta del enpoint', resp);
@@ -84,33 +80,15 @@ export class RestService {
     );
   }
 
-  /* getAllPaises(page:number):Observable<PaisesAll[]>{
-    this.isLoggedIn = !!this.tokenInterceptorService.getToken();
-    if (this.isLoggedIn) {
-      const user = this.tokenInterceptorService.getUser(); 
-      this.usuario = user;
-     
-    }
-    //let direccion = this.url + "api/catalogo/uploads/excel?"+ "token:"+this.usuario.token;
-    //return this.http.get<Catalogo[]>(direccion);
+  getAllPaises(page:number):Observable<PaisesAll[]>{
 
-    let direccion = this.url + "api/catalogo/paises/all";
+    let direccion = this.url + "/catalogo/paises/all";
     return this.http.get<PaisesAll[]>(direccion).pipe(
       map(resp =>{
-        var asd:any = [];
-
-        for (const key in resp) {
-
-        asd = resp[key];
-
-
-        }
-
-        return asd;
-
+        return resp;
       })
     );
-  }*/
+  }
   
   getSelectCatalogPais(pais: string) {
     //let direccion = this.url + "api/catalogo/uploads/excel?"+ "token:"+this.usuario.token;
@@ -126,12 +104,7 @@ export class RestService {
   }
   getSelectCatalogAnio(start:number,end:number){
     let direccion = this.url + '/catalogo/uploads/excel/cat-anio/'+start+'&'+end;
-    return this.http.get<CatalogoAll>(direccion).pipe(
-      map((resp:any) => {
-        return resp.catalogoPorPais;
-      }),
-     
-    );
+    return this.http.get<CatalogoAll>(direccion);
   }
 
   getSelectPais(pais: string): Observable<PaisesAll> {
@@ -171,7 +144,7 @@ export class RestService {
 
  
   estadoSolicitudCatalogo(body:any):Observable<any>{
-    console.log(this.url+'/solicitudes/aprobacion')
+  
     return  this.http.post(this.url+'/solicitudes/aprobacion', body);
   }
   createSolicitud(body:any):Observable<any>{
@@ -179,6 +152,9 @@ export class RestService {
   }
   getSolicitudCatalogo(body:any):Observable<any>{
     return  this.http.get(this.url+'/solicitudes');
+  }
+  getIdCatalogo(body:any):Observable<any>{
+    return  this.http.get(this.url+'/catalogo/uploads/excel/catalogos/'+body);
   }
   getSolicitudMyCatalogo(body:any):Observable<any>{
     return  this.http.get(this.url+'/solicitudes/mis-solicitudes');

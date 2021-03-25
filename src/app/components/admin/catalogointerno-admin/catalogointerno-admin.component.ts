@@ -1,10 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { RestService } from '../../../services/rest.service';
 import { CatalogoCompleto } from '../../../models/catalogo.interface';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SelectPais } from '../../../models/paises.interface';
 
 import {
@@ -29,7 +29,7 @@ import Swal from 'sweetalert2';
   ],
 })
 export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
-
+  @Input() id_catalogo='';
   public previsualizacion: string | any;
   public repetidasData: any=[];
   public archivos: any = [];
@@ -50,12 +50,16 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
     private modalService: NgbModal,
     private sanitizer: DomSanitizer,
     private rest: RestService,
-    private router: Router
+    private router: Router,
+    private activateRoute: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
     // cargar todos los catalogos
-
+    if(this.id_catalogo==''){
+      this.id_catalogo = this.activateRoute.snapshot.paramMap.get('id_catalogo')||'/';  
+    }
+    console.log(this.id_catalogo);
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,
@@ -84,7 +88,7 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
   }
 
   mostrarDatos() {
-    this.rest.getAllCatalogoAdmin(1).subscribe((catalogocompleto) => {
+    this.rest.getAllCatalogoAdmin({id_catalogo:this.id_catalogo}).subscribe((catalogocompleto) => {
       this.datos = catalogocompleto;
       this.dtTrigger.next();
     });
@@ -157,6 +161,9 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
       windowClass: 'modal__admin',
     });
   }
+  closeVerticallyCentered() {
+    this.modalService.dismissAll();
+  }
   openEditCentered(contenido: any) {
     this.modalService.open(contenido, {
       centered: true,
@@ -221,16 +228,21 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
   subirArchivo(): any {
     try {
       this.loading = true;
+      
+     
       const formularioDeDatos = new FormData();
+      
+
       this.archivos.forEach((archivo: string) => {
         formularioDeDatos.append('sampleFile', archivo);
        
 
       });
+      formularioDeDatos.append('id_catalogo', this.id_catalogo);
       this.rest.postCatalogoAdmin(formularioDeDatos).subscribe(
         (res: any) => {
           this.loading = false;
-
+          this.mostrarDatos();
           if (res.ok == true) {
             if(res.estampillas_repetidas){
               this.repetidasData=res.estampillas_repetidas;
@@ -238,17 +250,19 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
             this.responseExcel={
               archivos_subidos:res.archivos_subidos,
               numero_estampillas_repetidas:res.numero_estampillas_repetidas,
-              msg:res.msg,
+              msg:res.archivos_subidos>0?'Archivo guardado '+res.msg:res.msg,
             }
             
             this.responseExcel.msg_visible=true;
-            this.router.navigate(['/dashboard/atalogo-seleccionado/id']);
+            // this.router.navigate(['/dashboard/atalogo-seleccionado/id']);
+
             if(this.repetidasData.length==0){
                 setTimeout(()=>{
                 },6000)
             }
             setTimeout(()=>{
               this.responseExcel.msg_visible=false;
+              this.closeVerticallyCentered();
             },5000)
             //this.router.navigate(['admin/dashboard/']);
           } else {

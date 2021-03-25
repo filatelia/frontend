@@ -49,7 +49,7 @@
             <th>Tema</th>
             <th>Numero Catálogo</th>
             <th>Tipo</th>
-            <th>Acciones</th>
+            <!-- <th>Acciones</th> -->
           </tr>
         </thead>
         <tbody>
@@ -61,10 +61,10 @@
             <td>{{ datos.Tema.name}}</td>
             <td>{{ datos.Numero_de_catalogo }}</td>
             <td>{{ datos.Tipo}}</td>
-            <td> <a class="pointer" (click)="openEditCentered(contenido)"><img src="assets/img/iconos/edit.png" title="Editar"></a> /
+            <!-- <td> <a class="pointer" (click)="openEditCentered(contenido)"><img src="assets/img/iconos/edit.png" title="Editar"></a> /
               <a class="pointer" name="{{ datos.Codigo }}" id="{{ datos.uid }}"
                 (click)="eliminarElemento(Eliminar.id, Eliminar.name)" #Eliminar><img title="Eliminar"
-                  src="assets/img/iconos/tash.png" alt=""></a></td>
+                  src="assets/img/iconos/tash.png" alt=""></a></td> -->
           </tr>
         </tbody>
       </table>
@@ -156,10 +156,16 @@
     </div>
     <button *ngIf="repetidasData.length==0||repetidasData==null;else btnOmitidas" type="button" class="btn btn--negro" [disabled]="loading" (click)="subirArchivo()">
       {{(loading) ? 'Cargando.....' : 'Subir Archivo'}}
+      <div class="spinner-border text-light" role="status" *ngIf="loading">
+        <span class="sr-only">Loading...</span>
+      </div>
     </button>
     <ng-template #btnOmitidas>
       <button type="button" class="btn btn--negro" [disabled]="loading" (click)="guardarOmitidas()">
         {{(loading) ? 'Cargando.....' : 'Actualizar seleccionados'}}
+        <div class="spinner-border text-light" role="status" *ngIf="loading">
+          <span class="sr-only">Loading...</span>
+        </div>
       </button>
     </ng-template>
   </div>

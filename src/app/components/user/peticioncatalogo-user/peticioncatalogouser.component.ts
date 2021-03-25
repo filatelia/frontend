@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { RestService } from 'src/app/services/rest.service';
 @Component({
   selector: 'app-peticioncatalogo-user',
@@ -12,12 +13,14 @@ export class PeticioncatalogouserComponent implements OnInit {
   dataCatalogo: any=[
     
   ]
-  constructor(private restService:RestService) {
+  paisValue= new FormControl('');
+  para_buscar:string='';
+
+  constructor(private restService:RestService, private router: Router) {
     this.form=this.createFormGroup()
   }
 
   ngOnInit(): void {
-    this.listar()
   }
   registrar(){
     if(!this.form.valid) return;
@@ -38,19 +41,8 @@ export class PeticioncatalogouserComponent implements OnInit {
       }
     )
   }
-  listar(){
-    this.restService.getSolicitudMyCatalogo({}).subscribe(
-      (res:any)=>{
-        this.dataCatalogo=res.solicitudes
-      },
-      (err:any)=>{
-        console.log(err)
-      }
-    )
-    
-  }
   redirect(id:any){
-
+      
   }
   viewStatus(id:any){
 
@@ -58,20 +50,24 @@ export class PeticioncatalogouserComponent implements OnInit {
   }
   createFormGroup(){
     return new FormGroup({
-      nombre:new FormControl('',[Validators.required,Validators.minLength(5)]),
-      pais:new FormControl('',[Validators.required,Validators.minLength(3)]),
-      valor:new FormControl('',[Validators.required,Validators.minLength(1)]),
+      nombre:new FormControl('',[Validators.required,Validators.minLength(3)]),
+      pais:new FormControl('',[Validators.required,Validators.minLength(1)]),
+      valor:new FormControl('',[]),
     });
   }
 
   onResetForm(){
-    this.listar();
+    location.reload();
     this.form.reset();
+  }
+  select(data:any){
+    this.paisValue.setValue(data.name);
+    this.para_buscar=data.para_buscar
   }
   updateValue(){
     return{
       catalogo_nombre:this.nombre?.value,
-      pais:this.pais?.value,
+      pais:this.para_buscar,
       valor_catalogo:this.valor?.value
     }
   }
