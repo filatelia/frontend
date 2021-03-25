@@ -38,6 +38,7 @@ import {PeticioncatalogouserComponent} from './components/user/peticioncatalogo-
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 import {AuthGuard, RolGuard} from './guard/auth.guard'
 import { CatalogoUserComponent } from './components/user/catalogo-user/catalogo-user.component';
+import { PaypalAdminComponent } from './components/admin/paypal-admin/paypal-admin.component';
 
 
 const routes: Routes = [
@@ -96,7 +97,9 @@ const routes: Routes = [
       children:[
         { path: 'pagos',component: PagosAdminComponent },
         { path: 'envio',component: EnvioAdminComponent },
-        { path: 'correo',component: CorreoAdminComponent }
+        { path: 'correo',component: CorreoAdminComponent },
+        { path: 'pagos-paypal', component: PaypalAdminComponent },
+
       ]}
     ],
   },
