@@ -17,6 +17,11 @@ import {EnvioAdminComponent} from './components/admin/envio-admin/envio-admin.co
 import {CorreoAdminComponent} from './components/admin/correo-admin/correo-admin.component';
 import {CatalogointernoAdminComponent} from './components/admin/catalogointerno-admin/catalogointerno-admin.component';
 import {PeticionesAdminComponent} from './components/admin/peticiones-admin/peticiones-admin.component'
+import { MonedaAdminComponent } from './components/admin/moneda-admin/moneda-admin.component';
+import { TransferenciaAdminComponent } from './components/admin/transferencia-admin/transferencia-admin.component';
+import { PaypalAdminComponent } from './components/admin/paypal-admin/paypal-admin.component';
+import { AddcorreoAdminComponent } from './components/admin/addcorreo-admin/addcorreo-admin.component';
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 import { TiendaComponent } from './components/pages/tienda/tienda.component';
@@ -38,7 +43,6 @@ import {PeticioncatalogouserComponent} from './components/user/peticioncatalogo-
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 import {AuthGuard, RolGuard} from './guard/auth.guard'
 import { CatalogoUserComponent } from './components/user/catalogo-user/catalogo-user.component';
-import { PaypalAdminComponent } from './components/admin/paypal-admin/paypal-admin.component';
 
 
 const routes: Routes = [
@@ -76,7 +80,7 @@ const routes: Routes = [
     component: DashboardAdminComponent,
     canActivate: [AuthGuard,RolGuard],
     children: [
-      { path: '', component: PeticionesAdminComponent },
+      { path: '', component: CatalogoAdminComponent },
       { path: 'tabla', component: TablaCatalogoComponent },
       { path: 'temas', component: TemasCatalogoComponent},
       { path: 'catalogo-admin', component: CatalogoAdminComponent },
@@ -95,11 +99,14 @@ const routes: Routes = [
       { path: 'blog-admin', component: BlogAdminComponent },
       { path: 'ajustes-admin', component: AjustesAdminComponent,
       children:[
+        { path: '',component: MonedaAdminComponent },
+        { path: 'monedas',component: MonedaAdminComponent },
         { path: 'pagos',component: PagosAdminComponent },
+        { path: 'pagos-transferencia',component: TransferenciaAdminComponent },
         { path: 'envio',component: EnvioAdminComponent },
         { path: 'correo',component: CorreoAdminComponent },
-        { path: 'pagos-paypal', component: PaypalAdminComponent },
-
+        { path: 'pagos-paypal',component: PaypalAdminComponent },
+        { path: 'add-correo',component: AddcorreoAdminComponent }
       ]}
     ],
   },
