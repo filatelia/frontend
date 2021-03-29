@@ -5,6 +5,7 @@ import { RestService } from 'src/app/services/rest.service';
 import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 import { Clipboard } from '@angular/cdk/clipboard';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-mancolista',
   templateUrl: './mancolista.component.html',
@@ -17,7 +18,7 @@ export class MancolistaComponent implements OnInit {
   api = environment.conect_url;
   constructor(
     private clipboard: Clipboard,
-    private restService: RestService,private sanitizer: DomSanitizer,) { }
+    private restService: RestService,private sanitizer: DomSanitizer,private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.getMancoLista()
@@ -28,6 +29,11 @@ export class MancolistaComponent implements OnInit {
        
        
       });
+  }
+
+  openVerticallyCentered(content : any) {
+    this.modalService.open(content, { centered: true, windowClass: "modal__admin"});
+
   }
   
   sanitizeImageUrl(imageUrl: string): SafeUrl {

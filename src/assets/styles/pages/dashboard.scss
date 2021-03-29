@@ -134,7 +134,7 @@
 }
 
 .sidebar{
-    width: 13.5%;
+    width: 13rem;
     top: 0;    
     background-color: $negro;
     height: 100vh;
@@ -176,7 +176,7 @@
                 }*/
                 a{
                     color: $blanco;
-                    font-size: 21px;
+                    font-size: 15px;
                     font-family: $DMregular;
                     position: relative;
                     svg,
@@ -190,7 +190,7 @@
                         }
                     }
                     span{
-                        margin-left: 34px;
+                        margin-left: 40px;
                         display: block;
                     }
                 }
@@ -200,7 +200,7 @@
             li{
                 padding: 5px 0px;
                 a{
-                    font-size: 16px;
+                    font-size: 10px;
                     color: darken($blanco, 10);
                 }
             }
@@ -554,3 +554,4 @@
         }
     }
 }
+
