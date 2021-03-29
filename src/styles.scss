@@ -1,5 +1,6 @@
 /* Importando variables y estilos. */
 @import "./assets/styles/variables/variables.scss";
+@import "./assets/styles/variables/font.scss";
 @import "./assets/styles/pages/pages.scss";
 @import "./assets/styles/media/media.scss";
 
@@ -10,22 +11,6 @@ body{
 }
 
 
-@font-face {
-    font-family: 'DMitalic';
-    src: url(./assets/font/DMItalic.ttf);
-    font-weight: regular;
-}
-@font-face {
-    font-family: 'prata';
-    src: url(./assets/font/prata.ttf);
-    font-weight: regular;
-}
-
-@font-face {
-    font-family: 'DMregular';
-    src: url(./assets/font/DMRegular.ttf);
-    font-weight: regular;
-}
 
 .session{
     height: 100vh;
@@ -547,46 +532,7 @@ body{
 }
 
 
-.footer{
-    background-color: $negro;
-    padding:80px 0px 130px;
-    &__logo{
-        text-align: center;
-        img{
-            width: 175px;
-        }
-        ul{
-            margin-top: 30px;
-            padding: 0;
-            li{
-                display: inline-block;
-                padding: 0px 16px;
-                a{
-                    img{
-                        width: 35px;
-                    }
-                }
-            }
-        }
-    }
-    &__content{
-        font-family: $lato;
-        &:nth-of-type(2){
-            margin-top: 78px;
-        }
-        h3{
-            color: $plomo;
-            font-size: 27px;
-            margin-bottom: 18px;
-        }
-        a{
-            display: block;
-            color: $blanco;
-            font-size: 19px;
-            margin-bottom: 7px;
-        }
-    }
-}
+
 /*===============================
 ============ END HOME ==========
 ===============================*/
