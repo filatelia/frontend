@@ -8,17 +8,64 @@
         font-size: 85px;
     }
     &--grande2{
-        font-size: 60px;
+        font-size: 85px;
         line-height: 70px;
     }
     &--mediano{
         font-size:30px;
         margin: 0;
     }
+    &--mediano2{
+        display: inline-block;
+        margin: 8px;
+        line-height: 40px;
+        font-size: 1.3rem;
+    }
+    
     &--chico{
-        font-size: 25px;
+        font-size: 1.5rem;
+    } 
+    &--chico2{
+        font-size: 2rem;
+    }
+    
+}
+////////////////////////////////////////////////
+
+.icono2{
+    width: 30px;
+    height: 30px;
+    background-color: $negro;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    svg{
+        width: 20px;
+        fill:$blanco;
     }
 }
+
+//////////////////////////////////////////////////////////////////////
+
+.boton{ 
+    width: 40px;
+    height: 40px;
+    background-color: $negro;
+    border-radius: 50%;
+    transform: rotate(180deg);            
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    svg{                               
+        width: 20px;
+        fill:$blanco;
+    }
+}
+
+///////////////////////////////////////
 
 .parrafo{
     color: $negro;
@@ -32,6 +79,7 @@
         letter-spacing: 0px;
     }
 }
+///////////////////////////////////////////
 
 .seccion{
     .parrafo{
@@ -43,3 +91,235 @@
         margin-bottom: 23px;
     }
 }
+////////////////////////////////////
+select.selectCustom:focus {
+    box-shadow: 0 0 0 0;
+    height: 3rem;
+    border: 1px solid #ccc;
+    outline: 0;
+}
+select.selectCustom{
+  border-radius: 0px !important;
+  height: 3rem;
+}
+select.selectCustom option{
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255)
+}
+///////////////////////////////////////
+
+input.toggle-flat + label {
+    padding: 2px;
+    width: 43px;
+    height: 25px;
+    background-color:$plomoOscuro;
+    border-radius: 60px;
+    transition: background 0.4s;
+  }
+  input.toggle-flat + label:before,
+  input.toggle-flat + label:after {
+    display: block;
+    position: absolute;
+    content: "";
+  }
+  input.toggle-flat + label:before {
+    top: 3px;
+    left: 3px;
+    bottom: 3px;
+    right: 3px;
+    background-color: $blanco;
+    border-radius: 60px;
+    transition: background 0.4s;
+  }
+  input.toggle-flat + label:after {
+    top: 5px;
+    left: 7px;
+    bottom: 6px;
+    width: 14px;
+    background-color: $plomoOscuro;
+    border-radius: 60px;
+    transition: margin 0.4s, background 0.4s;
+  }
+  input.toggle-flat:checked + label {
+    background-color: $mostaza;
+  }
+  input.toggle-flat:checked + label:after {
+    margin-left: 15px;
+    background-color:$mostaza;
+  }
+.toggle{
+    position: absolute;
+    margin-left:-9999px;
+    visibility: hidden;                            
+}
+.toggle + label{
+    display: block;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+}
+
+//////////////////////////////////////////////
+
+input{
+    height: 52px;
+    border-radius: 0;
+    color: $negro;
+    font-family: $lato;
+    padding: 10px;
+    font-size: 22px;
+    border:1px solid $plomo;
+    &:focus{
+        border-color:$negro;
+        box-shadow:0 0 0 0.2rem rgba(44, 44, 44, 0.19);
+    }
+}
+
+//////////////////////////////////////////////////////
+label{
+    color: $plomoOscuro;
+    font-size: 15px;
+    font-family: $DMregular;
+}
+//////////////////////////////////////////////////////////////
+
+
+.btn{
+    &--negro{
+
+        display: inline-block;
+        padding:22px 40px;
+        line-height: 30px;
+        border-radius: 0;
+        min-width: 265px;    
+        line-height: 30px;
+
+        background-color: $negro;
+        color: $blanco;
+        font-family: $prata;
+        font-size: 23px;
+        border: 1px solid $negro!important;
+        background: -webkit-gradient(linear, left top, right top, color-stop(50%,$blanco), color-stop(50%, $negro));
+        background: linear-gradient(to right, transparent 50%,  $negro 50%);
+        background-size: 200% 100%;
+        background-position: right bottom;
+        -webkit-transition: all 0.4s ease-in-out;
+        transition: all 0.4s ease-in-out;
+        &:hover{
+            background-color:transparent;
+            text-decoration: none;
+            color: $negro;
+            background-position: left bottom;
+            text-decoration: none;
+        }
+    }
+    &--linea{
+
+        display: inline-block;
+        padding:22px 40px;
+        line-height: 30px;
+        border-radius: 0;
+        min-width: 265px;    
+        line-height: 30px;
+
+        background-color: transparent;
+        color: $negro;
+        font-family: $prata;
+        font-size: 23px;
+        border: 1px solid $negro;        
+        background: -webkit-gradient(linear, left top, right top, color-stop(50%,$negro), color-stop(50%, transparent));
+        background: linear-gradient(to right, $negro 50%,  transparent 50%);
+        background-size: 201% 100%;
+        background-position: right bottom;
+        -webkit-transition: all 0.4s ease-in-out;
+        transition: all 0.4s ease-in-out;
+        &:hover{
+            background-color:transparent;
+            text-decoration: none;
+            color: $blanco;
+            background-position: left bottom;
+            text-decoration: none;
+        }
+    }
+    &--linea_min_negro{
+
+        display: inline-block;
+        padding:22px 40px;
+        line-height: 30px;
+        border-radius: 0;
+        min-width: 12rem;    
+        line-height: 0.1rem;
+
+        background-color: $negro;
+        color: $blanco;
+        font-family: $prata;
+        font-size: 15;
+        border: 1px solid $negro!important;
+        background: -webkit-gradient(linear, left top, right top, color-stop(50%,$blanco), color-stop(50%, $negro));
+        background: linear-gradient(to right, transparent 50%,  $negro 50%);
+        background-size: 200% 100%;
+        background-position: right bottom;
+        -webkit-transition: all 0.4s ease-in-out;
+        transition: all 0.4s ease-in-out;
+        &:hover{
+            background-color:transparent;
+            text-decoration: none;
+            color: $negro;
+            background-position: left bottom;
+            text-decoration: none;
+        }
+    }
+
+    &--linea_min_blanco{
+
+        display: inline-block;
+    padding:22px 40px;
+    line-height: 30px;
+    border-radius: 0;
+    min-width: 12rem;    
+    line-height: 0.1rem;
+
+        background-color: transparent;
+        color: $negro;
+        font-family: $prata;
+        font-size: 15px;
+        border: 1px solid $negro;        
+        background: -webkit-gradient(linear, left top, right top, color-stop(50%,$negro), color-stop(50%, transparent));
+        background: linear-gradient(to right, $negro 50%,  transparent 50%);
+        background-size: 201% 100%;
+        background-position: right bottom;
+        -webkit-transition: all 0.4s ease-in-out;
+        transition: all 0.4s ease-in-out;
+        &:hover{
+            background-color:transparent;
+            text-decoration: none;
+            color: $blanco;
+            background-position: left bottom;
+            text-decoration: none;
+        }
+    }
+    &--plomo{
+        background-color: #F5F2F2;
+        color: $negro;
+        font-size: 22px;            
+        padding: 16px 26px;
+        font-family: $lato;
+        border: 1px solid  #F5F2F2!important;
+        background: -webkit-gradient(linear, left top, right top, color-stop(50%,$blanco), color-stop(50%, #F5F2F2));
+        background: linear-gradient(to right, transparent 50%,   #F5F2F2 50%);
+        background-size: 200% 100%;
+        background-position: right bottom;
+        -webkit-transition: all 0.4s ease-in-out;
+        transition: all 0.4s ease-in-out;
+        &:hover{
+            background-color:transparent;
+            text-decoration: none;
+            color: $negro;
+            border: 1px solid  $negro!important;
+            background-position: left bottom;
+            text-decoration: none;
+        }
+    }
+}
+

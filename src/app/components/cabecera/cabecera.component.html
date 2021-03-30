@@ -39,13 +39,17 @@
                                 <a [routerLink]= "['/admin/dashboard']">{{name}}</a> 
                             
                             </li>
-
-                            <li class="perfil" *ngIf="showClientBoard">
+                           <!--[routerLink]= "['/user/dashboard']"-->
+                            <li class="perfil" *ngIf="showClientBoard" ngbDropdown>
+                                
                                 <div class="perfil__icono">
                                  <img src="../assets/img/iconos/user.png" alt="">
+                                </div> 
+                                <a ngbDropdownToggle>{{name}}</a> 
+                                <div ngbDropdownMenu>
+                                <a *ngIf="isLoggedIn" href="javascript:void(0)" (click)="logout()">Cerrar sesión</a>
                                 </div>
-                                <a [routerLink]= "['/user/dashboard']">{{name}}</a> 
-                            
+                           
                             </li>
                             <li *ngIf="isLoggedIn" class="notificacion" ngbDropdown>
                                 <a ngbDropdownToggle>
