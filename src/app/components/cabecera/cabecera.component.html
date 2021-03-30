@@ -25,29 +25,30 @@
                  <div class="col-lg-12 p-0 d-flex align-items-center">
                      <div class="header__right">
                          <ul>
-                             <li><a href="">Contacto</a></li>
-                             <li  *ngIf="!isLoggedIn"><a [routerLink]= "['/auth/register']" >Registrate</a></li>
-                             <li *ngIf="!isLoggedIn"><a [routerLink]= "['/auth/login']" >Iniciar Sesión</a></li>
+                             <li><a class="header__blanco" href="">Contacto</a></li>
+                             <li  *ngIf="!isLoggedIn"><a class="header__blanco" [routerLink]= "['/auth/register']" >Registrate</a></li>
+                             <li *ngIf="!isLoggedIn"><a class="header__blanco" [routerLink]= "['/auth/login']" >Iniciar Sesión</a></li>
                             
-                             <li  *ngIf="isLoggedIn"><a href="javascript:void(0)" (click)="logout()">Cerrar sesión</a></li>
+                            
                            
                             
-                             <li class="perfil" *ngIf="showAdminBoard">
-                                <div class="perfil__icono">
-                                 <img src="../assets/img/iconos/user.png" alt="">
-                                </div>
-                                <a [routerLink]= "['/admin/dashboard']">{{name}}</a> 
                             
-                            </li>
                            <!--[routerLink]= "['/user/dashboard']"-->
-                            <li class="perfil" *ngIf="showClientBoard" ngbDropdown>
-                                
-                                <div class="perfil__icono">
+                            <li class="perfil"  ngbDropdown  *ngIf="showAdminBoard||showClientBoard">
+                                <div class="perfil__icono" >
                                  <img src="../assets/img/iconos/user.png" alt="">
                                 </div> 
-                                <a ngbDropdownToggle>{{name}}</a> 
+                                <a class="header__blanco" ngbDropdownToggle>{{name}}</a> 
                                 <div ngbDropdownMenu>
-                                <a *ngIf="isLoggedIn" href="javascript:void(0)" (click)="logout()">Cerrar sesión</a>
+                                    <li class="perfil J-header-item" *ngIf="showAdminBoard">
+                                        <a class="J-header-link  header__negro" [routerLink]= "['/admin/dashboard']">{{name}}</a>
+                                    </li>
+                                    <li class="perfil J-header-item" *ngIf="showClientBoard">
+                                        <a class="J-header-link  header__negro"  [routerLink]= "['/admin/dashboard']">{{name}}</a>
+                                    </li>
+                                    <li *ngIf="isLoggedIn" class="J-header-item">
+                                        <a class="J-header-link header__negro" href="javascript:void(0)" (click)="logout()">Cerrar sesión</a>
+                                    </li>
                                 </div>
                            
                             </li>
@@ -57,6 +58,14 @@
                                 </a>
                                   <div ngbDropdownMenu class="notificacioneslink">
                                       <app-notify></app-notify>
+                                  </div>
+                            </li>
+                            <li *ngIf="isLoggedIn" class="notificacion2" ngbDropdown> 
+                                <a ngbDropdownToggle>
+                                    <img src="../assets/img/iconos/comment.svg" alt="">
+                                </a>
+                                  <div ngbDropdownMenu class="notificacioneslink">
+                                     hola
                                   </div>
                             </li>
                               <li  class="notificacion">
@@ -73,7 +82,8 @@
         </div>
     </div>
   </header>
-  <!-- menu responsive -->
+  <!--
+  
  <div class="header__mobile">
      <div class="header__mobile__logo">
        <a class="navbar-brand" href="#"><img src="../../../assets/img/logo-blanco.png" alt="" class="img-fluid"></a>
@@ -125,3 +135,4 @@
   
 
 
+  --->
