@@ -39,6 +39,15 @@
     }
     
 }
+.J-btn-link{
+    display: flex;
+    align-items: center;
+}
+.btn-svg{
+    height: 30px;
+    width: 30px;
+    margin-right: 15px;
+}
 .alert{
     margin: 5px auto;
 }

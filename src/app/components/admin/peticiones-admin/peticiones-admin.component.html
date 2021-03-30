@@ -8,8 +8,8 @@
             <thead>
               <tr>
                 <th>Nombre de catalogo</th> 
-                <th>Valor cat.</th>  
-                <th>Pais</th>  
+                <th>Tipo</th>  
+                <th>P/T</th>  
                 <th>Cliente</th> 
                 <th>
                   <select  [(ngModel)]="estado" (change)="searchStatus()">
@@ -26,9 +26,18 @@
             </thead>
             <tbody *ngFor="let data of dataCatalogo">
               <tr *ngIf="!data.tipoEstadoSolicitud_id.name.includes('Rechazado')">
-                <td style="width:25%;"> {{data.catalogo_nombre}}</td>  
-                <td style="width:15%;">{{data.valor_catalogo||''}}</td>  
-                <td>{{data.pais.name||''}}</td>  
+                <td style="width:20%;"> {{data.catalogo_nombre_interno}}</td>  
+                <td style="width:10%;">{{data.tipo_catalogo.name||''}}</td>  
+                <td style="width:15%;">
+                  <span *ngIf="data.pais">
+                    Pais:
+                    {{data.pais.name||''}}
+                  </span>
+                  <span *ngIf="data.tema">
+                    Tema:
+                    {{data.tema.name||''}}
+                  </span>
+                </td>  
                 <td>{{data.usuario_id.name}}</td>    
                 <td>{{data.tipoEstadoSolicitud_id.name}}</td>  
                 <td class="editar">
@@ -47,7 +56,7 @@
                     <a *ngIf="data.tipoEstadoSolicitud_id.abreviacion=='EACE2'" (click)="validar(data.uid,'accept')" href="javascript:void(0)" class="btn-table-rad success">
                       aceptar
                     </a>
-                    <a *ngIf="data.tipoEstadoSolicitud_id.abreviacion=='EACE2'||data.tipoEstadoSolicitud_id.abreviacion=='ACE1'" href="javascript:void(0)" (click)="validar(data.uid,'')" (click)="openVerticallyCentered(content)" class="btn-table-rad danger ">
+                    <a *ngIf="data.tipoEstadoSolicitud_id.abreviacion=='EACE2'||data.tipoEstadoSolicitud_id.abreviacion=='ACE2'||data.tipoEstadoSolicitud_id.abreviacion=='EACE2'" href="javascript:void(0)" (click)="validar(data.uid,'')" (click)="openVerticallyCentered(content)" class="btn-table-rad danger ">
                       rechazar
                     </a>
                   </ng-template>

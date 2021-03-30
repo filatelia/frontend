@@ -89,6 +89,10 @@ export class RestService {
       })
     );
   }
+  getAllTemas(page:number):Observable<any>{
+    let direccion = this.url + "/catalogo/temas";
+    return this.http.get(direccion);
+  }
   
   getSelectCatalogPais(pais: string) {
     //let direccion = this.url + "api/catalogo/uploads/excel?"+ "token:"+this.usuario.token;
@@ -146,6 +150,10 @@ export class RestService {
   estadoSolicitudCatalogo(body:any):Observable<any>{
   
     return  this.http.post(this.url+'/solicitudes/aprobacion', body);
+  }
+  
+  getTipoCatalogo():Observable<any>{
+    return  this.http.post(this.url+'/catalogo/tipo-catalogo', {});
   }
   createSolicitud(body:any):Observable<any>{
     return  this.http.post(this.url+'/solicitudes', body);

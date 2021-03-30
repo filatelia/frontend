@@ -13,12 +13,20 @@
                 </div>
                 <div class="dashboard__contenido__formulario container-catalogo-item " *ngFor="let data of dataCatalogo">
                       <div class="catalogo-letter">
-                        <div class="catalogo-title">Tipo:</div>
+                        <div class="catalogo-title">Nombre:</div>
                         <div class="">{{data.name}}</div>
-                      </div>
+                      </div>  
                       <div class="catalogo-letter">
+                        <div class="catalogo-title">Tipo:</div>
+                        <div class="">{{data.tipo_catalogo.name}}</div>
+                      </div>
+                      <div class="catalogo-letter" *ngIf="data.pais">
                         <div class="catalogo-title">Pais:</div>
                         <div class="">{{data.pais.name||''}}</div>
+                      </div>
+                      <div class="catalogo-letter" *ngIf="data.tema_catalogo">
+                        <div class="catalogo-title">Tema:</div>
+                        <div class="">{{data.tema_catalogo.name||''}}</div>
                       </div>
                       <div class="catalogo-letter">
                         <div class="">{{data.solicitud.tipoEstadoSolicitud_id.descripcion}}</div>

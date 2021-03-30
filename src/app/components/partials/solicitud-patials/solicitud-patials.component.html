@@ -1,0 +1,79 @@
+<form class="needs-validation" [formGroup]="form" (ngSubmit)="registrar()">
+    <div class="dashboard__contenido__formulario">
+        <h2 class="titulo titulo--chico">Registrar Petición Catálogo</h2>
+        <div class="form row">
+            <div class="form-group col-lg-12">
+                <label for="exampleInputValor">Nombre Catalogo</label>
+                <input name="valor" type="text" formControlName="nombre" class="form-control"
+                [ngClass]="{'is-valid':!valor?.invalid&&(valor?.dirty||valor?.touched),'is-invalid':valor?.invalid&&(valor?.dirty||valor?.touched)}"
+                ngModel
+                >
+                <div class="invalid-feedback" formControlName="nombre" *ngIf="nombre?.invalid&&(nombre?.dirty||nombre?.touched)">
+                <div *ngIf="nombre?.errors?.required">Nombre de catalogo requerido</div>
+                <div *ngIf="nombre?.errors?.minlength">El mínimo es de 5 caracteres </div>
+                </div>
+            </div>
+            <div class="form-group col-lg-12">
+                <label for="tipo">Tipo Catalogo</label>
+                <select id="tipo"  name="tipo_catalogo" required class="form-control"
+                    [ngClass]="{'is-valid':!tipo_catalogo?.invalid&&(tipo_catalogo?.dirty||tipo_catalogo?.touched),'is-invalid':tipo_catalogo?.invalid&&(tipo_catalogo?.dirty||tipo_catalogo?.touched)}"
+                    ngModel
+                    >
+                    <option value="" >-- Seleccione --</option>
+                    <option  *ngFor="let tipo of dataTipo" [value]="tipo.name">{{tipo.name}}</option>
+                </select>
+                <div class="invalid-feedback" formControlName="tipo_catalogo" *ngIf="tipo_catalogo?.invalid&&(tipo_catalogo?.dirty||tipo_catalogo?.touched)">
+                    <div *ngIf="tipo_catalogo?.errors?.required">Tipo catalogo de catalogo requerido</div>
+                </div>
+            </div>
+            <div class="form-group col-lg-12" *ngIf="tipo_catalogo?.value=='País'">
+                <label for="exampleInputPais">Pais</label>
+                <input  [formControl]="paisValue" type="text" formControlName="pais"  class="form-control" [ngClass]="{'is-valid':!pais?.invalid&&(pais?.dirty||pais?.touched),'is-invalid':pais?.invalid&&(pais?.dirty||pais?.touched)}" ngModel>
+                <app-search-paises [pais]="pais"  (select)="select($event)"></app-search-paises>
+                <div class="invalid-feedback" *ngIf="pais?.invalid&&(pais?.dirty||pais?.touched)">
+                    <div *ngIf="pais?.errors?.required">Pais es requerido</div>
+                    <div *ngIf="pais?.errors?.minlength">El mínimo es de 3 caracteres  </div>
+                </div>
+            </div>
+            <div class="form-group col-lg-12"  *ngIf="tipo_catalogo?.value=='Temático'">
+                <label for="exampleInputPais">Tema de catalogo</label>
+                <input  [formControl]="timaticaValue" type="text" formControlName="timatica"  class="form-control" [ngClass]="{'is-valid':!timatica?.invalid&&(timatica?.dirty||timatica?.touched),'is-invalid':timatica?.invalid&&(timatica?.dirty||timatica?.touched)}" ngModel>
+                <app-search-type [tipo]="timatica"  (select)="select($event)"></app-search-type>
+                <div class="invalid-feedback" *ngIf="timatica?.invalid&&(timatica?.dirty||timatica?.touched)">
+                    <div *ngIf="timatica?.errors?.required">Timatica es requerido</div>
+                    <div *ngIf="timatica?.errors?.minlength">El mínimo es de 3 caracteres  </div>
+                </div>
+            </div>
+            <div class="form-group col-lg-12">
+                <label for="exampleInputValor">Valor Catalogo</label>
+                <input name="valor" type="text" formControlName="valor" class="form-control"
+                [ngClass]="{'is-valid':!valor?.invalid&&(valor?.dirty||valor?.touched),'is-invalid':valor?.invalid&&(valor?.dirty||valor?.touched)}"
+                ngModel
+                >
+                <div class="invalid-feedback" *ngIf="valor?.invalid&&(valor?.dirty||valor?.touched)">
+                    <div *ngIf="valor?.errors?.required">Valor requerido</div>
+                </div>
+            </div>
+                <div class="col-lg-12">
+                    <div *ngIf="response?.msg" class="text-center">
+                        <span [ngClass]="{'text-primary':response.ok,'text-danger':!response.ok}">
+                            {{response.msg}}
+                        </span>
+                    </div>
+                </div>
+            <div class="col-lg-12">
+                <button type="submit"  [disabled]="response.loading" class="btn btn--linea J-btn-full">
+                    {{(response.loading) ? 'Cargando.....' : back?'Enviar Petición':'Crear catalogo'}}
+                    <div class="spinner-border text-primary" role="status" *ngIf="response.loading">
+                    <span class="sr-only">Loading...</span>
+                    </div>
+                </button>
+            </div>
+            <div class="col-lg-12 m-t-5" style="margin-top: 10px;" *ngIf="back">
+                <button type="button" class="btn btn--linea J-btn-full" (click)="backPage()">
+                    Regresar
+                </button>
+            </div>
+        </div>
+    </div>
+</form>

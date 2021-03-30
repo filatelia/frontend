@@ -2,65 +2,175 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-6">
-                <div class="formulario__content">
-                    <h2 class="titulo titulo--mediano">Regístrate ahora mismo</h2>
-                    <p>Para llegar a miles de compradores y vendedores con tu misma pasión.</p>
-                    <span>Recuerda que al crear tu cuenta, aceptas los <a routerLink="/terminos">Términos de uso</a> y la <a routerLink="/privacidad">Política de privacidad</a> de Filatelia Peruana.</span>
-                    <div class="formulario__content__form">
-                        <form [formGroup]="registerForm" class="needs-validation row" (ngSubmit)="registrar()" >
-                            <div class="form-group col-lg-12">
-                                <label for="name">Nombre</label>
-                                <input type="text" required id="name" formControlName="name" class="form-control" ngModel [ngClass]="{'is-valid':!name?.invalid&&(name?.dirty||name?.touched),'is-invalid':name?.invalid&&(name?.dirty||name?.touched)}" ngModel>
-                                <div class="invalid-feedback" *ngIf="name?.invalid&&(name?.dirty||name?.touched)">
-                                    <div *ngIf="name?.errors?.required">Nombre requerido</div>
-                                    <div *ngIf="name?.errors?.minlength">Minímo es de 3 caracteres</div>
+                <div class="formulario__content dashboard__contenido">
+                    
+                    <div class="formulario__content__form ">
+                            <form [formGroup]="registerForm1"  (ngSubmit)="next(1)"  class="row hide needs-validation" [class]="{'show':tabViews[0].active}">
+                                <div class="col-lg-12">
+                                    <h2 class="titulo titulo--mediano">Regístrate ahora mismo</h2>
+                                    <p>Para llegar a miles de compradores y vendedores con tu misma pasión.</p>
                                 </div>
-                            </div>
-                            <div class="form-group col-lg-12">
-                                <label for="email">Correo electrónico</label>
-                                <input type="email" id="email" required formControlName="email" class="form-control" [ngClass]="{'is-valid':!email?.invalid&&(email?.dirty||email?.touched),'is-invalid':email?.invalid&&(email?.dirty||email?.touched)}" ngModel>
-                                <div class="invalid-feedback" *ngIf="email?.invalid&&(email?.dirty||email?.touched)">
-                                    <div *ngIf="email?.errors?.required">Correo requerido</div>
-                                    <div *ngIf="email?.errors?.minlength; else message_correo" >Minímo es de 6 caracteres </div>
-                                    <ng-template #message_correo>
-                                        <div *ngIf="email?.errors?.pattern">Correo invalido</div>
-                                    </ng-template>
+                                <div class="form-group col-lg-12">
+                                    <label for="name">Nombre</label>
+                                    <input type="text" required id="name" formControlName="name" class="form-control" ngModel [ngClass]="{'is-valid':!name?.invalid&&(name?.dirty||name?.touched),'is-invalid':name?.invalid&&(name?.dirty||name?.touched)}" ngModel>
+                                    <div class="invalid-feedback" *ngIf="name?.invalid&&(name?.dirty||name?.touched)">
+                                        <div *ngIf="name?.errors?.required">Nombre requerido</div>
+                                        <div *ngIf="name?.errors?.minlength">Minímo es de 3 caracteres</div>
+                                    </div>
                                 </div>
-                              </div>
-                            <div class="form-group col-lg-12  has-validation">
-                              <label for="exampleInputPassword1">Contraseña</label>
-                              <input type="password" formControlName="password" required class="form-control" [ngClass]="{'is-valid':!password?.invalid&&(password?.dirty||password?.touched),'is-invalid':password?.invalid&&(password?.dirty||password?.touched)}" id="exampleInputPassword1" ngModel>
-                              <div class="invalid-feedback" *ngIf="password?.invalid&&(password?.dirty||password?.touched)">
-                                   <div *ngIf="password?.errors?.required">Contraseña requerido</div>
-                                   <div *ngIf="password?.errors?.minlength">La contraseña mínima es de 6 caracteres </div>
-                              </div>
-                            </div>
-                            <div class="form-group col-lg-12">
-                              <label for="exampleCheck1">Confirmar contraseña</label>
-                              <input type="password"  formControlName="password_confirm" required class="form-control" [ngClass]="{'is-valid':!password_confirm?.invalid&&(password_confirm?.dirty||password_confirm?.touched),'is-invalid':password_confirm?.invalid&&(password_confirm?.dirty||password_confirm?.touched)}" id="exampleInputPassword_conpassword_confirm1" ngModel>
-                              <div class="invalid-feedback" *ngIf="password_confirm?.invalid&&(password_confirm?.dirty||password_confirm?.touched)">
-                                   <div *ngIf="password_confirm?.errors?.required">Contraseña de confirmación requerido</div>
-                                   <div *ngIf="password_confirm?.errors?.minlength">La contraseña mínima es de 6 caracteres </div>
-                              </div>
-                              <div class="invalid-feedback" *ngIf="registerForm.controls['password_confirm'].hasError('NoPassswordMatch')">
-                                <div >Las contraseñas no coinciden </div>
-                              </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div *ngIf="response?.msg" class="text-center">
-                                    <span [ngClass]="{'text-primary':response.ok,'text-danger':!response.ok}">
-                                        {{response.msg}}
-                                    </span>
+                                <div class="form-group col-lg-12">
+                                    <label for="apellidos">Apellidos</label>
+                                    <input type="text" required id="apellidos" formControlName="apellidos" class="form-control" ngModel [ngClass]="{'is-valid':!apellidos?.invalid&&(apellidos?.dirty||apellidos?.touched),'is-invalid':apellidos?.invalid&&(apellidos?.dirty||apellidos?.touched)}" ngModel>
+                                    <div class="invalid-feedback" *ngIf="apellidos?.invalid&&(apellidos?.dirty||apellidos?.touched)">
+                                        <div *ngIf="apellidos?.errors?.required">Apellidos requerido</div>
+                                        <div *ngIf="apellidos?.errors?.minlength">Minímo es de 3 caracteres</div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <label for="fecha_nacimiento">Fecha de nacimiento</label>
+                                    <input type="date" required id="fecha_nacimiento" formControlName="fecha_nacimiento" class="form-control" ngModel [ngClass]="{'is-valid':!fecha_nacimiento?.invalid&&(fecha_nacimiento?.dirty||fecha_nacimiento?.touched),'is-invalid':fecha_nacimiento?.invalid&&(fecha_nacimiento?.dirty||fecha_nacimiento?.touched)}" ngModel>
+                                    <div class="invalid-feedback" *ngIf="fecha_nacimiento?.invalid&&(fecha_nacimiento?.dirty||fecha_nacimiento?.touched)">
+                                        <div *ngIf="fecha_nacimiento?.errors?.required">Fecha de nacimiento requerido</div>
+                                        <div *ngIf="fecha_nacimiento?.errors?.minlength">Minímo es de 8 caracteres</div>
+                                    </div>
                                 </div>
                                 
-                                <button type="submit"  class="btn btn--negro" [disabled]="response.loading">
-                                    {{(response.loading) ? 'Cargando.....' : 'Crear mi cuenta'}}
-                                </button>
-                            </div>
-                            <div class="col-lg-12">
-                                <span>¿Ya tienes cuenta? <a routerLink="/auth/login">Iniciar sesión</a> </span>
-                            </div>
-                        </form>
+                                <div class="form-group col-lg-12">
+                                    <label for="pais">Pais</label>
+                                    <input type="text" [formControl]="paisValue" required formControlName="pais" class="form-control" ngModel [ngClass]="{'is-valid':!pais?.invalid&&(pais?.dirty||pais?.touched),'is-invalid':pais?.invalid&&(pais?.dirty||pais?.touched)}" ngModel>
+                                    <app-search-paises [pais]="pais" (select)="selectPais($event)"></app-search-paises>
+                                    <div class="invalid-feedback" *ngIf="pais?.invalid&&(pais?.dirty||pais?.touched)">
+                                        <div *ngIf="pais?.errors?.required">Nombre requerido</div>
+                                        <div *ngIf="pais?.errors?.minlength">Minímo es de 3 caracteres</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <button type="submit"  class="btn btn--negro">
+                                        Siguiente
+                                    </button>
+                                </div>
+                            </form>
+                            <form [formGroup]="registerForm2"  (ngSubmit)="next(1)"  class="row hide needs-validation" [class]="{'show':tabViews[1].active}">
+                                
+                                <div class="form-group col-lg-12">
+                                    <label for="tipo">Tipo de coleccion</label>
+                                    <select id="tipo"  name="tipo_catalogo" required class="form-control"
+                                        [ngClass]="{'is-valid':!tipo_catalogo?.invalid&&(tipo_catalogo?.dirty||tipo_catalogo?.touched),'is-invalid':tipo_catalogo?.invalid&&(tipo_catalogo?.dirty||tipo_catalogo?.touched)}"
+                                        ngModel
+                                        >
+                                        <option value="" >-- Seleccione --</option>
+                                        <option  *ngFor="let tipo of dataTipo" [value]="tipo.name">{{tipo.name}}</option>
+                                    </select>
+                                    <div class="invalid-feedback" formControlName="tipo_catalogo" *ngIf="tipo_catalogo?.invalid&&(tipo_catalogo?.dirty||tipo_catalogo?.touched)">
+                                        <div *ngIf="tipo_catalogo?.errors?.required">Tipo catalogo de catalogo requerido</div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-12" *ngIf="tipo_catalogo?.value=='País'">
+                                    <input placeholder="Busque un pais para agregar"  [formControl]="paisSearchValue" type="text" formControlName="pais_search"  class="form-control" ngModel>
+                                    <app-search-paises [pais]="pais_search"  (select)="select($event)"></app-search-paises>
+                                    <div class="content-more">
+                                        <div *ngFor="let item of dataPaises;let i=index" class="item-more">
+                                            <!-- Agregue la colección de paises -->
+                                            {{item.name}}
+                                            <button type="button" (click)="removeCollect(i)" class="delete-more">
+                                                &#215;
+                                            </button>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-12"  *ngIf="tipo_catalogo?.value=='Temático'">
+                                    <input placeholder="Busque un tema para agregar" [formControl]="timaticaValue" type="text" formControlName="timatica"  class="form-control" [ngClass]="{'is-valid':!timatica?.invalid&&(timatica?.dirty||timatica?.touched),'is-invalid':timatica?.invalid&&(timatica?.dirty||timatica?.touched)}" ngModel>
+                                    <app-search-type [tipo]="timatica"  (select)="select($event)"></app-search-type>
+                                    <div class="invalid-feedback" *ngIf="timatica?.invalid&&(timatica?.dirty||timatica?.touched)">
+                                        <div *ngIf="timatica?.errors?.required">Timatica es requerido</div>
+                                        <div *ngIf="timatica?.errors?.minlength">El mínimo es de 3 caracteres  </div>
+                                    </div>
+                                    <div class="content-more">
+                                        <div *ngFor="let item of dataTema;let i=index" class="item-more">
+                                            <!-- Agregue la colección de paises -->
+                                            {{item.name}}
+                                            <button type="button" (click)="removeCollect(i)" class="delete-more">
+                                                &#215;
+                                            </button>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-12">
+                                    <button type="button"  class="btn btn--negro" (click)="tabactive(2)">
+                                        Siguiente
+                                    </button>
+                                </div>
+                                <div class="col-lg-12">
+                                    <button type="button"  class="btn btn--negro" (click)="tabactive(0)">
+                                        Atras
+                                    </button>
+                                </div>
+                            </form>
+                            <form [formGroup]="registerForm"  (ngSubmit)="registrar()"  class="row hide needs-validation" [class]="{'show':tabViews[2].active}">
+                                <div class="form-group col-lg-12">
+                                    <label for="nickname">Nickname</label>
+                                    <input type="text" required id="nickname" formControlName="nickname" class="form-control" ngModel [ngClass]="{'is-valid':!nickname?.invalid&&(nickname?.dirty||nickname?.touched),'is-invalid':nickname?.invalid&&(nickname?.dirty||nickname?.touched)}" ngModel>
+                                    <div class="invalid-feedback" *ngIf="nickname?.invalid&&(nickname?.dirty||nickname?.touched)">
+                                        <div *ngIf="nickname?.errors?.required">Nickname requerido</div>
+                                        <div *ngIf="nickname?.errors?.minlength">Minímo es de 6 caracteres</div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <label for="email">Correo electrónico</label>
+                                    <input type="email" id="email" required formControlName="email" class="form-control" [ngClass]="{'is-valid':!email?.invalid&&(email?.dirty||email?.touched),'is-invalid':email?.invalid&&(email?.dirty||email?.touched)}" ngModel>
+                                    <div class="invalid-feedback" *ngIf="email?.invalid&&(email?.dirty||email?.touched)">
+                                        <div *ngIf="email?.errors?.required">Correo requerido</div>
+                                        <div *ngIf="email?.errors?.minlength; else message_correo" >Minímo es de 6 caracteres </div>
+                                        <ng-template #message_correo>
+                                            <div *ngIf="email?.errors?.pattern">Correo invalido</div>
+                                        </ng-template>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group col-lg-12  has-validation">
+                                <label for="exampleInputPassword1">Contraseña</label>
+                                <input type="password" formControlName="password" required class="form-control" [ngClass]="{'is-valid':!password?.invalid&&(password?.dirty||password?.touched),'is-invalid':password?.invalid&&(password?.dirty||password?.touched)}" id="exampleInputPassword1" ngModel>
+                                <div class="invalid-feedback" *ngIf="password?.invalid&&(password?.dirty||password?.touched)">
+                                    <div *ngIf="password?.errors?.required">Contraseña requerido</div>
+                                    <div *ngIf="password?.errors?.minlength">La contraseña mínima es de 6 caracteres </div>
+                                </div>
+                                </div>
+                                <div class="form-group col-lg-12">
+                                <label for="exampleCheck1">Confirmar contraseña</label>
+                                <input type="password"  formControlName="password_confirm" required class="form-control" [ngClass]="{'is-valid':!password_confirm?.invalid&&(password_confirm?.dirty||password_confirm?.touched),'is-invalid':password_confirm?.invalid&&(password_confirm?.dirty||password_confirm?.touched)}" id="exampleInputPassword_conpassword_confirm1" ngModel>
+                                <div class="invalid-feedback" *ngIf="password_confirm?.invalid&&(password_confirm?.dirty||password_confirm?.touched)">
+                                    <div *ngIf="password_confirm?.errors?.required">Contraseña de confirmación requerido</div>
+                                    <div *ngIf="password_confirm?.errors?.minlength">La contraseña mínima es de 6 caracteres </div>
+                                </div>
+                                <div class="invalid-feedback" *ngIf="registerForm.controls['password_confirm'].hasError('NoPassswordMatch')">
+                                    <div >Las contraseñas no coinciden </div>
+                                </div>
+                                </div>
+                                <span>Recuerda que al crear tu cuenta, aceptas los <a routerLink="/terminos">Términos de uso</a> y la <a routerLink="/privacidad">Política de privacidad</a> de Filatelia Peruana.</span>
+                                <div class="col-lg-12">
+                                    <div *ngIf="response?.msg" class="text-center">
+                                        <span [ngClass]="{'text-primary':response.ok,'text-danger':!response.ok}">
+                                            {{response.msg}}
+                                        </span>
+                                    </div>
+                                    
+                                    <button type="submit"  class="btn btn--negro" [disabled]="response.loading">
+                                        {{(response.loading) ? 'Cargando.....' : 'Crear mi cuenta'}}
+                                    </button>
+                                </div>
+                                <div class="col-lg-12">
+                                    <button type="button"  class="btn btn--negro" (click)="tabactive(1)">
+                                        Atras
+                                    </button>
+                                </div>
+                                <div class="col-lg-12">
+                                    <span>¿Ya tienes cuenta? <a routerLink="/auth/login">Iniciar sesión</a> </span>
+                                </div>
+                            </form>
+
                     </div>
                 </div>
             </div>

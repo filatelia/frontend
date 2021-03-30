@@ -1,0 +1,10 @@
+<div class="list-container" [ngClass]="{'active':data.length>0}">
+    <a class="list-item" href="javascript:void(0)" *ngFor="let data of data"  (click)="selected(data)">
+        <div class="list-avatar">
+            <img [src]="api+data.imagen" alt="" >
+        </div>
+        <div class="list-title">
+            {{data.name}}
+        </div>
+    </a>
+</div>
