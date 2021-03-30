@@ -63,6 +63,7 @@ import { PeticioncatalogouserComponent } from './components/user/peticioncatalog
 import { NotifyComponent } from './components/notify/notify.component';
 import { CatalogoUserComponent } from './components/user/catalogo-user/catalogo-user.component';
 import { SearchPaisesComponent } from './components/partials/search-paises/search-paises.component';
+import { CabeceraAdminComponent } from './components/admin/cabecera-admin/cabecera-admin.component';
 @NgModule({
   declarations: [
     
@@ -92,7 +93,7 @@ import { SearchPaisesComponent } from './components/partials/search-paises/searc
     TiendaAdminLinkComponent, 
     CatalogointernoAdminComponent,
     PeticioncatalogouserComponent,
-    AjustesAdminLinkComponent, AjustesAdminComponent, PedidosAdminComponent, ClientesAdminComponent, CuponesAdminComponent, PagosAdminComponent, TemasAdminComponent, CorreoAdminComponent, EnvioAdminComponent, ProductosAdminComponent, MimancolistapublicaPageComponent, CatalogointernoAdminComponent, PeticionesAdminComponent, SubastaPagesComponent, NotifyComponent, CatalogoUserComponent, SearchPaisesComponent
+    AjustesAdminLinkComponent, AjustesAdminComponent, PedidosAdminComponent, ClientesAdminComponent, CuponesAdminComponent, PagosAdminComponent, TemasAdminComponent, CorreoAdminComponent, EnvioAdminComponent, ProductosAdminComponent, MimancolistapublicaPageComponent, CatalogointernoAdminComponent, PeticionesAdminComponent, SubastaPagesComponent, NotifyComponent, CatalogoUserComponent, SearchPaisesComponent, CabeceraAdminComponent
   ],
   imports: [
     HttpClientModule,

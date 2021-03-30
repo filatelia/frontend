@@ -1,0 +1,20 @@
+//variables
+@import "./variables/import.scss";
+@import "./variables/variables.scss";
+@import "./variables/config.scss";
+@import "./variables/font.scss";
+
+//blocks
+@import "./blocks/header/header.scss";
+@import "./blocks/footer/footer.scss";
+@import "./blocks/button/button.scss";
+
+//pages
+@import "./pages/crud.scss";
+@import "./pages/tienda.scss";
+@import "./pages/catalogo.scss";
+@import "./pages/dashboard.scss";
+
+//media
+
+//@import "./media/media.scss";

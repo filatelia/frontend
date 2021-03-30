@@ -318,12 +318,6 @@
 }
 @media(min-width:1300px){
 
-    .rayaP{
-        &:before{
-            height: 5px;
-            top: -4px;
-        }
-    }
 
 
 
@@ -342,12 +336,8 @@
     }
     .header{
         display: block;
-        &__mobile{
-            display: none;
-        }
-        &__responsive{
-            display: none;
-        }
+       
+        
     }
     .modal{
         &-dialog{
@@ -407,148 +397,12 @@
            }
        }
     }
-    .opciones{
-        &__card{
-            padding:30px 17px;
-            h3{
-                font-size: 22px;
-            }
-            h4, p{
-                font-size: 13px;
-                line-height: 20px;
-            }
-        }
-    }
-}
-
-@media(min-width:1140px){
-    
-}
-
-@media(min-width:1200px){
-   
-    .rayaP{
-        &:before{
-            height: 8px;
-            top:-5px;
-        }
-    }
-
-
-    .nuevo{
-        &__top{
-            .boton{
-                top:43px;
-            }
-        }
-        &__card{
-            &__img{
-                height: 255px;
-            }
-        }
-    }
-
-
-    .container{
-        max-width: 980px;
-    }
-
-}
-
-@media(min-width:1350px){
-
-
-
-    .container{
-        max-width: 1140px;
-    }
-
-    .header{
-        
-        &__left{
-            &__link{
-                ul{
-                    li{
-                        a{
-                            font-size: 15px;
-                        }
-                    }
-                }
-            }
-        }
-        &__right{
-            &__link{
-                a{
-                    font-size: 15px;
-                    padding: 0px 12px;
-                }
-            }
-        }
-    }
-    .opciones{
-        &__card{
-            padding: 30px 35px;
-        }
-    }
-
-    .nuevo{
-        padding: 80px 0px 70px;
-        &__row{
-            .col{
-                padding: 0px 11px;
-            }
-        }
-        &__top{
-            .boton{
-                top: 36px;
-            }
-        }
-        &__card{
-            &__img{
-                height: 316px;
-            }
-        }
-    }
 }
 
 
 
 
-@media(min-width:1600px){
-
-    .distribuidor{
-        .container-fluid{
-            padding: 0;
-        }
-    }
 
 
 
 
-    .titulo{
-        &--mediano{
-            font-size:30px;
-        }
-    }
-    .header{
-        height: 160px;
-    }
-
-
-    .container{
-        max-width: 1662px;
-    }
-}
-
-
-@media(min-width:1800px){
-    .header{
-        &__left{
-            ul{
-                li{
-                    padding:0px 36px;
-                }
-            }
-        }
-    }
-}
