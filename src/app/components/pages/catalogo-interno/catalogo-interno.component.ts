@@ -18,7 +18,9 @@ import { TokenInterceptorService } from 'src/app/services/token-interceptor.serv
 export class CatalogoInternoComponent implements OnInit {
   public pais: PaisesAll={};
   public datoscatalogo: CatalogoCompleto[] = [];
+  public datos: CatalogoCompleto[] = [];
   public dataAnio: any=[];
+  public dataAnioSearch: any=[];
   public  buscarPais ='';
   public dataCatalog: any=[];
   dataMancoSelected: any={};
@@ -64,6 +66,7 @@ export class CatalogoInternoComponent implements OnInit {
     
     this.rest.getSelectCatalogPais(this.buscarPais).subscribe((data:any) =>{
         this.datoscatalogo =data[0];
+        this.datos =data[0];
         this.grupoCatalogo()
     });
 
@@ -74,6 +77,7 @@ export class CatalogoInternoComponent implements OnInit {
     }
     this.rest.getSelectCatalogAnio(start,end).subscribe((data:any) =>{
         this.dataCatalog =[];
+        this.datos =data.catalogoPorPais;
         this.datoscatalogo =data.catalogoPorPais;
         this.grupoCatalogo()
     });
@@ -103,14 +107,18 @@ export class CatalogoInternoComponent implements OnInit {
               ]
             });
             this.dataAnio.push(anio)
+            this.checkedAnio(element);
+
         }
         else{
           anio=element.Anio;
           var dataAnio=this.dataCatalog.findIndex((el:any)=>element.Anio>=el.Inicio&&element.Anio<=el.Final)
           if(dataAnio!=-1){
-
+            
             this.dataCatalog[dataAnio].Cantidad=this.dataCatalog[dataAnio].Cantidad+1;
             this.dataCatalog[dataAnio].data.push(element);
+
+            this.checkedAnio(element);
           }
           else{
             this.dataCatalog.push({
@@ -125,11 +133,45 @@ export class CatalogoInternoComponent implements OnInit {
               ]
             });
             this.dataAnio.push(anio)
+            this.checkedAnio(element);
+
           }
         }
 
         
     })
+  }
+  checkedAnio(element:any){
+    var i=this.dataAnioSearch.findIndex((e:any)=>e.Anio==element.Anio);
+    if(i==-1){
+      this.dataAnioSearch.push({
+        Anio:element.Anio,
+        active:false,
+      })
+    }
+  }
+  async searchAnios(){
+    var data:any=[]
+    var i=0
+    await this.dataAnioSearch.forEach((element:any) => {
+      if(element.active){
+        var search=this.datos.filter((e:any)=>element.Anio==e.Anio);
+        data.push(...search)
+        i++;
+      }
+    });
+    if(i!=0){
+      this.dataAnio=[]
+      this.dataCatalog=[]
+      this.datoscatalogo=data
+      this.grupoCatalogo()
+    }
+    else{
+      this.dataAnio=[]
+      this.dataCatalog=[]
+      this.datoscatalogo=this.datos
+      this.grupoCatalogo()
+    }
   }
   sanitizeImageUrl(imageUrl: string): SafeUrl {
     return this.sanitizer.bypassSecurityTrustUrl(imageUrl);

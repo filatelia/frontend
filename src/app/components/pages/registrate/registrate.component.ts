@@ -38,14 +38,6 @@ export class RegistrateComponent implements OnInit {
   id_pais= '';
   id_tema= '';
   dataTipo: any=[
-    {
-      name:'Temático',
-      uid:''
-    },
-    {
-      name:'País',
-      uid:''
-    }
   ];
   dataPaises:any=[]
   dataTema:any=[]
@@ -58,6 +50,7 @@ export class RegistrateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.listarTipo()
   }
   
   createForm1Group(){
@@ -94,11 +87,11 @@ export class RegistrateComponent implements OnInit {
       control.get('password_confirm')?.setErrors({ NoPassswordMatch: true });
     }
   }
-  registrar(){
+  async registrar(){
     console.log(this.registerForm)
     if(this.registerForm.valid){
       this.response.loading=true
-      var data=this.updateValue()
+      var data=await this.updateValue()
       this.authService.register(data).subscribe(res=>{
           this.onResetForm()
           res.msg=res.msg?res.msg:"Usuario creado ya puedes ingresar a nuestra plataforma"
@@ -136,11 +129,11 @@ export class RegistrateComponent implements OnInit {
       case 'Temático':
         this.timaticaValue.setValue(data.name);
         this.registerForm2.controls['timatica'].setValue(data.name);
-        this.dataTema.push(data)
+        this.dataTema.push({name:data.name,uid:data.uid})
         break;
       case 'País':
         this.paisSearchValue.setValue('');
-        this.dataPaises.push(data)
+        this.dataPaises.push({name:data.name,uid:data.uid})
         break;
         
     }
@@ -158,18 +151,27 @@ export class RegistrateComponent implements OnInit {
   onResetForm(){
     this.registerForm.reset();
   }
-  updateValue(){
+  async updateValue(){
+
+    var pais:any=[];
+    await this.dataPaises.forEach((element:any) => {
+        pais.push(element.uid)
+    });
+    var temas:any=[]
+    await this.dataTema.forEach((element:any) => {
+      temas.push(element.uid)
+  });
     return{
       email:this.email?.value,
       name:this.name?.value,
       password:this.password?.value,
       apellidos:this.apellidos?.value,
       nickname:this.nickname?.value,
-      pais:this.pais?.value,
+      pais_usuario:this.pais?.value,
       fecha_nacimiento:this.fecha_nacimiento?.value,
-      tipo_catalogo:this.tipo_catalogo?.value,
-      dataPaises:this.dataPaises,
-      dataTema:this.dataTema,
+      tipo_catalogo:this.dataTipo.find((el:any)=>el.name==this.tipo_catalogo?.value).uid,
+      paises_coleccionados:pais,
+      temas:temas,
     }
   }
 
