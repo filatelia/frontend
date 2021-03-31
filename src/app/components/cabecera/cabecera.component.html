@@ -32,23 +32,23 @@
                             
                            
                             
+                             <li class="perfil" *ngIf="showAdminBoard">
+                                <div class="perfil__icono">
+                                 <img src="../assets/img/iconos/user.png" alt="">
+                                </div>
+                                <a class="header__blanco" [routerLink]= "['/admin/dashboard']">{{name}}</a> 
                             
+                            </li>
                            <!--[routerLink]= "['/user/dashboard']"-->
-                            <li class="perfil"  ngbDropdown  *ngIf="showAdminBoard||showClientBoard">
-                                <div class="perfil__icono" >
+                            <li class="perfil" *ngIf="showClientBoard" ngbDropdown>
+                                
+                                <div class="perfil__icono">
                                  <img src="../assets/img/iconos/user.png" alt="">
                                 </div> 
                                 <a class="header__blanco" ngbDropdownToggle>{{name}}</a> 
                                 <div ngbDropdownMenu>
-                                    <li class="perfil J-header-item" *ngIf="showAdminBoard">
-                                        <a class="J-header-link  header__negro" [routerLink]= "['/admin/dashboard']">{{name}}</a>
-                                    </li>
-                                    <li class="perfil J-header-item" *ngIf="showClientBoard">
-                                        <a class="J-header-link  header__negro"  [routerLink]= "['/admin/dashboard']">{{name}}</a>
-                                    </li>
-                                    <li *ngIf="isLoggedIn" class="J-header-item">
-                                        <a class="J-header-link header__negro" href="javascript:void(0)" (click)="logout()">Cerrar sesión</a>
-                                    </li>
+                                    <a >{{name}}</a> 
+                                <li *ngIf="isLoggedIn"><a class="header__negro" href="javascript:void(0)" (click)="logout()">Cerrar sesión</a></li>
                                 </div>
                            
                             </li>
@@ -60,13 +60,42 @@
                                       <app-notify></app-notify>
                                   </div>
                             </li>
-                            <li *ngIf="isLoggedIn" class="notificacion2" ngbDropdown> 
+                            <li *ngIf="isLoggedIn" class="notificacion2" ngbDropdown>
                                 <a ngbDropdownToggle>
                                     <img src="../assets/img/iconos/comment.svg" alt="">
                                 </a>
                                   <div ngbDropdownMenu class="notificacioneslink">
-                                     hola
-                                  </div>
+                                   
+                                 <div class="modal__admin">
+                                        <div class="modal-header">
+                                          <h4 class="modal-title">Nombre</h4>
+                                          
+                                        </div>
+                                        <div class="modal-body">
+                                          <form class="row">
+                                           
+                                              <div class="form-group col-lg-8">
+                                                <label for="">chat 1</label>
+                                               
+                                              </div>
+                                              <div class="form-group col-lg-8">
+                                                  
+                                                <label for="">yo</label>
+                                                
+                                              </div>
+                                              <div class="form-group col-lg-12">
+                                                <input type="text" class="form-control">
+                                               
+                                              </div>
+                                              <div class="form-group col-12">
+                                                <button type="button" class="btn btn--negro" >Guardar</button>
+                                              </div>
+                                                    
+                                          </form>
+                                        </div>
+                                      </div>
+                                    </div>
+                                
                             </li>
                               <li  class="notificacion">
                                 
