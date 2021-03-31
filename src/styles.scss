@@ -6,6 +6,76 @@ body{
     color: $negro;
     overflow-x: hidden;
 }
+.list-link{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    margin: 5px 10px;
+    padding: 10px;
+    position: relative;
+    height: 70px;
+    &:hover{
+        text-decoration: none;
+        background-color: #f5f2f2;
+    }
+    label{
+        left: 30px;
+        position: absolute;
+        width: 80%;
+        cursor: pointer;
+        line-height: 70px;
+        height: 100%;
+    }
+    .radio{
+        position: absolute;
+        right: 0;
+        width: 20%;
+        cursor: pointer;
+        &:focus{
+            outline: none;
+            border: 0;
+            box-shadow: none;
+        }
+    }
+    &-item{
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        &:hover{
+            text-decoration: none;
+        }
+    }
+    &-icon{
+        margin-left: 30px;
+        font-size: 25px;
+        font-weight: bold;
+
+    }
+    &-input{
+        width: 100%;
+    }
+}
+.J-modal-flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+ .J-modal-btn{
+     margin:10px;
+     width: 40%;
+     min-width: 100px;
+     &.cancel{
+        background: transparent !important;
+        color: #2C2C2C;
+        &:hover{
+            background: transparent !important;
+            color: #2C2C2C;
+            opacity: .5;
+        }
+     }
+ }
 // ======
 
 .list{

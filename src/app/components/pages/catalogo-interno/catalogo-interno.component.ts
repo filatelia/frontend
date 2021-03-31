@@ -21,6 +21,7 @@ export class CatalogoInternoComponent implements OnInit {
   public dataAnio: any=[];
   public  buscarPais ='';
   public dataCatalog: any=[];
+  dataMancoSelected: any={};
   api = environment.conect_url;
   isLoggedIn = false;
 
@@ -78,7 +79,10 @@ export class CatalogoInternoComponent implements OnInit {
     });
 
   }
-
+  modalOpen(data:any){
+    data.open=true;
+    this.dataMancoSelected=data;
+  }
   grupoCatalogo(){
     var anio=0;
     var sum=10
