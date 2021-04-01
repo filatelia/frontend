@@ -66,6 +66,7 @@ import { SearchPaisesComponent } from './components/partials/search-paises/searc
 import { SearchTypeComponent } from './components/partials/search-type/search-type.component';
 import { SolicitudPatialsComponent } from './components/partials/solicitud-patials/solicitud-patials.component';
 import { CabeceraAdminComponent } from './components/admin/cabecera-admin/cabecera-admin.component';
+import { ChatAdminComponent } from './components/admin/chat-admin/chat-admin.component';
 @NgModule({
   declarations: [
     
@@ -95,7 +96,7 @@ import { CabeceraAdminComponent } from './components/admin/cabecera-admin/cabece
     TiendaAdminLinkComponent, 
     CatalogointernoAdminComponent,
     PeticioncatalogouserComponent,
-    AjustesAdminLinkComponent, AjustesAdminComponent, PedidosAdminComponent, ClientesAdminComponent, CuponesAdminComponent, PagosAdminComponent, TemasAdminComponent, CorreoAdminComponent, EnvioAdminComponent, ProductosAdminComponent, MimancolistapublicaPageComponent, CatalogointernoAdminComponent, PeticionesAdminComponent, SubastaPagesComponent, NotifyComponent, CatalogoUserComponent, SearchPaisesComponent, SearchTypeComponent, SolicitudPatialsComponent,CabeceraAdminComponent
+    AjustesAdminLinkComponent, AjustesAdminComponent, PedidosAdminComponent, ClientesAdminComponent, CuponesAdminComponent, PagosAdminComponent, TemasAdminComponent, CorreoAdminComponent, EnvioAdminComponent, ProductosAdminComponent, MimancolistapublicaPageComponent, CatalogointernoAdminComponent, PeticionesAdminComponent, SubastaPagesComponent, NotifyComponent, CatalogoUserComponent, SearchPaisesComponent, SearchTypeComponent, SolicitudPatialsComponent,CabeceraAdminComponent, ChatAdminComponent
   ],
   imports: [
     HttpClientModule,
