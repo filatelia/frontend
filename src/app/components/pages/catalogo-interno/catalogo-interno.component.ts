@@ -176,39 +176,7 @@ export class CatalogoInternoComponent implements OnInit {
   sanitizeImageUrl(imageUrl: string): SafeUrl {
     return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
   }
-  addMancoLista(data:any){
-    console.log(data)
-    this.rest.addMancolista({id_estampilla:data.uid}).subscribe((res:any) =>{
-        console.log(res)
-        const Toast = Swal.mixin({
-          toast: true,
-          position: 'top-end',
-          showConfirmButton: false,
-          timer: 1500,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-          }
-        })
-        Toast.fire({
-          icon: 'success',
-          title: res.msg=='eliminado'?res.msg: "Agregado a mi mancolista"
-        }).then(
-          result=>{
-            if(result.dismiss === Swal.DismissReason.timer){
-  
-  
-            }
-            
-          }
-        );
-      },
-      (err)=>{
-        
-      }
-    );
-  }
+ 
   
   // anioCatalogo(){
   //   this.datoscatalogo.forEach((element)=>{

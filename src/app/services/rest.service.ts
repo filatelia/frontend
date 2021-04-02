@@ -126,10 +126,17 @@ export class RestService {
 
     return this.http.get<PaisesAll>(direccion);
   }
-
+  createMancoLista(body:any){
+    return this.http.post(this.url + '/catalogo/manco_list/create-cat', body); // POST
+  }
   addMancolista(body: any){
     return this.http.post(this.url + '/catalogo/manco_list', body); // POST
   }
+  getMancoListCat(): Observable<any> {
+    let direccion =this.url + '/catalogo/manco_list/manco-list-cat';
+    return this.http.get(direccion);
+  }
+  
   getAllMancolistaPublic(page: number): Observable<MacolistaListPublic[]> {
     let direccion =
       this.url + 'api/catalogo/uploads/excel?' + 'token:' + this.usuario.token;
@@ -145,8 +152,9 @@ export class RestService {
     let direccion = this.url + '/catalogo/manco_list/listar';
     return this.http.post(direccion,{});
   }
-
- 
+  getMancolistaSelected(id:any):Observable<any>{
+    return  this.http.get(this.url+'/catalogo/manco_list/listar-id-cat?id='+id);
+  }
   estadoSolicitudCatalogo(body:any):Observable<any>{
   
     return  this.http.post(this.url+'/solicitudes/aprobacion', body);

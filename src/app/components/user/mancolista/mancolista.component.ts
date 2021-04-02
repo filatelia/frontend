@@ -12,8 +12,11 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./mancolista.component.scss']
 })
 export class MancolistaComponent implements OnInit {
-  dataMancoLista: any=[];
+  dataMancoSelected:any=[]
+  mancolista: any=[]
+  dataMancoLista:any=[];
   usuario: any={};
+  createForm: boolean=false;
   status: string='';
   api = environment.conect_url;
   constructor(
@@ -26,11 +29,15 @@ export class MancolistaComponent implements OnInit {
   async getMancoLista() {
       this.restService.getMyAllMancolista().subscribe((resp:any)=>{
         this.addLista(resp.msg);
-       
-       
       });
   }
-
+  selectedMancolLista(data:any){
+    this.restService.getMancolistaSelected(data.uid).subscribe((resp:any)=>{
+      this.mancolista=resp.data;
+     
+     
+    });
+  }
   openVerticallyCentered(content : any) {
     this.modalService.open(content, { centered: true, windowClass: "modal__admin"});
 
@@ -41,6 +48,7 @@ export class MancolistaComponent implements OnInit {
   }
   addLista(data:any){
     this.dataMancoLista=data;
+    this.selectedMancolLista(data[0])
     this.usuario=data[0].id_usuario;
   }
   addMancoLista(data:any){
@@ -93,6 +101,10 @@ export class MancolistaComponent implements OnInit {
   copyTextClipBoard(text:any){
     this.clipboard.copy(text);
   }
+  modalOpen(data:any){
+    data.open=true;
+    this.dataMancoSelected=data;
+  }
   message(type:any,message:any){
     const Toast = Swal.mixin({
       toast: true,
@@ -118,5 +130,11 @@ export class MancolistaComponent implements OnInit {
         
       }
     );
+  }
+  editColection(data:any){
+    data.edit=true;
+  }
+  cancelColection(data:any){
+    data.edit=false;
   }
 }

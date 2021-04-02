@@ -3,7 +3,90 @@
     <a href="javascript:void(0)" (click)="copyLink()" class="btn btn--plomo">Compartir lista <img src="assets/img/iconos/compartir.svg" alt=""> </a>
     <a class="btn btn--plomo"  class="mainAdmin__boton" >Descargar <img src="assets/img/iconos/excel.svg" alt=""> </a>
 </div>
-<table class="table">
+<br>
+<br>
+<div class="row">
+    <div class="col-md-4 col-sm-12">
+      <a href="javascript:void(0)"  class="box-decoration">
+            <div class="colection-content" *ngIf="createForm;else create">
+              <input class="colection-input" placeholder="Asigna un nombre a tu colección...">
+              <div class="colection-btn-content">
+                <button class="btn btn-secondary colection-btn" (click)="createForm=false">
+                  Cancelar
+                </button>
+                <button class="btn btn-primary  colection-btn">
+                  Guardar
+                </button>
+              </div>
+            </div>
+            <ng-template #create>
+              <button class="box-decoration-btn saved" (click)="createForm=true">
+                <i class="fas fa-plus"></i>
+              </button>
+              <span class="btn-span" (click)="createForm=true">
+                Crear colección
+              </span>
+            </ng-template>
+        </a>
+        <a href="javascript:void(0)"  class="box-decoration" *ngFor="let data of dataMancoLista" (click)="selectedMancolLista(data)">
+          <div class="box-decoration-title">
+            <span *ngIf="!data.edit; else inputactive">
+              {{data.name}}
+            </span>
+            <ng-template #inputactive>
+              <div class="colection-content">
+                <input class="colection-input" placeholder="" [(ngModel)]="data.name">
+                <div class="colection-btn-content">
+                  <button class="btn btn-secondary colection-btn" (click)="cancelColection(data)">
+                    Cancelar
+                  </button>
+                  <button class="btn btn-primary  colection-btn">
+                    Guardar
+                  </button>
+                </div>
+              </div>
+            </ng-template>
+          </div>
+            <button class="box-decoration-btn edit" (click)="editColection(data)">
+              <i class="fas fa-pencil-alt"></i>
+            </button>
+            <button class="box-decoration-btn remove">
+              <i class="fas fa-trash"></i>
+            </button>
+          </a>
+    </div>
+    <div class="col-md-8 col-sm-12 row">
+      <div class="col-lg-6 col-md-8 col-sm-12 pr-0 catalogo-item" *ngFor="let data of mancolista">
+        <div class="filtros__contenido__card">
+            <div class="filtros__contenido__card__top">
+                <span>{{data.estampillas.Anio}}</span>
+                <img [src]="sanitizeImageUrl(api+data.estampillas.Foto_JPG_800x800_px)" alt="">
+            </div>
+            <div class="filtros__contenido__card__center" >
+                <a href="javascript:void(0)" (click)="modalOpen(data.estampillas)" (click)="modalManco.openModal()" class="plus">
+                    <div class="icono">
+                        <div class="icono__border">
+                            <svg height="426.66667pt" viewBox="0 0 426.66667 426.66667" width="426.66667pt" xmlns="http://www.w3.org/2000/svg"><path d="m405.332031 192h-170.664062v-170.667969c0-11.773437-9.558594-21.332031-21.335938-21.332031-11.773437 0-21.332031 9.558594-21.332031 21.332031v170.667969h-170.667969c-11.773437 0-21.332031 9.558594-21.332031 21.332031 0 11.777344 9.558594 21.335938 21.332031 21.335938h170.667969v170.664062c0 11.777344 9.558594 21.335938 21.332031 21.335938 11.777344 0 21.335938-9.558594 21.335938-21.335938v-170.664062h170.664062c11.777344 0 21.335938-9.558594 21.335938-21.335938 0-11.773437-9.558594-21.332031-21.335938-21.332031zm0 0"/></svg>
+                        </div>
+                    </div>
+                    <div class="plus__content">
+
+                    </div>
+                    <p>Añadir a otra colección</p>
+                </a>
+            </div>
+            <div class="filtros__contenido__card__boton">
+                <ul>
+                    <li>{{data.estampillas.Descripcion}}</li>
+                    <li>{{data.estampillas.Valor_Facial}}</li>
+                    <li>{{data.estampillas.Numero_de_catalogo}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+<!-- <table class="table">
     <thead>
       <tr>
         <th scope="col"></th>
@@ -39,9 +122,11 @@
         </tr>
       
     </tbody>
-  </table>
+  </table> -->
 
 
 
 
 <!--<button class="btn btn-outline-primary mb-2 mr-2" (click)="openVerticallyCentered(content)">Modal vertically centered</button>-->
+
+<app-modal [modal]="dataMancoSelected" #modalManco></app-modal>

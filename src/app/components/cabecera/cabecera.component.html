@@ -31,26 +31,24 @@
                             
                             
                            
-                            
-                             <li class="perfil" *ngIf="showAdminBoard">
-                                <div class="perfil__icono">
-                                 <img src="../assets/img/iconos/user.png" alt="">
-                                </div>
-                                <a class="header__blanco" [routerLink]= "['/admin/dashboard']">{{name}}</a> 
-                            
-                            </li>
                            <!--[routerLink]= "['/user/dashboard']"-->
-                            <li class="perfil" *ngIf="showClientBoard" ngbDropdown>
-                                
-                                <div class="perfil__icono">
-                                 <img src="../assets/img/iconos/user.png" alt="">
+                           <li class="perfil"  ngbDropdown  *ngIf="showAdminBoard||showClientBoard">
+                                <div class="perfil__icono" >
+                                <img src="../assets/img/iconos/user.png" alt="">
                                 </div> 
                                 <a class="header__blanco" ngbDropdownToggle>{{name}}</a> 
                                 <div ngbDropdownMenu>
-                                    <a >{{name}}</a> 
-                                <li *ngIf="isLoggedIn"><a class="header__negro" href="javascript:void(0)" (click)="logout()">Cerrar sesión</a></li>
+                                    <li class="perfil J-header-item" *ngIf="showAdminBoard">
+                                        <a class="J-header-link  header__negro" [routerLink]= "['/admin/dashboard']">{{name}}</a>
+                                    </li>
+                                    <li class="perfil J-header-item" *ngIf="showClientBoard">
+                                        <a class="J-header-link  header__negro"  [routerLink]= "['/admin/dashboard']">{{name}}</a>
+                                    </li>
+                                    <li *ngIf="isLoggedIn" class="J-header-item">
+                                        <a class="J-header-link header__negro" href="javascript:void(0)" (click)="logout()">Cerrar sesión</a>
+                                    </li>
                                 </div>
-                           
+                        
                             </li>
                             <li *ngIf="isLoggedIn" class="notificacion" ngbDropdown>
                                 <a ngbDropdownToggle>
