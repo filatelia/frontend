@@ -68,6 +68,7 @@ import { SolicitudPatialsComponent } from './components/partials/solicitud-patia
 import { CabeceraAdminComponent } from './components/admin/cabecera-admin/cabecera-admin.component';
 import { ModalMancolistaComponent } from './components/partials/modal-mancolista/modal-mancolista.component';
 import { ModalComponent } from './components/partials/modal/modal.component';
+import { ChatAdminComponent } from './components/admin/chat-admin/chat-admin.component';
 @NgModule({
   declarations: [
     
@@ -97,7 +98,7 @@ import { ModalComponent } from './components/partials/modal/modal.component';
     TiendaAdminLinkComponent, 
     CatalogointernoAdminComponent,
     PeticioncatalogouserComponent,
-    AjustesAdminLinkComponent, AjustesAdminComponent, PedidosAdminComponent, ClientesAdminComponent, CuponesAdminComponent, PagosAdminComponent, TemasAdminComponent, CorreoAdminComponent, EnvioAdminComponent, ProductosAdminComponent, MimancolistapublicaPageComponent, CatalogointernoAdminComponent, PeticionesAdminComponent, SubastaPagesComponent, NotifyComponent, CatalogoUserComponent, SearchPaisesComponent, SearchTypeComponent, SolicitudPatialsComponent,CabeceraAdminComponent, ModalMancolistaComponent, ModalComponent
+    AjustesAdminLinkComponent, AjustesAdminComponent, PedidosAdminComponent, ClientesAdminComponent, CuponesAdminComponent, PagosAdminComponent, TemasAdminComponent, CorreoAdminComponent, EnvioAdminComponent, ProductosAdminComponent, MimancolistapublicaPageComponent, CatalogointernoAdminComponent, PeticionesAdminComponent, SubastaPagesComponent, NotifyComponent, CatalogoUserComponent, SearchPaisesComponent, SearchTypeComponent, SolicitudPatialsComponent,CabeceraAdminComponent, ModalMancolistaComponent, ModalComponent,ChatAdminComponent
   ],
   imports: [
     HttpClientModule,
