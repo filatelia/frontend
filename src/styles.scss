@@ -6,9 +6,19 @@ body{
     color: $negro;
     overflow-x: hidden;
 }
+.catalogo-item{
+	min-width: 300px;
+    max-width: 300px;
+    .filtros__contenido__card{
+        min-height: 500px;
+        box-shadow: 0 0 5px 1px rgb(0 0 0 / 17%);
+
+    }
+}
 .box-decoration{
     &:first-child{
         padding: 15px;
+        margin-top: 0;
     }
     padding: 30px;
     display: flex;
@@ -19,6 +29,7 @@ body{
     border-radius: 10px;
     position: relative;
     text-decoration: none;
+    min-height: 115px;
     &:focus, &.active, &:hover{
         background-color:rgb(44 44 44 / 7%);
         text-decoration: none;
@@ -42,6 +53,9 @@ body{
         }
         &.edit{
             top: 5px;
+            right: 5px;
+        }
+        &.share{
             right: 5px;
         }
         &:focus{

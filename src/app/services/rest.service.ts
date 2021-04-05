@@ -129,6 +129,13 @@ export class RestService {
   createMancoLista(body:any){
     return this.http.post(this.url + '/catalogo/manco_list/create-cat', body); // POST
   }
+  updateMancoLista(body:any){
+    return this.http.put(this.url + '/catalogo/manco_list/update-cat', body); // POST
+  }
+  deleteMancoLista(body:any){
+    return this.http.put(this.url + '/catalogo/manco_list/update-cat', body); // POST
+  }
+  
   addMancolista(body: any){
     return this.http.post(this.url + '/catalogo/manco_list', body); // POST
   }

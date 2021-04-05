@@ -16,6 +16,7 @@ export class MancolistaComponent implements OnInit {
   mancolista: any=[]
   dataMancoLista:any=[];
   usuario: any={};
+  name: string='';
   createForm: boolean=false;
   status: string='';
   api = environment.conect_url;
@@ -90,9 +91,9 @@ export class MancolistaComponent implements OnInit {
   changeStatus(data:any){
     this.addMancoLista({id_estampilla:data.id_estampilla._id,estado_estampilla:data.estado_estampilla})
   }
-  copyLink(){
+  copyLink(id:any){
 
-    var value=this.usuario._id;
+    var value=id;
     var {host,protocol}=window.location
     var domain=`${protocol}://${host}/mancolista/${value}`
     this.copyTextClipBoard(domain);
@@ -128,6 +129,58 @@ export class MancolistaComponent implements OnInit {
 
         }
         
+      }
+    );
+  }
+  createManco(){
+    
+    if(this.name.trim()=='') {
+      this.message('error', "Agregue un nombre a tu colección")
+      return;
+    }
+    this.restService.createMancoLista({name:this.name}).subscribe(
+      (resp)=>{
+        this.message('success', "Colección nueva creada")
+        this.createForm=false;
+        this.getMancoLista()
+      },
+      (err)=>{
+
+      }
+    );
+  }
+  
+  deleteManco(id:string){
+    
+    if(id.trim()=='') {
+      this.message('error', "Selecciona una colección para eliminar")
+      return;
+    }
+    this.restService.deleteMancoLista({uid:id,isdelete:true}).subscribe(
+      (resp)=>{
+        this.message('success', "Colección eliminada")
+        this.createForm=false;
+        this.getMancoLista()
+      },
+      (err)=>{
+
+      }
+    );
+  }
+  updateManco(id:string, name: string){
+    
+    if(name.trim()=='') {
+      this.message('error', "Agregue un nombre a tu colección")
+      return;
+    }
+    this.restService.updateMancoLista({uid:id,name:name}).subscribe(
+      (resp)=>{
+        this.message('success', "Colección actualizada")
+        this.createForm=false;
+        this.getMancoLista()
+      },
+      (err)=>{
+
       }
     );
   }

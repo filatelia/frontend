@@ -1,20 +1,20 @@
 <p>Aquí podrás gestionar y compartir tu mancolista</p>
-<div class="botones">
+<!-- <div class="botones">
     <a href="javascript:void(0)" (click)="copyLink()" class="btn btn--plomo">Compartir lista <img src="assets/img/iconos/compartir.svg" alt=""> </a>
     <a class="btn btn--plomo"  class="mainAdmin__boton" >Descargar <img src="assets/img/iconos/excel.svg" alt=""> </a>
-</div>
+</div> -->
 <br>
 <br>
 <div class="row">
     <div class="col-md-4 col-sm-12">
       <a href="javascript:void(0)"  class="box-decoration">
             <div class="colection-content" *ngIf="createForm;else create">
-              <input class="colection-input" placeholder="Asigna un nombre a tu colección...">
+              <input class="colection-input" placeholder="Asigna un nombre a tu colección..." [(ngModel)]="name">
               <div class="colection-btn-content">
                 <button class="btn btn-secondary colection-btn" (click)="createForm=false">
                   Cancelar
                 </button>
-                <button class="btn btn-primary  colection-btn">
+                <button class="btn btn-primary  colection-btn" (click)="createManco()">
                   Guardar
                 </button>
               </div>
@@ -40,22 +40,25 @@
                   <button class="btn btn-secondary colection-btn" (click)="cancelColection(data)">
                     Cancelar
                   </button>
-                  <button class="btn btn-primary  colection-btn">
+                  <button class="btn btn-primary  colection-btn" (click)="updateManco(data.uid,data.name)">
                     Guardar
                   </button>
                 </div>
               </div>
             </ng-template>
           </div>
-            <button class="box-decoration-btn edit" (click)="editColection(data)">
+            <button class="box-decoration-btn edit" *ngIf="data.name!='General'" (click)="editColection(data)">
               <i class="fas fa-pencil-alt"></i>
             </button>
-            <button class="box-decoration-btn remove">
+            <button class="box-decoration-btn share" (click)="copyLink(data.uid)">
+              <i class="fas fa-share"></i>
+            </button>
+            <button class="box-decoration-btn remove" *ngIf="data.name!='General'" (click)="deleteManco(data.uid)">
               <i class="fas fa-trash"></i>
             </button>
           </a>
     </div>
-    <div class="col-md-8 col-sm-12 row">
+    <div class="col-md-8 col-sm-12 row" style="justify-content: center;">
       <div class="col-lg-6 col-md-8 col-sm-12 pr-0 catalogo-item" *ngFor="let data of mancolista">
         <div class="filtros__contenido__card">
             <div class="filtros__contenido__card__top">

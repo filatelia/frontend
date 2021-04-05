@@ -32,7 +32,7 @@
                         </div>
                         <div class="J-user-container-data">
                             <div>
-                                <h2>{{usuario.name}}</h2>
+                                <h4>{{usuario.name}} {{usuario.apellidos}}</h4>
                             </div>
                             <div>
                                 Correo: {{usuario.email}}
@@ -44,31 +44,32 @@
                     <div class="col-lg-3 pr-0 catalogo-item" *ngFor="let data of datoscatalogo">
                         <div class="filtros__contenido__card">
                             <div class="filtros__contenido__card__top">
-                                <span>{{data.id_estampilla.Anio}}</span>
-                                <img [src]="sanitizeImageUrl(api+data.id_estampilla.Foto_JPG_800x800_px)" alt="">
+                                <span>{{data.estampillas.Anio}}</span>
+                                <img [src]="sanitizeImageUrl(api+data.estampillas.Foto_JPG_800x800_px)" alt="">
                             </div>
-                            <div class="filtros__contenido__card__center">
-                                <a href="#" class="plus">
+                            <div class="filtros__contenido__card__center" >
+                                <a href="javascript:void(0)"  *ngIf="isLoggedIn; else btnmanco" (click)="modalOpen(data.estampillas)" (click)="modalManco.openModal()" class="plus">
                                     <div class="icono">
                                         <div class="icono__border">
-                                            <svg height="426.66667pt" viewBox="0 0 426.66667 426.66667" width="426.66667pt" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="m405.332031 192h-170.664062v-170.667969c0-11.773437-9.558594-21.332031-21.335938-21.332031-11.773437 0-
-                                                21.332031 9.558594-21.332031 21.332031v170.667969h-170.667969c-11.773437 0-21.332031 9.558594-21.332031 21.332031 0 11.777344 9.558594 21.335938 21.332031 21.335938h170.667969v170.664062c0 11.777344 9.558594 21.335938 21.332031 21.335938 11.777344 0 21.335938-9.558594 21.335938-21.335938v-170.664062h170.664062c11.777344 0 21.335938-9.558594 21.335938-21.335938 0-11.773437-9.558594-21.332031-21.335938-21.332031zm0 0"/></svg>
+                                            <svg height="426.66667pt" viewBox="0 0 426.66667 426.66667" width="426.66667pt" xmlns="http://www.w3.org/2000/svg"><path d="m405.332031 192h-170.664062v-170.667969c0-11.773437-9.558594-21.332031-21.335938-21.332031-11.773437 0-21.332031 9.558594-21.332031 21.332031v170.667969h-170.667969c-11.773437 0-21.332031 9.558594-21.332031 21.332031 0 11.777344 9.558594 21.335938 21.332031 21.335938h170.667969v170.664062c0 11.777344 9.558594 21.335938 21.332031 21.335938 11.777344 0 21.335938-9.558594 21.335938-21.335938v-170.664062h170.664062c11.777344 0 21.335938-9.558594 21.335938-21.335938 0-11.773437-9.558594-21.332031-21.335938-21.332031zm0 0"/></svg>
                                         </div>
                                     </div>
                                     <div class="plus__content">
-        
+                
                                     </div>
-                                    <p>Añadir a mis mancolistas</p>
+                                    <p>Añadir a otra colección</p>
                                 </a>
+                                <ng-template #btnmanco>
+                                    <br>
+                                </ng-template>
                             </div>
+                            
                             <div class="filtros__contenido__card__boton">
                                 <ul>
-                                    <li>{{data.id_estampilla.Descripcion}}</li>
-                                    <li>{{data.id_estampilla.Valor_Facial}}</li>
-                                    <li>{{data.id_estampilla.Numero_de_catalogo}}</li>
+                                    <li>{{data.estampillas.Descripcion}}</li>
+                                    <li>{{data.estampillas.Valor_Facial}}</li>
+                                    <li>{{data.estampillas.Numero_de_catalogo}}</li>
                                 </ul>
-                                <a routerLink="/catalogo" class="link">Ver variantes y errores</a>
                             </div>
                         </div>
                     </div>
@@ -100,3 +101,4 @@
 </div>
   
 
+<app-modal [modal]="dataMancoSelected" #modalManco></app-modal>

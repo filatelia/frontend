@@ -5,15 +5,15 @@
 export const environment = {
   production: true,
 
-  conect_url: 'https://api.filateliaperu.com/',
-  conect_url_api: 'https://api.filateliaperu.com/api',
+  // conect_url: 'https://api.filateliaperu.com/',
+  // conect_url_api: 'https://api.filateliaperu.com/api',
 
 
 
-  // conect_url: 'http://localhost:3000',
-  // conect_url_api: 'http://localhost:3000/api',
- 
-
+  conect_url: 'http://localhost:3000',
+  conect_url_api: 'http://localhost:3000/api',
+  CHAT_URL:"ws://192.168.104.94:3000/",
+  
   api: '/api',
   login: '/login',
   api_login: '/login',
