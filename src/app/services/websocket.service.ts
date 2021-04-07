@@ -4,7 +4,7 @@ import * as Rx from 'rxjs';
   providedIn: 'root'
 })
 export class WebsocketService {
-  private subject: Rx.Subject<MessageEvent>= new Rx.Subject<MessageEvent>();
+  private subject: Rx.Subject<MessageEvent>;
   constructor() { }
    public connect(url:any): Rx.Subject<MessageEvent>{
      if(!this.subject){
@@ -15,6 +15,11 @@ export class WebsocketService {
    }
    private create(url:any):Rx.Subject<MessageEvent>{
       let ws=new WebSocket(url);
+      ws.onopen=((resp)=>{
+        var data = sessionStorage.getItem('auth-token');
+        var dataSend={type:'connect',token:data};
+        ws.send(JSON.stringify(dataSend))
+      })
       let observable=Rx.Observable.create(
         (obs:Rx.Observer<MessageEvent>)=>{
           ws.onmessage=obs.next.bind(obs);

@@ -94,11 +94,8 @@ export class RestService {
     return this.http.get(direccion);
   }
   
-  getSelectCatalogPais(pais: string) {
-    //let direccion = this.url + "api/catalogo/uploads/excel?"+ "token:"+this.usuario.token;
-    //return this.http.get<Catalogo[]>(direccion);
-    let direccion = this.url + '/catalogo/uploads/excel';
-    //let direccion = this.url + 'api/catalogo/uploads/excel?tipo_busqueda=pais&pais='+pais;
+  getSelectCatalogPais(pais: string,tema: string,page:number,perpage:number) {
+    let direccion = `${this.url}/catalogo/uploads/excel/estampillas?page=${page}&perpage=${perpage}&pais=${pais}&tema=${tema}`;
     return this.http.get<CatalogoAll>(direccion).pipe(
       map((resp) => {
         return resp.catalogoCompleto;

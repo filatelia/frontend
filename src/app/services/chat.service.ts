@@ -6,8 +6,10 @@ import {map, catchError} from "rxjs/operators";
 
 export interface Message{
   nickname:string,
-  photo:string,
-  message:string
+  avatar:string,
+  message:string,
+  token:string,
+  room:{},
 }
 
 @Injectable({
@@ -19,14 +21,9 @@ export class ChatService {
     this.messages=<Subject<Message>>wsService
     .connect(environment.CHAT_URL)
     .pipe(
-      map((response:MessageEvent):Message=>{
+      map((response:MessageEvent)=>{
         let data=JSON.parse(response.data);
-        return {
-          nickname:data.nickname,
-          photo:data.photo,
-          message:data.message
-        
-        }
+        return data;
       })
     )
     

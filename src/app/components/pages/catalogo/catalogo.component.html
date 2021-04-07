@@ -14,7 +14,7 @@
                         </div>
                         <ng-template #catalogo>
                             <div class="col-lg-3" *ngFor="let datos of datospaises">
-                                <a routerLink="/catalogo-interna/{{datos.Pais.para_buscar}}" class="catalogo__content__pais">
+                                <a routerLink="/catalogo-interna/{{datos.Pais.para_buscar}}"  [queryParams]="{ type: 'pais'}" class="catalogo__content__pais">
                                     <img width="70px" height="70px" class="rounded-circle"  [src]="sanitizeImageUrl(api+datos.Pais.img)"  alt="">
                                 </a>
                             </div>
@@ -27,7 +27,7 @@
                     <h3 class="titulo titulo--chico">Temas</h3>
                     <div class="row">
                         <div class="col-lg-6" *ngFor="let tema of datosTema">
-                            <a href="#"  routerLink="/catalogo-interna/{{tema.ParaBuscar}}">
+                            <a href="#"  routerLink="/catalogo-interna/{{tema.ParaBuscar}}"  [queryParams]="{ type: 'pais'}">
                                 <div class="tema__item">
                                     <img  [src]="sanitizeImageUrl(api+tema.imagen)" alt="" style="width: 100%;">
                                     <div class="tema__item__color">

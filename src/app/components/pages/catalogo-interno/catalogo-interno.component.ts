@@ -64,7 +64,7 @@ export class CatalogoInternoComponent implements OnInit {
   
   buscarCatalogo(){
     
-    this.rest.getSelectCatalogPais(this.buscarPais).subscribe((data:any) =>{
+    this.rest.getSelectCatalogPais('pais','tema',1,10).subscribe((data:any) =>{
         this.datoscatalogo =data[0];
         this.datos =data[0];
         this.grupoCatalogo()

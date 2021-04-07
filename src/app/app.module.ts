@@ -69,6 +69,9 @@ import { CabeceraAdminComponent } from './components/admin/cabecera-admin/cabece
 import { ModalMancolistaComponent } from './components/partials/modal-mancolista/modal-mancolista.component';
 import { ModalComponent } from './components/partials/modal/modal.component';
 import { ChatAdminComponent } from './components/admin/chat-admin/chat-admin.component';
+import { MessagePartialsComponent } from './components/partials/message-partials/message-partials.component';
+import { WebsocketService } from './services/websocket.service';
+import { ChatService } from './services/chat.service';
 @NgModule({
   declarations: [
     
@@ -98,7 +101,7 @@ import { ChatAdminComponent } from './components/admin/chat-admin/chat-admin.com
     TiendaAdminLinkComponent, 
     CatalogointernoAdminComponent,
     PeticioncatalogouserComponent,
-    AjustesAdminLinkComponent, AjustesAdminComponent, PedidosAdminComponent, ClientesAdminComponent, CuponesAdminComponent, PagosAdminComponent, TemasAdminComponent, CorreoAdminComponent, EnvioAdminComponent, ProductosAdminComponent, MimancolistapublicaPageComponent, CatalogointernoAdminComponent, PeticionesAdminComponent, SubastaPagesComponent, NotifyComponent, CatalogoUserComponent, SearchPaisesComponent, SearchTypeComponent, SolicitudPatialsComponent,CabeceraAdminComponent, ModalMancolistaComponent, ModalComponent,ChatAdminComponent
+    AjustesAdminLinkComponent, AjustesAdminComponent, PedidosAdminComponent, ClientesAdminComponent, CuponesAdminComponent, PagosAdminComponent, TemasAdminComponent, CorreoAdminComponent, EnvioAdminComponent, ProductosAdminComponent, MimancolistapublicaPageComponent, CatalogointernoAdminComponent, PeticionesAdminComponent, SubastaPagesComponent, NotifyComponent, CatalogoUserComponent, SearchPaisesComponent, SearchTypeComponent, SolicitudPatialsComponent,CabeceraAdminComponent, ModalMancolistaComponent, ModalComponent,ChatAdminComponent, MessagePartialsComponent
   ],
   imports: [
     HttpClientModule,
@@ -119,7 +122,7 @@ import { ChatAdminComponent } from './components/admin/chat-admin/chat-admin.com
   exports : [
     SidebarComponent, FooterComponent
   ],
-  providers: [authInterceptorProviders,{provide:APP_BASE_HREF,useValue:'/'}],
+  providers: [authInterceptorProviders,{provide:APP_BASE_HREF,useValue:'/'},WebsocketService,ChatService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
