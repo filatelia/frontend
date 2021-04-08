@@ -24,7 +24,8 @@ export class CatalogoComponent implements OnInit {
 
   ngOnInit(): void {
     // cargar todos los catalogos
-    this.mostrarDatosCatalogo();
+    this.mostrarDatosPais();
+    this.mostrarDatosTema();
     this.verLogeo();
   }
   verLogeo() {
@@ -42,50 +43,20 @@ export class CatalogoComponent implements OnInit {
 
     }
   }
-  mostrarDatosCatalogo(){
-        
-    this.rest.getAllCatalogo().subscribe((data: any) =>{
-        
-       this.datoscatalogo =data[0];
-       for (let index = 0; index < this.datoscatalogo.length; index++) {
-        const element = this.datoscatalogo[index];
-        this.mostrarDatosTema(element)
-        var isPais=this.datospaises.find((el:any)=>el.Pais._id==element.Pais._id)
-        if(!isPais){
-          console.log(element)
-          // this.datospaises[index].pais = element.Pais;
-          this.datospaises.push(element)
-        }
-
-      
-    }    
-
-
+  mostrarDatosPais(){
+    this.rest.getCatalogoPaises().subscribe((resp: any) =>{
+       this.datospaises =resp.data
    })
 
 
   }
-  mostrarDatosPais(){
 
-    this.datoscatalogo;
-    
-    for (let index = 0; index < this.datoscatalogo.length; index++) {
-      const element = this.datoscatalogo[index];
-    
-      if(!this.datospaises.includes.call(arguments, element.Pais)){
-        this.datospaises[index].pais = element.Pais;
-        
-
-      }
-      
-    }    
-
-  }
-  mostrarDatosTema(element:any){
-     var tema=this.datosTema.find((el:any)=>el.ParaBuscar==element.Tema.ParaBuscar);
-     if(!tema){
-        this.datosTema.push(element.Tema)
-     }
+  mostrarDatosTema(){
+     
+     this.rest.getAllTemas(1).subscribe((data: any) =>{
+        this.datosTema =data.temas;
+        console.log(this.datosTema)
+    })
   }
 
   sanitizeImageUrl(imageUrl: string): SafeUrl {

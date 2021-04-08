@@ -79,7 +79,11 @@ export class RestService {
       })
     );
   }
-
+  
+  getCatalogoPaises():Observable<any>{
+    let direccion = this.url + "/catalogo/paises";
+    return this.http.get(direccion);
+  }
   getAllPaises(page:number):Observable<PaisesAll[]>{
 
     let direccion = this.url + "/catalogo/paises/all";
@@ -94,15 +98,19 @@ export class RestService {
     return this.http.get(direccion);
   }
   
-  getSelectCatalogPais(pais: string,tema: string,page:number,perpage:number) {
-    let direccion = `${this.url}/catalogo/uploads/excel/estampillas?page=${page}&perpage=${perpage}&pais=${pais}&tema=${tema}`;
+  getSelectCatalogPais(pais: string,tema: string,page:number,perpage:number,anios:any,q:any,start:number,end:number) {
+    console.log('anios',anios)
+    let direccion = `${this.url}/catalogo/uploads/excel/estampillas?page=${page}&perpage=${perpage}&pais=${pais}&tema=${tema}&start=${start}&end=${end}&anios=${anios}&q=${q}`;
     return this.http.get(direccion);
   }
-  getSelectCatalogAnio(start:number,end:number){
-    let direccion = this.url + '/catalogo/uploads/excel/cat-anio/'+start+'&'+end;
-    return this.http.get<CatalogoAll>(direccion);
+  getSelectCatalogAnio(start:number,end:number,pais:string,tema:string){
+    let direccion = this.url + '/catalogo/uploads/excel/cat-anio/'+start+'&'+end+`?pais=${pais}&tema=${tema}`;
+    return this.http.get(direccion);
   }
-
+  getSelectTema(tema:any){
+    let direccion = this.url + "/catalogo/temas/"+tema;
+    return this.http.get(direccion);
+  }
   getSelectPais(pais: string): Observable<PaisesAll> {
     this.isLoggedIn = !!this.tokenInterceptorService.getToken();
     if (this.isLoggedIn) {

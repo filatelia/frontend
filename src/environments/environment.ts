@@ -7,12 +7,12 @@ export const environment = {
 
   // conect_url: 'https://api.filateliaperu.com/',
   // conect_url_api: 'https://api.filateliaperu.com/api',
-  CHAT_URL:"ws://sw-filatelia.herokuapp.com/",
+  //CHAT_URL:location.protocol=='http:'?"ws://sw-filatelia.herokuapp.com/":"wss://sw-filatelia.herokuapp.com/",
 
 
   conect_url: 'http://localhost:3000',
   conect_url_api: 'http://localhost:3000/api',
-  //CHAT_URL:"ws://192.168.104.94:5000/",
+  CHAT_URL:"ws://192.168.104.94:5000/",
   
   api: '/api',
   login: '/login',

@@ -14,17 +14,17 @@
                     </a>
                     <h2 class="titulo titulo--mediano">Buscando por</h2>
                     <ul>
-                        <li><a routerLink="/catalogo">País</a></li>
-                        <li>{{pais.name}}</li>
+                        <li><a routerLink="/catalogo" style="text-transform: capitalize;">{{params.type}}</a></li>
+                        <li>{{pais.name||tema.name}}</li>
                     </ul>
                 </div>
             </div>
             <div class="col-lg-5 buscador-container">
                 <div class="buscador">
-                    <form>
+                    <form (ngSubmit)="buscarCatalogo()">
                          <div class="buscador__content">
-                             <input type="text">
-                             <button><img src="assets/img/iconos/buscador.png" alt=""></button>
+                             <input [(ngModel)]="search" type="text">
+                             <button type="submit"><img src="assets/img/iconos/buscador.png" alt=""></button>
                            </div>
                      </form>
                  </div>
@@ -41,58 +41,31 @@
                     <div class="accordion" id="accordionExample">
                         <div class="card anio-container">
                             <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
-                              <ngb-panel [ngClass]="['owl-vendido','owl-theme']" (shown)="buscarCatalogoAnio(1800,1899)">
+                              <ngb-panel [ngClass]="['owl-vendido','owl-theme']" *ngFor="let range of rangeAnio;let i=index" (shown)="buscarCatalogoAnio(i,range.start,range.end)">
                                 <ng-template ngbPanelTitle >
-                                  <span>1800-1899</span>
+                                  <span>{{range.start}}-{{range.end}}</span>
                                 </ng-template>
-                                <ng-template ngbPanelContent>
-                                  <div class="check" *ngFor="let item of dataAnioSearch">
-                                    <input (change)="searchAnios()" type="checkbox" [(ngModel)]="item.active" [name]="item.Anio" [id]="item.Anio" class="css-checkbox" />
-                                    <label [for]="item.Anio" class="css-label">{{item.Anio}}</label>
+                                <ng-template ngbPanelContent *ngIf="range.active;else stamp">
+                                  <div class="check" *ngFor="let item of range.data">
+                                    <input (change)="searchAnios(range.data)" type="checkbox" [(ngModel)]="item.active" [name]="item.anio" [id]="item.anio" class="css-checkbox" />
+                                    <label [for]="item.anio" class="css-label">{{item.anio}}</label>
                                   </div>
                                 </ng-template>
-                              </ngb-panel>
-                              <ngb-panel (shown)="buscarCatalogoAnio(1900,1949)">
-                                <ng-template ngbPanelTitle>
-                                  <span>1900 - 1949</span>
-                                </ng-template>
-                                <ng-template ngbPanelContent>
-                                  <!-- <div class="check">
-                                    <input type="checkbox" name="category" id="c_6" class="css-checkbox" />
-                                    <label for="c_1" class="css-label">Álbumes <span>(345)</span></label>
-                                  </div>
-                                  <div class="check">
-                                    <input type="checkbox" name="category" id="c_7" class="css-checkbox" />
-                                    <label for="c_2" class="css-label">Accesorios <span>(130)</span></label>
-                                  </div> -->
-                                  <div class="check">
-                                    <input type="checkbox" name="category" id="c_8" class="css-checkbox" />
-                                    <label for="c_3" class="css-label">Estampillas <span>(45)</span></label>
-                                  </div>
-                                </ng-template>
-                              </ngb-panel>
-                              <ngb-panel  (shown)="buscarCatalogoAnio(1950,1999)">
-                                <ng-template ngbPanelTitle >
-                                  <span>1950 -1999</span>
-                                </ng-template>
-                                <ng-template ngbPanelContent>
-                                  
-                                  <div class="check">
-                                    <input type="checkbox" name="category" id="c_11" class="css-checkbox" />
-                                    <label for="c_3" class="css-label">Estampillas <span>(45)</span></label>
-                                  </div>
-                                </ng-template>
-                              </ngb-panel>
-                              <ngb-panel (shown)="buscarCatalogoAnio(2000,-1)">
-                                <ng-template ngbPanelTitle>
-                                  <span>2000´s</span>
-                                </ng-template>
-                                <ng-template ngbPanelContent>
-                                 
-                                  <div class="check">
-                                    <input type="checkbox" name="category" id="c_14" class="css-checkbox" />
-                                    <label for="c_3" class="css-label">Estampillas <span>(45)</span></label>
-                                  </div>
+                                <ng-template #stamp>
+                                  <ng-template ngbPanelContent>
+                                    <!-- <div class="check">
+                                      <input type="checkbox" name="category" id="c_6" class="css-checkbox" />
+                                      <label for="c_1" class="css-label">Álbumes <span>(345)</span></label>
+                                    </div>
+                                    <div class="check">
+                                      <input type="checkbox" name="category" id="c_7" class="css-checkbox" />
+                                      <label for="c_2" class="css-label">Accesorios <span>(130)</span></label>
+                                    </div> -->
+                                    <div class="check">
+                                      <input [disabled]="range.data.length==0" (change)="searchAnioRange(range)" type="checkbox" [(ngModel)]="range.active" [id]="range.start" class="css-checkbox" />
+                                      <label [for]="range.start" class="css-label J-text-min">Estampillas <span>({{range.estampillas}})</span></label>
+                                    </div>
+                                  </ng-template>
                                 </ng-template>
                               </ngb-panel>
                             </ngb-accordion>
@@ -166,16 +139,16 @@
                     No se encontró ninguna estampilla
                 </div>
                 <div class="col-lg-12 text-center" *ngIf="dataCatalog.length!=0">
-                    <a *ngIf="current>=1&&current<pages" routerLink="/catalogo-interna/{{pais.para_buscar}}" [queryParams]="{ type: 'pais',page:current+1}" class="btn btn--negro mt-5">Siguente</a>
+                    <a *ngIf="current>=1&&current<pages" routerLink="/catalogo-interna/{{buscarPais}}" [queryParams]="{ type: 'pais',page:current+1}" class="btn btn--negro mt-5">Siguiente</a>
                     <ul class="numero">
                         <li *ngIf="pageFirst!==1">
                             ...
                         </li>
                         <ng-container *ngFor="let p of pagesArray;let i=index">
                           <li>
-                            <a *ngIf="p.page==current;else page" routerLink="/catalogo-interna/{{pais.para_buscar}}" [queryParams]="{ type: 'pais',page:p.page}" [class]="{'activo':p.page==current}">{{p.page}}</a>
+                            <a *ngIf="p.page==current;else page" routerLink="/catalogo-interna/{{buscarPais}}" [queryParams]="{ type: 'pais',page:p.page}" [class]="{'activo':p.page==current}">{{p.page}}</a>
                             <ng-template #page>
-                              <a routerLink="/catalogo-interna/{{pais.para_buscar}}" [queryParams]="{ type: 'pais',page:p.page}" [class]="{'activo':p==current}">{{p.page}}</a>
+                              <a routerLink="/catalogo-interna/{{buscarPais}}" [queryParams]="{ type: 'pais',page:p.page}" [class]="{'activo':p==current}">{{p.page}}</a>
                             </ng-template>
                             
                         </li>
@@ -195,4 +168,4 @@
     </div>
 </div>
 <app-modal [modal]="dataMancoSelected" #modalManco></app-modal>
-<app-message-partials></app-message-partials>
+<app-message-partials *ngIf="isLoggedIn" [tema]="tema" [pais]="pais"></app-message-partials>

@@ -5,7 +5,7 @@
             <div class="form-group col-lg-12">
                 <label for="exampleInputValor">Nombre Catalogo</label>
                 <input name="valor" type="text" formControlName="nombre" class="form-control"
-                [ngClass]="{'is-valid':!valor?.invalid&&(valor?.dirty||valor?.touched),'is-invalid':valor?.invalid&&(valor?.dirty||valor?.touched)}"
+                [ngClass]="{'is-valid':!nombre?.invalid&&(nombre?.dirty||nombre?.touched),'is-invalid':nombre?.invalid&&(nombre?.dirty||nombre?.touched)}"
                 ngModel
                 >
                 <div class="invalid-feedback" formControlName="nombre" *ngIf="nombre?.invalid&&(nombre?.dirty||nombre?.touched)">
@@ -44,16 +44,7 @@
                     <div *ngIf="timatica?.errors?.minlength">El mínimo es de 3 caracteres  </div>
                 </div>
             </div>
-            <div class="form-group col-lg-12">
-                <label for="exampleInputValor">Valor Catalogo</label>
-                <input name="valor" type="text" formControlName="valor" class="form-control"
-                [ngClass]="{'is-valid':!valor?.invalid&&(valor?.dirty||valor?.touched),'is-invalid':valor?.invalid&&(valor?.dirty||valor?.touched)}"
-                ngModel
-                >
-                <div class="invalid-feedback" *ngIf="valor?.invalid&&(valor?.dirty||valor?.touched)">
-                    <div *ngIf="valor?.errors?.required">Valor requerido</div>
-                </div>
-            </div>
+            
                 <div class="col-lg-12">
                     <div *ngIf="response?.msg" class="text-center">
                         <span [ngClass]="{'text-primary':response.ok,'text-danger':!response.ok}">

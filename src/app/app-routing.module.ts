@@ -81,6 +81,7 @@ const routes: Routes = [
     canActivate: [AuthGuard,RolGuard],
     children: [
       { path: '', component: PeticionesAdminComponent },
+      { path: 'mancolista', component: MancolistaComponent },
       { path: 'tabla', component: TablaCatalogoComponent },
       { path: 'temas', component: TemasCatalogoComponent},
       { path: 'catalogo-admin', component: CatalogoAdminComponent },

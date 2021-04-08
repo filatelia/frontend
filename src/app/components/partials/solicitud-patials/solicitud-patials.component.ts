@@ -67,7 +67,6 @@ export class SolicitudPatialsComponent implements OnInit {
     return new FormGroup({
       nombre:new FormControl('',[Validators.required,Validators.minLength(3)]),
       pais:new FormControl('',[]),
-      valor:new FormControl('',[]),
       tipo_catalogo: new FormControl('',[Validators.required,Validators.minLength(1)]),
       timatica: new FormControl('',[]),
     });
@@ -103,12 +102,11 @@ export class SolicitudPatialsComponent implements OnInit {
       timatica:this.nombre?.value,
       pais_catalogo_solicitud:this.id_pais,
       tema_catalogo_solicitud:this.id_tema,
-      valor_catalogo:this.valor?.value
+      valor_catalogo:''
     }
   }
   get nombre(){return this.form.get('nombre')}
   get pais(){return this.form.get('pais')}
-  get valor(){return this.form.get('valor')}
   get tipo_catalogo(){return this.form.get('tipo_catalogo')}
   get timatica(){return this.form.get('timatica')}
   set timatica(value){

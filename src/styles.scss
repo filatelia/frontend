@@ -6,6 +6,12 @@ body{
     color: $negro;
     overflow-x: hidden;
 }
+.J-text-min{
+    font-size: 16px !important;
+    span{
+        font-size: 15px !important;
+    }
+}
 .catalogo-item{
 	min-width: 300px;
     max-width: 300px;
