@@ -27,19 +27,35 @@ export class CatalogoInternoComponent implements OnInit {
   api = environment.conect_url;
   isLoggedIn = false;
 
+  page:number =1;
+  current:number =0;
+  pages:number =0;
+  pageFirst:number =0;
+  pageLast:number =0;
+
+
+  params:any ={};
+  pagesArray:any=[];
   constructor(
     private tokenInterceptorService: TokenInterceptorService,
     private rest: RestService,
     private route: ActivatedRoute,
     private location: Location,
     private sanitizer: DomSanitizer
+
   ) {}
   ngOnInit(): void {
     //tipo_busqueda
-    this.buscarPais = this.route.snapshot.paramMap.get('pais')||'/peru';
-    this.buscarPorPais();
-    this.buscarCatalogo();
+    this.getParams()
     this.verLogeo();
+  }
+  getParams(){
+    this.buscarPais = this.route.snapshot.paramMap.get('pais')||'/peru';
+    this.route.queryParamMap.subscribe((params:any)=>{
+      this.params=params.params
+      this.buscarPorPais();
+      this.page=this.params.page||1
+    })
   }
   verLogeo() {
     console.log("verificado logueo");
@@ -59,14 +75,29 @@ export class CatalogoInternoComponent implements OnInit {
   buscarPorPais(){
     this.rest.getSelectPais(this.buscarPais).subscribe(data =>{
       this.pais=data
+      this.buscarCatalogo();
     });
   }
   
   buscarCatalogo(){
+    this.dataCatalog =[];
     
-    this.rest.getSelectCatalogPais('pais','tema',1,10).subscribe((data:any) =>{
-        this.datoscatalogo =data[0];
-        this.datos =data[0];
+    this.rest.getSelectCatalogPais(this.pais.uid||'','',this.page,12).subscribe((res:any) =>{
+        let {data,current,pages}=res
+        this.datoscatalogo =data;
+        this.datos =data;
+        this.current=current
+        this.pages=pages
+
+        this.pageFirst=(current>3?current-2:1)
+        var i=this.pageFirst;
+        this.pagesArray=[]
+        for(;i<=(current+2)&& i <=this.pages;i++){
+          this.pagesArray.push({
+            page:i
+          })
+        }
+        window.scrollTo( 0, 0 );
         this.grupoCatalogo()
     });
 

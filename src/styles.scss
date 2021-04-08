@@ -277,8 +277,8 @@ body{
     li{
         list-style: none;
         display: inline-block;
+        width: 100px;
         a{
-            padding: 0px 100px;
             color: $plomo;
             font-size: 22px;
             text-decoration: none;

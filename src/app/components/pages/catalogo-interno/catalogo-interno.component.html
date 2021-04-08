@@ -57,14 +57,14 @@
                                   <span>1900 - 1949</span>
                                 </ng-template>
                                 <ng-template ngbPanelContent>
-                                  <div class="check">
+                                  <!-- <div class="check">
                                     <input type="checkbox" name="category" id="c_6" class="css-checkbox" />
                                     <label for="c_1" class="css-label">Álbumes <span>(345)</span></label>
                                   </div>
                                   <div class="check">
                                     <input type="checkbox" name="category" id="c_7" class="css-checkbox" />
                                     <label for="c_2" class="css-label">Accesorios <span>(130)</span></label>
-                                  </div>
+                                  </div> -->
                                   <div class="check">
                                     <input type="checkbox" name="category" id="c_8" class="css-checkbox" />
                                     <label for="c_3" class="css-label">Estampillas <span>(45)</span></label>
@@ -76,14 +76,7 @@
                                   <span>1950 -1999</span>
                                 </ng-template>
                                 <ng-template ngbPanelContent>
-                                  <div class="check">
-                                    <input type="checkbox" name="category" id="c_9" class="css-checkbox" />
-                                    <label for="c_1" class="css-label">Álbumes <span>(345)</span></label>
-                                  </div>
-                                  <div class="check">
-                                    <input type="checkbox" name="category" id="c_10" class="css-checkbox" />
-                                    <label for="c_2" class="css-label">Accesorios <span>(130)</span></label>
-                                  </div>
+                                  
                                   <div class="check">
                                     <input type="checkbox" name="category" id="c_11" class="css-checkbox" />
                                     <label for="c_3" class="css-label">Estampillas <span>(45)</span></label>
@@ -95,14 +88,7 @@
                                   <span>2000´s</span>
                                 </ng-template>
                                 <ng-template ngbPanelContent>
-                                  <div class="check">
-                                    <input type="checkbox" name="category" id="c_12" class="css-checkbox" />
-                                    <label for="c_1" class="css-label">Álbumes <span>(345)</span></label>
-                                  </div>
-                                  <div class="check">
-                                    <input type="checkbox" name="category" id="c_13" class="css-checkbox" />
-                                    <label for="c_2" class="css-label">Accesorios <span>(130)</span></label>
-                                  </div>
+                                 
                                   <div class="check">
                                     <input type="checkbox" name="category" id="c_14" class="css-checkbox" />
                                     <label for="c_3" class="css-label">Estampillas <span>(45)</span></label>
@@ -128,7 +114,7 @@
                                         <p>{{catalog.Descripcion_de_la_serie}}</p>
                                     </div>
                                     <div class="col-lg-3 d-flex justify-content-end align-items-center">
-                                        <span>{{catalog.Cantidad}}</span>
+                                        <span>{{catalog.Cantidad}} estampillas</span>
                                     </div>
                                 </div>
                             </div>
@@ -179,25 +165,32 @@
                   <br>
                     No se encontró ninguna estampilla
                 </div>
+                <div class="col-lg-12 text-center" *ngIf="dataCatalog.length!=0">
+                    <a *ngIf="current>=1&&current<pages" routerLink="/catalogo-interna/{{pais.para_buscar}}" [queryParams]="{ type: 'pais',page:current+1}" class="btn btn--negro mt-5">Siguente</a>
+                    <ul class="numero">
+                        <li *ngIf="pageFirst!==1">
+                            ...
+                        </li>
+                        <ng-container *ngFor="let p of pagesArray;let i=index">
+                          <li>
+                            <a *ngIf="p.page==current;else page" routerLink="/catalogo-interna/{{pais.para_buscar}}" [queryParams]="{ type: 'pais',page:p.page}" [class]="{'activo':p.page==current}">{{p.page}}</a>
+                            <ng-template #page>
+                              <a routerLink="/catalogo-interna/{{pais.para_buscar}}" [queryParams]="{ type: 'pais',page:p.page}" [class]="{'activo':p==current}">{{p.page}}</a>
+                            </ng-template>
+                            
+                        </li>
+                        <li *ngIf="p.page==(current+2)&&p.page<pages">
+                          <a>
+                            ...
+                          </a>
+                        </li>
+                        </ng-container>
+                        
+                        
+                    </ul>
+                </div>
             </div>
-            <div class="col-lg-12 text-center">
-              <a href="" class="btn btn--negro mt-5">Siguente</a>
-              <ul class="numero">
-                  <li>
-                      <a href="" class="activo">1</a>
-                  </li>
-                  <li>
-                      <a href="">2</a>
-                  </li>
-                  <li>
-                      <a href="">3...</a>
-                  </li>
-                  <li>
-                      <a href="">145</a>
-                  </li>
-
-              </ul>
-          </div>  
+             
         </div>
     </div>
 </div>

@@ -96,12 +96,7 @@ export class RestService {
   
   getSelectCatalogPais(pais: string,tema: string,page:number,perpage:number) {
     let direccion = `${this.url}/catalogo/uploads/excel/estampillas?page=${page}&perpage=${perpage}&pais=${pais}&tema=${tema}`;
-    return this.http.get<CatalogoAll>(direccion).pipe(
-      map((resp) => {
-        return resp.catalogoCompleto;
-      }),
-     
-    );
+    return this.http.get(direccion);
   }
   getSelectCatalogAnio(start:number,end:number){
     let direccion = this.url + '/catalogo/uploads/excel/cat-anio/'+start+'&'+end;
