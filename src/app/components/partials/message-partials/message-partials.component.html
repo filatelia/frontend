@@ -1,0 +1,40 @@
+<div class="J-container-chat">
+    <div class="J-content-chat" [class]="{'hide':!chatactive}">
+        <div class="J-content-header">
+            <h2 class="J-header-title">
+                Catalogo {{data_chat.name}}
+            </h2>
+            <button class="close"  (click)="chatactive=false">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="J-content-conversation" #scrollChat>
+            <div class="J-conversation" *ngFor="let message of messages" [class]="{'right':message.id_usuario==id_user}">
+                <div class="J-message">
+                    <a [href]="'/user/'+message.id_usuario"  class="J-message-name" *ngIf="message.id_usuario!=id_user">
+                        ~{{message.nickname}}
+                    </a>
+                    {{message.message}}
+                </div>
+            </div>
+            
+        </div>
+        <form class="J-content-input" (ngSubmit)="sendMessage()">
+            <input type="text" class="form-control" placeholder="Agrega un comentario publico" name="" id="" [(ngModel)]="txtmessage">
+            <button type="submit" class="J-content-send">
+                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 448 448" style="enable-background:new 0 0 448 448;" xml:space="preserve">
+                    <g>
+                        <polygon points="0.213,32 0,181.333 320,224 0,266.667 0.213,416 448,224 		"/>
+                    </g>
+                </svg>
+
+            </button>
+        </form>
+    </div>
+    <div class="J-content-btn" [class]="{'hide':chatactive}">
+        <button class="J-chat-btn" (click)="openChat()">
+            <i class="fas fa-comments"></i>
+        </button>
+    </div>
+</div>
