@@ -69,9 +69,14 @@ import { CabeceraAdminComponent } from './components/admin/cabecera-admin/cabece
 import { ModalMancolistaComponent } from './components/partials/modal-mancolista/modal-mancolista.component';
 import { ModalComponent } from './components/partials/modal/modal.component';
 import { ChatAdminComponent } from './components/admin/chat-admin/chat-admin.component';
+<<<<<<< HEAD
+import { NgSimpleSidebarModule } from 'ng-simple-sidebar';
+
+=======
 import { MessagePartialsComponent } from './components/partials/message-partials/message-partials.component';
 import { WebsocketService } from './services/websocket.service';
 import { ChatService } from './services/chat.service';
+>>>>>>> 606cbd2f29c67fd3f4145b423c4e755b17a5036f
 @NgModule({
   declarations: [
     
@@ -101,9 +106,32 @@ import { ChatService } from './services/chat.service';
     TiendaAdminLinkComponent, 
     CatalogointernoAdminComponent,
     PeticioncatalogouserComponent,
+<<<<<<< HEAD
+    AjustesAdminLinkComponent, 
+    AjustesAdminComponent, 
+    PedidosAdminComponent, 
+    ClientesAdminComponent, 
+    CuponesAdminComponent, 
+    PagosAdminComponent, 
+    TemasAdminComponent, 
+    CorreoAdminComponent, 
+    EnvioAdminComponent, 
+    ProductosAdminComponent, 
+    MimancolistapublicaPageComponent, 
+    CatalogointernoAdminComponent, 
+    PeticionesAdminComponent, 
+    SubastaPagesComponent, 
+    NotifyComponent, CatalogoUserComponent, 
+    SearchPaisesComponent, SearchTypeComponent, 
+    SolicitudPatialsComponent,CabeceraAdminComponent, 
+    ModalMancolistaComponent, ModalComponent,
+    ChatAdminComponent
+=======
     AjustesAdminLinkComponent, AjustesAdminComponent, PedidosAdminComponent, ClientesAdminComponent, CuponesAdminComponent, PagosAdminComponent, TemasAdminComponent, CorreoAdminComponent, EnvioAdminComponent, ProductosAdminComponent, MimancolistapublicaPageComponent, CatalogointernoAdminComponent, PeticionesAdminComponent, SubastaPagesComponent, NotifyComponent, CatalogoUserComponent, SearchPaisesComponent, SearchTypeComponent, SolicitudPatialsComponent,CabeceraAdminComponent, ModalMancolistaComponent, ModalComponent,ChatAdminComponent, MessagePartialsComponent
+>>>>>>> 606cbd2f29c67fd3f4145b423c4e755b17a5036f
   ],
   imports: [
+    NgSimpleSidebarModule,
     HttpClientModule,
     FormsModule,
     BrowserModule,
@@ -117,7 +145,7 @@ import { ChatService } from './services/chat.service';
     NgbNavModule,
     MaterialModule,
     DataTablesModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   exports : [
     SidebarComponent, FooterComponent

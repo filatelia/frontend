@@ -1,5 +1,7 @@
 
-<app-cabecera></app-cabecera>
+<app-cabecera *ngIf="!isLoggedIn"  ></app-cabecera>
+<app-cabecera-admin *ngIf=" showAdminBoard"></app-cabecera-admin>
+<app-cabecera  *ngIf="showClientBoard"  ></app-cabecera>
 
    <router-outlet></router-outlet>
 <app-footer></app-footer>

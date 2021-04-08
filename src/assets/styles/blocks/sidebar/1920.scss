@@ -1,0 +1,93 @@
+.sidebar{
+    &__open{
+    width: 15rem;
+    top: 0;    
+    background-color: $negro;
+    height: 100vh;
+    z-index: 123;
+    position: fixed;
+    padding: 37px 20px;
+    &__logo{
+        width: 50%;
+        text-align: center;
+        img{
+            width: 9rem;
+        }
+    }
+    button{
+        margin-top: 0.5rem;
+        margin-left: 3rem;
+        width: 2rem;
+        height: 2rem;
+        border-color: transparent;
+        background-color: transparent;
+        img{
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    }
+    &__listado{
+        margin-top: 74px;        
+        ul{
+            padding: 0 15px;
+            li{
+                padding: 11px 0px;
+                .link{
+                    position: relative;
+                    display: block;
+                    &:before{
+                        content: "";
+                        position: absolute;
+                        width: 15px;
+                        height: 15px;  
+                        //background-image: url(../../../img/iconos/flecha.svg);                      
+                        transform: rotate(270deg);
+                        right: 25px;
+                        bottom: 0;
+                        top: 0;
+                        margin: auto;
+                        transition: all 0.5s;
+                    }
+                }
+                /*.listado{
+
+                }*/
+                a{
+                    color: $blanco;
+                    font-size: 15px;
+                    font-family: $DMregular;
+                    position: relative;
+                    svg,
+                    img{
+                        position: absolute;
+                        top: 5px;
+                    }
+                    svg{
+                        path{
+                            fill:$blanco;
+                        }
+                    }
+                    span{
+                        margin-left: 40px;
+                        display: block;
+                    }
+                }
+            }
+        }
+        ol{
+            li{
+                padding: 5px 0px;
+                a{
+                    font-size: 10px;
+                    color: darken($blanco, 10);
+                }
+            }
+        }
+    }
+}
+ &__close{
+    width: 1rem;
+
+ }
+
+}

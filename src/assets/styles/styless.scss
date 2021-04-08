@@ -6,8 +6,10 @@
 
 //blocks
 @import "./blocks/header/header.scss";
+@import "./blocks/header-admin/header-admin.scss";
 @import "./blocks/footer/footer.scss";
 @import "./blocks/button/button.scss";
+@import "./blocks/sidebar/sidebar.scss";
 
 //pages
 @import "./pages/crud.scss";
