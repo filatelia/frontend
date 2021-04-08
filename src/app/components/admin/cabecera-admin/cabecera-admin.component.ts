@@ -3,7 +3,6 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { RestService } from 'src/app/services/rest.service';
 import { TokenInterceptorService } from 'src/app/services/token-interceptor.service';
 import Swal from 'sweetalert2';
-import {SidebarElement, SidebarService} from 'sidebarjs';
 import 'sidebarjs/lib/sidebarjs.css';
 
 @Component({
