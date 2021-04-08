@@ -34,7 +34,7 @@
         }
     }
     
-    .header{
+    .headeradmin{
         height: auto;
         display: block;
         padding:0;
@@ -42,11 +42,12 @@
         top:0px;
         position: absolute;
         z-index: 123;
+        
         &--amarillo{
             background-color: $amarillo;
             position: relative;
             height: 160px;
-            padding-left: 37px;
+            padding-right: 100px;
         }
         &--negro{
             display: flex;
@@ -59,7 +60,7 @@
         }
         &__logo{
             background-color:$negro;
-            padding-left: 0px;      
+            padding: 0px;      
         }
         &__left{
             margin-top: 0;
@@ -72,6 +73,7 @@
                     a{
                         color: $negro;
                     }
+                   
                 }
             }
         }
@@ -261,7 +263,7 @@
             background-color: $negro;
             height: 100vh;
         }
-    }
+    
     }
     .header--amarillo {
         height: 115px;
@@ -300,3 +302,4 @@
         margin-left: 0 !important;
     
     }
+}

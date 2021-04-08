@@ -1,15 +1,22 @@
-<aside class="sidebar">   
-    <div class="sidebar__logo">
+
+<aside class="sidebar__open">  
+ 
+    <div class="sidebar__open__logo col-lg-" >
         <img src="assets/img/logo.png" alt="">
+        
     </div> 
-    <div class="sidebar__listado">
+    <button class="button"  >
+      <img src="../assets/img/iconos/menu.svg" alt="">
+  </button>
+    
+    <div class="sidebar__open__listado">
         <ul>
             <li>
                 <a  [routerLink]="['/admin/dashboard']" class="link"><img src="assets/img/iconos/dashboard.png" alt=""> <span>Dashboard</span></a>
             </li>
             <li>
                 <a [routerLink]="['/admin/dashboard/catalogo-admin']" class="link"><img src="assets/img/iconos/dashboard.png" alt=""> <span>Catálogo</span></a>
-            <!----    <ol class="listado"> 
+        <!---      <ol class="listado"> 
                     <li>
                        
                         <a href="/admcatalogo">Catalogo</a>
@@ -48,6 +55,42 @@
             </li>
         </ul>
     </div>
-</aside>
+  </aside>
 
 
+<!---
+    <ng-sidebar-container
+        onBackdropClicked="_onBackdropClicked()">
+      <ng-sidebar
+        [(opened)]="_opened"
+        [dockedSize]="'50px'"
+        [autoCollapseHeight]="_autoCollapseHeight"
+        [autoCollapseWidth]="_autoCollapseWidth"
+        [closeOnClickOutside]="_closeOnClickOutside"
+        [closeOnClickBackdrop]="_closeOnClickBackdrop"
+        [sidebarClass]="'demo-sidebar'"
+        [ariaLabel]="'My sidebar'"
+        (onOpenStart)="_onOpenStart()"
+        (onOpened)="_onOpened()"
+        (onCloseStart)="_onCloseStart()"
+        (onClosed)="_onClosed()"
+        (onTransitionEnd)="_onTransitionEnd()">
+        <button (click)="_toggleOpened()" class="demo-header__toggle">Toggle sidebar</button>
+        <span>ng-sidebar</span>
+        <p>Sidebar contents</p>
+
+        <button class="demo-control" (click)="_toggleOpened()">Close sidebar</button>
+        <p><a closeSidebar>This will close the sidebar too</a></p>
+
+        <hr>
+
+        <p>Throwup on your pillow.</p>
+        <p>Steal the warm chair right after you get up.</p>
+        <p>Use lap as chair hide head under blanket.</p>
+        <p>Walk on car leaving trail of paw prints on hood.</p>
+        <p>Steal the warm chair right after you get up.</p>
+      </ng-sidebar>
+
+      
+    </ng-sidebar-container>
+  --->

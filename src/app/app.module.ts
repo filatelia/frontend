@@ -69,6 +69,8 @@ import { CabeceraAdminComponent } from './components/admin/cabecera-admin/cabece
 import { ModalMancolistaComponent } from './components/partials/modal-mancolista/modal-mancolista.component';
 import { ModalComponent } from './components/partials/modal/modal.component';
 import { ChatAdminComponent } from './components/admin/chat-admin/chat-admin.component';
+import { NgSimpleSidebarModule } from 'ng-simple-sidebar';
+
 @NgModule({
   declarations: [
     
@@ -98,9 +100,28 @@ import { ChatAdminComponent } from './components/admin/chat-admin/chat-admin.com
     TiendaAdminLinkComponent, 
     CatalogointernoAdminComponent,
     PeticioncatalogouserComponent,
-    AjustesAdminLinkComponent, AjustesAdminComponent, PedidosAdminComponent, ClientesAdminComponent, CuponesAdminComponent, PagosAdminComponent, TemasAdminComponent, CorreoAdminComponent, EnvioAdminComponent, ProductosAdminComponent, MimancolistapublicaPageComponent, CatalogointernoAdminComponent, PeticionesAdminComponent, SubastaPagesComponent, NotifyComponent, CatalogoUserComponent, SearchPaisesComponent, SearchTypeComponent, SolicitudPatialsComponent,CabeceraAdminComponent, ModalMancolistaComponent, ModalComponent,ChatAdminComponent
+    AjustesAdminLinkComponent, 
+    AjustesAdminComponent, 
+    PedidosAdminComponent, 
+    ClientesAdminComponent, 
+    CuponesAdminComponent, 
+    PagosAdminComponent, 
+    TemasAdminComponent, 
+    CorreoAdminComponent, 
+    EnvioAdminComponent, 
+    ProductosAdminComponent, 
+    MimancolistapublicaPageComponent, 
+    CatalogointernoAdminComponent, 
+    PeticionesAdminComponent, 
+    SubastaPagesComponent, 
+    NotifyComponent, CatalogoUserComponent, 
+    SearchPaisesComponent, SearchTypeComponent, 
+    SolicitudPatialsComponent,CabeceraAdminComponent, 
+    ModalMancolistaComponent, ModalComponent,
+    ChatAdminComponent
   ],
   imports: [
+    NgSimpleSidebarModule,
     HttpClientModule,
     FormsModule,
     BrowserModule,
@@ -114,7 +135,7 @@ import { ChatAdminComponent } from './components/admin/chat-admin/chat-admin.com
     NgbNavModule,
     MaterialModule,
     DataTablesModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   exports : [
     SidebarComponent, FooterComponent
