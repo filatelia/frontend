@@ -1,71 +1,7 @@
 @import '../../../../assets/styles/variables/variables.scss';
 
 @media (max-width: 1920px){
-    table {
-        border-collapse:separate; 
-        border-spacing:0 13px; 
-    } 
-    .table{         
-        margin-top:40px;
-        thead{
-            background-color: $negro;
-            tr{
-                th{
-                    color: $blanco;
-                    padding: 12px 20px;
-                    font-size: 18px;
-                    font-weight: lighter;
-                    font-family: $DMregular;
-                    border-top:1px solid transparent;
-                    border-bottom:1px solid transparent;
-                }
-            }
-        }
-        tbody{
-            tr{
-                th{
-                    font-weight: bold;
-                }
-                th,td{
-                    background-color:#F5F2F2; /* #F5F2F2*/
-                    padding: 10px 20px;                    
-                    height: 97px;
-                    font-family: $lato;
-                    border-top: 1px solid transparent;
-                    font-size: 15px;
-                }
-                td{                                        
-                    .temas{
-                        width: 30px;
-                    }
-                    .pais{
-                        width: 30px;
-                    }
-                    &.editar{
-                        a{
-                            display: inline-block;
-                            padding: 0px 10px;
-                            img{
-                                width: auto;
-                            }
-                        }
-                    }
-                    &:last-child{
-                        text-align: right;
-                    }
-                }
-            }
-        }
-        &--normal{
-            tbody{ 
-                tr{
-                    th,td{
-                        height: 48px;
-                    }
-                }
-            } 
-        }
-    }
+    
 .btn-table-rad{
     border-radius: 30px;
     color: #fff;

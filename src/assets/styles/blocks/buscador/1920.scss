@@ -4,7 +4,7 @@
     float: right;
     margin-top: 20px;
     margin-left: 5rem;
-    margin-right: -7rem;
+    margin-right: -8rem;
     &__content{
         position: relative;
         input{
@@ -38,13 +38,14 @@
 .buscadorTop{
     padding: 62px 0px 56px;
     &__migas{ 
-        margin-right: -15rem;
+        margin-right: -19rem;
         h2{
             display: inline-block;
-            margin-left: 100px;
+            margin-left: 5rem; ///margen left"buscado por"
         }
         li{
             font-size: 1rem;
+            margin-left: -1.6rem; ///margen left"pais"
         }
         a{
             font-size: 1.7rem;
@@ -73,15 +74,15 @@
                 font-family: $DMregular;                                
                 position: relative;
                 &:last-child{
-                    padding-left: 83px;
+                    padding-left: 80px; //padding left {{nombre-pais}}
                    
                 }
                 &:last-child:before{
                     content: "";
                     width: 20px;
                     height: 20px; 
-                    left: 32px;
-                    top: 15px;                   
+                    left: 2.6rem; //left flecha naranja
+                    top: 11px;    //top flecha naranja                
                     position: absolute;
                     background-size: cover;
                     background-position: center;
