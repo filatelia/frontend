@@ -1,4 +1,6 @@
+@import '../../../../assets/styles/variables/variables.scss';
 
+@media (max-width: 1920px){
 .container-catalogo{
     display: flex;
     justify-content: center;
@@ -63,4 +65,5 @@
             border-color: #dc3545;
         }
     }
+}
 }

@@ -1,0 +1,98 @@
+@media (max-width: 1920px){
+.buscador{
+    width: 50%;
+    float: right;
+    margin-top: 20px;
+    margin-left: 5rem;
+    margin-right: -7rem;
+    &__content{
+        position: relative;
+        input{
+            height: 68px;
+            background-color: $blanco;                        
+            height: 52px;
+            border:1px solid $plomo;
+            border-radius: 0;   
+            width: 100%;                  
+            padding: 6px 62px 6px 20px;   
+            &:focus{
+                border:transparent;
+                box-shadow: 1px 3px 4px transparent;
+            }
+            &:active{
+                box-shadow: 1px 3px 4px transparent;
+            }
+        }
+        button{
+            right:1px;
+            top: 1px;
+            background-color: $blanco;
+            border:1px solid transparent;
+            position: absolute;            
+            width: 75px;
+            height: 50px;            
+        }
+    }
+}
+
+.buscadorTop{
+    padding: 62px 0px 56px;
+    &__migas{ 
+        margin-right: -15rem;
+        h2{
+            display: inline-block;
+            margin-left: 100px;
+        }
+        li{
+            font-size: 1rem;
+        }
+        a{
+            font-size: 1.7rem;
+        }
+        .boton{ 
+            width: 50px;
+            height: 50px;
+            background-color: $negro;
+            border-radius: 50%;
+            transform: rotate(180deg);            
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            svg{                               
+                width: 25px;
+                fill:$blanco;
+            }
+        }
+        ul{
+            display: inline-block;  
+                      
+            li{
+                display: inline-block;
+                font-size: 1.7rem;
+                font-family: $DMregular;                                
+                position: relative;
+                &:last-child{
+                    padding-left: 83px;
+                   
+                }
+                &:last-child:before{
+                    content: "";
+                    width: 20px;
+                    height: 20px; 
+                    left: 32px;
+                    top: 15px;                   
+                    position: absolute;
+                    background-size: cover;
+                    background-position: center;
+                    background-image: url(../../../img/iconos/flechaMostaza.svg);
+                }
+                a{
+                    color: $negro;
+                }
+            }
+        }
+        
+    }
+}
+}

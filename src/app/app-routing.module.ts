@@ -25,6 +25,7 @@ import { AddcorreoAdminComponent } from './components/admin/addcorreo-admin/addc
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 import { TiendaComponent } from './components/pages/tienda/tienda.component';
+import { SubastaPagesComponent } from './components/pages/subasta-pages/subasta-pages.component';
 import { RegistrateComponent } from './components/pages/registrate/registrate.component';
 import { IniciarComponent } from './components/pages/iniciar/iniciar.component';
 import { HomeComponent } from './components/pages/home/home.component';
@@ -56,7 +57,7 @@ const routes: Routes = [
       { path: '', component: HomeComponent},
       { path: 'tienda',component: TiendaComponent},
       { path: 'catalogo', component:CatalogoComponent},
-      { path: 'subasta', component:CatalogoComponent},
+      { path: 'subasta', component:SubastaPagesComponent},
       { path: 'catalogo-interna/:pais', component:CatalogoInternoComponent},
       //auth
       { path: 'auth/register',component: RegistrateComponent, 

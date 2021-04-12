@@ -1,0 +1,64 @@
+@media (max-width: 1920px){
+.owl-nav{
+    display: block !important;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    margin: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    right: 0;
+    .owl-prev,
+    .owl-next{
+        position: absolute;
+        background-color: $mostaza !important;
+        width: 117px;
+        height: 90px;
+        top: 0;
+        bottom: 0;
+        border-radius: 0 !important;
+        margin: auto !important;
+        color: $blanco;
+        background-size: 23% !important;
+        font-size: 40px !important;
+        background-image: url(../../../img/iconos/flecha.svg) !important;
+        background-repeat: no-repeat !important;
+        background-position: 50% 50% !important;
+    }
+    .owl-prev{
+        left: -54px;
+        transform: rotate(180deg);
+    }
+    .owl-next{
+    right: -54px;
+    }
+    button{
+        position: absolute;
+        background-color: $mostaza !important;
+        width: 117px;
+        height: 88px;
+        top: 0;
+        bottom: 0;
+        border-radius: 0;
+        margin: auto !important;
+        span{
+            font-size: 74px;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            line-height: 67px;
+        }
+        &:nth-of-type(1){
+            left: -54px;
+        }
+        &:nth-of-type(2){
+            right: -54px;
+        }
+    }
+}
+}
