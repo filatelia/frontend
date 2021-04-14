@@ -116,10 +116,10 @@
                             </form>
                             <form [formGroup]="registerForm"  (ngSubmit)="registrar()"  class="row hide needs-validation" [class]="{'show':tabViews[2].active}">
                                 <div class="form-group col-lg-12">
-                                    <label for="nickname">Nickname</label>
+                                    <label for="nickname">Apodo</label>
                                     <input type="text" required id="nickname" formControlName="nickname" class="form-control" ngModel [ngClass]="{'is-valid':!nickname?.invalid&&(nickname?.dirty||nickname?.touched),'is-invalid':nickname?.invalid&&(nickname?.dirty||nickname?.touched)}" ngModel>
                                     <div class="invalid-feedback" *ngIf="nickname?.invalid&&(nickname?.dirty||nickname?.touched)">
-                                        <div *ngIf="nickname?.errors?.required">Nickname requerido</div>
+                                        <div *ngIf="nickname?.errors?.required">Apodo requerido</div>
                                         <div *ngIf="nickname?.errors?.minlength">Minímo es de 6 caracteres</div>
                                     </div>
                                 </div>

@@ -58,7 +58,7 @@ export class RegistrateComponent implements OnInit {
   
   createForm1Group(){
     return this.formBuilder.group({
-        pais:new FormControl('',[Validators.required,Validators.minLength(3)]),
+        pais:new FormControl('',[Validators.required,Validators.minLength(1)]),
         name:new FormControl('',[Validators.required,Validators.minLength(3)]),
         apellidos:new FormControl('',[Validators.required,Validators.minLength(3)]),
         fecha_nacimiento:new FormControl('',[Validators.required,Validators.minLength(8)]),
@@ -171,17 +171,23 @@ export class RegistrateComponent implements OnInit {
     });
     var temas:any=[]
     await this.dataTema.forEach((element:any) => {
-      temas.push(element.uid)
-  });
+        temas.push(element.uid)
+    });
+
+    var tipo:any=[];
+    this.dataTipo.forEach((el:any)=>{
+      if(el.active==true) tipo.push(el.uid)
+    })
+
     return{
       email:this.email?.value,
       name:this.name?.value,
       password:this.password?.value,
       apellidos:this.apellidos?.value,
       nickname:this.nickname?.value,
-      pais_usuario:this.pais?.value,
+      pais_usuario:this.id_pais,
       fecha_nacimiento:this.fecha_nacimiento?.value,
-      tipo_catalogo:this.dataTipo.filter((el:any)=>el.active==true),
+      tipo_catalogo:tipo,
       paises_coleccionados:pais,
       temas:temas,
     }
