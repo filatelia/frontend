@@ -1,0 +1,120 @@
+<div class="modal-body">
+    <div class="dashboard__contenido__formulario">
+        <form class="row hide needs-validation" [formGroup]="form" (ngSubmit)="next(1)" [class]="{'show':tabViews[0].active}">
+            <div class="form-group col-lg-12">
+                <label for="exampleInputValor">Pais</label>
+                <input name="valor" type="text" formControlName="descripcion" class="form-control"
+                [ngClass]="{'is-valid':!descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched),'is-invalid':descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched)}"
+                ngModel
+                >
+                <div class="invalid-feedback" formControlName="descripcion" *ngIf="descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched)">
+                <div *ngIf="descripcion?.errors?.required">descripcion de catalogo requerido</div>
+                <div *ngIf="descripcion?.errors?.minlength">El mínimo es de 5 caracteres </div>
+                </div>
+            </div>
+            <div class="form-group col-lg-12">
+                <label for="exampleInputValor">Código</label>
+                <input name="valor" type="text" formControlName="descripcion" class="form-control"
+                [ngClass]="{'is-valid':!descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched),'is-invalid':descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched)}"
+                ngModel
+                >
+                <div class="invalid-feedback" formControlName="descripcion" *ngIf="descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched)">
+                <div *ngIf="descripcion?.errors?.required">descripcion de catalogo requerido</div>
+                <div *ngIf="descripcion?.errors?.minlength">El mínimo es de 5 caracteres </div>
+                </div>
+            </div>
+            <div class="form-group col-lg-12">
+                <label for="exampleInputValor">Año</label>
+                <input name="valor" type="text" formControlName="descripcion" class="form-control"
+                [ngClass]="{'is-valid':!descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched),'is-invalid':descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched)}"
+                ngModel
+                >
+                <div class="invalid-feedback" formControlName="descripcion" *ngIf="descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched)">
+                <div *ngIf="descripcion?.errors?.required">descripcion de catalogo requerido</div>
+                <div *ngIf="descripcion?.errors?.minlength">El mínimo es de 5 caracteres </div>
+                </div>
+            </div>
+            <div class="form-group col-lg-12">
+                <label for="exampleInputValor">Tema</label>
+                <input name="valor" type="text" formControlName="descripcion" class="form-control"
+                [ngClass]="{'is-valid':!descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched),'is-invalid':descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched)}"
+                ngModel
+                >
+                <div class="invalid-feedback" formControlName="descripcion" *ngIf="descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched)">
+                <div *ngIf="descripcion?.errors?.required">descripcion de catalogo requerido</div>
+                <div *ngIf="descripcion?.errors?.minlength">El mínimo es de 5 caracteres </div>
+                </div>
+            </div>
+            <div class="col-lg-12 mt-1 text-center">
+                <button type="submit"  class="btn btn--negro">
+                    Siguiente
+                </button>
+            </div>
+        </form>
+        <form class="row hide needs-validation" [formGroup]="form" (ngSubmit)="next(2)" [class]="{'show':tabViews[1].active}">
+                
+                <div class="form-group col-lg-12">
+                    <label for="exampleInputValor">Numero de estampilla</label>
+                    <input name="valor" type="text" formControlName="descripcion" class="form-control"
+                    [ngClass]="{'is-valid':!descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched),'is-invalid':descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched)}"
+                    ngModel
+                    >
+                    <div class="invalid-feedback" formControlName="descripcion" *ngIf="descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched)">
+                    <div *ngIf="descripcion?.errors?.required">descripcion de catalogo requerido</div>
+                    <div *ngIf="descripcion?.errors?.minlength">El mínimo es de 5 caracteres </div>
+                    </div>
+                </div>
+                <div class="form-group col-lg-12">
+                    <label for="exampleInputValor">Descripcion Serie</label>
+                    <input name="valor" type="text" formControlName="descripcion" class="form-control"
+                    [ngClass]="{'is-valid':!descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched),'is-invalid':descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched)}"
+                    ngModel
+                    >
+                    <div class="invalid-feedback" formControlName="descripcion" *ngIf="descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched)">
+                    <div *ngIf="descripcion?.errors?.required">descripcion de catalogo requerido</div>
+                    <div *ngIf="descripcion?.errors?.minlength">El mínimo es de 5 caracteres </div>
+                    </div>
+                </div>
+                <div class="form-group col-lg-12">
+                    <label for="exampleInputValor">Descripcion</label>
+                    <input name="valor" type="text" formControlName="descripcion" class="form-control"
+                    [ngClass]="{'is-valid':!descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched),'is-invalid':descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched)}"
+                    ngModel
+                    >
+                    <div class="invalid-feedback" formControlName="descripcion" *ngIf="descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched)">
+                    <div *ngIf="descripcion?.errors?.required">descripcion de catalogo requerido</div>
+                    <div *ngIf="descripcion?.errors?.minlength">El mínimo es de 5 caracteres </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 mt-1 text-center">
+                    <button type="submit"  class="btn btn--negro">
+                        Siguiente
+                    </button>
+                </div>
+                <div class="col-lg-12 mt-1 text-center">
+                    <button type="button"  class="btn btn--negro" (click)="tabactive(0)">
+                        Atras
+                    </button>
+                </div>
+                
+        </form>
+        <form class="row hide needs-validation" [formGroup]="form" (ngSubmit)="registrar()" [class]="{'show':tabViews[2].active}">
+            <div class="col-lg-12 mt-1 text-center">
+                <div *ngIf="response?.msg" class="text-center">
+                    <span [ngClass]="{'text-primary':response.ok,'text-danger':!response.ok}">
+                        {{response.msg}}
+                    </span>
+                </div>
+                
+                <button type="submit"  class="btn btn--negro" [disabled]="response.loading">
+                    {{(response.loading) ? 'Cargando.....' : 'Crear mi cuenta'}}
+                </button>
+            </div>
+            <div class="col-lg-12 mt-1 text-center">
+                <button type="button"  class="btn btn--negro" (click)="tabactive(1)">
+                    Atras
+                </button>
+            </div>
+        </form>
+    </div>
+  </div>

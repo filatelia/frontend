@@ -1,0 +1,23 @@
+
+<div class="modal-header">
+    <h4 class="modal-title">Reportar a {{user.nickname}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+        <h2>Reportar este usuario</h2>
+        <p>Ayúdanos a entender cuál es el problema con este usuario. ¿Cómo lo describirías?</p>
+        <textarea class="form-control textarea" placeholder="" [(ngModel)]="descripcion">
+
+        </textarea>
+    </div>
+  </div>
+  <div class="modal-footer ">
+    
+      <button type="button" class="btn btn--negro"  (click)="saved()">Enviar</button>
+    
+  </div>
+  
+    

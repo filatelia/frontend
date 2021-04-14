@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalMancolistaComponent } from '../modal-mancolista/modal-mancolista.component';
+import { ModalReporteComponent } from '../modal-reporte/modal-reporte.component';
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
@@ -13,9 +14,24 @@ export class ModalComponent implements OnInit {
   ngOnInit(): void {
   }
   
-  openModal() {
-    localStorage.setItem('data_manco',JSON.stringify(this.modal))
-    var context=ModalMancolistaComponent;
+  openModal(type='') {
+    var context;
+    switch(type){
+      case 'manco':
+        localStorage.setItem('data_manco',JSON.stringify(this.modal))
+        context=ModalMancolistaComponent;
+        break;
+      case 'reporte':
+        localStorage.setItem('data_reporte',JSON.stringify(this.modal))
+        context=ModalReporteComponent;
+        break;
+      default:
+        localStorage.setItem('data_manco',JSON.stringify(this.modal))
+        context=ModalMancolistaComponent;
+        break;
+    }
+
+
     this.modalService.open(
       context,
       { centered: true, windowClass: "modal__admin"});

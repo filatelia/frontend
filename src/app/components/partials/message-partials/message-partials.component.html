@@ -16,6 +16,14 @@
                     </a>
                     {{message.message}}
                 </div>
+                <div class="J-message-options" ngbDropdown>
+                    <span ngbDropdownToggle class="J-options-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </span>
+                    <div ngbDropdownMenu class="dropdown-menu dropdown-menu-sm-right">
+                        <button class="dropdown-item" (click)="openModal(message)" (click)="modal.openModal('reporte')" type="button">Reportar</button>
+                    </div>
+                </div>
             </div>
             
         </div>
@@ -38,3 +46,4 @@
         </button>
     </div>
 </div>
+<app-modal [modal]="dataSelected" #modal></app-modal>

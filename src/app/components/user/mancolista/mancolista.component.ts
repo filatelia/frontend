@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ExporterService } from 'src/app/services/exporter.service';
 @Component({
   selector: 'app-mancolista',
   templateUrl: './mancolista.component.html',
@@ -21,6 +22,7 @@ export class MancolistaComponent implements OnInit {
   status: string='';
   api = environment.conect_url;
   constructor(
+    private exporterService:ExporterService,
     private clipboard: Clipboard,
     private restService: RestService,private sanitizer: DomSanitizer,private modalService: NgbModal) { }
 
@@ -189,5 +191,28 @@ export class MancolistaComponent implements OnInit {
   }
   cancelColection(data:any){
     data.edit=false;
+  }
+  export():void{
+    var data:any=[];
+    this.mancolista.forEach((element:any)=>{
+      data.push({
+        Anio:element.estampillas.Anio,
+        // Catalogo:element.estampillas.Catalogo,
+        Codigo:element.estampillas.Codigo,
+        Descripcion:element.estampillas.Descripcion,
+        Descripcion_de_la_serie:element.estampillas.Descripcion_de_la_serie,
+        // Foto_JPG_800x800_px:element.estampillas.Foto_JPG_800x800_px,
+        Grupo:element.estampillas.Grupo,
+        Nro_Estampillas:element.estampillas.Nro_Estampillas,
+        Numero_de_catalogo:element.estampillas.Numero_de_catalogo,
+        ParaBuscar:element.estampillas.ParaBuscar,
+        Valor_Facial:element.estampillas.Valor_Facial,
+        Valor_del_Catalogo:element.estampillas.Valor_del_Catalogo,
+        estado:element.estampillas.estado,
+        pais:element.pais?.name,
+        tema:element.temas?.name,
+      })
+    })
+    this.exporterService.exportToExcel(data,'mancolista');
   }
 }

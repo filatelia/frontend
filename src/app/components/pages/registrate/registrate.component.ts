@@ -37,11 +37,14 @@ export class RegistrateComponent implements OnInit {
   
   id_pais= '';
   id_tema= '';
+
   dataTipo: any=[
   ];
   dataPaises:any=[]
   dataTema:any=[]
   
+  catalogo_pais=false;
+  catalogo_tema=false;
   constructor(private router: Router,private restService:RestService, private formBuilder: FormBuilder,private authService:AuthService) {
     this.registerForm=this.createFormGroup();
     this.registerForm1=this.createForm1Group();
@@ -64,7 +67,7 @@ export class RegistrateComponent implements OnInit {
   }
   createForm2Group(){
     return this.formBuilder.group({
-          tipo_catalogo: new FormControl('',[Validators.required,Validators.minLength(1)]),
+          tipo_catalogo: new FormControl('',[]),
           timatica: new FormControl('',[]),
           pais_search: new FormControl('',[]),
       },
@@ -123,29 +126,38 @@ export class RegistrateComponent implements OnInit {
     this.paisValue.setValue(data.name);
     this.id_pais=data.para_buscar
   }
-  select(data:any){
-    console.log(data)
-    switch(this.tipo_catalogo?.value){
-      case 'Temático':
-        this.timaticaValue.setValue(data.name);
-        this.registerForm2.controls['timatica'].setValue(data.name);
-        this.dataTema.push({name:data.name,uid:data.uid})
-        break;
-      case 'País':
-        this.paisSearchValue.setValue('');
-        this.dataPaises.push({name:data.name,uid:data.uid})
-        break;
-        
+  checkedType(){
+      
+      this.dataTipo.forEach((element:any)=>{
+          if(element.name=='País'){
+            this.catalogo_pais=element.active
+            if(element.active==false) this.dataPaises=[]
+          }
+          else if(element.name=='Temático'){
+            this.catalogo_tema=element.active
+            if(element.active==false) this.dataTema=[]
+          }
+      })
+  }
+  select(data:any,type=''){
+    
+    if(this.catalogo_tema&&type=='tema'){
+      this.timaticaValue.setValue(data.name);
+      this.registerForm2.controls['timatica'].setValue(data.name);
+      this.dataTema.push({name:data.name,uid:data.uid})
+    }
+    else if(this.catalogo_pais&&type=='pais'){
+      this.paisSearchValue.setValue('');
+      this.dataPaises.push({name:data.name,uid:data.uid})
     }
   }
-  removeCollect(index:number){
-    switch(this.tipo_catalogo?.value){
-      case 'Temático':
+  removeCollect(index:number,type=''){
+    var val=""
+    if(this.catalogo_tema&&type=='tema'){
         this.dataTema.splice(index,1)
-        break;
-      case 'País':
+    }
+    if(this.catalogo_pais&&type=='pais'){
         this.dataPaises.splice(index,1)
-        break;
     }
   }
   onResetForm(){
@@ -169,7 +181,7 @@ export class RegistrateComponent implements OnInit {
       nickname:this.nickname?.value,
       pais_usuario:this.pais?.value,
       fecha_nacimiento:this.fecha_nacimiento?.value,
-      tipo_catalogo:this.dataTipo.find((el:any)=>el.name==this.tipo_catalogo?.value).uid,
+      tipo_catalogo:this.dataTipo.filter((el:any)=>el.active==true),
       paises_coleccionados:pais,
       temas:temas,
     }
@@ -192,21 +204,23 @@ export class RegistrateComponent implements OnInit {
   
   next(index:number){
     switch(index){
-      case 0:
-        if(this.registerForm1.valid){
-          this.tabactive(index)
-        }
-        break;
       case 1:
         if(this.registerForm1.valid){
           this.tabactive(index)
         }
         break;
       case 2:
+        if(this.registerForm2.valid){
+          this.tabactive(index)
+        }
+        
+        break;
+      case 2:
         break;
     }
   }
   tabactive(index:number){
+
     this.tabViews.forEach((element:any,i:number) => {
       if(index==i) element.active=true;
       else element.active=false;

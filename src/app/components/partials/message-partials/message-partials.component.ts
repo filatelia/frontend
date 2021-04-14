@@ -21,6 +21,7 @@ export class MessagePartialsComponent implements OnInit {
   id_room: any='';
   type_room: any='';
   data_chat:any={}
+  dataSelected:any={}
   query:any='';
   chatactive:boolean=false;
   constructor(private chatService:ChatService,private tokenInterceptorService: TokenInterceptorService,private route: ActivatedRoute,private restService: RestService,) {
@@ -87,6 +88,10 @@ export class MessagePartialsComponent implements OnInit {
     } else {
 
     }
+  }
+  openModal(data:any){
+    this.dataSelected=data
+    console.log(data)
   }
   openChat(){
     this.chatactive=true

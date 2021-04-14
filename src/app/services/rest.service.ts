@@ -173,6 +173,9 @@ export class RestService {
   createSolicitud(body:any):Observable<any>{
     return  this.http.post(this.url+'/solicitudes', body);
   }
+  getVerificarTema(q:any):Observable<any>{
+    return this.http.get(`${this.url}/catalogo/temas/solicitud/${q}`)
+  }
   getSolicitudCatalogo(body:any):Observable<any>{
     return  this.http.get(this.url+'/solicitudes');
   }

@@ -50,56 +50,61 @@
                                     </button>
                                 </div>
                             </form>
-                            <form [formGroup]="registerForm2"  (ngSubmit)="next(1)"  class="row hide needs-validation" [class]="{'show':tabViews[1].active}">
+                            <form [formGroup]="registerForm2"  (ngSubmit)="next(2)"  class="row hide needs-validation" [class]="{'show':tabViews[1].active}">
                                 
                                 <div class="form-group col-lg-12">
-                                    <label for="tipo">Tipo de coleccion</label>
-                                    <select id="tipo"  name="tipo_catalogo" required class="form-control"
-                                        [ngClass]="{'is-valid':!tipo_catalogo?.invalid&&(tipo_catalogo?.dirty||tipo_catalogo?.touched),'is-invalid':tipo_catalogo?.invalid&&(tipo_catalogo?.dirty||tipo_catalogo?.touched)}"
-                                        ngModel
-                                        >
-                                        <option value="" >-- Seleccione --</option>
-                                        <option  *ngFor="let tipo of dataTipo" [value]="tipo.name">{{tipo.name}}</option>
-                                    </select>
-                                    <div class="invalid-feedback" formControlName="tipo_catalogo" *ngIf="tipo_catalogo?.invalid&&(tipo_catalogo?.dirty||tipo_catalogo?.touched)">
-                                        <div *ngIf="tipo_catalogo?.errors?.required">Tipo catalogo requerido</div>
-                                    </div>
+                                    <div>
+                                        <label for="tipo">Tipo de coleccion</label>
+                                    </div> 
                                 </div>
-                                <div class="form-group col-lg-12" *ngIf="tipo_catalogo?.value=='País'">
-                                    <input placeholder="Busque un pais para agregar"  [formControl]="paisSearchValue" type="text" formControlName="pais_search"  class="form-control" ngModel>
-                                    <app-search-paises [pais]="pais_search"  (select)="select($event)"></app-search-paises>
-                                    <div class="content-more">
-                                        <div *ngFor="let item of dataPaises;let i=index" class="item-more">
-                                            <!-- Agregue la colección de paises -->
-                                            {{item.name}}
-                                            <button type="button" (click)="removeCollect(i)" class="delete-more">
-                                                &#215;
-                                            </button>
+                                <div class="reverse">
+                                    <div *ngFor="let tipo of dataTipo" class="col-lg-12">
+                                            <div class="form-check form-check-inline" >
+                                                <input class="form-check-input" (change)="checkedType()" type="checkbox"[id]="tipo.uid" [value]="true"  formControlName="tipo_catalogo" [(ngModel)]="tipo.active">
+                                                <label class="form-check-label" [for]="tipo.uid">{{tipo.name}}</label>
+                                            </div>
+                                            <div *ngIf="tipo.name=='País'">
+                                                <div class="form-group" *ngIf="catalogo_pais">
+                                                    <input placeholder="Busque un pais para agregar"  [formControl]="paisSearchValue" type="text" formControlName="pais_search"  class="form-control" ngModel>
+                                                    <app-search-paises [pais]="pais_search"  (select)="select($event,'pais')"></app-search-paises>
+                                                    <div class="content-more">
+                                                        <div *ngFor="let item of dataPaises;let i=index" class="item-more">
+                                                            <!-- Agregue la colección de paises -->
+                                                            {{item.name}}
+                                                            <button type="button" (click)="removeCollect(i,'pais')" class="delete-more">
+                                                                &#215;
+                                                            </button>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div *ngIf="tipo.name=='Temático'">
+                                                <div class="form-group"  *ngIf="catalogo_tema">
+                                                    <input placeholder="Busque un tema para agregar" [formControl]="timaticaValue" type="text" formControlName="timatica"  class="form-control" [ngClass]="{'is-valid':!timatica?.invalid&&(timatica?.dirty||timatica?.touched),'is-invalid':timatica?.invalid&&(timatica?.dirty||timatica?.touched)}" ngModel>
+                                                    <app-search-type [tipo]="timatica"  (select)="select($event,'tema')"></app-search-type>
+                                                    <div class="invalid-feedback" *ngIf="timatica?.invalid&&(timatica?.dirty||timatica?.touched)">
+                                                        <div *ngIf="timatica?.errors?.required">Timatica es requerido</div>
+                                                        <div *ngIf="timatica?.errors?.minlength">El mínimo es de 3 caracteres  </div>
+                                                    </div>
+                                                    <div class="content-more">
+                                                        <div *ngFor="let item of dataTema;let i=index" class="item-more">
+                                                            <!-- Agregue la colección de paises -->
+                                                            {{item.name}}
+                                                            <button type="button" (click)="removeCollect(i,'tema')" class="delete-more">
+                                                                &#215;
+                                                            </button>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         
                                     </div>
-                                </div>
-                                <div class="form-group col-lg-12"  *ngIf="tipo_catalogo?.value=='Temático'">
-                                    <input placeholder="Busque un tema para agregar" [formControl]="timaticaValue" type="text" formControlName="timatica"  class="form-control" [ngClass]="{'is-valid':!timatica?.invalid&&(timatica?.dirty||timatica?.touched),'is-invalid':timatica?.invalid&&(timatica?.dirty||timatica?.touched)}" ngModel>
-                                    <app-search-type [tipo]="timatica"  (select)="select($event)"></app-search-type>
-                                    <div class="invalid-feedback" *ngIf="timatica?.invalid&&(timatica?.dirty||timatica?.touched)">
-                                        <div *ngIf="timatica?.errors?.required">Timatica es requerido</div>
-                                        <div *ngIf="timatica?.errors?.minlength">El mínimo es de 3 caracteres  </div>
-                                    </div>
-                                    <div class="content-more">
-                                        <div *ngFor="let item of dataTema;let i=index" class="item-more">
-                                            <!-- Agregue la colección de paises -->
-                                            {{item.name}}
-                                            <button type="button" (click)="removeCollect(i)" class="delete-more">
-                                                &#215;
-                                            </button>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
                                 
                                 <div class="col-lg-12">
-                                    <button type="button"  class="btn btn--negro" (click)="tabactive(2)">
+                                    <button type="submit"  class="btn btn--negro" >
                                         Siguiente
                                     </button>
                                 </div>

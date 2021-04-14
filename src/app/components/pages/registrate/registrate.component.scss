@@ -48,3 +48,10 @@
         }
     }
 }
+.reverse{
+    display: flex;
+    flex-direction: column-reverse;
+    label{
+        cursor: pointer;
+    }
+}

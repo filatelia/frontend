@@ -17,7 +17,7 @@
                 <label for="tipo">Tipo Catalogo</label>
                 <select id="tipo"  name="tipo_catalogo" required class="form-control"
                     [ngClass]="{'is-valid':!tipo_catalogo?.invalid&&(tipo_catalogo?.dirty||tipo_catalogo?.touched),'is-invalid':tipo_catalogo?.invalid&&(tipo_catalogo?.dirty||tipo_catalogo?.touched)}"
-                    ngModel
+                    ngModel (change)="resetbtn()"
                     >
                     <option value="" >-- Seleccione --</option>
                     <option  *ngFor="let tipo of dataTipo" [value]="tipo.name">{{tipo.name}}</option>
@@ -37,11 +37,30 @@
             </div>
             <div class="form-group col-lg-12"  *ngIf="tipo_catalogo?.value=='Temático'">
                 <label for="exampleInputPais">Tema de catalogo</label>
-                <input  [formControl]="timaticaValue" type="text" formControlName="timatica"  class="form-control" [ngClass]="{'is-valid':!timatica?.invalid&&(timatica?.dirty||timatica?.touched),'is-invalid':timatica?.invalid&&(timatica?.dirty||timatica?.touched)}" ngModel>
+                <input  [formControl]="timaticaValue" type="text" formControlName="timatica"  class="form-control" [ngClass]="{'is-valid':!timatica?.invalid&&(timatica?.dirty||timatica?.touched),'is-invalid':timatica?.invalid&&(timatica?.dirty||timatica?.touched)||tema_exist}" ngModel>
                 <app-search-type [tipo]="timatica"  (select)="select($event)"></app-search-type>
                 <div class="invalid-feedback" *ngIf="timatica?.invalid&&(timatica?.dirty||timatica?.touched)">
                     <div *ngIf="timatica?.errors?.required">Timatica es requerido</div>
                     <div *ngIf="timatica?.errors?.minlength">El mínimo es de 3 caracteres  </div>
+                </div>
+                <div class="invalid-feedback" *ngIf="tema_exist">
+                    <div>Tema en uso</div>
+                </div>
+                <div *ngIf="tema_exist">
+                    Si desea puede comunicarse con el dueño del tema.
+                    <div *ngIf="user_tema.correo; else usernot">
+                        <div>
+                            <strong>Usuario: </strong>{{user_tema.nombre_completo}}
+                        </div>
+                        <div>
+                            <strong>Correo: </strong> {{user_tema.correo}}
+                        </div>
+                    </div>
+                    <ng-template #usernot>
+                        <div>
+                            Sin información :(
+                        </div>
+                    </ng-template>
                 </div>
             </div>
             
@@ -53,7 +72,7 @@
                     </div>
                 </div>
             <div class="col-lg-12">
-                <button type="submit"  [disabled]="response.loading" class="btn btn--linea J-btn-full">
+                <button type="submit"  [disabled]="response.loading||tema_exist" class="btn btn--linea J-btn-full">
                     {{(response.loading) ? 'Cargando.....' : back?'Enviar Petición':'Crear catalogo'}}
                     <div class="spinner-border text-primary" role="status" *ngIf="response.loading">
                     <span class="sr-only">Loading...</span>

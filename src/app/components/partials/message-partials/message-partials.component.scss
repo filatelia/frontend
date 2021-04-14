@@ -55,6 +55,11 @@
                 display: flex;
                 width: 100%;
                 margin-bottom: 10px;
+                &:hover{
+                    .J-options-btn{
+                        visibility:visible;
+                    }
+                }
                 &.left{
                    
                 }
@@ -125,4 +130,26 @@
 }
 .hide{
     display: none;
+}
+.J-message-options{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5px;
+    .dropdown-toggle{
+        &::after{
+            display: none;
+        }
+    }
+}
+.J-options-btn{
+    visibility: hidden;
+    height: 30px;       
+    width: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color:rgba(0,0,0,.3);
+    display: flex;  
+    justify-content:center;
+    align-items: center;
 }

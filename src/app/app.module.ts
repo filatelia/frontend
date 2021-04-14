@@ -74,6 +74,9 @@ import { NgSimpleSidebarModule } from 'ng-simple-sidebar';
 import { MessagePartialsComponent } from './components/partials/message-partials/message-partials.component';
 import { WebsocketService } from './services/websocket.service';
 import { ChatService } from './services/chat.service';
+import { ModalEstampillaComponent } from './components/partials/modal-estampilla/modal-estampilla.component';
+import { ModalReporteComponent } from './components/partials/modal-reporte/modal-reporte.component';
+import { ExporterService } from './services/exporter.service';
 @NgModule({
   declarations: [
     
@@ -122,7 +125,9 @@ import { ChatService } from './services/chat.service';
     SolicitudPatialsComponent,CabeceraAdminComponent, 
     ModalMancolistaComponent, ModalComponent,
     ChatAdminComponent,
-    MessagePartialsComponent
+    MessagePartialsComponent,
+    ModalEstampillaComponent,
+    ModalReporteComponent,
   ],
   imports: [
     NgSimpleSidebarModule,
@@ -144,7 +149,7 @@ import { ChatService } from './services/chat.service';
   exports : [
     SidebarComponent, FooterComponent
   ],
-  providers: [authInterceptorProviders,{provide:APP_BASE_HREF,useValue:'/'},WebsocketService,ChatService],
+  providers: [authInterceptorProviders,{provide:APP_BASE_HREF,useValue:'/'},WebsocketService,ChatService,ExporterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

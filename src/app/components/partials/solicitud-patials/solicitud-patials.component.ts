@@ -20,6 +20,11 @@ export class SolicitudPatialsComponent implements OnInit {
   paisValue= new FormControl('');
   timaticaValue= new FormControl('');
 
+
+  loading_tema: boolean=false;
+  tema_exist: boolean=false;
+  user_tema: any={};
+
   id_pais= '';
   id_tema= '';
 
@@ -79,13 +84,13 @@ export class SolicitudPatialsComponent implements OnInit {
     this.form.reset();
   }
   select(data:any){
-    console.log(data)
+    
     switch(this.tipo_catalogo?.value){
       case 'Temático':
-        console.log(data)
-        this.timaticaValue.setValue(data.name);
-        this.form.controls['timatica'].setValue(data.name);
-        this.id_tema=data.uid
+          this.timaticaValue.setValue(data.name);
+          this.form.controls['timatica'].setValue(data.name);
+          this.id_tema=data.uid
+          this.searchTema(data);
         break;
       case 'País':
         this.paisValue.setValue(data.name);
@@ -93,6 +98,24 @@ export class SolicitudPatialsComponent implements OnInit {
         break;
         
     }
+  }
+  searchTema(data:any){
+    this.loading_tema=true;
+    this.restService.getVerificarTema(data.ParaBuscar+'').subscribe((resp:any)=>{
+      this.loading_tema=false;
+      if(resp.msg===true) this.tema_exist=false
+      else {
+        this.tema_exist=true
+        this.user_tema=resp.msg
+      }
+    },
+    (err:any)=>{
+      this.loading_tema=false;
+    });
+    
+  }
+  resetbtn(){
+      this.tema_exist=false;
   }
   updateValue(){
     
