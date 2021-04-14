@@ -1,0 +1,53 @@
+@media (max-width: 1920px){
+.modal{
+    &__admin{
+        .modal-header{
+            background-color: $negro;
+            color: $blanco;
+            font-family: $lato;
+            font-size: 22px;
+            border-radius: 0px;
+        }
+        .modal-body{
+            padding: 30px 40px;
+            form{
+                label{
+                    font-size: 23px;
+                    font-family: $DMregular;
+                    color: $plomoOscuro;
+                }
+                input{
+                    height: 63px;
+                    border-radius: 0;
+                    color: $negro;
+                    font-family: $lato;
+                    padding: 10px;
+                    font-size: 22px;
+                    border: 1px solid $plomo;
+                }
+            }
+        }
+    }
+}
+.J-modal-flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+ .J-modal-btn{
+     margin:10px;
+     width: 40%;
+     min-width: 100px;
+     &.cancel{
+        background: transparent !important;
+        color: #2C2C2C;
+        &:hover{
+            background: transparent !important;
+            color: #2C2C2C;
+            opacity: .5;
+        }
+     }
+ }
+}

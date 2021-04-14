@@ -3,23 +3,37 @@
     <div class="row">
       <div class="col-lg-6 banner--amarillo">
         <div class="banner__left">
-          <h1 class="titulo titulo--grande">Bienvenido</h1>
-          <p class="parrafo parrafo--grande">La Primera Tienda Filatélica Online del Perú</p>
+          
+          <h1 class="titulo titulo--grandehome1">Bienvenido</h1>
+          <p class="parrafo parrafo--grandehome1">La Primera Tienda Filatélica Online del Perú</p>
           <a href="" class="btn btn--negro">Comprar ahora</a>
         </div>
       </div>
       <div class="col-lg-6 banner--negro">
-
-      </div>
+        
+  </div>
     </div>
   </div>
+  <div class="bannerslider">
+            
+    <owl-carousel-o [options]="owl_banner_slider" [ngClass]="['owl-bannerslider','owl-theme']" >
+      <ng-template carouselSlide *ngFor="let slide of slidesStore" id="slide.id">
+            <img [src]="slide.src" [title]="slide.title">
+      </ng-template>
+     
+    </owl-carousel-o>
+</div>
   <div class="slider__content">
     <div class="row">
       <div class="col-lg-7">
+        
         <div class="slider__content__texto">
-          <h2>Estampillas</h2>
+          
+            <h2 >Estampillas</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua.</p>
+
+          
         </div>
       </div>
       <div class="col-lg-5 text-center d-flex justify-content-center align-items-center">
@@ -33,10 +47,10 @@
 </section>
 
 <section class="vendido">
-  <div class="container">
+  <div class="container"> 
     <div class="row">
       <div class="col-lg-12">
-        <h2 class="titulo titulo--mediano">Lo más vendido</h2>
+        <h2 class="titulo titulo--grande2">Lo más vendido</h2>
       </div>
       <div class="col-lg-12">
         <owl-carousel-o [options]="owl_vendido" [ngClass]="['owl-vendido','owl-theme']" >

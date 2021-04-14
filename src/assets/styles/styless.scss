@@ -1,21 +1,24 @@
 //variables
 @import "./variables/import.scss";
-@import "./variables/variables.scss";
+@import "./variables/colors.scss";
 @import "./variables/config.scss";
 @import "./variables/font.scss";
 
 //blocks
-@import "./blocks/header/header.scss";
-@import "./blocks/header-admin/header-admin.scss";
-@import "./blocks/footer/footer.scss";
+@import "./blocks/titulos/titulos.scss";
 @import "./blocks/button/button.scss";
 @import "./blocks/sidebar/sidebar.scss";
+@import "./blocks/owl/owl.scss";
+@import "./blocks/modal/modal.scss";
+@import "./blocks/formulario/formulario.scss";
+@import "./blocks/notificacion/notificacion.scss";
+@import "./blocks/buscador/buscador.scss";
+@import "./blocks/filtros/filtros.scss";
+@import "./blocks/table/table.scss";
+@import "./blocks/subasta/subasta.scss";
+@import "./blocks/tienda/tienda.scss";
 
 //pages
-@import "./pages/crud.scss";
-@import "./pages/tienda.scss";
-@import "./pages/catalogo.scss";
-@import "./pages/dashboard.scss";
 
 //media
 

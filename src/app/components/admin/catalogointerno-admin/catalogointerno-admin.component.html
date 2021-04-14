@@ -1,40 +1,30 @@
 
 <div class="mainAdmin__listado"> </div>
 <div class="row">
-  <div class="col-lg-4 m-auto">
-    
-    <div class="dashboard__color__nombre">
-            <a (click)="backPage()" href="javascript:void(0)" class="boton">
-              <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                  viewBox="0 0 256 256" style="enable-background:new 0 0 256 256;" xml:space="preserve">
-                  <g>
-                      <polygon points="79.093,0 48.907,30.187 146.72,128 48.907,225.813 79.093,256 207.093,128 		"/>
-                  </g>
-              </svg>
-  
+    <div class="J-header-btn">
+      
+      <a (click)="backPage()" href="javascript:void(0)" class="boton J-btn-link" >
+          <i class="fas fa-angle-left"></i><span>Volver a Catálogo</span>
       </a>
-      <h2 class="titulo titulo--mediano2">Volver a Catálogo </h2>
-  </div>
-    
-    <hr>
-  </div>
-  <div class="col-lg-4 m-auto">
-    <a href="javascript:void(0)" (click)="openVerticallyCentered(contenidoEstampilla)" class="J-btn-link" >
-        Agregar estampilla
-    </a>
-  </div>
-  <div class="col-lg-3 m-auto">
-    <a href="javascript:void(0)" (click)="openVerticallyCentered(content)" class="mainAdmin__boton J-btn-link">
-      <div class="icono2">
-        <svg class="btn-svg" viewBox="0 0 426.66667 426.66667"
-          xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="m405.332031 192h-170.664062v-170.667969c0-11.773437-9.558594-21.332031-21.335938-21.332031-11.773437 0-21.332031 9.558594-21.332031 21.332031v170.667969h-170.667969c-11.773437 0-21.332031 9.558594-21.332031 21.332031 0 11.777344 9.558594 21.335938 21.332031 21.335938h170.667969v170.664062c0 11.777344 9.558594 21.335938 21.332031 21.335938 11.777344 0 21.335938-9.558594 21.335938-21.335938v-170.664062h170.664062c11.777344 0 21.335938-9.558594 21.335938-21.335938 0-11.773437-9.558594-21.332031-21.335938-21.332031zm0 0" />
-        </svg>
-      </div>
-      <div class="titulo--mediano3">Importar</div>
-    </a>
-  </div>
+  
+      <a href="javascript:void(0)" (click)="openVerticallyCentered(ImagenesEstampilla)" class="J-btn-link" >
+          Agregar estampilla
+      </a>
+      <a target="_blank" rel="noopener noreferrer" [href]="api+'api/reportes/generar-excel/'+id_catalogo"  class="mainAdmin__boton J-btn-link">
+        <div class="titulo--mediano3">Descargar excel</div>
+      </a>
+      <a href="javascript:void(0)" (click)="openVerticallyCentered(content)" class="mainAdmin__boton J-btn-link">
+        <div class="icono2">
+          <svg class="btn-svg" viewBox="0 0 426.66667 426.66667"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="m405.332031 192h-170.664062v-170.667969c0-11.773437-9.558594-21.332031-21.335938-21.332031-11.773437 0-21.332031 9.558594-21.332031 21.332031v170.667969h-170.667969c-11.773437 0-21.332031 9.558594-21.332031 21.332031 0 11.777344 9.558594 21.335938 21.332031 21.335938h170.667969v170.664062c0 11.777344 9.558594 21.335938 21.332031 21.335938 11.777344 0 21.335938-9.558594 21.335938-21.335938v-170.664062h170.664062c11.777344 0 21.335938-9.558594 21.335938-21.335938 0-11.773437-9.558594-21.332031-21.335938-21.332031zm0 0" />
+          </svg>
+        </div>
+        <div class="titulo--mediano3">Importar</div>
+      </a>
+      
+    </div>
   
   <div class="col-lg-11 m-auto">
     <div class="shadow p-3 mb-5 bg-body rounded">
@@ -61,7 +51,7 @@
             <td>{{ datos.Tema.name}}</td>
             <td>{{ datos.Numero_de_catalogo }}</td>
             <td>{{ datos.Tipo}}</td>
-            <!-- <td> <a class="pointer" (click)="openEditCentered(contenido)"><img src="assets/img/iconos/edit.png" title="Editar"></a> /
+            <!-- <td> <a class="pointer" (click)="openEditCentered(Imagenes)"><img src="assets/img/iconos/edit.png" title="Editar"></a> /
               <a class="pointer" name="{{ datos.Codigo }}" id="{{ datos.uid }}"
                 (click)="eliminarElemento(Eliminar.id, Eliminar.name)" #Eliminar><img title="Eliminar"
                   src="assets/img/iconos/tash.png" alt=""></a></td> -->
@@ -171,7 +161,7 @@
   </div>
 </ng-template>
 
-<ng-template #contenido let-modal ngClass="modal__admin">
+<ng-template #Imagenes let-modal ngClass="modal__admin">
   <div class="modal-header">
     <h4 class="modal-title">Actualizar </h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -201,17 +191,42 @@
       {{(loading) ? 'Cargando.....' : 'Actualizar Archivo'}}
     </button>
   </div>
-
-
 </ng-template>
 
-<ng-template #contenidoEstampilla let-modal ngClass="modal__admin">
+<ng-template #contenidoImagenes let-modal ngClass="modal__admin">
+  <div class="modal-header">
+    <h4 class="modal-title">Subir imagenes</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+
+  </div>
+  <div class="modal-body">
+    <form class="row">
+      <div class="form-group col-lg-12">
+        <label for="">Cargar imagenes</label>
+        <input (change)="addImages($event)" multiple type="file" class="form-control">
+      </div>
+      <div class="p-1">
+        <small>Se aceptan archivos de tipo .png .jpg .jpeg .gif</small>
+      </div>
+
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn--negro" [disabled]="loading" (click)="saveImages()">
+      {{(loading) ? 'Cargando.....' : 'Guardar'}}
+    </button>
+  </div>
+</ng-template>
+
+
+<ng-template #ImagenesEstampilla let-modal ngClass="modal__admin">
   <div class="modal-header">
     <h4 class="modal-title">Agregar estampilla</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
-    
   </div>
   <app-modal-estampilla></app-modal-estampilla>
 </ng-template>

@@ -31,7 +31,9 @@ export class RestService {
   public postCatalogoAdmin(body: any) {
     return this.http.post(this.url + '/catalogo/uploads/excel', body); // POST
   }
-  
+  public uploadImagesCatalogo(body: any) {
+    return this.http.post(this.url + '/estampillas/crear-imagen', body); // POST
+  }
   public putCatalogoAdminOmitidas(body: any){
     return this.http.put(this.url + '/catalogo/uploads/excel/actualizar-cat-excel', body); // POST
   }
@@ -176,6 +178,10 @@ export class RestService {
   getVerificarTema(q:any):Observable<any>{
     return this.http.get(`${this.url}/catalogo/temas/solicitud/${q}`)
   }
+  getVerificarPais(q:any):Observable<any>{
+    return this.http.get(`${this.url}/solicitudes/mostrar-usuario/${q}`)
+  }
+  
   getSolicitudCatalogo(body:any):Observable<any>{
     return  this.http.get(this.url+'/solicitudes');
   }

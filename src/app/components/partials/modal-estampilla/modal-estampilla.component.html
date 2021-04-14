@@ -2,47 +2,47 @@
     <div class="dashboard__contenido__formulario">
         <form class="row hide needs-validation" [formGroup]="form" (ngSubmit)="next(1)" [class]="{'show':tabViews[0].active}">
             <div class="form-group col-lg-12">
-                <label for="exampleInputValor">Pais</label>
-                <input name="valor" type="text" formControlName="descripcion" class="form-control"
-                [ngClass]="{'is-valid':!descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched),'is-invalid':descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched)}"
+                <label for="anioinput">Año</label>
+                <input name="anio" id="anioinput" type="text" formControlName="anio" class="form-control"
+                [ngClass]="{'is-valid':!anio?.invalid&&(anio?.dirty||anio?.touched),'is-invalid':anio?.invalid&&(anio?.dirty||anio?.touched)}"
                 ngModel
                 >
-                <div class="invalid-feedback" formControlName="descripcion" *ngIf="descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched)">
-                <div *ngIf="descripcion?.errors?.required">descripcion de catalogo requerido</div>
-                <div *ngIf="descripcion?.errors?.minlength">El mínimo es de 5 caracteres </div>
+                <div class="invalid-feedback" formControlName="anio" *ngIf="anio?.invalid&&(anio?.dirty||anio?.touched)">
+                <div *ngIf="anio?.errors?.required">Año de estampilla requerido</div>
+                <div *ngIf="anio?.errors?.minlength">El mínimo es de 1 caracter </div>
                 </div>
             </div>
             <div class="form-group col-lg-12">
-                <label for="exampleInputValor">Código</label>
-                <input name="valor" type="text" formControlName="descripcion" class="form-control"
-                [ngClass]="{'is-valid':!descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched),'is-invalid':descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched)}"
+                <label for="inputcategoria">Categoria </label>
+                <input name="categoria" id="inputcategoria" type="text" formControlName="categoria" class="form-control"
+                [ngClass]="{'is-valid':!categoria?.invalid&&(categoria?.dirty||categoria?.touched),'is-invalid':categoria?.invalid&&(categoria?.dirty||categoria?.touched)}"
                 ngModel
                 >
-                <div class="invalid-feedback" formControlName="descripcion" *ngIf="descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched)">
-                <div *ngIf="descripcion?.errors?.required">descripcion de catalogo requerido</div>
-                <div *ngIf="descripcion?.errors?.minlength">El mínimo es de 5 caracteres </div>
+                <div class="invalid-feedback" formControlName="categoria" *ngIf="categoria?.invalid&&(categoria?.dirty||categoria?.touched)">
+                <div *ngIf="categoria?.errors?.required">Categoria requerido</div>
+                <div *ngIf="categoria?.errors?.minlength">El mínimo es de 1 caracteres </div>
                 </div>
             </div>
             <div class="form-group col-lg-12">
-                <label for="exampleInputValor">Año</label>
-                <input name="valor" type="text" formControlName="descripcion" class="form-control"
-                [ngClass]="{'is-valid':!descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched),'is-invalid':descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched)}"
+                <label for="inputgrupo">Grupo </label>
+                <input name="grupo" id="inputgrupo" type="text" formControlName="grupo" class="form-control"
+                [ngClass]="{'is-valid':!grupo?.invalid&&(grupo?.dirty||grupo?.touched),'is-invalid':grupo?.invalid&&(grupo?.dirty||grupo?.touched)}"
                 ngModel
                 >
-                <div class="invalid-feedback" formControlName="descripcion" *ngIf="descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched)">
-                <div *ngIf="descripcion?.errors?.required">descripcion de catalogo requerido</div>
-                <div *ngIf="descripcion?.errors?.minlength">El mínimo es de 5 caracteres </div>
+                <div class="invalid-feedback" formControlName="grupo" *ngIf="grupo?.invalid&&(grupo?.dirty||grupo?.touched)">
+                <div *ngIf="grupo?.errors?.required">Grupo requerido</div>
+                <div *ngIf="grupo?.errors?.minlength">El mínimo es de 1 caracteres </div>
                 </div>
             </div>
             <div class="form-group col-lg-12">
-                <label for="exampleInputValor">Tema</label>
-                <input name="valor" type="text" formControlName="descripcion" class="form-control"
-                [ngClass]="{'is-valid':!descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched),'is-invalid':descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched)}"
+                <label for="inputtipo">Tipo</label>
+                <input name="tipo" id="inputtipo" type="text" formControlName="tipo" class="form-control"
+                [ngClass]="{'is-valid':!tipo?.invalid&&(tipo?.dirty||tipo?.touched),'is-invalid':tipo?.invalid&&(tipo?.dirty||tipo?.touched)}"
                 ngModel
                 >
-                <div class="invalid-feedback" formControlName="descripcion" *ngIf="descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched)">
-                <div *ngIf="descripcion?.errors?.required">descripcion de catalogo requerido</div>
-                <div *ngIf="descripcion?.errors?.minlength">El mínimo es de 5 caracteres </div>
+                <div class="invalid-feedback" formControlName="tipo" *ngIf="tipo?.invalid&&(tipo?.dirty||tipo?.touched)">
+                <div *ngIf="tipo?.errors?.required">tipo requerido</div>
+                <div *ngIf="tipo?.errors?.minlength">El mínimo es de 5 caracteres </div>
                 </div>
             </div>
             <div class="col-lg-12 mt-1 text-center">
@@ -51,41 +51,53 @@
                 </button>
             </div>
         </form>
-        <form class="row hide needs-validation" [formGroup]="form" (ngSubmit)="next(2)" [class]="{'show':tabViews[1].active}">
+        <form class="row hide needs-validation" [formGroup]="form2" (ngSubmit)="next(2)" [class]="{'show':tabViews[1].active}">
                 
                 <div class="form-group col-lg-12">
-                    <label for="exampleInputValor">Numero de estampilla</label>
-                    <input name="valor" type="text" formControlName="descripcion" class="form-control"
-                    [ngClass]="{'is-valid':!descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched),'is-invalid':descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched)}"
+                    <label for="inputnumeroestamp">Número de estampilla</label>
+                    <input name="numero_estampilla" id="inputnumeroestamp" type="text" formControlName="numero_estampilla" class="form-control"
+                    [ngClass]="{'is-valid':!numero_estampilla?.invalid&&(numero_estampilla?.dirty||numero_estampilla?.touched),'is-invalid':numero_estampilla?.invalid&&(numero_estampilla?.dirty||numero_estampilla?.touched)}"
                     ngModel
                     >
-                    <div class="invalid-feedback" formControlName="descripcion" *ngIf="descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched)">
-                    <div *ngIf="descripcion?.errors?.required">descripcion de catalogo requerido</div>
-                    <div *ngIf="descripcion?.errors?.minlength">El mínimo es de 5 caracteres </div>
+                    <div class="invalid-feedback" formControlName="numero_estampilla" *ngIf="numero_estampilla?.invalid&&(numero_estampilla?.dirty||numero_estampilla?.touched)">
+                    <div *ngIf="numero_estampilla?.errors?.required">Numero estampilla requerido</div>
+                    <div *ngIf="numero_estampilla?.errors?.minlength">El mínimo es de 5 caracteres </div>
                     </div>
                 </div>
                 <div class="form-group col-lg-12">
-                    <label for="exampleInputValor">Descripcion Serie</label>
-                    <input name="valor" type="text" formControlName="descripcion" class="form-control"
-                    [ngClass]="{'is-valid':!descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched),'is-invalid':descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched)}"
+                    <label for="inputdescrip">Descripción de estampilla</label>
+                    <input name="descripcion_estampilla" id="inputdescrip" type="text" formControlName="descripcion_estampilla" class="form-control"
+                    [ngClass]="{'is-valid':!descripcion_estampilla?.invalid&&(descripcion_estampilla?.dirty||descripcion_estampilla?.touched),'is-invalid':descripcion_estampilla?.invalid&&(descripcion_estampilla?.dirty||descripcion_estampilla?.touched)}"
                     ngModel
                     >
-                    <div class="invalid-feedback" formControlName="descripcion" *ngIf="descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched)">
-                    <div *ngIf="descripcion?.errors?.required">descripcion de catalogo requerido</div>
-                    <div *ngIf="descripcion?.errors?.minlength">El mínimo es de 5 caracteres </div>
+                    <div class="invalid-feedback" formControlName="descripcion_estampilla" *ngIf="descripcion_estampilla?.invalid&&(descripcion_estampilla?.dirty||descripcion_estampilla?.touched)">
+                    <div *ngIf="descripcion_estampilla?.errors?.required">Descripción estampilla de catalogo requerido</div>
+                    <div *ngIf="descripcion_estampilla?.errors?.minlength">El mínimo es de 5 caracteres </div>
                     </div>
                 </div>
                 <div class="form-group col-lg-12">
-                    <label for="exampleInputValor">Descripcion</label>
-                    <input name="valor" type="text" formControlName="descripcion" class="form-control"
-                    [ngClass]="{'is-valid':!descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched),'is-invalid':descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched)}"
+                    <label for="inputtitiuo">Titulo Serie</label>
+                    <input name="titulo_serie" id="inputtitiuo" type="text" formControlName="titulo_serie" class="form-control"
+                    [ngClass]="{'is-valid':!titulo_serie?.invalid&&(titulo_serie?.dirty||titulo_serie?.touched),'is-invalid':titulo_serie?.invalid&&(titulo_serie?.dirty||titulo_serie?.touched)}"
                     ngModel
                     >
-                    <div class="invalid-feedback" formControlName="descripcion" *ngIf="descripcion?.invalid&&(descripcion?.dirty||descripcion?.touched)">
-                    <div *ngIf="descripcion?.errors?.required">descripcion de catalogo requerido</div>
-                    <div *ngIf="descripcion?.errors?.minlength">El mínimo es de 5 caracteres </div>
+                    <div class="invalid-feedback" formControlName="titulo_serie" *ngIf="titulo_serie?.invalid&&(titulo_serie?.dirty||titulo_serie?.touched)">
+                    <div *ngIf="titulo_serie?.errors?.required">titulo_serie de catalogo requerido</div>
+                    <div *ngIf="titulo_serie?.errors?.minlength">El mínimo es de 5 caracteres </div>
                     </div>
                 </div>
+                <div class="form-group col-lg-12">
+                    <label for="inputcatalogo">Número de catalogo</label>
+                    <input name="numero_catalogo" id="inputcatalogo" type="text" formControlName="numero_catalogo" class="form-control"
+                    [ngClass]="{'is-valid':!numero_catalogo?.invalid&&(numero_catalogo?.dirty||numero_catalogo?.touched),'is-invalid':numero_catalogo?.invalid&&(numero_catalogo?.dirty||numero_catalogo?.touched)}"
+                    ngModel
+                    >
+                    <div class="invalid-feedback" formControlName="numero_catalogo" *ngIf="numero_catalogo?.invalid&&(numero_catalogo?.dirty||numero_catalogo?.touched)">
+                    <div *ngIf="numero_catalogo?.errors?.required">Numero catalogo de catalogo requerido</div>
+                    <div *ngIf="numero_catalogo?.errors?.minlength">El mínimo es de 5 caracteres </div>
+                    </div>
+                </div>
+                
                 <div class="col-lg-12 mt-1 text-center">
                     <button type="submit"  class="btn btn--negro">
                         Siguiente
@@ -98,7 +110,73 @@
                 </div>
                 
         </form>
-        <form class="row hide needs-validation" [formGroup]="form" (ngSubmit)="registrar()" [class]="{'show':tabViews[2].active}">
+        <form class="row hide needs-validation" [formGroup]="form3" (ngSubmit)="registrar()" [class]="{'show':tabViews[2].active}">
+            
+            <div class="form-group col-lg-12">
+                <label for="inputvalorf">Valor facial</label>
+                <input name="valor_facial" id="inputvalorf" type="text" formControlName="valor_facial" class="form-control"
+                [ngClass]="{'is-valid':!valor_facial?.invalid&&(valor_facial?.dirty||valor_facial?.touched),'is-invalid':valor_facial?.invalid&&(valor_facial?.dirty||valor_facial?.touched)}"
+                ngModel
+                >
+                <div class="invalid-feedback" formControlName="valor_facial" *ngIf="valor_facial?.invalid&&(valor_facial?.dirty||valor_facial?.touched)">
+                <div *ngIf="valor_facial?.errors?.required">Valor facial</div>
+                <div *ngIf="valor_facial?.errors?.minlength">El mínimo es de 1 caracter </div>
+                </div>
+            </div>
+            <div class="form-group col-lg-12">
+                <label for="inputmonida">Tipo moneda valor facial</label>
+                <input name="tipo_moneda" id="inputmonida" type="text" formControlName="tipo_moneda" class="form-control"
+                [ngClass]="{'is-valid':!tipo_moneda?.invalid&&(tipo_moneda?.dirty||tipo_moneda?.touched),'is-invalid':tipo_moneda?.invalid&&(tipo_moneda?.dirty||tipo_moneda?.touched)}"
+                ngModel
+                >
+                <div class="invalid-feedback" formControlName="tipo_moneda" *ngIf="tipo_moneda?.invalid&&(tipo_moneda?.dirty||tipo_moneda?.touched)">
+                <div *ngIf="tipo_moneda?.errors?.required">tipo_moneda de catalogo requerido</div>
+                <div *ngIf="tipo_moneda?.errors?.minlength">El mínimo es de 5 caracteres </div>
+                </div>
+            </div>
+            <div class="form-group col-lg-12">
+                <label for="inputnuevo">Valor catalogo nuevo</label>
+                <input name="valor_nuevo" id="inputnuevo" type="text" formControlName="valor_nuevo" class="form-control"
+                [ngClass]="{'is-valid':!valor_nuevo?.invalid&&(valor_nuevo?.dirty||valor_nuevo?.touched),'is-invalid':valor_nuevo?.invalid&&(valor_nuevo?.dirty||valor_nuevo?.touched)}"
+                ngModel
+                >
+                <div class="invalid-feedback" formControlName="valor_nuevo" *ngIf="valor_nuevo?.invalid&&(valor_nuevo?.dirty||valor_nuevo?.touched)">
+                <div *ngIf="valor_nuevo?.errors?.required">Valor nuevo de catalogo requerido</div>
+                <div *ngIf="valor_nuevo?.errors?.minlength">El mínimo es de 1 caracteres </div>
+                </div>
+            </div>
+            <div class="form-group col-lg-12">
+                <label for="inputusado">Valor catalogo usado</label>
+                <input name="valor_usado" id="inputusado" type="text" formControlName="valor_usado" class="form-control"
+                [ngClass]="{'is-valid':!valor_usado?.invalid&&(valor_usado?.dirty||valor_usado?.touched),'is-invalid':valor_usado?.invalid&&(valor_usado?.dirty||valor_usado?.touched)}"
+                ngModel
+                >
+                <div class="invalid-feedback" formControlName="valor_usado" *ngIf="valor_usado?.invalid&&(valor_usado?.dirty||valor_usado?.touched)">
+                <div *ngIf="valor_usado?.errors?.required">valor_usado de catalogo requerido</div>
+                <div *ngIf="valor_usado?.errors?.minlength">El mínimo es de 5 caracteres </div>
+                </div>
+            </div>
+            <div class="form-group col-lg-12">
+                <label for="inputmonedavalor">Moneda valor catalogo nuevo usado</label>
+                <input name="moneda_valor" id="inputmonedavalor" type="text" formControlName="moneda_valor" class="form-control"
+                [ngClass]="{'is-valid':!moneda_valor?.invalid&&(moneda_valor?.dirty||moneda_valor?.touched),'is-invalid':moneda_valor?.invalid&&(moneda_valor?.dirty||moneda_valor?.touched)}"
+                ngModel
+                >
+                <div class="invalid-feedback" formControlName="moneda_valor" *ngIf="moneda_valor?.invalid&&(moneda_valor?.dirty||moneda_valor?.touched)">
+                <div *ngIf="moneda_valor?.errors?.required">Moneda valor de catalogo requerido</div>
+                <div *ngIf="moneda_valor?.errors?.minlength">El mínimo es de 5 caracteres </div>
+                </div>
+            </div>
+            <div class="form-group col-lg-12">
+                <label for="">Cargar imagenes</label>
+                <input (change)="addImages($event)" type="file" class="form-control">
+                <div class="p-1">
+                    <small>Se aceptan archivos de tipo .png .jpg .jpeg .gif</small>
+                  </div>
+            </div>
+            
+            
+            
             <div class="col-lg-12 mt-1 text-center">
                 <div *ngIf="response?.msg" class="text-center">
                     <span [ngClass]="{'text-primary':response.ok,'text-danger':!response.ok}">
@@ -107,7 +185,7 @@
                 </div>
                 
                 <button type="submit"  class="btn btn--negro" [disabled]="response.loading">
-                    {{(response.loading) ? 'Cargando.....' : 'Crear mi cuenta'}}
+                    {{(response.loading) ? 'Cargando.....' : 'Guardar estampilla'}}
                 </button>
             </div>
             <div class="col-lg-12 mt-1 text-center">

@@ -46,7 +46,8 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
   dtOptions: DataTables.Settings = {};
   data: any;
   dtTrigger = new Subject<any>();
-
+  images:any=[];
+  images_files:any=null;
   constructor(
     private modalService: NgbModal,
     private sanitizer: DomSanitizer,
@@ -190,6 +191,18 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
     //
   }
 
+  addImages(event: any){
+    this.images_files=event.target.files;
+    var files=event.target.files
+
+    for (let index = 0; index < files.length; index++) {
+      const element = files[index];
+      this.addimage(element)
+    }
+  }
+  addimage(image:any){
+      this.images.push(image);
+  }
   /* extraerBase64 = async ($event: any) => new Promise((resolve, reject) => {
     try {
       const unsafeImg = window.URL.createObjectURL($event);
@@ -237,8 +250,6 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
 
       this.archivos.forEach((archivo: string) => {
         formularioDeDatos.append('sampleFile', archivo);
-       
-
       });
       formularioDeDatos.append('id_catalogo', this.id_catalogo);
       this.rest.postCatalogoAdmin(formularioDeDatos).subscribe(
@@ -280,6 +291,35 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
     } catch (e) {
       this.loading = false;
       console.log('ERROR', e);
+    }
+  }
+  saveImages():void{
+    try{
+      this.loading=true;
+
+      const images=new FormData();
+      this.images.forEach((element:any) => {
+          
+      }); 
+      images.append('sampleFile',this.images_files)
+      images.append('catalogo',this.id_catalogo)
+      images.append('file',this.images_files)
+      console.log(this.images_files)
+      this.rest.uploadImagesCatalogo(images).subscribe(
+        (res:any)=>{
+          console.log(res)
+          this.loading=false;
+
+        },
+        (err:any)=>{
+          this.loading=false;
+          console.log(err)
+        }
+      );
+    }
+    catch($e){
+      this.loading=false;
+      console.error($e)
     }
   }
   guardarOmitidas(){

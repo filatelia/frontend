@@ -1,3 +1,7 @@
+@import '../../../../assets/styles/variables/variables.scss';
+
+@media (max-width: 1920px){
+    
 .btn-table-rad{
     border-radius: 30px;
     color: #fff;
@@ -23,4 +27,5 @@
     &.success{
         background-color: #28a745;;
     }
+}
 }

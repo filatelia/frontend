@@ -22,8 +22,8 @@ export class SolicitudPatialsComponent implements OnInit {
 
 
   loading_tema: boolean=false;
-  tema_exist: boolean=false;
-  user_tema: any={};
+  user_exist: boolean=false;
+  user_info: any={};
 
   id_pais= '';
   id_tema= '';
@@ -90,23 +90,39 @@ export class SolicitudPatialsComponent implements OnInit {
           this.timaticaValue.setValue(data.name);
           this.form.controls['timatica'].setValue(data.name);
           this.id_tema=data.uid
-          this.searchTema(data);
+          this.searchTema(data.ParaBuscar);
         break;
       case 'País':
         this.paisValue.setValue(data.name);
         this.id_pais=data.para_buscar
+        this.searchPais(data.uid);
         break;
         
     }
   }
+  searchPais(data:any){
+    this.loading_tema=true;
+    this.restService.getVerificarPais(data).subscribe((resp:any)=>{
+      this.loading_tema=false;
+      if(resp.msg===true) this.user_exist=false
+      else {
+        this.user_exist=true
+        this.user_info=resp.msg
+      }
+    },
+    (err:any)=>{
+      this.loading_tema=false;
+    });
+    
+  }
   searchTema(data:any){
     this.loading_tema=true;
-    this.restService.getVerificarTema(data.ParaBuscar+'').subscribe((resp:any)=>{
+    this.restService.getVerificarTema(data).subscribe((resp:any)=>{
       this.loading_tema=false;
-      if(resp.msg===true) this.tema_exist=false
+      if(resp.msg===true) this.user_exist=false
       else {
-        this.tema_exist=true
-        this.user_tema=resp.msg
+        this.user_exist=true
+        this.user_info=resp.msg
       }
     },
     (err:any)=>{
@@ -115,7 +131,7 @@ export class SolicitudPatialsComponent implements OnInit {
     
   }
   resetbtn(){
-      this.tema_exist=false;
+      this.user_exist=false;
   }
   updateValue(){
     
@@ -124,7 +140,7 @@ export class SolicitudPatialsComponent implements OnInit {
       tipo_catalogo_solicitud:this.dataTipo.find((el:any)=>el.name==this.tipo_catalogo?.value).uid,
       timatica:this.nombre?.value,
       pais_catalogo_solicitud:this.id_pais,
-      tema_catalogo_solicitud:this.id_tema,
+      tema_catalogo_solicitud:this.timatica?.value,
       valor_catalogo:''
     }
   }

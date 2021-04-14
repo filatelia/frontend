@@ -1,0 +1,81 @@
+@media (max-width: 1920px){
+.box-decoration{
+    &:first-child{
+        padding: 15px;
+        margin-top: 0;
+    }
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 8px 3px rgb(44 44 44 / 17%);
+    margin: 20px;
+    border-radius: 10px;
+    position: relative;
+    text-decoration: none;
+    min-height: 115px;
+    &:focus, &.active, &:hover{
+        background-color:rgb(44 44 44 / 7%);
+        text-decoration: none;
+    }
+    &-title{
+        width: 100%;
+    }
+    &-btn{
+        position: absolute;
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        border: 0;
+        transition: all .3s;
+        &.saved{
+            position: static;
+        }
+        &.remove{
+            bottom: 5px;
+            right: 5px;
+        }
+        &.edit{
+            top: 5px;
+            right: 5px;
+        }
+        &.share{
+            right: 5px;
+        }
+        &:focus{
+            background-color: rgb(44 44 44 / 30%);
+            transition: all .3s;
+
+
+        }
+        &:hover{
+            background-color: rgb(44 44 44 / 30%);
+            transition: all .3s;
+        }
+    }
+    
+}
+.colection{
+    &-content{
+        width: 100%;
+    }
+    &-input{
+        font-size: 15px;
+        width: 100%;
+    }
+    &-btn{
+        width: 40%;
+        margin: 0 5px;
+        &-content{
+            margin: 0 auto;
+            margin-top: 10px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+
+        }
+    }
+    
+}
+}
