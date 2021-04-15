@@ -32,11 +32,23 @@ export class ModalMancolistaComponent implements   OnInit {
       try{
         var data=localStorage.getItem('data_manco');
         var parse=JSON.parse(data||'')
-        this.addMancoLista({id_estampilla:parse.uid||parse._id,id_manco_list:this.listradio})
+        
+
+        if(parse.all){
+          for (let index = 0; index < parse.data.length; index++) {
+            const element = parse.data[index];
+            this.addMancoListaAll({id_estampilla:element.uid||parse._id,id_manco_list:this.listradio})
+            
+          }
+          this.message('success', "Agregado a mi mancolista")
+        }
+        else{
+          this.addMancoLista({id_estampilla:parse.uid||parse._id,id_manco_list:this.listradio})
+        }
         this.modalService.dismissAll()
       }
       catch($e){
-
+          console.error($e)
       }
   }
   list(){
@@ -58,6 +70,14 @@ export class ModalMancolistaComponent implements   OnInit {
       },
       (err)=>{
 
+      }
+    );
+  }
+  addMancoListaAll(data:any){
+    this.restservice.addMancolista(data).subscribe((res:any) =>{
+      },
+      (err)=>{
+        
       }
     );
   }

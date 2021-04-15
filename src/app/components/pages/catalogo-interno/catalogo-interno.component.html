@@ -83,8 +83,13 @@
                                     <div class="col-lg-2 d-flex justify-content-center align-items-center">
                                         <h4>{{catalog.Inicio}} - {{catalog.Final}}</h4>
                                     </div>
-                                    <div class="col-lg-7 d-flex align-items-center">
+                                    <div class="col-lg-4 d-flex align-items-center">
                                         <p>{{catalog.TITULO_DE_LA_SERIE}}</p>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <button class="btn btn-info" (click)="modalOpen(catalog,'all')" (click)="modalManco.openModal()">
+                                            Añadir a mis mancolistas
+                                        </button>
                                     </div>
                                     <div class="col-lg-3 d-flex justify-content-end align-items-center">
                                         <span>{{catalog.Cantidad}} estampillas</span>

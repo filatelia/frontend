@@ -10,12 +10,14 @@ import { ModalReporteComponent } from '../modal-reporte/modal-reporte.component'
 export class ModalComponent implements OnInit {
 
   constructor(private modalService: NgbModal) { }
-  @Input() modal: any={};
+  @Input() modal: any=null;
   ngOnInit(): void {
   }
   
   openModal(type='') {
     var context;
+    console.log("modal ")
+    console.log(this.modal)
     switch(type){
       case 'manco':
         localStorage.setItem('data_manco',JSON.stringify(this.modal))

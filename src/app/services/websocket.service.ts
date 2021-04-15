@@ -16,7 +16,7 @@ export class WebsocketService {
    private create(url:any):Rx.Subject<MessageEvent>{
       let ws=new WebSocket(url);
       ws.onopen=((resp)=>{
-        var data = sessionStorage.getItem('auth-token');
+        var data = localStorage.getItem('auth-token');
         var dataSend={type:'connect',token:data};
         ws.send(JSON.stringify(dataSend))
       })

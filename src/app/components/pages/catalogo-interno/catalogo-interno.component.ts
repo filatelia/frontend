@@ -178,19 +178,33 @@ export class CatalogoInternoComponent implements OnInit {
         
     });
   }
-  modalOpen(data:any){
-    data.open=true;
-    this.dataMancoSelected=data;
+  modalOpen(data:any,type=''){
+    
+    if(type=='all'){
+      var modalData={
+        open:true,
+        all:true,
+        data:data.data,
+      }
+      console.log(modalData)
+      this.dataMancoSelected=modalData;
+    }
+    else{
+      data.open=true;
+      this.dataMancoSelected=data;
+    }
   }
   grupoCatalogo(){
     var anio=0;
     var sum=10
     var increment=0
+
+    this.datoscatalogo=this.datoscatalogo.sort((a:any, b:any) => Number(a.ANIO) -Number(b.ANIO) )
     this.datoscatalogo.forEach((element:any)=>{
         if(anio==0){
-            anio=element.ANIO;
+            anio=Number(element.ANIO);
             this.dataCatalog.push({
-              "Anio":element.ANIO,
+              "Anio":Number(element.ANIO),
               Inicio:anio,
               Final: Number(anio)+Number(sum),
               TITULO_DE_LA_SERIE: element.TITULO_DE_LA_SERIE,
@@ -205,8 +219,10 @@ export class CatalogoInternoComponent implements OnInit {
 
         }
         else{
-          anio=element.ANIO;
-          var dataAnio=this.dataCatalog.findIndex((el:any)=>element.ANIO>=el.Inicio&&element.Anio<=el.Final)
+          anio=Number(element.ANIO);
+          console.log(anio)
+
+          var dataAnio=this.dataCatalog.findIndex((el:any)=>Number(element.ANIO)>=Number(el.Inicio)&&Number(element.ANIO)<=Number(el.Final))
           if(dataAnio!=-1){
             
             this.dataCatalog[dataAnio].Cantidad=this.dataCatalog[dataAnio].Cantidad+1;
@@ -216,7 +232,7 @@ export class CatalogoInternoComponent implements OnInit {
           }
           else{
             this.dataCatalog.push({
-              "Anio":element.Anio,
+              "Anio":Number(element.ANIO),
               Inicio:anio,
               Final: Number(anio)+Number(sum),
               Descripcion_de_la_serie: element.Descripcion_de_la_serie,
