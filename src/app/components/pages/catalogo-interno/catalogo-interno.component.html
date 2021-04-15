@@ -84,7 +84,7 @@
                                         <h4>{{catalog.Inicio}} - {{catalog.Final}}</h4>
                                     </div>
                                     <div class="col-lg-7 d-flex align-items-center">
-                                        <p>{{catalog.Descripcion_de_la_serie}}</p>
+                                        <p>{{catalog.TITULO_DE_LA_SERIE}}</p>
                                     </div>
                                     <div class="col-lg-3 d-flex justify-content-end align-items-center">
                                         <span>{{catalog.Cantidad}} estampillas</span>
@@ -95,8 +95,8 @@
                         <div class="col-lg-3 pr-0 catalogo-item" *ngFor="let data of catalog.data">
                             <div class="filtros__contenido__card">
                                 <div class="filtros__contenido__card__top">
-                                    <span>{{data.Anio}}</span>
-                                    <img [src]="sanitizeImageUrl(api+data.Foto_JPG_800x800_px)" alt="">
+                                    <span>{{data.ANIO}}</span>
+                                    <img [src]="sanitizeImageUrl(api+data.FOTO_ESTAMPILLAS.imagen_url||'')" alt="">
                                 </div>
                                 <div class="filtros__contenido__card__center" *ngIf="isLoggedIn; else btnmanco">
                                     <a href="javascript:void(0)" (click)="modalOpen(data)" (click)="modalManco.openModal()" class="plus">
@@ -116,9 +116,9 @@
                                 </ng-template>
                                 <div class="filtros__contenido__card__boton">
                                     <ul>
-                                        <li>{{data.Descripcion}}</li>
-                                        <li>{{data.Valor_Facial}}</li>
-                                        <li>{{data.Numero_de_catalogo}}</li>
+                                        <li>{{data.DESCRIPCION_ESTAMPILLA}}</li>
+                                        <li>{{data.VALOR_FACIAL}}</li>
+                                        <li>{{data.NUMERO_DE_CATALOGO}}</li>
                                     </ul>
                                     <a routerLink="/catalogo" class="link">Ver variantes y errores</a>
                                 </div>

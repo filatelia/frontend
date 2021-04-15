@@ -196,21 +196,17 @@ export class MancolistaComponent implements OnInit {
     var data:any=[];
     this.mancolista.forEach((element:any)=>{
       data.push({
-        Anio:element.estampillas.Anio,
+        ANIO:element.estampillas.ANIO,
         // Catalogo:element.estampillas.Catalogo,
-        Codigo:element.estampillas.Codigo,
-        Descripcion:element.estampillas.Descripcion,
-        Descripcion_de_la_serie:element.estampillas.Descripcion_de_la_serie,
+        CODIGO:element.estampillas.CODIGO,
+        DESCRIPCION_ESTAMPILLA:element.estampillas.DESCRIPCION_ESTAMPILLA,
         // Foto_JPG_800x800_px:element.estampillas.Foto_JPG_800x800_px,
-        Grupo:element.estampillas.Grupo,
-        Nro_Estampillas:element.estampillas.Nro_Estampillas,
-        Numero_de_catalogo:element.estampillas.Numero_de_catalogo,
-        ParaBuscar:element.estampillas.ParaBuscar,
-        Valor_Facial:element.estampillas.Valor_Facial,
-        Valor_del_Catalogo:element.estampillas.Valor_del_Catalogo,
-        estado:element.estampillas.estado,
-        pais:element.pais?.name,
-        tema:element.temas?.name,
+        GRUPO:element.estampillas.GRUPO,
+        NRO_ESTAMPILLAS:element.estampillas.NRO_ESTAMPILLAS,
+        NUMERO_DE_CATALOGO:element.estampillas.NUMERO_DE_CATALOGO,
+        VALOR_FACIAL:element.estampillas.VALOR_FACIAL,
+        VALOR_CATALOGO_NUEVO:element.estampillas.VALOR_CATALOGO_NUEVO,
+        ESTADO:element.estado_estampilla,
       })
     })
     this.exporterService.exportToExcel(data,'mancolista');

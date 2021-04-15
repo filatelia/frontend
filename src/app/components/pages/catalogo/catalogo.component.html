@@ -14,7 +14,7 @@
                         </div>
                         <ng-template #catalogo>
                             <div class="col-lg-3" *ngFor="let datos of datospaises">
-                                <a routerLink="/catalogo-interna/{{datos.pais.para_buscar}}"  [queryParams]="{ type: 'pais'}" class="catalogo__content__pais">
+                                <a *ngIf="datos.pais" routerLink="/catalogo-interna/{{datos.pais.para_buscar}}"  [queryParams]="{ type: 'pais'}" class="catalogo__content__pais">
                                     <img width="70px" height="70px" class="rounded-circle"  [src]="sanitizeImageUrl(api+datos.pais.img)"  alt="">
                                 </a>
                             </div>

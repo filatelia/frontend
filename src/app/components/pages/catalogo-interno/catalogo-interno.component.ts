@@ -186,15 +186,15 @@ export class CatalogoInternoComponent implements OnInit {
     var anio=0;
     var sum=10
     var increment=0
-    this.datoscatalogo.forEach((element)=>{
+    this.datoscatalogo.forEach((element:any)=>{
         if(anio==0){
-            anio=element.Anio;
+            anio=element.ANIO;
             this.dataCatalog.push({
-              "Anio":element.Anio,
+              "Anio":element.ANIO,
               Inicio:anio,
-              Final: anio+sum,
-              Descripcion_de_la_serie: element.Descripcion_de_la_serie,
-              Descripcion: element.Descripcion,
+              Final: Number(anio)+Number(sum),
+              TITULO_DE_LA_SERIE: element.TITULO_DE_LA_SERIE,
+              Descripcion: '',
               Cantidad: 1,
               data:[
                 element,
@@ -205,8 +205,8 @@ export class CatalogoInternoComponent implements OnInit {
 
         }
         else{
-          anio=element.Anio;
-          var dataAnio=this.dataCatalog.findIndex((el:any)=>element.Anio>=el.Inicio&&element.Anio<=el.Final)
+          anio=element.ANIO;
+          var dataAnio=this.dataCatalog.findIndex((el:any)=>element.ANIO>=el.Inicio&&element.Anio<=el.Final)
           if(dataAnio!=-1){
             
             this.dataCatalog[dataAnio].Cantidad=this.dataCatalog[dataAnio].Cantidad+1;
@@ -218,7 +218,7 @@ export class CatalogoInternoComponent implements OnInit {
             this.dataCatalog.push({
               "Anio":element.Anio,
               Inicio:anio,
-              Final: anio+sum,
+              Final: Number(anio)+Number(sum),
               Descripcion_de_la_serie: element.Descripcion_de_la_serie,
               Descripcion: element.Descripcion,
               Cantidad: 1,

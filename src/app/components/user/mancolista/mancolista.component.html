@@ -62,8 +62,8 @@
       <div class="col-lg-6 col-md-8 col-sm-12 pr-0 catalogo-item" *ngFor="let data of mancolista">
         <div class="filtros__contenido__card">
             <div class="filtros__contenido__card__top">
-                <span>{{data.estampillas.Anio}}</span>
-                <img [src]="sanitizeImageUrl(api+data.estampillas.Foto_JPG_800x800_px)" alt="">
+                <span>{{data.estampillas.ANIO}}</span>
+                <img [src]="sanitizeImageUrl(api+data.FOTO_ESTAMPILLAS.imagen_url)" alt="">
             </div>
             <div class="filtros__contenido__card__center" >
                 <a href="javascript:void(0)" (click)="modalOpen(data.estampillas)" (click)="modalManco.openModal()" class="plus">
@@ -80,9 +80,9 @@
             </div>
             <div class="filtros__contenido__card__boton">
                 <ul>
-                    <li>{{data.estampillas.Descripcion}}</li>
-                    <li>{{data.estampillas.Valor_Facial}}</li>
-                    <li>{{data.estampillas.Numero_de_catalogo}}</li>
+                    <li>{{data.estampillas.DESCRIPCION_ESTAMPILLA}}</li>
+                    <li>{{data.estampillas.VALOR_FACIAL}}</li>
+                    <li>{{data.estampillas.NUMERO_DE_CATALOGO}}</li>
                 </ul>
             </div>
         </div>
@@ -110,7 +110,7 @@
           </th>
           <td><img [src]="sanitizeImageUrl(api+data.id_estampilla?.Foto_JPG_800x800_px||'')" class="img-fluid" alt=""></td>
           <td>{{data.id_estampilla?.Pais.name}}</td>
-          <td>{{data.id_estampilla.Anio}}</td>
+          <td>{{data.id_estampilla.ANIO}}</td>
           <td>{{data.id_estampilla.Descripcion_de_la_serie}}</td>
           <td style="width: 15%">{{data.id_estampilla.Numero_de_catalogo}}</td>
           <td>{{data.id_estampilla.Descripcion}}</td>

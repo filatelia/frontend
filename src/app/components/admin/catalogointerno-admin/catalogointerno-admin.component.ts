@@ -35,7 +35,7 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
   public repetidasData: any=[];
   public archivos: any = [];
   public responseExcel: any={};
-  datos: CatalogoCompleto[] = [];
+  datos: any = [];
   intermedio: CatalogoCompleto[] = [];
   public loading: boolean | any;
   api = environment.conect_url;
