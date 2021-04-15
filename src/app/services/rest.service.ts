@@ -28,6 +28,14 @@ export class RestService {
     return this.http.get(url); // GET
   }
 
+  
+  public saveReporte(body: any) {
+    return this.http.post(this.url + '/moderacion/crear-reporte', body); // POST
+  }
+  public allReporteUsers(body: any) {
+    return this.http.get(this.url + '/moderacion/mostrar-todos-reportes'); // POST
+  }
+  
   public postCatalogoAdmin(body: any) {
     return this.http.post(this.url + '/catalogo/uploads/excel', body); // POST
   }

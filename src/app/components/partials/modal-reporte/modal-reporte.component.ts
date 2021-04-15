@@ -45,15 +45,20 @@ export class ModalReporteComponent implements OnInit {
       }
   }
   saveReporte(data:any){
-    console.log(data,this.descripcion)
-    // this.restservice.saveReporte(data).subscribe((res:any) =>{
-    //     console.log(res)
-    //     this.message('success', res.msg=='eliminado'?res.msg: "Agregado a mi mancolista")
-    //   },
-    //   (err)=>{
+    
+    var body={
+      apodo_us_reportado:data.nickname,
+      razones_reporte:this.descripcion
+    };
+    this.restservice.saveReporte(body).subscribe((res:any) =>{
+       if(res.ok){
+        this.message('success', "Reportado")
+       }
+      },
+      (err)=>{
         
-    //   }
-    // );
+      }
+    );
   }
   message(type:any,message:any){
     const Toast = Swal.mixin({

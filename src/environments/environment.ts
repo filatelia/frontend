@@ -4,13 +4,12 @@
 
 export const environment = {
   production: true,
-  conect_url: 'https://api.filateliaperu.com/',
-  conect_url_api: 'https://api.filateliaperu.com/api',
+  // conect_url: 'https://api.filateliaperu.com/',
+  // conect_url_api: 'https://api.filateliaperu.com/api',
   CHAT_URL:location.protocol=='http:'?"ws://sw-filatelia.herokuapp.com/":"wss://sw-filatelia.herokuapp.com/",
 
-
-  // conect_url: 'http://localhost:3000',
-  // conect_url_api: 'http://localhost:3000/api',
+  conect_url: 'http://localhost:3000',
+  conect_url_api: 'http://localhost:3000/api',
   // CHAT_URL:"ws://192.168.104.94:5000/",
   
   api: '/api',
