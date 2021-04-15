@@ -1,13 +1,13 @@
 
-<section class="formulario m-top">
+<section class="formulariologin m-top"> 
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-6"> 
-                <div class="formulario__content">
-                    <h2 class="titulo titulo--mediano">Bienvenido de nuevo</h2>
+                <div class="formulariologin__content">
+                    <h2 class="titulo titulo--medianologin">Bienvenido de nuevo</h2>
                     <p *ngIf="!isLoggedIn">Inicia sesión para continuar con tu experiencia.</p>
                     <p *ngIf="isLoggedIn">Usted Inició sesión Correctamente</p>
-                    <div class="formulario__content__form">
+                    <div class="formulariologin__content__form">
                         <form class="row" [formGroup]="loginForm" *ngIf="!isLoggedIn" (ngSubmit)="onSubmit()" >
                             <div class="form-group col-lg-12">
                                 <label for="exampleInputEmail1">Correo electrónico</label>
@@ -55,10 +55,10 @@
                 </div>
             </div>
             <div class="col-lg-6 p-0">
-                <div class="formulario__img" style="background-image: url(../assets/img/bg/bg-iniciar.png);">
-                    <div class="formulario__img__content formulario__img__content--top">
+                <div class="formulariologin__img" style="background-image: url(../assets/img/bg/bg-iniciar.png);">
+                    <div class="formulariologin__img__content formulariologin__img__content--top">
                         <div>
-                            <h2 class="titulo titulo--mediano">Llega a las personas indicadas en el momento indicado</h2>
+                            <h2 class="titulo titulo--medianologin">Llega a las personas indicadas en el momento indicado</h2>
                             <p>Comienza a comprar y vender hoy mismo tus colecciones en Filatelia Peruana</p>
                         </div>
                     </div>
