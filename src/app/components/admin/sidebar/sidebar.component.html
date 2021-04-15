@@ -13,15 +13,18 @@
         <ul>
             <li>
                 <a  [routerLink]="['/admin/dashboard']" class="link"><img src="assets/img/iconos/dashboard.png" alt=""> <span>Dashboard</span></a>
-            </li>
+                <ol class="listado"> 
+                  <li>
+                     
+                      <a [routerLink]="['/admin/dashboard/Peticiones']">Peticiones</a>
+                      <a [routerLink]="['/admin/dashboard/Peticiones']">Reportes</a>
+
+                  </li>                    
+              </ol> 
+              </li>
             <li>
                 <a [routerLink]="['/admin/dashboard/catalogo-admin']" class="link"><img src="assets/img/iconos/dashboard.png" alt=""> <span>Catálogo</span></a>
-        <!---      <ol class="listado"> 
-                    <li>
-                       
-                        <a href="/admcatalogo">Catalogo</a>
-                    </li>                    
-                </ol> -->
+            
             </li>
             <li>
               <a [routerLink]="['/admin/dashboard/blog-admin']" class="link"><img src="assets/img/iconos/dashboard.png" alt=""> <span>Blog</span></a>

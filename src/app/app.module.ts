@@ -77,6 +77,8 @@ import { ChatService } from './services/chat.service';
 import { ModalEstampillaComponent } from './components/partials/modal-estampilla/modal-estampilla.component';
 import { ModalReporteComponent } from './components/partials/modal-reporte/modal-reporte.component';
 import { ExporterService } from './services/exporter.service';
+import { SubastaDetalleComponent } from './components/pages/subasta-detalle/subasta-detalle.component';
+import { TiendaDetalleComponent } from './components/pages/tienda-detalle/tienda-detalle.component';
 @NgModule({
   declarations: [
     
@@ -128,6 +130,8 @@ import { ExporterService } from './services/exporter.service';
     MessagePartialsComponent,
     ModalEstampillaComponent,
     ModalReporteComponent,
+    SubastaDetalleComponent,
+    TiendaDetalleComponent,
   ],
   imports: [
     NgSimpleSidebarModule,
