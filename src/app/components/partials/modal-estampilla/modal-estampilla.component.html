@@ -194,5 +194,41 @@
                 </button>
             </div>
         </form>
+        <form class="row hide needs-validation" [formGroup]="form4" (ngSubmit)="registrarError()" [class]="{'show':tabViews[3].active}">
+            <div class="form-group col-lg-12">
+                <label for="inputdescripcipcion">Descripción de variantes errores</label>
+                <input name="descripcion_error" id="inputdescripcipcion" type="text" formControlName="descripcion_error" class="form-control"
+                    [ngClass]="{'is-valid':!descripcion_error?.invalid&&(descripcion_error?.dirty||descripcion_error?.touched),'is-invalid':descripcion_error?.invalid&&(descripcion_error?.dirty||descripcion_error?.touched)}"
+                    ngModel
+                >
+                <div class="invalid-feedback" formControlName="descripcion_error" *ngIf="descripcion_error?.invalid&&(descripcion_error?.dirty||descripcion_error?.touched)">
+                <div *ngIf="descripcion_error?.errors?.required">Descripción de variantes errores requerido</div>
+                <div *ngIf="descripcion_error?.errors?.minlength">El mínimo es de 5 caracteres </div>
+                </div>
+            </div>
+            <div class="form-group col-lg-12">
+                <label for="">Foto de variantes o error</label>
+                <input (change)="addImages($event)" type="file" class="form-control">
+                <div class="p-1">
+                    <small>Se aceptan archivos de tipo .png .jpg .jpeg .gif</small>
+                  </div>
+            </div>
+            <div class="col-lg-12 mt-1 text-center">
+                <div *ngIf="response?.msg" class="text-center">
+                    <span [ngClass]="{'text-primary':response.ok,'text-danger':!response.ok}">
+                        {{response.msg}}
+                    </span>
+                </div>
+                
+                <button type="submit"  class="btn btn--negro" [disabled]="response.loading">
+                    {{(response.loading) ? 'Cargando.....' : 'Guardar variantes'}}
+                </button>
+            </div>
+            <div class="col-lg-12 mt-1 text-center">
+                <button type="button"  class="btn btn--negro" (click)="tabactive(1)">
+                    Atras
+                </button>
+            </div>
+        </form>
     </div>
   </div>

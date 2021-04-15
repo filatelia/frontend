@@ -60,7 +60,13 @@ export class RestService {
   getMyCatalog(body:any):Observable<any>{
       return  this.http.get(this.url+'/catalogo/uploads/excel/mis-catalogos');
   }
-
+  
+  agregarErrorEstampilla(body:any){
+    return  this.http.post(this.url+'/variantes-errores',body);
+  }
+  agregarEstampilla(body:any){
+    return  this.http.post(this.url+'/estampillas',body);
+  }
   getAllCatalogoAdmin(body:any): Observable<CatalogoCompleto[]> {
     this.isLoggedIn = !!this.tokenInterceptorService.getToken();
 

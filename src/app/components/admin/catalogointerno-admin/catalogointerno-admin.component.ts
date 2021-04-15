@@ -41,7 +41,7 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
   api = environment.conect_url;
 
   pais:SelectPais[] = [];
-
+  response:any={}
 
   dtOptions: DataTables.Settings = {};
   data: any;
@@ -201,6 +201,7 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
     }
   }
   addimage(image:any){
+    console.log(image)
       this.images.push(image);
   }
   /* extraerBase64 = async ($event: any) => new Promise((resolve, reject) => {
@@ -268,7 +269,6 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
             
             this.responseExcel.msg_visible=true;
             // this.router.navigate(['/dashboard/atalogo-seleccionado/id']);
-
             if(this.repetidasData.length==0){
                 setTimeout(()=>{
                 },6000)
@@ -299,21 +299,27 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
 
       const images=new FormData();
       this.images.forEach((element:any) => {
-          
+        images.append('sampleFile',element)
       }); 
-      images.append('sampleFile',this.images_files)
+      
       images.append('catalogo',this.id_catalogo)
-      images.append('file',this.images_files)
+      images.append('files',this.images_files)
       console.log(this.images_files)
       this.rest.uploadImagesCatalogo(images).subscribe(
         (res:any)=>{
-          console.log(res)
           this.loading=false;
+          this.response=res;
+          this.response.msg="guardado";
+          setTimeout(()=>{
+            this.closeVerticallyCentered()
+          },2000)
 
         },
         (err:any)=>{
           this.loading=false;
-          console.log(err)
+          this.response.ok=false;
+          this.response.msg="error";
+
         }
       );
     }

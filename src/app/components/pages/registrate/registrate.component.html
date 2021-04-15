@@ -36,7 +36,7 @@
                                 </div>
                                 
                                 <div class="form-group col-lg-12">
-                                    <label for="pais">Pais</label>
+                                    <label for="pais">País</label>
                                     <input type="text" [formControl]="paisValue" required formControlName="pais" class="form-control" ngModel [ngClass]="{'is-valid':!pais?.invalid&&(pais?.dirty||pais?.touched),'is-invalid':pais?.invalid&&(pais?.dirty||pais?.touched)}" ngModel>
                                     <app-search-paises [pais]="pais" (select)="selectPais($event)"></app-search-paises>
                                     <div class="invalid-feedback" *ngIf="pais?.invalid&&(pais?.dirty||pais?.touched)">
