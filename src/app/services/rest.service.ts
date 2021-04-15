@@ -29,11 +29,18 @@ export class RestService {
   }
 
   
+  public reporteStatus(body: any) {
+    return this.http.post(this.url + '/moderacion/cambiar-estado-reporte', body); // POST
+  }
+  public listStatusReport() {
+    return this.http.get(this.url + '/moderacion/tipos-estados-reporte'); // POST
+  }
+
   public saveReporte(body: any) {
     return this.http.post(this.url + '/moderacion/crear-reporte', body); // POST
   }
-  public allReporteUsers(body: any) {
-    return this.http.get(this.url + '/moderacion/mostrar-todos-reportes'); // POST
+  public allReporteUsers() {
+    return this.http.get(this.url + '/moderacion/reportes-analizar'); // POST
   }
   
   public postCatalogoAdmin(body: any) {

@@ -39,6 +39,7 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
   intermedio: CatalogoCompleto[] = [];
   public loading: boolean | any;
   api = environment.conect_url;
+  url = environment.conect_url_api;
 
   pais:SelectPais[] = [];
   response:any={}
@@ -264,7 +265,7 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
             this.responseExcel={
               archivos_subidos:res.archivos_subidos,
               numero_estampillas_repetidas:res.numero_estampillas_repetidas,
-              msg:res.archivos_subidos>0?'Archivo guardado '+res.msg:res.msg,
+              msg:res.ok?'Archivo guardado ':'Error',
             }
             
             this.responseExcel.msg_visible=true;

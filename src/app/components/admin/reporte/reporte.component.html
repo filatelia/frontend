@@ -2,343 +2,79 @@
     <h3>Reportes</h3>
 </div>
 <div class="row">   
-    
-    <div class="col-lg-10 m-auto">
-        <hr> 
-        <h2 class="titulo titulo--medianoreporte">Bandeja de mensajes</h2>
-    </div>
-    
+  
   <div class="col-lg-12 m-auto">
       <table class="table table--normal">  
           <thead>
             <tr>
-              <th>Cliente</th> 
-              <th>Mensaje</th>                  
+              <th>Usuario reportado</th>
+              <th>Usuario reportante</th>
+              <th>Razon</th>                
               <th></th>                  
             </tr>
           </thead>
-          <tbody >
+          <tbody *ngFor="let reporte of dataReportes">
             <tr >
-              <td style="width:20%;"> dato1</td>  
-              <td style="width:10%;">dato2</td>  
-              <td class="editar">
+              <td style="width:20%;">
+                {{reporte.usuario_reportado.apellidos}} {{reporte.usuario_reportado.name}}<br>
+                email: {{reporte.usuario_reportado.email}}<br>
+                reputacion: {{reporte.usuario_reportado.reputacion}}
+              </td>  
+              <td style="width:10%;">
+                {{reporte.usuario_reportante.apellidos}} {{reporte.usuario_reportante.name}}<br>
+                email: {{reporte.usuario_reportante.email}}
+                reputacion: {{reporte.usuario_reportante.reputacion}}
+
+              </td>  
+              <td>
+                  {{reporte.descripcion_reporte_cliente}}
+
+              </td>
+              <td class="editar" width="30%">
                 <div >
-                  <a  href="javascript:void(0)" class="btn-table-rad success">
-                    Responder
+                  <a  href="javascript:void(0)" class="btn-table-rad info">
+                    Ver mensaje
                   </a>
-                  <a href="javascript:void(0)"  class="btn-table-rad danger ">
-                    Ignorar
-                  </a>
+                  <div>
+                    <select [(ngModel)]="status" class="form-control" (change)="openVerticallyCentered(modalReporte,status,reporte.uid)" >
+                      <option selected value="">--Seleccione--</option>
+                      <option  *ngFor="let status of estadosReporte" [value]="status.uid">
+                        {{status.nombre}}
+                      </option>
+                    </select>
+                  </div>
                 </div>
-                <ng-template #viewpublic>
-                  <a href="javascript:void(0)"class="btn-table-rad info" >
-                      Ver
-                  </a>
-                  <a  href="javascript:void(0)" class="btn-table-rad success">
-                    aceptar
-                  </a>
-                  <a  href="javascript:void(0)" class="btn-table-rad danger ">
-                    rechazar
-                  </a>
-                </ng-template>
             </td>
             </tr>
           </tbody>
         </table>
   </div>
 </div>
-
-
-<ng-template #content let-modal ngClass="modal__admin">
+<ng-template #modalReporte let-modal ngClass="modal__admin">
   <div class="modal-header">
-    <h4 class="modal-title">Razon del rechazo</h4>
+    <h4 class="modal-title">{{reporte.nombre}}</h4>
+    
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-    <form class="row" >
-        <div class="form-group col-lg-12">
-          <label for="">Mensaje</label>
-          <input type="text" formControlName="message" required name="message" class="form-control" ngModel>
-        </div> 
-       <div class="text-center" style="    width: 100%;">
-        <button type="submit" class="btn btn--negro" (click)="modal.close('Close click')">Enviar rechazo</button>      
-       </div>
-    </form>
-  </div>
-</ng-template>
-
-<div class="row">   
-    
-    <div class="col-lg-10 m-auto">
-        <hr> 
-        <h2 class="titulo titulo--medianoreporte">Bandeja de mensajes</h2>
+    <div [innerHTML]="reporte.descripcion">
     </div>
-    
-  <div class="col-lg-12 m-auto">
-      <table class="table table--normal">  
-          <thead>
-            <tr>
-              <th>Cliente</th> 
-              <th>Mensaje</th>                  
-              <th></th>                  
-            </tr>
-          </thead>
-          <tbody >
-            <tr >
-              <td style="width:20%;"> dato1</td>  
-              <td style="width:10%;">dato2</td>  
-              <td class="editar">
-                <div >
-                  <a  href="javascript:void(0)" class="btn-table-rad success">
-                    Responder
-                  </a>
-                  <a href="javascript:void(0)"  class="btn-table-rad danger ">
-                    Ignorar
-                  </a>
-                </div>
-                <ng-template #viewpublic>
-                  <a href="javascript:void(0)"class="btn-table-rad info" >
-                      Ver
-                  </a>
-                  <a  href="javascript:void(0)" class="btn-table-rad success">
-                    aceptar
-                  </a>
-                  <a  href="javascript:void(0)" class="btn-table-rad danger ">
-                    rechazar
-                  </a>
-                </ng-template>
-            </td>
-            </tr>
-          </tbody>
-        </table>
   </div>
-</div>
-
-
-<ng-template #content let-modal ngClass="modal__admin">
-  <div class="modal-header">
-    <h4 class="modal-title">Razon del rechazo</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <form class="row" >
-        <div class="form-group col-lg-12">
-          <label for="">Mensaje</label>
-          <input type="text" formControlName="message" required name="message" class="form-control" ngModel>
-        </div> 
-       <div class="text-center" style="    width: 100%;">
-        <button type="submit" class="btn btn--negro" (click)="modal.close('Close click')">Enviar rechazo</button>      
-       </div>
-    </form>
-  </div>
-</ng-template>
-
-<div class="row">   
-    
-    <div class="col-lg-10 m-auto">
-        <hr> 
-        <h2 class="titulo titulo--medianoreporte">Bandeja de mensajes</h2>
+  <div class="modal-footer">
+    <div class="col-md-12">
+        <div *ngIf="response?.msg" class="text-center">
+          <span [ngClass]="{'text-primary':response.ok,'text-danger':!response.ok}">
+              {{response.msg}}
+          </span>
+      </div>
     </div>
-    
-  <div class="col-lg-12 m-auto">
-      <table class="table table--normal">  
-          <thead>
-            <tr>
-              <th>Cliente</th> 
-              <th>Mensaje</th>                  
-              <th></th>                  
-            </tr>
-          </thead> 
-          <tbody >
-            <tr >
-              <td style="width:20%;"> dato1</td>  
-              <td style="width:10%;">dato2</td>  
-              <td class="editar">
-                <div >
-                  <a  href="javascript:void(0)" class="btn-table-rad success">
-                    Responder
-                  </a>
-                  <a href="javascript:void(0)"  class="btn-table-rad danger ">
-                    Ignorar
-                  </a>
-                </div>
-                <ng-template #viewpublic>
-                  <a href="javascript:void(0)"class="btn-table-rad info" >
-                      Ver
-                  </a>
-                  <a  href="javascript:void(0)" class="btn-table-rad success">
-                    aceptar
-                  </a>
-                  <a  href="javascript:void(0)" class="btn-table-rad danger ">
-                    rechazar
-                  </a>
-                </ng-template>
-            </td>
-            </tr>
-          </tbody>
-        </table>
-  </div>
-</div>
-
-
-<ng-template #content let-modal ngClass="modal__admin">
-  <div class="modal-header">
-    <h4 class="modal-title">Razon del rechazo</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
+    <button type="button" class="btn btn--negro" [disabled]="response.loading" (click)="reporteStatus()">
+      {{(response.loading) ? 'Cargando.....' : 'Guardar'}}
     </button>
-  </div>
-  <div class="modal-body">
-    <form class="row" >
-        <div class="form-group col-lg-12">
-          <label for="">Mensaje</label>
-          <input type="text" formControlName="message" required name="message" class="form-control" ngModel>
-        </div> 
-       <div class="text-center" style="    width: 100%;">
-        <button type="submit" class="btn btn--negro" (click)="modal.close('Close click')">Enviar rechazo</button>      
-       </div>
-    </form>
   </div>
 </ng-template>
 
-<div class="row">   
-    
-    <div class="col-lg-10 m-auto">
-        <hr> 
-        <h2 class="titulo titulo--medianoreporte">Bandeja de mensajes</h2>
-    </div>
-    
-  <div class="col-lg-12 m-auto">
-      <table class="table table--normal">  
-          <thead>
-            <tr>
-              <th>Cliente</th> 
-              <th>Mensaje</th>                  
-              <th></th>                  
-            </tr>
-          </thead>
-          <tbody >
-            <tr >
-              <td style="width:20%;"> dato1</td>  
-              <td style="width:10%;">dato2</td>  
-              <td class="editar">
-                <div >
-                  <a  href="javascript:void(0)" class="btn-table-rad success">
-                    Responder
-                  </a>
-                  <a href="javascript:void(0)"  class="btn-table-rad danger ">
-                    Ignorar
-                  </a>
-                </div>
-                <ng-template #viewpublic>
-                  <a href="javascript:void(0)"class="btn-table-rad info" >
-                      Ver
-                  </a>
-                  <a  href="javascript:void(0)" class="btn-table-rad success">
-                    aceptar
-                  </a>
-                  <a  href="javascript:void(0)" class="btn-table-rad danger ">
-                    rechazar
-                  </a>
-                </ng-template>
-            </td>
-            </tr>
-          </tbody>
-        </table>
-  </div>
-</div>
-
-
-<ng-template #content let-modal ngClass="modal__admin">
-  <div class="modal-header">
-    <h4 class="modal-title">Razon del rechazo</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <form class="row" >
-        <div class="form-group col-lg-12">
-          <label for="">Mensaje</label>
-          <input type="text" formControlName="message" required name="message" class="form-control" ngModel>
-        </div> 
-       <div class="text-center" style="    width: 100%;">
-        <button type="submit" class="btn btn--negro" (click)="modal.close('Close click')">Enviar rechazo</button>      
-       </div>
-    </form>
-  </div>
-</ng-template>
-
-<div class="row">   
-    
-    <div class="col-lg-10 m-auto">
-        <hr> 
-        <h2 class="titulo titulo--medianoreporte">Bandeja de mensajes</h2>
-    </div>
-    
-  <div class="col-lg-12 m-auto">
-      <table class="table table--normal">  
-          <thead>
-            <tr>
-              <th>Cliente</th> 
-              <th>Mensaje</th>                  
-              <th></th>                  
-            </tr>
-          </thead>
-          <tbody >
-            <tr >
-              <td style="width:20%;"> dato1</td>  
-              <td style="width:10%;">dato2</td>  
-              <td class="editar">
-                <div >
-                  <a  href="javascript:void(0)" class="btn-table-rad success">
-                    Responder
-                  </a>
-                  <a href="javascript:void(0)"  class="btn-table-rad danger ">
-                    Ignorar
-                  </a>
-                </div>
-                <ng-template #viewpublic>
-                  <a href="javascript:void(0)"class="btn-table-rad info" >
-                      Ver
-                  </a>
-                  <a  href="javascript:void(0)" class="btn-table-rad success">
-                    aceptar
-                  </a>
-                  <a  href="javascript:void(0)" class="btn-table-rad danger ">
-                    rechazar
-                  </a>
-                </ng-template>
-            </td>
-            </tr>
-          </tbody>
-        </table>
-  </div>
-</div>
-
-
-<ng-template #content let-modal ngClass="modal__admin">
-  <div class="modal-header">
-    <h4 class="modal-title">Razon del rechazo</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <form class="row" >
-        <div class="form-group col-lg-12">
-          <label for="">Mensaje</label>
-          <input type="text" formControlName="message" required name="message" class="form-control" ngModel>
-        </div> 
-       <div class="text-center" style="    width: 100%;">
-        <button type="submit" class="btn btn--negro" (click)="modal.close('Close click')">Enviar rechazo</button>      
-       </div>
-    </form>
-  </div>
-</ng-template>
 
 <!--<button class="btn btn-outline-primary mb-2 mr-2" (click)="openVerticallyCentered(content)">Modal vertically centered</button>-->

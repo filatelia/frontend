@@ -12,6 +12,7 @@ export class ModalEstampillaComponent implements OnInit {
   @Input() catalogo: string='';
   @Input() back: Boolean=false;
   @Output() activePage =new EventEmitter();
+  @Output() changeData =new EventEmitter();
   image:any=null;
   response:any={}
   id_estampilla: any=''
@@ -87,7 +88,9 @@ export class ModalEstampillaComponent implements OnInit {
           setTimeout(()=>{
             this.response.msg=""
             this.next(3)
+            this.changeData.emit(resp)
           },1000)
+          
         }
       }),
       ((err:any)=>{

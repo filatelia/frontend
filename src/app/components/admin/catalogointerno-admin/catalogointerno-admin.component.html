@@ -13,7 +13,7 @@
       <a href="javascript:void(0)" (click)="openVerticallyCentered(contenidoImagenes)" class="J-btn-link" >
           Agregar imagenes
       </a>
-      <a target="_blank" rel="noopener noreferrer" [href]="api+'/api/reportes/generar-excel/'+id_catalogo"  class="mainAdmin__boton J-btn-link">
+      <a target="_blank" rel="noopener noreferrer" [href]="url+'/reportes/generar-excel/'+id_catalogo"  class="mainAdmin__boton J-btn-link">
         <div class="titulo--mediano3">Descargar excel</div>
       </a>
      
@@ -235,5 +235,5 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <app-modal-estampilla [catalogo]="id_catalogo"></app-modal-estampilla>
+  <app-modal-estampilla (changeData)="mostrarDatos()" [catalogo]="id_catalogo"></app-modal-estampilla>
 </ng-template>
