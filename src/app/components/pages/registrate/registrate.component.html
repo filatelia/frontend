@@ -1,14 +1,15 @@
-<section class="formulario m-top">
-    <div class="container-fluid">
+<section class="formularioregister m-top">
+    <div class="container-fluid"> 
         <div class="row">
             <div class="col-lg-6">
-                <div class="formulario__content dashboard__contenido">
+                <div class="formularioregister__content dashboard__contenido">
                     
-                    <div class="formulario__content__form ">
+                    <div class="formularioregister__content__form ">
                             <form [formGroup]="registerForm1"  (ngSubmit)="next(1)"  class="row hide needs-validation" [class]="{'show':tabViews[0].active}">
                                 <div class="col-lg-12">
-                                    <h2 class="titulo titulo--mediano">Regístrate ahora mismo</h2>
+                                    <h2 class="titulo titulo--medianoregister">Regístrate ahora mismo</h2>
                                     <p>Para llegar a miles de compradores y vendedores con tu misma pasión.</p>
+                                    <span> Recuerda que al crear tu cuenta, aceptas los <br> <a> Términos de uso </a> y la <a>Política de privacidad</a> de Filatelia Peruana. </span>
                                 </div>
                                 <div class="form-group col-lg-12">
                                     <label for="name">Nombre</label>
@@ -50,61 +51,56 @@
                                     </button>
                                 </div>
                             </form>
-                            <form [formGroup]="registerForm2"  (ngSubmit)="next(2)"  class="row hide needs-validation" [class]="{'show':tabViews[1].active}">
+                            <form [formGroup]="registerForm2"  (ngSubmit)="next(1)"  class="row hide needs-validation" [class]="{'show':tabViews[1].active}">
                                 
                                 <div class="form-group col-lg-12">
-                                    <div>
-                                        <label for="tipo">Tipo de coleccion</label>
-                                    </div> 
+                                    <label for="tipo">Tipo de coleccion</label>
+                                    <select id="tipo"  name="tipo_catalogo" required class="form-control"
+                                        [ngClass]="{'is-valid':!tipo_catalogo?.invalid&&(tipo_catalogo?.dirty||tipo_catalogo?.touched),'is-invalid':tipo_catalogo?.invalid&&(tipo_catalogo?.dirty||tipo_catalogo?.touched)}"
+                                        ngModel
+                                        >
+                                        <option value="" >-- Seleccione --</option>
+                                        <option  *ngFor="let tipo of dataTipo" [value]="tipo.name">{{tipo.name}}</option>
+                                    </select>
+                                    <div class="invalid-feedback" formControlName="tipo_catalogo" *ngIf="tipo_catalogo?.invalid&&(tipo_catalogo?.dirty||tipo_catalogo?.touched)">
+                                        <div *ngIf="tipo_catalogo?.errors?.required">Tipo catalogo requerido</div>
+                                    </div>
                                 </div>
-                                <div class="reverse">
-                                    <div *ngFor="let tipo of dataTipo" class="col-lg-12">
-                                            <div class="form-check form-check-inline" >
-                                                <input class="form-check-input" (change)="checkedType()" type="checkbox"[id]="tipo.uid" [value]="true"  formControlName="tipo_catalogo" [(ngModel)]="tipo.active">
-                                                <label class="form-check-label" [for]="tipo.uid">{{tipo.name}}</label>
-                                            </div>
-                                            <div *ngIf="tipo.name=='País'">
-                                                <div class="form-group" *ngIf="catalogo_pais">
-                                                    <input placeholder="Busque un pais para agregar"  [formControl]="paisSearchValue" type="text" formControlName="pais_search"  class="form-control" ngModel>
-                                                    <app-search-paises [pais]="pais_search"  (select)="select($event,'pais')"></app-search-paises>
-                                                    <div class="content-more">
-                                                        <div *ngFor="let item of dataPaises;let i=index" class="item-more">
-                                                            <!-- Agregue la colección de paises -->
-                                                            {{item.name}}
-                                                            <button type="button" (click)="removeCollect(i,'pais')" class="delete-more">
-                                                                &#215;
-                                                            </button>
-                                                        </div>
-                                                        
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div *ngIf="tipo.name=='Temático'">
-                                                <div class="form-group"  *ngIf="catalogo_tema">
-                                                    <input placeholder="Busque un tema para agregar" [formControl]="timaticaValue" type="text" formControlName="timatica"  class="form-control" [ngClass]="{'is-valid':!timatica?.invalid&&(timatica?.dirty||timatica?.touched),'is-invalid':timatica?.invalid&&(timatica?.dirty||timatica?.touched)}" ngModel>
-                                                    <app-search-type [tipo]="timatica"  (select)="select($event,'tema')"></app-search-type>
-                                                    <div class="invalid-feedback" *ngIf="timatica?.invalid&&(timatica?.dirty||timatica?.touched)">
-                                                        <div *ngIf="timatica?.errors?.required">Timatica es requerido</div>
-                                                        <div *ngIf="timatica?.errors?.minlength">El mínimo es de 3 caracteres  </div>
-                                                    </div>
-                                                    <div class="content-more">
-                                                        <div *ngFor="let item of dataTema;let i=index" class="item-more">
-                                                            <!-- Agregue la colección de paises -->
-                                                            {{item.name}}
-                                                            <button type="button" (click)="removeCollect(i,'tema')" class="delete-more">
-                                                                &#215;
-                                                            </button>
-                                                        </div>
-                                                        
-                                                    </div>
-                                                </div>
-                                            </div>
+                                <div class="form-group col-lg-12" *ngIf="tipo_catalogo?.value=='País'">
+                                    <input placeholder="Busque un pais para agregar"  [formControl]="paisSearchValue" type="text" formControlName="pais_search"  class="form-control" ngModel>
+                                    <app-search-paises [pais]="pais_search"  (select)="select($event)"></app-search-paises>
+                                    <div class="content-more">
+                                        <div *ngFor="let item of dataPaises;let i=index" class="item-more">
+                                            <!-- Agregue la colección de paises -->
+                                            {{item.name}}
+                                            <button type="button" (click)="removeCollect(i)" class="delete-more">
+                                                &#215;
+                                            </button>
                                         </div>
                                         
                                     </div>
+                                </div>
+                                <div class="form-group col-lg-12"  *ngIf="tipo_catalogo?.value=='Temático'">
+                                    <input placeholder="Busque un tema para agregar" [formControl]="timaticaValue" type="text" formControlName="timatica"  class="form-control" [ngClass]="{'is-valid':!timatica?.invalid&&(timatica?.dirty||timatica?.touched),'is-invalid':timatica?.invalid&&(timatica?.dirty||timatica?.touched)}" ngModel>
+                                    <app-search-type [tipo]="timatica"  (select)="select($event)"></app-search-type>
+                                    <div class="invalid-feedback" *ngIf="timatica?.invalid&&(timatica?.dirty||timatica?.touched)">
+                                        <div *ngIf="timatica?.errors?.required">Timatica es requerido</div>
+                                        <div *ngIf="timatica?.errors?.minlength">El mínimo es de 3 caracteres  </div>
+                                    </div>
+                                    <div class="content-more">
+                                        <div *ngFor="let item of dataTema;let i=index" class="item-more">
+                                            <!-- Agregue la colección de paises -->
+                                            {{item.name}}
+                                            <button type="button" (click)="removeCollect(i)" class="delete-more">
+                                                &#215;
+                                            </button>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
                                 
                                 <div class="col-lg-12">
-                                    <button type="submit"  class="btn btn--negro" >
+                                    <button type="button"  class="btn btn--negro" (click)="tabactive(2)">
                                         Siguiente
                                     </button>
                                 </div>
@@ -116,10 +112,10 @@
                             </form>
                             <form [formGroup]="registerForm"  (ngSubmit)="registrar()"  class="row hide needs-validation" [class]="{'show':tabViews[2].active}">
                                 <div class="form-group col-lg-12">
-                                    <label for="nickname">Apodo</label>
+                                    <label for="nickname">Nickname</label>
                                     <input type="text" required id="nickname" formControlName="nickname" class="form-control" ngModel [ngClass]="{'is-valid':!nickname?.invalid&&(nickname?.dirty||nickname?.touched),'is-invalid':nickname?.invalid&&(nickname?.dirty||nickname?.touched)}" ngModel>
                                     <div class="invalid-feedback" *ngIf="nickname?.invalid&&(nickname?.dirty||nickname?.touched)">
-                                        <div *ngIf="nickname?.errors?.required">Apodo requerido</div>
+                                        <div *ngIf="nickname?.errors?.required">Nickname requerido</div>
                                         <div *ngIf="nickname?.errors?.minlength">Minímo es de 6 caracteres</div>
                                     </div>
                                 </div>

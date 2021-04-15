@@ -1,58 +1,77 @@
 @media (max-width: 1920px){
-.titulo{
-    font-family: $DMregular;
-    color: $negro;
-    span{
-        color:$amarillo;
-    }
-    &--grande{
-        font-size: 85px;
-    }
-    &--grandehome1{
-        font-size: 3.7rem;
-    }
-    &--grande2{
-        font-size: 2.5rem;
-        line-height: 70px;
-    }
-    &--mediano{
-        font-size:25px;
-        margin: 0;
-    }
-    &--medianocatalogintern{
-        font-size: 2rem;
-        margin: 0;
-    }
-    &--mediano2{
-        display: inline-block;
-        margin: 8px;
-        line-height: 40px;
-        font-size: 1.3rem;
+    .titulo{
+        font-family: $DMregular;
+        color: $negro;
+        span{
+            color:$amarillo;
+        }
+        &--grande{
+            font-size: 85px;
+        }
+        &--grandehome1{
+            font-size: 3.4rem;
+        }
+        &--grande2{
+            font-size: 2.5rem;
+            line-height: 70px;
+        }
+        &--grandehomel_m_v{
+            font-size: 2.2rem;
+            line-height: 70px;
+        }
+        &--mediano{
+            font-size:25px;
+            margin: 0;
+        }
+        &--medianologin{
+            font-size:37px;
+            margin: 0;
+        }
+        &--medianoregister{
+            font-size:37px;
+            margin: 0;
+        }
+        &--medianocontacts{
+            font-size:37px;
+            margin: 0;
+        }
+        &--medianocatalogintern{
+            font-size: 2rem;
+            margin: 0;
+        }
+        &--mediano2{
+            display: inline-block;
+            margin: 8px;
+            line-height: 40px;
+            font-size: 1.3rem;
+        }
+        
+        &--chico{
+            font-size: 1.5rem;
+        } 
+        &--chico2{
+            font-size: 2rem;
+        }
+        &--chicocontacts{
+            font-size: 1rem;
+        }
+        
     }
     
-    &--chico{
-        font-size: 1.5rem;
-    } 
-    &--chico2{
-        font-size: 2rem;
+    .parrafo{
+        color: $negro;
+        &--grande{
+            font-size: 29px;
+            font-family: $prata;
+        }
+        &--grandehome1{
+            font-size: 1.4rem;
+            font-family: $prata;
+        }
+        &--mediano{
+            font-family: $lato;
+            font-size: 16px;
+            letter-spacing: 0px;
+        }
     }
-    
-}
-
-.parrafo{
-    color: $negro;
-    &--grande{
-        font-size: 29px;
-        font-family: $prata;
     }
-    &--grandehome1{
-        font-size: 1.5rem;
-        font-family: $prata;
-    }
-    &--mediano{
-        font-family: $lato;
-        font-size: 16px;
-        letter-spacing: 0px;
-    }
-}
-}
