@@ -79,6 +79,7 @@ import { ModalReporteComponent } from './components/partials/modal-reporte/modal
 import { ExporterService } from './services/exporter.service';
 import { SubastaDetalleComponent } from './components/pages/subasta-detalle/subasta-detalle.component';
 import { TiendaDetalleComponent } from './components/pages/tienda-detalle/tienda-detalle.component';
+import { ReporteComponent } from './components/admin/reporte/reporte.component';
 @NgModule({
   declarations: [
     
@@ -132,6 +133,7 @@ import { TiendaDetalleComponent } from './components/pages/tienda-detalle/tienda
     ModalReporteComponent,
     SubastaDetalleComponent,
     TiendaDetalleComponent,
+    ReporteComponent,
   ],
   imports: [
     NgSimpleSidebarModule,

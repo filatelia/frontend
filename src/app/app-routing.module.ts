@@ -21,6 +21,7 @@ import { MonedaAdminComponent } from './components/admin/moneda-admin/moneda-adm
 import { TransferenciaAdminComponent } from './components/admin/transferencia-admin/transferencia-admin.component';
 import { PaypalAdminComponent } from './components/admin/paypal-admin/paypal-admin.component';
 import { AddcorreoAdminComponent } from './components/admin/addcorreo-admin/addcorreo-admin.component';
+import { ReporteComponent } from './components/admin/reporte/reporte.component';
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -32,6 +33,8 @@ import { HomeComponent } from './components/pages/home/home.component';
 import { CatalogoComponent } from './components/pages/catalogo/catalogo.component';
 import { CatalogoInternoComponent } from './components/pages/catalogo-interno/catalogo-interno.component';
 import {MimancolistapublicaPageComponent} from './components/pages/mimancolistapublica-page/mimancolistapublica-page.component'
+import { SubastaDetalleComponent } from './components/pages/subasta-detalle/subasta-detalle.component';
+import {TiendaDetalleComponent} from './components/pages/tienda-detalle/tienda-detalle.component'
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 import { ConfiguracionComponent } from './components/user/configuracion/configuracion.component';
@@ -59,6 +62,8 @@ const routes: Routes = [
       { path: 'catalogo', component:CatalogoComponent},
       { path: 'subasta', component:SubastaPagesComponent},
       { path: 'catalogo-interna/:pais', component:CatalogoInternoComponent},
+      { path: 'subastadetalle', component:SubastaDetalleComponent},
+      { path: 'tiendadetalle', component:TiendaDetalleComponent},
       //auth
       { path: 'auth/register',component: RegistrateComponent, 
         
@@ -83,6 +88,7 @@ const routes: Routes = [
     children: [
       { path: '', component: PeticionesAdminComponent },
       { path: 'mancolista', component: MancolistaComponent },
+      { path: 'reporte', component: ReporteComponent },
       { path: 'tabla', component: TablaCatalogoComponent },
       { path: 'temas', component: TemasCatalogoComponent},
       { path: 'catalogo-admin', component: CatalogoAdminComponent },
