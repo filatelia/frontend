@@ -32,7 +32,7 @@
               </td>
               <td class="editar" width="30%">
                 <div >
-                  <a  href="javascript:void(0)" class="btn-table-rad info">
+                  <a  href="javascript:void(0)" class="btn-table-rad info" (click)="viewMessage(reporte.usuario_reportado,modalChats)">
                     Ver mensaje
                   </a>
                   <div>
@@ -75,6 +75,41 @@
     </button>
   </div>
 </ng-template>
+
+<ng-template #modalChats let-modal ngClass="modal__admin">
+  <div class="modal-header">
+    <h4 class="modal-title">Mensajes de {{chat.apellidos}} {{chat.name}}</h4>
+    
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <div class="J-content-conversation">
+        <div class="J-conversation" *ngFor="let message of chat.messages">
+            <div class="J-message">
+                <a [href]="'/user/'+message.id_usuario"  class="J-message-name">
+                    ~{{chat.nickname}}
+                </a>
+                {{message.message}}
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="col-md-12">
+        <div *ngIf="response?.msg" class="text-center">
+          <span [ngClass]="{'text-primary':response.ok,'text-danger':!response.ok}">
+              {{response.msg}}
+          </span>
+      </div>
+    </div>
+    <button type="button" class="btn btn--negro" [disabled]="response.loading" (click)="chatView()">
+      {{(response.loading) ? 'Cargando.....' : 'Listo'}}
+    </button>
+  </div>
+</ng-template>
+
 
 
 <!--<button class="btn btn-outline-primary mb-2 mr-2" (click)="openVerticallyCentered(content)">Modal vertically centered</button>-->

@@ -222,7 +222,7 @@ export class CatalogoInternoComponent implements OnInit {
           anio=Number(element.ANIO);
           console.log(anio)
 
-          var dataAnio=this.dataCatalog.findIndex((el:any)=>Number(element.ANIO)>=Number(el.Inicio)&&Number(element.ANIO)<=Number(el.Final))
+          var dataAnio=this.dataCatalog.findIndex((el:any)=>(Number(element.ANIO)>=Number(el.Inicio)&&Number(element.ANIO)<=Number(el.Final))&&el.TITULO_DE_LA_SERIE==element.TITULO_DE_LA_SERIE)
           if(dataAnio!=-1){
             
             this.dataCatalog[dataAnio].Cantidad=this.dataCatalog[dataAnio].Cantidad+1;
@@ -235,8 +235,8 @@ export class CatalogoInternoComponent implements OnInit {
               "Anio":Number(element.ANIO),
               Inicio:anio,
               Final: Number(anio)+Number(sum),
-              Descripcion_de_la_serie: element.Descripcion_de_la_serie,
-              Descripcion: element.Descripcion,
+              TITULO_DE_LA_SERIE: element.TITULO_DE_LA_SERIE,
+              Descripcion: '',
               Cantidad: 1,
               data:[
                 element,

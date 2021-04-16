@@ -15,6 +15,7 @@ export class ModalMancolistaComponent implements   OnInit {
   name: string='';
   listradio: string='';
   dataMancoList:any=[];
+  deleteActive: boolean=false;
   static modal: any={};
   ngOnInit(): void {
     this.list()
@@ -32,8 +33,6 @@ export class ModalMancolistaComponent implements   OnInit {
       try{
         var data=localStorage.getItem('data_manco');
         var parse=JSON.parse(data||'')
-        
-
         if(parse.all){
           for (let index = 0; index < parse.data.length; index++) {
             const element = parse.data[index];
@@ -51,6 +50,37 @@ export class ModalMancolistaComponent implements   OnInit {
           console.error($e)
       }
   }
+  updateValue(){
+    var data=localStorage.getItem('data_manco');
+    var parse=JSON.parse(data||'')
+    return parse;
+    // if(parse.all){
+    //   for (let index = 0; index < parse.data.length; index++) {
+        
+        
+    //   }
+    // }
+  }
+  async checkedMancoList(id:any){
+    var data_stamp=await this.updateValue();
+
+    
+    if(data_stamp.all){
+      return;
+    }
+    var id_estampilla=data_stamp.uid
+    this.restservice.checkedMancoListCat({id_categoria_estampilla:id_estampilla,id_estampilla:id}).subscribe(
+      (resp)=>{
+        if(resp.ok) this.deleteActive=true;
+        else  this.deleteActive=false;
+      },
+      (err)=>{
+        console.log(err);
+        this.deleteActive=false;
+
+      }
+    )
+  }
   list(){
     this.restservice.getMancoListCat().subscribe(
       (resp)=>{
@@ -61,6 +91,7 @@ export class ModalMancolistaComponent implements   OnInit {
       }
     )
   }
+
   createManco(){
 
     this.restservice.createMancoLista({name:this.name}).subscribe(
@@ -83,8 +114,7 @@ export class ModalMancolistaComponent implements   OnInit {
   }
   addMancoLista(data:any){
     this.restservice.addMancolista(data).subscribe((res:any) =>{
-        console.log(res)
-        this.message('success', res.msg=='eliminado'?res.msg: "Agregado a mi mancolista")
+       this.message('success',res.estampilla_eliminada?'Eliminado': "Agregado a mi mancolista")
       },
       (err)=>{
         

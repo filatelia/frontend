@@ -54,7 +54,7 @@
         <form class="row hide needs-validation" [formGroup]="form2" (ngSubmit)="next(2)" [class]="{'show':tabViews[1].active}">
                 
                 <div class="form-group col-lg-12">
-                    <label for="inputnumeroestamp">Número de estampilla</label>
+                    <label for="inputnumeroestamp">Números de estampillas</label>
                     <input name="numero_estampilla" id="inputnumeroestamp" type="text" formControlName="numero_estampilla" class="form-control"
                     [ngClass]="{'is-valid':!numero_estampilla?.invalid&&(numero_estampilla?.dirty||numero_estampilla?.touched),'is-invalid':numero_estampilla?.invalid&&(numero_estampilla?.dirty||numero_estampilla?.touched)}"
                     ngModel

@@ -11,6 +11,8 @@ export const environment = {
   // conect_url: 'http://localhost:3000',
   // conect_url_api: 'http://localhost:3000/api',
   // CHAT_URL:"ws://192.168.43.100:5000/",
+
+  
   
   api: '/api',
   login: '/login',

@@ -9,7 +9,7 @@
   <div class="row">
     <a href="javascript:void(0)" class="col-lg-12 list-link" *ngFor="let item of dataMancoList;let i=index">
       <label [for]="i+1">{{item.name}}</label>
-      <input name="lista" [id]="i+1" type="radio" [value]="item.uid" class="form-control radio" [(ngModel)]="listradio">
+      <input name="lista" [id]="i+1" type="radio" (change)="checkedMancoList(item.uid)" [value]="item.uid" class="form-control radio" [(ngModel)]="listradio">
     </a> 
     <div class="col-lg-12 list-link row">
       <a href="javascript:void(0)" class="list-link-item" (click)="isCreate=true" *ngIf="!isCreate; else create">
@@ -32,7 +32,7 @@
     <button type="button" class="btn btn--negro  J-modal-btn" (click)="createManco()">Guardar</button>
   </div>
   <ng-template #createbtn>
-    <button type="button" class="btn btn--negro"  (click)="saved()">Listo</button>
+    <button type="button" class="btn btn--negro"  (click)="saved()">{{deleteActive?'Quitar':'Listo'}}</button>
   </ng-template>
 </div>
 

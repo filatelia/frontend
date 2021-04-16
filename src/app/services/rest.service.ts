@@ -35,6 +35,9 @@ export class RestService {
   public listStatusReport() {
     return this.http.get(this.url + '/moderacion/tipos-estados-reporte'); // POST
   }
+  public viewReportChat(id:any) {
+    return this.http.get(this.url + '/moderacion/chats-reportado/'+id); // POST
+  }
 
   public saveReporte(body: any) {
     return this.http.post(this.url + '/moderacion/crear-reporte', body); // POST
@@ -161,6 +164,10 @@ export class RestService {
   
   addMancolista(body: any){
     return this.http.post(this.url + '/catalogo/manco_list', body); // POST
+  }
+  checkedMancoListCat(body:any): Observable<any> {
+    let direccion =this.url + '/catalogo/manco_list/validar';
+    return this.http.post(direccion,body);
   }
   getMancoListCat(): Observable<any> {
     let direccion =this.url + '/catalogo/manco_list/manco-list-cat';

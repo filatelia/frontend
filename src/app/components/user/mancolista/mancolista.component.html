@@ -60,6 +60,9 @@
     </div>
     <div class="col-md-8 col-sm-12 row" style="justify-content: center;">
       <div class="col-lg-6 col-md-8 col-sm-12 pr-0 catalogo-item" *ngFor="let data of mancolista">
+        <button class="J-btn-close btn-danger" (click)="deleteMancolista(data)">
+          <i class="fas fa-trash-alt"></i>
+        </button>
         <div class="filtros__contenido__card">
             <div class="filtros__contenido__card__top">
                 <span>{{data.estampillas.ANIO}}</span>
@@ -80,9 +83,20 @@
             </div>
             <div class="filtros__contenido__card__boton">
                 <ul>
+                    <li>{{data.estampillas.NRO_ESTAMPILLAS}} {{data.estampillas.TIPO}}</li>
                     <li>{{data.estampillas.DESCRIPCION_ESTAMPILLA}}</li>
+                    <li>{{data.estampillas.TIPO_MONEDA_VALOR_FACIAL}} {{data.estampillas.VALOR_FACIAL}}</li>
                     <li>{{data.estampillas.VALOR_FACIAL}}</li>
-                    <li>{{data.estampillas.NUMERO_DE_CATALOGO}}</li>
+                    <li>
+                        {{ data.estampillas.MONEDA_VALOR_CATALOGO_NUEVO_USADO}} {{ data.estampillas.VALOR_CATALOGO_NUEVO}} - {{ data.estampillas.VALOR_DEL_CATALOGO_USADO}}
+                    </li>
+                    <li>
+                      <select class="form-control" (change)="changeStatus(data)" [(ngModel)]="data.estado_estampilla" [value]="data.estado_estampilla">
+                          <option value="Es indiferente">Es indiferente</option>
+                          <option value="Nuevo">Nuevo</option>
+                          <option value="Usada">Usada</option>
+                      </select>
+                    </li>
                 </ul>
             </div>
         </div>

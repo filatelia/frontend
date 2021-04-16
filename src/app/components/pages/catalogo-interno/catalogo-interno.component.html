@@ -83,15 +83,15 @@
                                     <div class="col-lg-2 d-flex justify-content-center align-items-center">
                                         <h4>{{catalog.Inicio}} - {{catalog.Final}}</h4>
                                     </div>
-                                    <div class="col-lg-4 d-flex align-items-center">
+                                    <div class="col-lg-4 d-flex align-items-center" [class]="{'col-lg-7':!isLoggedIn}">
                                         <p>{{catalog.TITULO_DE_LA_SERIE}}</p>
                                     </div>
-                                    <div class="col-lg-3">
+                                    <div class="col-lg-3"  *ngIf="isLoggedIn">
                                         <button class="btn btn-info" (click)="modalOpen(catalog,'all')" (click)="modalManco.openModal()">
                                             Añadir a mis mancolistas
                                         </button>
                                     </div>
-                                    <div class="col-lg-3 d-flex justify-content-end align-items-center">
+                                    <div class="col-lg-3 d-flex justify-content-end align-items-center" >
                                         <span>{{catalog.Cantidad}} estampillas</span>
                                     </div>
                                 </div>
@@ -121,9 +121,13 @@
                                 </ng-template>
                                 <div class="filtros__contenido__card__boton">
                                     <ul>
+                                        <li>{{data.NRO_ESTAMPILLAS}} {{data.TIPO}}</li>
                                         <li>{{data.DESCRIPCION_ESTAMPILLA}}</li>
+                                        <li>{{data.TIPO_MONEDA_VALOR_FACIAL}} {{data.VALOR_FACIAL}}</li>
                                         <li>{{data.VALOR_FACIAL}}</li>
-                                        <li>{{data.NUMERO_DE_CATALOGO}}</li>
+                                        <li>
+                                            {{ data.MONEDA_VALOR_CATALOGO_NUEVO_USADO}} {{ data.VALOR_CATALOGO_NUEVO}} - {{ data.VALOR_DEL_CATALOGO_USADO}}
+                                        </li>
                                     </ul>
                                     <a routerLink="/catalogo" class="link">Ver variantes y errores</a>
                                 </div>

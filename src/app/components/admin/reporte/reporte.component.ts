@@ -12,6 +12,7 @@ export class ReporteComponent implements OnInit {
   response: any={};
   reporte:any={}
   status:any=''
+  chat:any={}
   estadosReporte:any=[
   ]
   constructor(private restService:RestService,private modalService: NgbModal) { }
@@ -23,6 +24,9 @@ export class ReporteComponent implements OnInit {
   openVerticallyCentered(content: any,data:any,id_reporte:string) {
     this.reporte=this.estadosReporte.find((el:any)=>el.uid==data)
     this.reporte.id_reporte=id_reporte
+    this.openModal(content)
+  }
+  openModal(content: any) {
     this.modalService.open(content, {
       centered: true,
       windowClass: 'modal__admin',
@@ -68,6 +72,24 @@ export class ReporteComponent implements OnInit {
     this.restService.allReporteUsers().subscribe(
       (resp:any)=>{
           this.dataReportes=resp.msg
+      },
+      (err:any)=>{
+
+      }
+    )
+  }
+  chatView(){
+     this.closeVerticallyCentered()
+  }
+  viewMessage(data:any,content:any){
+    this.chat=data;
+    console.log(data)
+    this.restService.viewReportChat(data._id).subscribe(
+      (resp:any)=>{
+        if(resp.ok) {
+          this.chat.messages=resp.msg
+           this.openModal(content);
+        }
       },
       (err:any)=>{
 

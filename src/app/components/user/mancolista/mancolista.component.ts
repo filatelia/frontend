@@ -58,29 +58,7 @@ export class MancolistaComponent implements OnInit {
     console.log(data)
     this.restService.addMancolista(data).subscribe((res:any) =>{
         this.getMancoLista();
-        const Toast = Swal.mixin({
-          toast: true,
-          position: 'top-end',
-          showConfirmButton: false,
-          timer: 1500,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-          }
-        })
-        Toast.fire({
-          icon: 'success',
-          title: res.estampilla_eliminada?'Eliminado': "Actualizado"
-        }).then(
-          result=>{
-            if(result.dismiss === Swal.DismissReason.timer){
-  
-  
-            }
-            
-          }
-        );
+        this.message('success',res.estampilla_eliminada?'Eliminado': "Actualizado")
       },
       (err)=>{
         
@@ -88,10 +66,11 @@ export class MancolistaComponent implements OnInit {
     );
   }
   deleteMancolista(data:any){
-    this.addMancoLista({id_estampilla:data.id_estampilla._id})
+    this.addMancoLista({id_estampilla:data.id_estampilla,id_manco_list:data.id_mancolist_cat})
   }
   changeStatus(data:any){
-    this.addMancoLista({id_estampilla:data.id_estampilla._id,estado_estampilla:data.estado_estampilla})
+    console.log(data)
+    this.addMancoLista({id_estampilla:data.id_estampilla,id_manco_list:data.id_mancolist_cat,estado_estampilla:data.estado_estampilla})
   }
   copyLink(id:any){
 

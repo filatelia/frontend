@@ -38,21 +38,26 @@
       <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table--normal">
         <thead>
           <tr>
-            <th>Img estampilla</th>
-            <th>Codigo</th>
-            <th>Año</th>
-            <th>Numero Catálogo</th>
-            <th>Tipo</th>
+            <th width="15%">Img</th>
+            <th>Numero - Tipo</th>
+            <th width="30%">Descripción</th>
+            <th>Valor facial</th>
+            <th>Valor nuevo - Usado </th>
             <!-- <th>Acciones</th> -->
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let datos of datos">
-            <td> <img width="70px" height="70px" class="rounded-circle" [src]="sanitizeImageUrl(api+datos.FOTO_ESTAMPILLAS.imagen_url)" /> </td>
-            <td>{{ datos.CODIGO }}</td>
-            <td>{{ datos.ANIO }}</td>
-            <td>{{ datos.NUMERO_DE_CATALOGO }}</td>
-            <td>{{ datos.TIPO}}</td>
+            <td>
+              <div class="circle-img">
+                <img width="70px" height="70px" class="rounded-circle" [src]="sanitizeImageUrl(api+datos.FOTO_ESTAMPILLAS.imagen_url)" />
+              </div>
+            </td>
+            <td>{{ datos.NRO_ESTAMPILLAS }} - {{ datos.TIPO }}</td>
+            <td>{{ datos.DESCRIPCION_ESTAMPILLA }}</td>
+            <td> {{datos.TIPO_MONEDA_VALOR_FACIAL}} {{ datos.VALOR_FACIAL}} </td>
+            <td> {{ datos.MONEDA_VALOR_CATALOGO_NUEVO_USADO}} {{ datos.VALOR_CATALOGO_NUEVO}} - {{ datos.VALOR_DEL_CATALOGO_USADO}}</td>
+            
             <!-- <td> <a class="pointer" (click)="openEditCentered(Imagenes)"><img src="assets/img/iconos/edit.png" title="Editar"></a> /
               <a class="pointer" name="{{ datos.Codigo }}" id="{{ datos.uid }}"
                 (click)="eliminarElemento(Eliminar.id, Eliminar.name)" #Eliminar><img title="Eliminar"
