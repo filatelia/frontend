@@ -198,8 +198,128 @@
     }
 }
 
+.comenzar{
+    .owl-nav{
+        .owl-prev,
+        .owl-next{
+            width: 85px;
+            height: 65px;
+        }
+        .owl-prev{
+            left: -35px;
+        }
+        .owl-next{
+            right: -49px;
+        }
+    }
+    &__content{
+        padding:85px 11px 162px;
+        position: relative;
+        &:before{
+            content: ""; 
+            width: 216px;
+            height: 208px;
+            left: -264px;
+            top: 100px;
+            z-index: 1;
+            position: absolute;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-image: url(../../../../assets/img/iconos/raya-vertical.svg);
+        } 
+    }
+}
+.bannerslider{
+            
+    padding-top: -10rem;
+    margin-top: -41.5rem;
+    padding-left: 0rem;
+    margin-left: 33rem;
+    position: absolute;
+    
+   // padding-right: -15rem;
+   // margin-right: -15rem;
+   // margin-left: -15.5rem;
+    //background-position: fixed;
+    z-index: 0;
 
+        height: 30rem;
+        width: 50rem;
 
+        img{
+            height: 28.5rem;
+       }
+    .owl-nav{
+        .owl-prev{
+            width: 40px;
+            height: 40px;
+        }
+        .owl-next{
+            width: 40px;
+            height: 40px;
+        }
+        .owl-prev{
+            left: -35px;
+        }
+        .owl-next{
+            right: -49px;
+        }
+    }
+       
+  
+    }
+     
+.vendido{
+    padding-top: 50px;
+    padding-bottom: 150px;
+    position: relative;
+    .titulo{
+        margin-bottom: 30px;
+    }
+    .owl-vendido{
+        position: relative;
+        .owl-nav{
+            display: block !important;
+            position: absolute;
+            width: 100%;
+            top: 16rem;
+            margin: 0;
+            bottom: 0;
+            left: 0;
+            height: 92px;
+            right: 0;
+            button{
+                position: absolute;
+                background-color: $mostaza !important;
+                width: 117px;
+                height: 100%;
+                top: 0;
+                border-radius: 0;
+                margin: auto;
+                span{
+                    font-size: 50px;
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    width: 100%;
+                    line-height: 67px;
+                }
+                &:nth-of-type(1){
+                    left: -54px;
+                }
+                &:nth-of-type(2){
+                    right: -54px;
+                }
+            }
+        }
+        .item{
+            padding:16px 7px;
+        }
+    }
+}
 
 .activo{
     &:before{

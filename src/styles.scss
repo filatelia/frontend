@@ -1,8 +1,8 @@
 /* Importando variables y estilos. */
 @import "./assets/styles/styless.scss";
-
-
-
+@import "./assets/styles/blocks/owl/owl.scss";
+@import "./assets/styles/blocks/filtros/filtros.scss";
+/*
 body{
     background-color: $blanco;
     color: $negro;

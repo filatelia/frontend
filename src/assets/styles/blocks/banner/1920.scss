@@ -1,5 +1,42 @@
 @media (max-width: 1920px){
-    .bannerPrincipalSubasta{
+    .bannerTienda{
+        background-size: contain;
+        background-repeat: no-repeat;
+        padding: 50px 0px;
+        background-color: $amarillo;
+        background-position: right;
+        margin-top:6rem;
+        p{
+            font-size: 25px;
+            font-family: $DMregular;
+            color: $negro;
+            margin-top:0.1rem;
+        }
+        span{
+            font-family: $lato;
+            font-size: 22px;
+        }
+        form{
+            margin-top: 40px;
+            width: 100%;
+            margin-bottom: 52px;
+            input{
+                height: 48px;
+                border-radius: 0;
+                border-right: 1px solid $blanco;
+            }
+            .input{
+                &-group{
+                    &-text{
+                        background-color: $blanco;
+                        border-left: 1px solid $blanco;
+                    }
+                }
+            }
+        }
+    }
+
+    .bannerSubasta{
         background-size: contain;
         background-repeat: no-repeat;
         padding-top: 3rem;
@@ -38,4 +75,8 @@
             }
         }
     }
+    
+    
+    
+    
     }
