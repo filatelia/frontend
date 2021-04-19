@@ -35,14 +35,6 @@
                   <a  href="javascript:void(0)" class="btn-table-rad info" (click)="viewMessage(reporte.usuario_reportado,modalChats)">
                     Ver mensaje
                   </a>
-                  <div>
-                    <select [(ngModel)]="status" class="form-control" (change)="openVerticallyCentered(modalReporte,status,reporte.uid)" >
-                      <option selected value="">--Seleccione--</option>
-                      <option  *ngFor="let status of estadosReporte" [value]="status.uid">
-                        {{status.nombre}}
-                      </option>
-                    </select>
-                  </div>
                 </div>
             </td>
             </tr>
@@ -86,27 +78,24 @@
   </div>
   <div class="modal-body">
       <div class="J-content-conversation">
-        <div class="J-conversation" *ngFor="let message of chat.messages">
-            <div class="J-message">
-                <a [href]="'/user/'+message.id_usuario"  class="J-message-name">
+        <div class="J-conversation select" *ngFor="let message of chat.messages" (click)="selectedMessage(message)">
+            <div class="J-message"  [class]="{'active':message.active}">
+                <!-- <a [href]="'/user/'+message.id_usuario"  class="J-message-name"> -->
+                <a href="javascript:void(0)"  class="J-message-name">
                     ~{{chat.nickname}}
                 </a>
                 {{message.message}}
             </div>
         </div>
     </div>
-  </div>
-  <div class="modal-footer">
-    <div class="col-md-12">
-        <div *ngIf="response?.msg" class="text-center">
-          <span [ngClass]="{'text-primary':response.ok,'text-danger':!response.ok}">
-              {{response.msg}}
-          </span>
-      </div>
-    </div>
-    <button type="button" class="btn btn--negro" [disabled]="response.loading" (click)="chatView()">
-      {{(response.loading) ? 'Cargando.....' : 'Listo'}}
-    </button>
+    <select [(ngModel)]="status" class="form-control" (change)="openVerticallyCentered(modalReporte,status,reporte.uid)" >
+      <option selected value="">--Seleccione--</option>
+      <ng-container *ngFor="let status of estadosReporte">
+        <option   [value]="status.uid" *ngIf="checkedMessage||status.abreviacion=='P.INA'">
+          {{status.nombre}}
+        </option>
+      </ng-container>
+    </select>
   </div>
 </ng-template>
 

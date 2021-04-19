@@ -11,16 +11,17 @@
         <div class="J-content-conversation" #scrollChat>
             <div class="J-conversation" *ngFor="let message of messages" [class]="{'right':message.id_usuario==id_user}">
                 <div class="J-message">
-                    <a [href]="'/user/'+message.id_usuario"  class="J-message-name" *ngIf="message.id_usuario!=id_user">
+                    <!-- <a [href]="'/user/'+message.id_usuario"  class="J-message-name" *ngIf="message.id_usuario!=id_user"> -->
+                    <a href="javascript:void(0)"  class="J-message-name" *ngIf="message.id_usuario!=id_user">
                         ~{{message.nickname}}
                     </a>
                     {{message.message}}
                 </div>
-                <div class="J-message-options" ngbDropdown>
+                <div class="J-message-options" ngbDropdown *ngIf="message.id_usuario!=id_user">
                     <span ngbDropdownToggle class="J-options-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-ellipsis-h"></i>
                     </span>
-                    <div ngbDropdownMenu class="dropdown-menu dropdown-menu-sm-right">
+                    <div ngbDropdownMenu class="dropdown-menu dropdown-menu-sm-right"  >
                         <button class="dropdown-item" (click)="openModal(message)" (click)="modal.openModal('reporte')" type="button">Reportar</button>
                     </div>
                 </div>

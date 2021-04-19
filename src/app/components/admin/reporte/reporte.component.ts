@@ -13,6 +13,7 @@ export class ReporteComponent implements OnInit {
   reporte:any={}
   status:any=''
   chat:any={}
+  checkedMessage: boolean=false;
   estadosReporte:any=[
   ]
   constructor(private restService:RestService,private modalService: NgbModal) { }
@@ -34,6 +35,17 @@ export class ReporteComponent implements OnInit {
   }
   closeVerticallyCentered() {
     this.modalService.dismissAll();
+  }
+  selectedMessage(data:any){
+    data.active=!data.active
+    var check=this.chat.messages.find((el:any)=>el.active)
+    if(check){
+      this.checkedMessage=true;
+    }
+    else{
+      this.checkedMessage=false;
+
+    }
   }
   reporteStatus(){
     var data={

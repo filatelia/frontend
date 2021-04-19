@@ -67,6 +67,9 @@ body{
             display: flex;
             width: 100%;
             margin-bottom: 10px;
+            &.select{
+                cursor: pointer;
+            }
             &:hover{
                 .J-options-btn{
                     visibility:visible;
@@ -97,7 +100,9 @@ body{
                 background-color: #cccccc;
                 justify-content: flex-start;
                 color: #222;
-
+                &.active{
+                    background-color:#fef7a7;
+                }
                 &-name{
                     position: absolute;
                     top: 3px;
