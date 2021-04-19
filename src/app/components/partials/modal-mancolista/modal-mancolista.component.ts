@@ -40,11 +40,20 @@ export class ModalMancolistaComponent implements   OnInit {
         var parse=await this.updateValue();
         if(parse.all){
           var data_is:any=[]
-          for (let index = 0; index < parse.data.length; index++) {
-            const element = parse.data[index];
-            data_is.push(element.uid)
+          
+          if(this.deleteActive){
+            for (let index = 0; index < parse.data.length; index++) {
+              const element = parse.data[index];
+              this.addMancoLista({id_estampilla:element.uid||parse._id,id_manco_list:this.listradio,id_usuario:user.uid})    
+            }
           }
-          this.addMancoListaAll({id_estampilla:data_is,id_manco_list:this.listradio,id_usuario:user.uid})
+          else{
+            for (let index = 0; index < parse.data.length; index++) {
+              const element = parse.data[index];
+              data_is.push(element.uid)
+            }
+            this.addMancoListaAll({ids_estampillas:data_is,id_mancolist_cat:this.listradio,id_usuario:user.uid})
+          }
         }
         else{
           this.addMancoLista({id_estampilla:parse.uid||parse._id,id_manco_list:this.listradio,id_usuario:user.uid})
@@ -118,7 +127,7 @@ export class ModalMancolistaComponent implements   OnInit {
   }
   addMancoListaAll(data:any){
     this.restservice.addMancolistaSerie(data).subscribe((res:any) =>{
-      this.message('success',res.estampilla_eliminada?'Eliminado': "Agregado a mi mancolista")
+      this.message('success',res.msg.length==0?'Eliminado': "Agregado a mi mancolista")
       },
       (err)=>{
         

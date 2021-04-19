@@ -80,7 +80,7 @@
   <div class="modal-body">
       <div class="J-content-conversation">
         <div class="J-conversation select" *ngFor="let message of chat.messages" (click)="selectedMessage(message)">
-            <div class="J-message"  [class]="{'active':message.active&&!message.delete_at}" data-toggle="tooltip" data-placement="right" [title]="message.delete_at?'Analizado':''">
+            <div class="J-message"  [class]="{'active':message.active&&!message.deleted_at,'check':message.deleted_at!=null}" data-toggle="tooltip" data-placement="right" [title]="message.deleted_at?'Analizado':''">
                 <!-- <a [href]="'/user/'+message.id_usuario"  class="J-message-name"> -->
                 <a href="javascript:void(0)"  class="J-message-name">
                     ~{{chat.nickname}}

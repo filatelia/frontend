@@ -21,6 +21,7 @@ export class CatalogoInternoComponent implements OnInit {
   public datoscatalogo: CatalogoCompleto[] = [];
   public datos: CatalogoCompleto[] = [];
   public dataAnio: any=[];
+  data_variantes:any=[];
   public rangeAnio: any=[
     {
       start:1800,
@@ -95,6 +96,10 @@ export class CatalogoInternoComponent implements OnInit {
     //tipo_busqueda
     this.getParams()
     this.verLogeo();
+  }
+  openVariantes(content : any,data:any){
+    this.data_variantes=data
+    this.openVerticallyCentered(content)
   }
   getParams(){
     this.buscarPais = this.route.snapshot.paramMap.get('pais')||'/peru';

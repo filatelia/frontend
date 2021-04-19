@@ -94,6 +94,9 @@
                     &.active{
                         background-color:#fef7a7;
                     }
+                    &.check{
+                        opacity: 0.6;
+                    }
                     &-name{
                         position: absolute;
                         top: 3px;

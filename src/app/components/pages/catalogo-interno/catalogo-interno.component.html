@@ -115,9 +115,9 @@
                                 <div class="J-card-number"  data-toggle="tooltip"  title="Número estampillas">
                                     #{{data.NRO_ESTAMPILLAS}} 
                                 </div>
-                                <div class="filtros__contenido__card__top"  data-toggle="tooltip"  title="Año de estampilla">
-                                    <span>{{data.ANIO}}</span>
-                                    <img [src]="sanitizeImageUrl(api+data.FOTO_ESTAMPILLAS.imagen_url||'')" alt="">
+                                <div class="filtros__contenido__card__top" >
+                                    <span  data-toggle="tooltip"  title="Año de estampilla">{{data.ANIO}}</span>
+                                    <img  data-toggle="tooltip"  title="Imagen estampilla" [src]="sanitizeImageUrl(api+data.FOTO_ESTAMPILLAS.imagen_url||'')" alt="">
                                 </div>
                                 <div class="filtros__contenido__card__center" *ngIf="isLoggedIn; else btnmanco">
                                     <a href="javascript:void(0)" (click)="modalOpen(data)" (click)="modalManco.openModal()" class="plus">
@@ -146,7 +146,7 @@
                                            <span data-toggle="tooltip" title="Valor catalogo usado">{{ data.VALOR_DEL_CATALOGO_USADO}}</span>
                                         </li>
                                     </ul>
-                                    <a href="javascript:void(0)" (click)="openVerticallyCentered(content)" class="mainAdmin__boton">Ver variantes y errores</a>
+                                    <a href="javascript:void(0)" (click)="openVariantes(content,data.VARIANTES_ERRORES)" class="mainAdmin__boton">Ver variantes y errores</a>
                                 </div>
                             </div>
                         </div>
@@ -208,42 +208,17 @@
             <thead>
               <tr>
                 <th>Numero</th> 
-                <th></th>  
-                <th>Den</th> 
-                <th>Color</th> 
-                <th>precio </th>                     
+                <th>Descripcion</th>                       
               </tr>
             </thead>
             <tbody>
-              <tr>
-                
-                <td> Mark</td> 
-                <td></td>    
-                <td>Mark</td>    
-                <td>Mark</td>   
-                <td>Mark</td>      
-              </tr>
-              <tr>
-                
-                <td> Mark</td> 
-                <td></td>   
-                <td>Mark</td>    
-                <td>Mark</td>   
-                <td>Mark</td>                              
-              </tr>
-              <tr>
-                <td> Mark</td>   
-                <td></td>  
-                <td>Mark</td>    
-                <td>Mark</td>   
-                <td>Mark</td>    
+              <tr *ngFor="let item of data_variantes;let i=index">
+                <td>{{i+1}}</td> 
+                <td>{{item.Descripcion}}</td> 
               </tr>
             </tbody>
           </table>     
       </form>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn--negro" (click)="modal.close('Close click')">Guardar</button>
     </div>
   </ng-template>
   
