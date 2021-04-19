@@ -107,6 +107,7 @@
     }
 
     .formulariologin{
+        margin-top: 9rem;
         &__content{
             padding: 30px 121px 30px 121px;
             &__form{
@@ -115,8 +116,9 @@
                     span{
                         text-align: right;
                         display: block; 
-                        margin-top: 18px;
-                        line-height: 39px;               
+                        margin-top: 25px;
+                        line-height: 20px; 
+                        padding-left: 1.5rem;              
                     } 
                     .btn{
                         margin-top: 25px;
@@ -153,12 +155,13 @@
                margin-top: 13px;
                line-height: 32px;
                margin-bottom: 39px;
+               
                font-family: $DMregular;
             }
             span{
                 color: #9B9696;
                 font-family: $DMregular;
-                font-size: 1rem;
+                font-size: 1.1rem;
                 line-height: 34px;
                 width: 97%;
                 display: block;
@@ -168,6 +171,7 @@
             }
         }
         &__img{
+            margin-top: -2rem;
             width: 100%;
             background-position: center;
             height: 98vh;
@@ -214,8 +218,10 @@
     }
     
     .formulariocontacts{
+        margin-top: 8rem;
         &__content{
             padding: 30px 121px 30px 121px;
+           // margin-top: 8rem;
             &__form{
                 margin-top: 0;
                 form{
@@ -278,11 +284,13 @@
             }
         }
         &__img{
+            margin-top: -2rem;
             width: 100%;
             background-position: center;
             height: 98vh;
             position: relative;
-            background-size: cover;    
+            background-size: cover;  
+              
             /*&:before{
                 content: "";
                 width: 100%;
@@ -323,10 +331,11 @@
         }
     }
     .formularioregister{
+        margin-top: 7rem;
         &__content{
             padding: 30px 121px 30px 121px;
             &__form{
-                margin-top: 0;
+                margin-top: 2rem;
                 form{
                     span{
                         text-align: left;

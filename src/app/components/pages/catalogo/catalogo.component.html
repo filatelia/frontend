@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h2 class="titulo titulo--mediano">Catálogo de estampillas</h2>
+                <h2 class="titulo titulo--medianocatalogo">Catálogo de estampillas</h2>
                 <p class="parrafo parrafo--mediano">Elige el filtro que necesites que se aplique a tu búsqueda. Ya sea por año o por tema</p>
             </div>
             <div class="col-lg-4">
@@ -24,7 +24,7 @@
             </div>
             <div class="col-lg-6 offset-lg-2">
                 <div class="tema">
-                    <h3 class="titulo titulo--chico">Temas</h3>
+                    <h3 class="titulo titulo--chicocatalogo">Temas</h3>
                     <div class="row">
                         <div class="col-lg-6" *ngFor="let tema of datosTema">
                             <a href="#"  routerLink="/catalogo-interna/{{tema.ParaBuscar}}"  [queryParams]="{ type: 'tema'}">

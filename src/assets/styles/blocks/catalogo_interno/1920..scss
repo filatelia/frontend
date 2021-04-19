@@ -1,0 +1,33 @@
+@media (max-width: 1920px){
+.card-body{
+    padding-right: 0;
+}
+
+.catalogo-item{
+	min-width: 300px;
+    max-width: 300px;
+}
+.buscador-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    .buscador{
+        width: 80%;
+        float: right;
+        margin-top: 0; 
+    }
+}
+.paisCatalogo{
+    padding: 0;
+}
+.container-filter {
+    padding: 0;
+}
+.J-text-min{
+    font-size: 16px !important;
+    span{
+        font-size: 15px !important;
+    }
+}
+
+}

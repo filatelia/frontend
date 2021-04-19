@@ -165,7 +165,7 @@
             margin-top: 31px;
         }
         &__card{
-            background-color: #F5F2F2;
+            background-color: #eeeeee;
             margin-bottom: 15px;
             &__top{
                 position: relative;
@@ -299,16 +299,117 @@
         .bannerNegro{            
             background-color: $negro;
             color: $blanco;
-            padding: 27px 10px;
-            margin-bottom: 16px;  
-            h4,
-            p,
-            span{
-                font-size: 25px;
-                font-family: $DMregular;
-                margin-bottom: 0;
+            //padding: 27px 10px;
+            padding-top: 27px;
+           
+            h4{
+                    margin-top: -1.5rem;
+                    font-size: 25px;
+                    font-family: $DMregular;
+                    margin-bottom: 0;
             }
-            p{
+            h2{
+                margin-top: -1rem;
+                margin-right: -6rem;
+                padding-left: 34px;
+                position: relative;
+                font-size: 20px;
+                margin-bottom: 1rem;
+                &:before{
+                    content: "";
+                    position: absolute;
+                    width: 1px;
+                    background-color: $blanco;
+                    height: 3.3rem;
+                    left: 8px;
+                    top: -1px;
+                    bottom: -8px;
+                }
+        }
+            
+            span{
+              
+                margin-top: 2rem;
+                font-size: 22px;
+                font-family: $DMregular;
+                margin-bottom: 1rem;
+               // margin-left: -2rem;
+            }
+           
+            .plusinvert{
+               
+                position: relative;
+                color: $negro;
+                display: block;  
+                &:hover .plusinvert__content{                                                 
+                    background-color:$amarillo;   
+                    width: 90%;                     
+                    p{
+                        opacity: 1;
+                    }
+                } 
+                &:hover p{
+                    opacity: 1;
+                }                 
+                .icono{
+                    margin-left: 11.5rem;;
+                    width:41px;
+                    height:41px;                        
+                    background-color: $amarillo;
+                    border-radius: 50%;
+                    display: flex;
+                    z-index: 1;
+                    position: relative;
+                    justify-content: center;
+                    align-items: center;                                                                   
+                    &__border{
+                        width: 37px;
+                        height: 37px;
+                        border-radius: 50%;
+                        position: relative;                            
+                        border:3px solid $negro;
+                        svg{
+                            position: absolute;
+                            width: 14px;
+                            height: 14px;
+                            fill: $negro;
+                            margin: auto;
+                            top: 0;
+                            bottom: 0;
+                            left: 0;
+                            right: 0;
+                        }
+                    }                         
+                } 
+                &__content{                        
+                    border-top-left-radius: 30px;
+                    border-bottom-left-radius: 30px;
+                    background-color:$negro;                                                
+                    right: 9px;
+                    height: 31px;
+                    padding: 5px 9px 5px 40px; 
+                    transition: all 0.5s;
+                    top:5px;                                             
+                    position: absolute;                       
+                    width: 0;                                                
+                }
+                margin-right: -14.5rem;
+                margin-top: -1rem;
+                margin-left: 10rem;
+                p{
+                    color: $negro;
+                    margin-bottom: 0;
+                    position: absolute;
+                    font-size: 13px;                            
+                    opacity: 0;
+                    transition: all 0.5s;
+                    top: 9px;
+                    right: 3rem;
+                    font-family: $lato;
+                    // margin-right: 10rem;
+                }
+            }
+            /*p{
                 padding-left: 34px;
                 position: relative;
                 &:before{
@@ -320,7 +421,7 @@
                     left: 8px;
                     top: -7px;
                 }
-            }
+            }*/
             span{
                 color: $amarillo;
                 display: block;
@@ -329,4 +430,63 @@
         } 
     }
 }
+.list-link{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    margin: 5px 10px;
+    padding: 10px;
+    position: relative;
+    height: 70px;
+    &:hover{
+        text-decoration: none;
+        background-color: #f5f2f2;
+    }
+    label{
+        left: 30px;
+        position: absolute;
+        width: 80%;
+        cursor: pointer;
+        line-height: 70px;
+        height: 100%;
+    }
+    .radio{
+        position: absolute;
+        right: 0;
+        width: 20%;
+        cursor: pointer;
+        &:focus{
+            outline: none;
+            border: 0;
+            box-shadow: none;
+        }
+    }
+    &-item{
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        &:hover{
+            text-decoration: none;
+        }
+    }
+    &-icon{
+        margin-left: 30px;
+        font-size: 25px;
+        font-weight: bold;
+
+    }
+    &-input{
+        width: 100%;
+    }
+}
+.catalogo-item{
+	min-width: 300px;
+    max-width: 300px;
+    .filtros__contenido__card{
+        min-height: 500px;
+        box-shadow: 0 0 5px 1px rgb(0 0 0 / 17%);
+
+    }
+}
+
 }

@@ -35,6 +35,7 @@ import { CatalogoInternoComponent } from './components/pages/catalogo-interno/ca
 import {MimancolistapublicaPageComponent} from './components/pages/mimancolistapublica-page/mimancolistapublica-page.component'
 import { SubastaDetalleComponent } from './components/pages/subasta-detalle/subasta-detalle.component';
 import {TiendaDetalleComponent} from './components/pages/tienda-detalle/tienda-detalle.component'
+import {ContactosPagesComponent} from './components/pages/contactos-pages/contactos-pages.component'
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 import { ConfiguracionComponent } from './components/user/configuracion/configuracion.component';
@@ -60,6 +61,7 @@ const routes: Routes = [
       { path: '', component: HomeComponent},
       { path: 'tienda',component: TiendaComponent},
       { path: 'catalogo', component:CatalogoComponent},
+      { path: 'contactos', component:ContactosPagesComponent},
       { path: 'subasta', component:SubastaPagesComponent},
       { path: 'catalogo-interna/:pais', component:CatalogoInternoComponent},
       { path: 'subastadetalle', component:SubastaDetalleComponent},
