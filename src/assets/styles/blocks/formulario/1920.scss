@@ -214,8 +214,10 @@
     }
     
     .formulariocontacts{
+        margin-top: 8rem;
         &__content{
             padding: 30px 121px 30px 121px;
+           // margin-top: 8rem;
             &__form{
                 margin-top: 0;
                 form{
@@ -278,11 +280,13 @@
             }
         }
         &__img{
+            margin-top: -2rem;
             width: 100%;
             background-position: center;
             height: 98vh;
             position: relative;
-            background-size: cover;    
+            background-size: cover;  
+              
             /*&:before{
                 content: "";
                 width: 100%;
