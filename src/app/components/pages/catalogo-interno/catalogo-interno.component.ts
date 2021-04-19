@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
 import { TokenInterceptorService } from 'src/app/services/token-interceptor.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-catalogo-interno',
@@ -82,9 +83,14 @@ export class CatalogoInternoComponent implements OnInit {
     private rest: RestService,
     private route: ActivatedRoute,
     private location: Location,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private modalService: NgbModal
 
   ) {}
+  openVerticallyCentered(content : any) {
+    this.modalService.open(content, { centered: true, windowClass: "modal__admin"});
+
+  }
   ngOnInit(): void {
     //tipo_busqueda
     this.getParams()
