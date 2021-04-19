@@ -3,3 +3,12 @@
 @import '../../../../assets/styles/blocks/buscador/buscador.scss';
 @import '../../../../assets/styles/blocks/catalogo_general/catalogo_general.scss';
 @import '../../../../assets/styles/blocks/catalogo_interno/catalogo_interno.scss';
+.J-card-number{
+    position:absolute;
+    z-index: 10;
+    top: 10px;
+    left: 20px;
+    font-size: 22px;
+    font-family: "DMregular";
+    color: #9B9696;
+}

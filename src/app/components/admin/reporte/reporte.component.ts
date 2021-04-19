@@ -14,6 +14,9 @@ export class ReporteComponent implements OnInit {
   status:any=''
   chat:any={}
   checkedMessage: boolean=false;
+  user: any={};
+  reporte_id:any='';
+  descripcion_reporte_cliente:any='';
   estadosReporte:any=[
   ]
   constructor(private restService:RestService,private modalService: NgbModal) { }
@@ -22,9 +25,16 @@ export class ReporteComponent implements OnInit {
     this.list()
     this.listStatus()
   }
-  openVerticallyCentered(content: any,data:any,id_reporte:string) {
+  openVerticallyCentered(content: any,data:any) {
     this.reporte=this.estadosReporte.find((el:any)=>el.uid==data)
-    this.reporte.id_reporte=id_reporte
+
+    console.log(this.reporte)
+    this.reporte.id_reporte=this.reporte_id
+    this.openModal(content)
+  }
+  openDetailUser(user:any,content:any){
+    this.user=user;
+    console.log(user)
     this.openModal(content)
   }
   openModal(content: any) {
@@ -48,15 +58,27 @@ export class ReporteComponent implements OnInit {
     }
   }
   reporteStatus(){
+    var chats=this.chat.messages.filter((el:any)=>el.active==true)
+    if(chats.length==0&&this.reporte.abreviacion!='P.INA'){
+        this.response.msg="Seleccione mensajes"
+        this.response.loading=false;
+        return;
+    }
+    var array:any=[]
+    chats.forEach((element:any) => {
+        array.push(element._id)
+    });
     var data={
       "idReporte": this.reporte.id_reporte,
       "id_tipo_estado_reporte":  this.reporte.uid,
+      "mensajes":array
     }
+    
     this.response.loading=true;
     this.restService.reporteStatus(data).subscribe(
       (resp:any)=>{
         this.response=resp
-        this.response.msg="Guardado"
+        if(resp.ok) this.response.msg="Guardado"
         this.response.loading=false;
         this.list()
         setTimeout(()=>{
@@ -93,9 +115,15 @@ export class ReporteComponent implements OnInit {
   chatView(){
      this.closeVerticallyCentered()
   }
-  viewMessage(data:any,content:any){
+  openReport(text:any,content:any){
+    this.descripcion_reporte_cliente=text;
+    this.openModal(content)
+  }
+  viewMessage(data:any,content:any,reporte:any){
     this.chat=data;
-    console.log(data)
+    console.log(reporte)
+
+    this.reporte_id=reporte.uid
     this.restService.viewReportChat(data._id).subscribe(
       (resp:any)=>{
         if(resp.ok) {

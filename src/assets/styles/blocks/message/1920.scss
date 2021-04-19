@@ -1,9 +1,11 @@
 @media (max-width: 1920px){
-.J-container-chat{
-    position: fixed;
-    bottom: 15px;
-    right: 15px;
-    z-index: 1000;
+    .J-container-chat{
+        position: fixed;
+        bottom: 15px;
+        right: 15px;
+        z-index: 1000;
+       
+    }
     .J-content{
         &-chat{
             width: 400px;
@@ -56,11 +58,19 @@
                 display: flex;
                 width: 100%;
                 margin-bottom: 10px;
+                &.select{
+                    cursor: pointer;
+                }
+                &:hover{
+                    .J-options-btn{
+                        visibility:visible;
+                    }
+                }
                 &.left{
                    
                 }
                 &.right{
-
+    
                     justify-content: flex-end;
                     .J-message{
                         padding-top: 10px;
@@ -70,7 +80,7 @@
                 }
                 .J-message{
                     border-radius: 17px;
-                    min-width: 70px;
+                    min-width: 150px;
                     max-width: 80%;
                     min-height: 30px;
                     padding: 10px 10px;
@@ -81,7 +91,9 @@
                     background-color: #cccccc;
                     justify-content: flex-start;
                     color: #222;
-
+                    &.active{
+                        background-color:#fef7a7;
+                    }
                     &-name{
                         position: absolute;
                         top: 3px;
@@ -123,8 +135,39 @@
         }
     }
     
-}
-.hide{
-    display: none;
-}
+    .hide{
+        display: none;
+    }
+    .J-message-options{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 5px;
+        .dropdown-toggle{
+            &::after{
+                display: none;
+            }
+        }
+    }
+    .J-options-btn{
+        visibility: hidden;
+        height: 30px;       
+        width: 30px;
+        border-radius: 50%;
+        cursor: pointer;
+        background-color:rgba(0,0,0,.3);
+        display: flex;  
+        justify-content:center;
+        align-items: center;
+    }
+    .catalogo-item{ //añadido
+        min-width: 300px;
+        max-width: 300px;
+        .filtros__contenido__card{
+            min-height: 500px;
+            box-shadow: 0 0 5px 1px rgb(0 0 0 / 17%);
+    
+        }
+    }
+    
 }

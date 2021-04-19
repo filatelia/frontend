@@ -162,6 +162,9 @@ export class RestService {
     return this.http.put(this.url + '/catalogo/manco_list/update-cat', body); // POST
   }
   
+  addMancolistaSerie(body: any){
+    return this.http.post(this.url + '/catalogo/manco_list/agregar-serie', body); // POST
+  }
   addMancolista(body: any){
     return this.http.post(this.url + '/catalogo/manco_list', body); // POST
   }

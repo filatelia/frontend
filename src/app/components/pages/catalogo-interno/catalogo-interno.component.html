@@ -112,7 +112,10 @@
                         </div>
                         <div class="col-lg-3 pr-0 catalogo-item" *ngFor="let data of catalog.data">
                             <div class="filtros__contenido__card">
-                                <div class="filtros__contenido__card__top">
+                                <div class="J-card-number"  data-toggle="tooltip"  title="Número estampillas">
+                                    #{{data.NRO_ESTAMPILLAS}} 
+                                </div>
+                                <div class="filtros__contenido__card__top"  data-toggle="tooltip"  title="Año de estampilla">
                                     <span>{{data.ANIO}}</span>
                                     <img [src]="sanitizeImageUrl(api+data.FOTO_ESTAMPILLAS.imagen_url||'')" alt="">
                                 </div>
@@ -134,11 +137,13 @@
                                 </ng-template>
                                 <div class="filtros__contenido__card__boton">
                                     <ul>
-                                        <li>{{data.NRO_ESTAMPILLAS}} {{data.TIPO}}</li>
-                                        <li>{{data.DESCRIPCION_ESTAMPILLA}}</li>
-                                        <li>{{data.TIPO_MONEDA_VALOR_FACIAL}} {{data.VALOR_FACIAL}}</li>
-                                        <li>
-                                            {{ data.MONEDA_VALOR_CATALOGO_NUEVO_USADO}} {{ data.VALOR_CATALOGO_NUEVO}} - {{ data.VALOR_DEL_CATALOGO_USADO}}
+                                        <li data-toggle="tooltip" title="Tipo estampilla">{{data.TIPO}}</li>
+                                        <li data-toggle="tooltip" title="Descripción estampilla">{{data.DESCRIPCION_ESTAMPILLA}}</li>
+                                        <li><span data-toggle="tooltip" title="Tipo moneda">{{data.TIPO_MONEDA_VALOR_FACIAL}}</span> <span data-toggle="tooltip" title="Valor facial"> {{data.VALOR_FACIAL}} </span></li>
+                                        <li >
+                                           <span data-toggle="tooltip" title="Moneda">{{ data.MONEDA_VALOR_CATALOGO_NUEVO_USADO}} </span> 
+                                           <span data-toggle="tooltip" title="Valor catalogo nuevo">{{ data.VALOR_CATALOGO_NUEVO}} </span>- 
+                                           <span data-toggle="tooltip" title="Valor catalogo usado">{{ data.VALOR_DEL_CATALOGO_USADO}}</span>
                                         </li>
                                     </ul>
                                     <a routerLink="/catalogo" class="link">Ver variantes y errores</a>

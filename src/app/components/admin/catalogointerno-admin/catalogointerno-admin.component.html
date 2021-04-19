@@ -10,7 +10,7 @@
       <a href="javascript:void(0)" (click)="openVerticallyCentered(ImagenesEstampilla)" class="J-btn-link" >
           Agregar estampilla
       </a>
-      <a href="javascript:void(0)" (click)="openVerticallyCentered(contenidoImagenes)" class="J-btn-link" >
+      <a href="javascript:void(0)" (click)="changeAddImage(contenidoImagenes)" class="J-btn-link" >
           Agregar imagenes
       </a>
       <a target="_blank" rel="noopener noreferrer" [href]="url+'/reportes/generar-excel/'+id_catalogo"  class="mainAdmin__boton J-btn-link">
@@ -43,14 +43,14 @@
             <th width="30%">Descripción</th>
             <th>Valor facial</th>
             <th>Valor nuevo - Usado </th>
-            <!-- <th>Acciones</th> -->
+            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let datos of datos">
             <td>
               <div class="circle-img">
-                <img width="70px" height="70px" class="rounded-circle" [src]="sanitizeImageUrl(api+datos.FOTO_ESTAMPILLAS.imagen_url)" />
+                <img width="70px" height="70px" class="rounded-circle" [src]="sanitizeImageUrl(api+datos.FOTO_ESTAMPILLAS?.imagen_url||'')" />
               </div>
             </td>
             <td>{{ datos.NRO_ESTAMPILLAS }} - {{ datos.TIPO }}</td>
@@ -58,10 +58,11 @@
             <td> {{datos.TIPO_MONEDA_VALOR_FACIAL}} {{ datos.VALOR_FACIAL}} </td>
             <td> {{ datos.MONEDA_VALOR_CATALOGO_NUEVO_USADO}} {{ datos.VALOR_CATALOGO_NUEVO}} - {{ datos.VALOR_DEL_CATALOGO_USADO}}</td>
             
-            <!-- <td> <a class="pointer" (click)="openEditCentered(Imagenes)"><img src="assets/img/iconos/edit.png" title="Editar"></a> /
+            <td> 
               <a class="pointer" name="{{ datos.Codigo }}" id="{{ datos.uid }}"
-                (click)="eliminarElemento(Eliminar.id, Eliminar.name)" #Eliminar><img title="Eliminar"
-                  src="assets/img/iconos/tash.png" alt=""></a></td> -->
+                (click)="eliminarElemento(datos.uid, datos.NRO_ESTAMPILLAS)" #Eliminar>
+                Eliminar  
+              </a></td>
           </tr>
         </tbody>
       </table>

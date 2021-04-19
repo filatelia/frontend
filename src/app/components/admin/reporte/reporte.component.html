@@ -9,30 +9,31 @@
             <tr>
               <th>Usuario reportado</th>
               <th>Usuario reportante</th>
-              <th>Razon</th>                
+              <th>Motivo reporte</th>                
               <th></th>                  
             </tr>
           </thead>
           <tbody *ngFor="let reporte of dataReportes">
             <tr >
-              <td style="width:20%;">
-                {{reporte.usuario_reportado.apellidos}} {{reporte.usuario_reportado.name}}<br>
-                email: {{reporte.usuario_reportado.email}}<br>
-                reputacion: {{reporte.usuario_reportado.reputacion}}
+              <td style="width:30%;">
+                <a href="javascript:void(0)" (click)="openDetailUser(reporte.usuario_reportado,contentDetail)">
+                  {{reporte.usuario_reportado.apellidos}} {{reporte.usuario_reportado.name}}
+                </a>
               </td>  
-              <td style="width:10%;">
-                {{reporte.usuario_reportante.apellidos}} {{reporte.usuario_reportante.name}}<br>
-                email: {{reporte.usuario_reportante.email}}
-                reputacion: {{reporte.usuario_reportante.reputacion}}
-
+              <td style="width:30%;">
+                <a href="javascript:void(0)" (click)="openDetailUser(reporte.usuario_reportante,contentDetail)">
+                  {{reporte.usuario_reportante.apellidos}} {{reporte.usuario_reportante.name}}
+                </a>
+                
               </td>  
-              <td>
-                  {{reporte.descripcion_reporte_cliente}}
-
+              <td width="20%">
+                <a href="javascript:void(0)" (click)="openReport(reporte.descripcion_reporte_cliente,contentReport)">
+                  {{reporte.descripcion_reporte_cliente.substring(0,50)}}
+                </a>
               </td>
-              <td class="editar" width="30%">
+              <td class="editar" width="20%">
                 <div >
-                  <a  href="javascript:void(0)" class="btn-table-rad info" (click)="viewMessage(reporte.usuario_reportado,modalChats)">
+                  <a  href="javascript:void(0)" class="btn-table-rad info" (click)="viewMessage(reporte.usuario_reportado,modalChats,reporte)">
                     Ver mensaje
                   </a>
                 </div>
@@ -79,7 +80,7 @@
   <div class="modal-body">
       <div class="J-content-conversation">
         <div class="J-conversation select" *ngFor="let message of chat.messages" (click)="selectedMessage(message)">
-            <div class="J-message"  [class]="{'active':message.active}">
+            <div class="J-message"  [class]="{'active':message.active&&!message.delete_at}" data-toggle="tooltip" data-placement="right" [title]="message.delete_at?'Analizado':''">
                 <!-- <a [href]="'/user/'+message.id_usuario"  class="J-message-name"> -->
                 <a href="javascript:void(0)"  class="J-message-name">
                     ~{{chat.nickname}}
@@ -88,7 +89,7 @@
             </div>
         </div>
     </div>
-    <select [(ngModel)]="status" class="form-control" (change)="openVerticallyCentered(modalReporte,status,reporte.uid)" >
+    <select name="status" [(ngModel)]="status" class="form-control" (change)="openVerticallyCentered(modalReporte,status)" >
       <option selected value="">--Seleccione--</option>
       <ng-container *ngFor="let status of estadosReporte">
         <option   [value]="status.uid" *ngIf="checkedMessage||status.abreviacion=='P.INA'">
@@ -99,7 +100,7 @@
   </div>
 </ng-template>
 
-<ng-template #content let-modal ngClass="modal__admin">
+<ng-template #contentDetail let-modal ngClass="modal__admin">
   <div class="modal-header">
     <h4 class="modal-title">Detalle Usuario</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -110,32 +111,52 @@
     <form class="row">
      
         <div class="form-group col-lg-12">
-          <label for="">Foto usuario</label>
-         
+          <div>
+            
+          </div>
         </div>
         <div class="form-group col-lg-12">
           <label for="">Nombre y Apellidos del usuario</label>
-         
+          <div>
+            {{user.name}} {{user.apellidos}}
+          </div>
         </div>
         <div class="form-group col-lg-12">
           <label for="">Email</label>
+          <div>
+            {{user.email}}
+          </div>
           
         </div>   
         <div class="form-group col-lg-12">
           <label for="">Reputación</label>
-         
-        </div>  
-        <div class="form-group col-lg-12">
-          <label for="">Tabla de Catalogos</label>
-         
+          <div>
+            {{user.reputacion}}
+          </div>
         </div>       
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn--negro" (click)="modal.close('Close click')">Guardar</button>
+    <button type="button" class="btn btn--negro" (click)="modal.close('Close click')">Listo</button>
   </div>
 </ng-template>
-
+<ng-template #contentReport let-modal ngClass="modal__admin">
+  <div class="modal-header">
+    <h4 class="modal-title">Motivo reporte</h4>
+    
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+     <p>
+       {{descripcion_reporte_cliente}}
+     </p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn--negro" (click)="modal.close('Close click')">Listo</button>
+  </div>
+</ng-template>
 
 
 <!--<button class="btn btn-outline-primary mb-2 mr-2" (click)="openVerticallyCentered(content)">Modal vertically centered</button>-->

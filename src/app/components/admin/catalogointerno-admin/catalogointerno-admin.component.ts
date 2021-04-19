@@ -61,7 +61,7 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
   ngOnInit(): void {
     // cargar todos los catalogos
     if(this.id_catalogo==''){
-      this.id_catalogo = this.activateRoute.snapshot.paramMap.get('id_catalogo')||'/';  
+      this.id_catalogo = this.activateRoute.snapshot.paramMap.get('id_catalogo')||'/';
     }
     console.log(this.id_catalogo);
     this.dtOptions = {
@@ -125,26 +125,31 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
     }).then((result) => {
       if (result.isConfirmed) {
         this.rest.deleteCatalogoAdmin(id).subscribe((resp) => {
-          console.log('eliminadoooo', resp);
- 
+
           Swal.fire({
             title: 'Procesando...',
             html: 'Eliminado....',
-            timer: 1000,
+            timer: 500,
             timerProgressBar: true,
             didOpen: () => {
               Swal.showLoading()
               this.router.navigate(['/dashboard/atalogo-seleccionado/id']);
 
-              
+
             },
             willClose: () => {
-             
+
             }
           }).then((result) => {
 
             /* Read more about handling dismissals below */
             if (result.dismiss === Swal.DismissReason.timer) {
+          console.log('eliminadoooo', resp);
+         if (resp) {
+          this.mostrarDatos();
+          this.message('success', "Estampilla eliminada correctamente.")
+         }
+
             }
           })
 
@@ -158,7 +163,32 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
   nuevoCatalogo() {
     this.router.navigate(['nuevo']);
   }
+  message(type:any,message:any){
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
 
+    Toast.fire({
+      icon: type,
+      title: message,
+    }).then(
+      result=>{
+        if(result.dismiss === Swal.DismissReason.timer){
+
+
+        }
+
+      }
+    );
+  }
   openVerticallyCentered(content: any) {
     this.modalService.open(content, {
       centered: true,
@@ -245,10 +275,10 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
   subirArchivo(): any {
     try {
       this.loading = true;
-      
-     
+
+
       const formularioDeDatos = new FormData();
-      
+
 
       this.archivos.forEach((archivo: string) => {
         formularioDeDatos.append('sampleFile', archivo);
@@ -267,7 +297,7 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
               numero_estampillas_repetidas:res.numero_estampillas_repetidas,
               msg:res.ok?'Archivo guardado ':'Error',
             }
-            
+
             this.responseExcel.msg_visible=true;
             // this.router.navigate(['/dashboard/atalogo-seleccionado/id']);
             if(this.repetidasData.length==0){
@@ -276,8 +306,10 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
             }
             setTimeout(()=>{
               this.responseExcel.msg_visible=false;
+            this.message('success', "Excel procesado y subido correctamente");
+
               this.closeVerticallyCentered();
-            },5000)
+            },1000)
             //this.router.navigate(['admin/dashboard/']);
           } else {
             alert(res.msg);
@@ -286,6 +318,7 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
         },
         () => {
           this.loading = false;
+
           alert('Error');
         }
       );
@@ -296,16 +329,24 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
   }
   saveImages():void{
     try{
+      if(this.images.length==0){
+          this.response.ok=false;
+          this.response.msg="Agregue imagenes";
+          return;
+      }
+      if(this.images.length==1){
+        this.response.ok=false;
+        this.response.msg="Debe enviar dos fotos o más, para agregar una foto seleccione la opción de agregar estampilla";
+        return;
+    }
       this.loading=true;
 
       const images=new FormData();
       this.images.forEach((element:any) => {
         images.append('sampleFile',element)
-      }); 
-      
+      });
+
       images.append('catalogo',this.id_catalogo)
-      images.append('files',this.images_files)
-      console.log(this.images_files)
       this.rest.uploadImagesCatalogo(images).subscribe(
         (res:any)=>{
           this.loading=false;
@@ -313,7 +354,7 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
           this.response.msg="guardado";
           setTimeout(()=>{
             this.closeVerticallyCentered()
-          },2000)
+          },1000)
 
         },
         (err:any)=>{
@@ -335,7 +376,7 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
     if(this.repetidasData){
       this.rest.putCatalogoAdminOmitidas(dataFind).subscribe(
         (res:any)=>{
-         
+
           this.loading = false;
           this.repetidasData=this.repetidasData.filter((e:any)=>!e.active);
           this.responseExcel={
@@ -346,7 +387,7 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
           this.responseExcel.msg_visible=true;
           this.router.navigate(['admin/dashboard/atalogo-seleccionado/id']);
           if(this.repetidasData.length==0){
-             
+
           }
           setTimeout(()=>{
             this.responseExcel.msg_visible=false;
@@ -357,7 +398,11 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
           alert('Error');
         }
       )
-    } 
+    }
+  }
+  changeAddImage(content:any){
+    this.images=[]
+    this.openVerticallyCentered(content);
   }
   backPage(){
     this.location.back();

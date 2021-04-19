@@ -26,23 +26,28 @@ export class ModalMancolistaComponent implements   OnInit {
   static dataUpdate(data:any){
     console.log(data)
   }
+  userUpdate(){
+    var data=localStorage.getItem('auth-user');
+    var parse=JSON.parse(data||'')
+    return parse;
+  }
   close(){
     this.modalService.dismissAll()
   }
-  saved(){
+  async saved(){
       try{
-        var data=localStorage.getItem('data_manco');
-        var parse=JSON.parse(data||'')
+        var user=await this.userUpdate();
+        var parse=await this.updateValue();
         if(parse.all){
+          var data_is:any=[]
           for (let index = 0; index < parse.data.length; index++) {
             const element = parse.data[index];
-            this.addMancoListaAll({id_estampilla:element.uid||parse._id,id_manco_list:this.listradio})
-            
+            data_is.push(element.uid)
           }
-          this.message('success', "Agregado a mi mancolista")
+          this.addMancoListaAll({id_estampilla:data_is,id_manco_list:this.listradio,id_usuario:user.uid})
         }
         else{
-          this.addMancoLista({id_estampilla:parse.uid||parse._id,id_manco_list:this.listradio})
+          this.addMancoLista({id_estampilla:parse.uid||parse._id,id_manco_list:this.listradio,id_usuario:user.uid})
         }
         this.modalService.dismissAll()
       }
@@ -64,14 +69,21 @@ export class ModalMancolistaComponent implements   OnInit {
   async checkedMancoList(id:any){
     var data_stamp=await this.updateValue();
 
-    
+    var id_estampilla=null
     if(data_stamp.all){
-      return;
+      var data_id:any=[];
+      data_stamp.data.forEach((el:any)=>{
+        data_id.push(el.uid)
+      })
+      id_estampilla=data_id
     }
-    var id_estampilla=data_stamp.uid
-    this.restservice.checkedMancoListCat({id_categoria_estampilla:id_estampilla,id_estampilla:id}).subscribe(
+    else{
+      var id_estampilla=data_stamp.uid
+    }
+    
+    this.restservice.checkedMancoListCat({id_categoria_estampilla:id,id_estampilla:id_estampilla}).subscribe(
       (resp)=>{
-        if(resp.ok) this.deleteActive=true;
+        if(resp.existe) this.deleteActive=true;
         else  this.deleteActive=false;
       },
       (err)=>{
@@ -105,7 +117,8 @@ export class ModalMancolistaComponent implements   OnInit {
     );
   }
   addMancoListaAll(data:any){
-    this.restservice.addMancolista(data).subscribe((res:any) =>{
+    this.restservice.addMancolistaSerie(data).subscribe((res:any) =>{
+      this.message('success',res.estampilla_eliminada?'Eliminado': "Agregado a mi mancolista")
       },
       (err)=>{
         
