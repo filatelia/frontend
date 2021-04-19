@@ -13,15 +13,19 @@
         <ul>
             <li>
                 <a  [routerLink]="['/admin/dashboard']" class="link"><img src="assets/img/iconos/dashboard.png" alt=""> <span>Dashboard</span></a>
-                <ol class="listado"> 
+               <!-- <ol class="listado"> 
                   <li> 
                       <a [routerLink]="['/admin/dashboard/peticiones']">Peticiones</a>
                   </li>    
                   <li>
                     <a [routerLink]="['/admin/dashboard/reporte']">Reporte</a>
                 </li>                  
-              </ol> 
+              </ol> -->
               </li>
+              <li>
+                <a [routerLink]="['/admin/dashboard/reporte']" class="link"><img src="assets/img/iconos/dashboard.png" alt=""> <span>Moderación</span></a>
+            
+            </li>
             <li>
                 <a [routerLink]="['/admin/dashboard/catalogo-admin']" class="link"><img src="assets/img/iconos/dashboard.png" alt=""> <span>Catálogo</span></a>
             

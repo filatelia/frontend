@@ -88,7 +88,7 @@ const routes: Routes = [
     component: DashboardAdminComponent,
     canActivate: [AuthGuard,RolGuard],
     children: [
-      { path: '', component: ReporteComponent },
+      { path: '', component: PeticionesAdminComponent },
       { path: 'mancolista', component: MancolistaComponent },
       { path: 'reporte', component: ReporteComponent },
       { path: 'tabla', component: TablaCatalogoComponent },
