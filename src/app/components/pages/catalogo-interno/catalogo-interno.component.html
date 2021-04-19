@@ -192,7 +192,7 @@
 
 <ng-template #content let-modal ngClass="modal__admin">
     <div class="modal-header">
-      <h4 class="modal-title">Detalle Usuario</h4>
+      <h4 class="modal-title">Variantes y Errores</h4>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -200,26 +200,42 @@
     <div class="modal-body">
       <form class="row">
        
-          <div class="form-group col-lg-12">
-            <label for="">Foto usuario</label>
-           
-          </div>
-          <div class="form-group col-lg-12">
-            <label for="">Nombre y Apellidos del usuario</label>
-           
-          </div>
-          <div class="form-group col-lg-12">
-            <label for="">Email</label>
-            
-          </div>   
-          <div class="form-group col-lg-12">
-            <label for="">Reputación</label>
-           
-          </div>  
-          <div class="form-group col-lg-12">
-            <label for="">Tabla de Catalogos</label>
-           
-          </div>       
+        <table class="table table--normal">  
+            <thead>
+              <tr>
+                <th>Numero</th> 
+                <th></th>  
+                <th>Den</th> 
+                <th>Color</th> 
+                <th>precio </th>                     
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                
+                <td> Mark</td> 
+                <td></td>    
+                <td>Mark</td>    
+                <td>Mark</td>   
+                <td>Mark</td>      
+              </tr>
+              <tr>
+                
+                <td> Mark</td> 
+                <td></td>   
+                <td>Mark</td>    
+                <td>Mark</td>   
+                <td>Mark</td>                              
+              </tr>
+              <tr>
+                <td> Mark</td>   
+                <td></td>  
+                <td>Mark</td>    
+                <td>Mark</td>   
+                <td>Mark</td>    
+              </tr>
+            </tbody>
+          </table>     
       </form>
     </div>
     <div class="modal-footer">
