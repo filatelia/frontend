@@ -142,7 +142,7 @@
                                             {{ data.MONEDA_VALOR_CATALOGO_NUEVO_USADO}} {{ data.VALOR_CATALOGO_NUEVO}} - {{ data.VALOR_DEL_CATALOGO_USADO}}
                                         </li>
                                     </ul>
-                                    <a routerLink="/catalogo" class="link">Ver variantes y errores</a>
+                                    <a href="javascript:void(0)" (click)="openVerticallyCentered(content)" class="mainAdmin__boton">Ver variantes y errores</a>
                                 </div>
                             </div>
                         </div>
@@ -189,5 +189,43 @@
         </div>
     </div>
 </div>
+
+<ng-template #content let-modal ngClass="modal__admin">
+    <div class="modal-header">
+      <h4 class="modal-title">Detalle Usuario</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form class="row">
+       
+          <div class="form-group col-lg-12">
+            <label for="">Foto usuario</label>
+           
+          </div>
+          <div class="form-group col-lg-12">
+            <label for="">Nombre y Apellidos del usuario</label>
+           
+          </div>
+          <div class="form-group col-lg-12">
+            <label for="">Email</label>
+            
+          </div>   
+          <div class="form-group col-lg-12">
+            <label for="">Reputación</label>
+           
+          </div>  
+          <div class="form-group col-lg-12">
+            <label for="">Tabla de Catalogos</label>
+           
+          </div>       
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn--negro" (click)="modal.close('Close click')">Guardar</button>
+    </div>
+  </ng-template>
+  
 <app-modal [modal]="dataMancoSelected" #modalManco></app-modal>
 <app-message-partials *ngIf="isLoggedIn" [tema]="tema" [pais]="pais"></app-message-partials>
