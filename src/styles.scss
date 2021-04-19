@@ -164,7 +164,7 @@ body{
     justify-content:center;
     align-items: center;
 }
-.catalogo-item{
+.catalogo-item{ //añadido
 	min-width: 300px;
     max-width: 300px;
     .filtros__contenido__card{
@@ -178,7 +178,7 @@ body{
 .btn-span{
     padding: 15px;
 }
-.list-link{
+.list-link{  // añadido
     display: flex;
     align-items: center;
     text-decoration: none;
