@@ -37,6 +37,7 @@
 
 .buscadorTop{
     padding: 62px 0px 56px;
+    margin-top: 7rem;
     &__migas{ 
         margin-right: -19rem;
         h2{
@@ -48,7 +49,7 @@
             margin-left: -1.6rem; ///margen left"pais"
         }
         a{
-            font-size: 1.7rem;
+            font-size: 1.5rem;
         }
         .boton{ 
             width: 50px;
@@ -70,7 +71,7 @@
                       
             li{
                 display: inline-block;
-                font-size: 1.7rem;
+                font-size: 1.5rem;
                 font-family: $DMregular;                                
                 position: relative;
                 &:last-child{

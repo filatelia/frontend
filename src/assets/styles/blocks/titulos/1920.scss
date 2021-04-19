@@ -23,6 +23,10 @@
             font-size:25px;
             margin: 0;
         }
+        &--medianocatalogo{
+            font-size:35px;
+            margin: 0;
+        }
         
         &--medianoreporte{
             font-size:1.5rem;
@@ -45,7 +49,7 @@
             margin: 0;
         }
         &--medianocatalogintern{
-            font-size: 2rem;
+            font-size: 1.5rem;
             margin: 0;
         }
         &--mediano2{
@@ -56,6 +60,12 @@
         }
         
         &--chico{
+            font-size: 1.5rem;
+        }
+        &--chicocatalogo{
+            font-size: 1.5rem;
+        }  
+        &--chicosubasta{
             font-size: 1.5rem;
         } 
         &--chico2{

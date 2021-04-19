@@ -22,6 +22,7 @@ import { IniciarComponent } from './components/pages/iniciar/iniciar.component';
 import { RouterModule } from '@angular/router';
 import { CatalogoComponent } from './components/pages/catalogo/catalogo.component';
 import { CatalogoInternoComponent } from './components/pages/catalogo-interno/catalogo-interno.component';
+import { ContactosPagesComponent } from './components/pages/contactos-pages/contactos-pages.component';
 
 import { SidebarComponent } from './components/admin/sidebar/sidebar.component';
 import { TemasCatalogoComponent } from './components/admin/temas-catalogo/temas-catalogo.component';
@@ -134,6 +135,7 @@ import { ReporteComponent } from './components/admin/reporte/reporte.component';
     SubastaDetalleComponent,
     TiendaDetalleComponent,
     ReporteComponent,
+    ContactosPagesComponent
   ],
   imports: [
     NgSimpleSidebarModule,
