@@ -10,7 +10,7 @@
       <div class=" container-catalogo">
           <ng-container *ngFor="let data of dataCatalogo">
               <div class="dashboard__contenido__formulario container-catalogo-item " >
-                <div class="catalogo-letter">
+                <div class="catalogo-letter"> 
                   <div class="catalogo-title">Nombre:</div>
                   <div class="">{{data.name}}</div>
                 </div>  
@@ -24,10 +24,10 @@
                 </div>
                 <div class="catalogo-letter" *ngIf="data.tema_catalogo">
                   <div class="catalogo-title">Tema:</div>
-                  <div class="">{{data.tema_catalogo.name||''}}</div>
+                  <div class="catalogo-img">{{data.tema_catalogo.name||''}}</div>
                 </div>
                 <div class="catalogo-letter">
-                  <div class="">{{data.solicitud.tipoEstadoSolicitud_id.descripcion}}</div>
+                  <div class="catalogo-img">{{data.solicitud.tipoEstadoSolicitud_id.descripcion}}</div>
                 </div>
                 <!-- <div class="catalogo-letter-estado">
                   <div class="succsess" *ngIf="data.estado; else estado">Aprobado</div>
