@@ -20,6 +20,7 @@ export class MancolistaComponent implements OnInit {
   name: string='';
   createForm: boolean=false;
   status: string='';
+  dataStatus: any=[]
   api = environment.conect_url;
   constructor(
     private exporterService:ExporterService,
@@ -28,6 +29,12 @@ export class MancolistaComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMancoLista()
+    this.getStatusLista()
+  }
+  async getStatusLista() {
+    this.restService.getStatusMancolista().subscribe((resp:any)=>{
+        this.dataStatus=resp.msg
+      });
   }
   async getMancoLista() {
       this.restService.getMyAllMancolista().subscribe((resp:any)=>{

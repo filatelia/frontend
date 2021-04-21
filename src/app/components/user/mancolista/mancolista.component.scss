@@ -9,7 +9,6 @@
     justify-content: center;
     align-items: center;
     box-shadow: 0 0 8px 3px rgb(44 44 44 / 17%);
-    margin: 20px;
     border-radius: 10px;
     position: relative;
     text-decoration: none;
@@ -92,7 +91,18 @@
     z-index: 1;
     top: 10px;
     left: 30px;
+    &.btn-danger{
+        background-color: #dc3545;
+    }
     &:hover{
         opacity: 0.8;
+    }
+}
+.circle-img{
+    width: 70px;
+    height: 70px;
+    img{
+        width: 70px !important;
+        height: 70px !important;
     }
 }

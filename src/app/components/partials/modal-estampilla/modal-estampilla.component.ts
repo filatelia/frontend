@@ -10,6 +10,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ModalEstampillaComponent implements OnInit {
   @Input() catalogo: string='';
+  @Input() data: any=null;
+  
   @Input() back: Boolean=false;
   @Output() activePage =new EventEmitter();
   @Output() changeData =new EventEmitter();
@@ -47,6 +49,28 @@ export class ModalEstampillaComponent implements OnInit {
 
   }
   ngOnInit(): void {
+    this.checkValue()
+  }
+  async checkValue(){
+    await setTimeout(()=>{},1000)
+    if(!this.data) return
+    this.tipo=this.data.TIPO;
+    this.anio=this.data.ANIO;
+    this.categoria=this.data.CATEGORIA;
+    this.grupo=this.data.GRUPO;
+
+    this.numero_estampilla=this.data.NRO_ESTAMPILLAS;
+    this.descripcion_estampilla=this.data.DESCRIPCION_ESTAMPILLA;
+    this.titulo_serie=this.data.TITULO_DE_LA_SERIE;
+    this.numero_catalogo=this.data.NUMERO_DE_CATALOGO;
+
+    this.valor_facial=this.data.VALOR_FACIAL;
+    this.tipo_moneda=this.data.TIPO_MONEDA_VALOR_FACIAL;
+    this.valor_nuevo=this.data.VALOR_CATALOGO_NUEVO;
+    this.valor_usado=this.data.VALOR_DEL_CATALOGO_USADO;
+    this.moneda_valor=this.data.MONEDA_VALOR_CATALOGO_NUEVO_USADO;
+    this.image=this.data.FOTO_ESTAMPILLAS.imagen_url
+    this.id_estampilla=this.data.uid
   }
   closeVerticallyCentered() {
     this.modalService.dismissAll();
@@ -77,7 +101,31 @@ export class ModalEstampillaComponent implements OnInit {
     if(!this.form3.valid) return;
     this.response.loading=true;
     var data=this.updateValue();
-    console.log(data)
+    
+    if(this.id_estampilla!='') this.update(data)
+  }
+  update(data:any){
+    this.restservice.updateEstampilla(data).subscribe(
+      ((resp:any)=>{
+        this.response.loading=false;
+        this.response=resp;
+        if(resp.ok){
+          this.id_estampilla=resp.msg.uid
+          this.response.msg="Estampilla actualizada"
+          setTimeout(()=>{
+            this.response.msg=""
+            this.closeVerticallyCentered()
+          },1000)
+          
+        }
+      }),
+      ((err:any)=>{
+        this.response.loading=false;
+  
+      })
+    )
+  }
+  store(data:any){
     this.restservice.agregarEstampilla(data).subscribe(
       ((resp:any)=>{
         this.response.loading=false;
@@ -150,6 +198,7 @@ export class ModalEstampillaComponent implements OnInit {
     form.append('TIPO_MONEDA_VALOR_FACIAL',this.tipo_moneda?.value)
     form.append('VALOR_DEL_CATALOGO_USADO',this.valor_usado?.value)
     form.append('MONEDA_VALOR_CATALOGO_NUEVO_USADO',this.moneda_valor?.value)
+    form.append('idEstampilla',this.id_estampilla)
     form.append('estampillaFile',this.image)
     return form;
   }
@@ -189,22 +238,49 @@ export class ModalEstampillaComponent implements OnInit {
   }
 
   get tipo(){return this.form.get('tipo')}
+  set tipo(value:any) {  this.form.get('tipo')?.setValue(value||'') };
+
   get categoria(){return this.form.get('categoria')}
+  set categoria(value:any) {  this.form.get('categoria')?.setValue(value||'') };
+
   get grupo(){return this.form.get('grupo')}
+  set grupo(value:any) {  this.form.get('grupo')?.setValue(value||'') };
+
   get anio(){return this.form.get('anio')}
+  set anio(value:any) {  this.form.get('anio')?.setValue(value||'') };
+
 
   get numero_estampilla(){return this.form2.get('numero_estampilla')}
+  set numero_estampilla(value:any) {  this.form2.get('numero_estampilla')?.setValue(value||'') };
+
   get descripcion_estampilla(){return this.form2.get('descripcion_estampilla')}
+  set descripcion_estampilla(value:any) {  this.form2.get('descripcion_estampilla')?.setValue(value||'') };
+
   get numero_catalogo(){return this.form2.get('numero_catalogo')}
+  set numero_catalogo(value:any) {  this.form2.get('numero_catalogo')?.setValue(value||'') };
+
   get titulo_serie(){return this.form2.get('titulo_serie')}
+  set titulo_serie(value:any) {  this.form2.get('titulo_serie')?.setValue(value||'') };
+
   
   get valor_facial(){return this.form3.get('valor_facial')}
+  set valor_facial(value:any) {  this.form3.get('valor_facial')?.setValue(value||'') };
+
   get valor_nuevo(){return this.form3.get('valor_nuevo')}
+  set valor_nuevo(value:any) {  this.form3.get('valor_nuevo')?.setValue(value||'') };
+
   get tipo_moneda(){return this.form3.get('tipo_moneda')}
+  set tipo_moneda(value:any) {  this.form3.get('tipo_moneda')?.setValue(value||'') };
+
   get valor_usado(){return this.form3.get('valor_usado')}
+  set valor_usado(value:any) {  this.form3.get('valor_usado')?.setValue(value||'') };
+
   get moneda_valor(){return this.form3.get('moneda_valor')}
+  set moneda_valor(value:any) {  this.form3.get('moneda_valor')?.setValue(value||'') };
+
+
 
   get descripcion_error(){return this.form4.get('descripcion_error')}
-
+  set descripcion_error(value:any) {  this.form4.get('descripcion_error')?.setValue(value||'') };
   
 }

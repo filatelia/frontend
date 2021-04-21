@@ -82,28 +82,16 @@ export class RestService {
   agregarErrorEstampilla(body:any){
     return  this.http.post(this.url+'/variantes-errores',body);
   }
+  updateEstampilla(body:any){
+    return  this.http.post(this.url+'/estampillas/editar-individual',body);
+  }
   agregarEstampilla(body:any){
     return  this.http.post(this.url+'/estampillas',body);
   }
-  getAllCatalogoAdmin(body:any): Observable<CatalogoCompleto[]> {
+  getAllCatalogoAdmin(body:any): Observable<any> {
     this.isLoggedIn = !!this.tokenInterceptorService.getToken();
-
     let direccion =this.url + '/catalogo/uploads/excel/mis-estampillas?id_catalogo='+body.id_catalogo;
-    return this.http.get<CatalogoCompleto[]>(direccion).pipe(
-      map((resp) => {
-        console.log('Respuesta del enpoint', resp);
-
-        var arrayObjetoCatalogo: any = [];
-
-        for (const key in resp) {
-          console.log('for in key: ', resp[key]);
-
-          arrayObjetoCatalogo = resp[key];
-        }
-
-        return arrayObjetoCatalogo;
-      })
-    );
+    return this.http.get(direccion);
   }
   
   getCatalogoPaises():Observable<any>{
@@ -168,6 +156,9 @@ export class RestService {
   addMancolista(body: any){
     return this.http.post(this.url + '/catalogo/manco_list', body); // POST
   }
+  addMancolistaCatalog(body: any){
+    return this.http.post(this.url + '/catalogo/manco_list/catalog', body); // POST
+  }
   checkedMancoListCat(body:any): Observable<any> {
     let direccion =this.url + '/catalogo/manco_list/validar';
     return this.http.post(direccion,body);
@@ -188,6 +179,10 @@ export class RestService {
     return this.http.get(direccion);
   }
   
+  getStatusMancolista() {
+    let direccion = this.url + '/catalogo/manco_list/tipos-estado-estampilla/listar';
+    return this.http.get(direccion);
+  }
   getMyAllMancolista() {
     let direccion = this.url + '/catalogo/manco_list/listar';
     return this.http.post(direccion,{});

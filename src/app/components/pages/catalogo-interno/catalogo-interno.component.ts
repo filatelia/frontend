@@ -22,6 +22,7 @@ export class CatalogoInternoComponent implements OnInit {
   public datos: CatalogoCompleto[] = [];
   public dataAnio: any=[];
   data_variantes:any=[];
+  catalog:any={}
   public rangeAnio: any=[
     {
       start:1800,
@@ -192,10 +193,19 @@ export class CatalogoInternoComponent implements OnInit {
   modalOpen(data:any,type=''){
     
     if(type=='all'){
-      var modalData={
+      let modalData={
         open:true,
         all:true,
         data:data.data,
+      }
+      console.log(modalData)
+      this.dataMancoSelected=modalData;
+    }
+    else if(type=='catalog'){
+      let modalData={
+        open:true,
+        catalog:true,
+        data: this.catalog,
       }
       console.log(modalData)
       this.dataMancoSelected=modalData;
@@ -233,12 +243,12 @@ export class CatalogoInternoComponent implements OnInit {
           anio=Number(element.ANIO);
           console.log(anio)
 
-          var dataAnio=this.dataCatalog.findIndex((el:any)=>(Number(element.ANIO)>=Number(el.Inicio)&&Number(element.ANIO)<=Number(el.Final))&&el.TITULO_DE_LA_SERIE==element.TITULO_DE_LA_SERIE)
+          var dataAnio=this.dataCatalog.findIndex((el:any)=>el.TITULO_DE_LA_SERIE==element.TITULO_DE_LA_SERIE)
+          // var dataAnio=this.dataCatalog.findIndex((el:any)=>(Number(element.ANIO)>=Number(el.Inicio)&&Number(element.ANIO)<=Number(el.Final))&&el.TITULO_DE_LA_SERIE==element.TITULO_DE_LA_SERIE)
           if(dataAnio!=-1){
-            
             this.dataCatalog[dataAnio].Cantidad=this.dataCatalog[dataAnio].Cantidad+1;
             this.dataCatalog[dataAnio].data.push(element);
-
+  
             this.checkedAnio(element);
           }
           else{

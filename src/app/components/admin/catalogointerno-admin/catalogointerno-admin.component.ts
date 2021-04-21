@@ -1,19 +1,11 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Subject } from 'rxjs';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { RestService } from '../../../services/rest.service';
 import { CatalogoCompleto } from '../../../models/catalogo.interface';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SelectPais } from '../../../models/paises.interface';
 
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition,
-} from '@angular/animations';
+
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
@@ -22,31 +14,23 @@ import { Location } from '@angular/common';
   selector: 'app-catalogointerno-admin',
   templateUrl: './catalogointerno-admin.component.html',
   styleUrls: ['./catalogointerno-admin.component.scss'],
-  animations: [
-    trigger('fadeInOut', [
-      state('in', style({ opacity: 100 })),
-      transition('* => void', [animate(300, style({ opacity: 0 }))]),
-    ]),
-  ],
 })
-export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
+export class CatalogointernoAdminComponent implements  OnInit  {
   @Input() id_catalogo='';
   public previsualizacion: string | any;
   public repetidasData: any=[];
   public archivos: any = [];
   public responseExcel: any={};
-  datos: any = [];
+  dataEstampillas: any = [];
   intermedio: CatalogoCompleto[] = [];
   public loading: boolean | any;
   api = environment.conect_url;
   url = environment.conect_url_api;
-
+  dataStamp:any={}
   pais:SelectPais[] = [];
   response:any={}
 
-  dtOptions: DataTables.Settings = {};
   data: any;
-  dtTrigger = new Subject<any>();
   images:any=[];
   images_files:any=null;
   constructor(
@@ -56,6 +40,8 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
     private router: Router,
     private location: Location,
     private activateRoute: ActivatedRoute,
+    private cd: ChangeDetectorRef
+
   ) { }
 
   ngOnInit(): void {
@@ -63,38 +49,20 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
     if(this.id_catalogo==''){
       this.id_catalogo = this.activateRoute.snapshot.paramMap.get('id_catalogo')||'/';
     }
-    console.log(this.id_catalogo);
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 5,
-      language: {
-        url: "https://cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json"
-      }
-    };
-
-
-
+ 
     this.mostrarDatos();
   }
-  ngOnDestroy(): void {
-    // Do not forget to unsubscribe the event
-    this.dtTrigger.unsubscribe();
+  refresh() {
+    this.cd.detectChanges();
   }
-  reiniciarTabla(){
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 5,
-      language: {
-        url: "https://cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json"
-      }
-    };
-
-  }
+ 
 
   mostrarDatos() {
-    this.rest.getAllCatalogoAdmin({id_catalogo:this.id_catalogo}).subscribe((catalogocompleto) => {
-      this.datos = catalogocompleto;
-      this.dtTrigger.next();
+    this.rest.getAllCatalogoAdmin({id_catalogo:this.id_catalogo}).subscribe(
+      (resp:any) => {
+      this.dataEstampillas = resp.estampillas;
+      this.refresh()
+        
     });
   }
 
@@ -111,6 +79,11 @@ export class CatalogointernoAdminComponent implements OnDestroy, OnInit  {
     )
 
 
+  }
+  updateStamp(data:any,content:any){
+    console.log(data)
+    this.dataStamp=data
+    this.openVerticallyCentered(content)
   }
   eliminarElemento(id: any, codigo: any) {
     Swal.fire({

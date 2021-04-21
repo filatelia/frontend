@@ -40,7 +40,6 @@ export class ModalMancolistaComponent implements   OnInit {
         var parse=await this.updateValue();
         if(parse.all){
           var data_is:any=[]
-          
           if(this.deleteActive){
             for (let index = 0; index < parse.data.length; index++) {
               const element = parse.data[index];
@@ -54,6 +53,9 @@ export class ModalMancolistaComponent implements   OnInit {
             }
             this.addMancoListaAll({ids_estampillas:data_is,id_mancolist_cat:this.listradio,id_usuario:user.uid})
           }
+        }
+        else if(parse.catalog){
+          this.addMancoListaCatalog({id_catalog:parse.uid||parse._id,id_manco_list:this.listradio,id_usuario:user.uid})
         }
         else{
           this.addMancoLista({id_estampilla:parse.uid||parse._id,id_manco_list:this.listradio,id_usuario:user.uid})
@@ -143,6 +145,16 @@ export class ModalMancolistaComponent implements   OnInit {
       }
     );
   }
+  addMancoListaCatalog(data:any){
+    this.restservice.addMancolistaCatalog(data).subscribe((res:any) =>{
+       this.message('success',res.estampilla_eliminada?'Eliminado': "Agregado a mi mancolista")
+      },
+      (err)=>{
+        
+      }
+    );
+  }
+  
   message(type:any,message:any){
     const Toast = Swal.mixin({
       toast: true,
