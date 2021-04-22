@@ -157,7 +157,7 @@ export class RestService {
     return this.http.post(this.url + '/catalogo/manco_list', body); // POST
   }
   addMancolistaCatalog(body: any){
-    return this.http.post(this.url + '/catalogo/manco_list/catalog', body); // POST
+    return this.http.post(this.url + '/catalogo/manco_list/agregar-serie', body); // POST
   }
   checkedMancoListCat(body:any): Observable<any> {
     let direccion =this.url + '/catalogo/manco_list/validar';
@@ -187,8 +187,9 @@ export class RestService {
     let direccion = this.url + '/catalogo/manco_list/listar';
     return this.http.post(direccion,{});
   }
-  getMancolistaSelected(id:any):Observable<any>{
-    return  this.http.get(this.url+'/catalogo/manco_list/listar-id-cat?id='+id);
+  getMancolistaSelected(id:any,page:number,perpage:number,q:any):Observable<any>{
+    return  this.http.get(this.url+`/catalogo/manco_list/paginacion?idCategoriaMancolista=${id}&pagina=${page}&porPagina=${perpage}`);
+    // return  this.http.get(this.url+'/catalogo/manco_list/listar-id-cat?id='+id);
   }
   estadoSolicitudCatalogo(body:any):Observable<any>{
   

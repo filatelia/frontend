@@ -83,16 +83,20 @@
     border:0;
     outline:0;
     border-radius:50%;
-    position:absolute;
+    //position:absolute;
     color:#fff;
     height:40px;
     cursor: pointer;
     width:40px;
     z-index: 1;
     top: 10px;
+    margin: 5px;
     left: 30px;
     &.btn-danger{
         background-color: #dc3545;
+    }
+    &.btn-info{
+        background-color: #117a8b;
     }
     &:hover{
         opacity: 0.8;

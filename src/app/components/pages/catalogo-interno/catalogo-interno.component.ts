@@ -90,7 +90,7 @@ export class CatalogoInternoComponent implements OnInit {
 
   ) {}
   openVerticallyCentered(content : any) {
-    this.modalService.open(content, { centered: true, windowClass: "modal__admin"});
+    this.modalService.open(content, { centered: true,size: 'lg', windowClass: "modal__admin"});
 
   }
   ngOnInit(): void {

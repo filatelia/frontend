@@ -55,7 +55,7 @@ export class ModalMancolistaComponent implements   OnInit {
           }
         }
         else if(parse.catalog){
-          this.addMancoListaCatalog({id_catalog:parse.uid||parse._id,id_manco_list:this.listradio,id_usuario:user.uid})
+          this.addMancoListaCatalog({id_catalogo:parse.uid||parse._id,id_mancolist_cat:this.listradio,ids_estampillas:[]})
         }
         else{
           this.addMancoLista({id_estampilla:parse.uid||parse._id,id_manco_list:this.listradio,id_usuario:user.uid})

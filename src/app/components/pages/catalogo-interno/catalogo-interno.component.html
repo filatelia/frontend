@@ -215,14 +215,22 @@
         <table class="table table--normal">  
             <thead>
               <tr>
-                <th>Numero</th> 
+                <th>Imagen</th> 
                 <th>Descripcion</th>                       
+                <th>Valor facial</th>                       
+                <th>Valor nuevo</th>                       
+                <th>Valor usado</th>                       
+                <th>Moneda</th>                       
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let item of data_variantes;let i=index">
                 <td>{{i+1}}</td> 
                 <td>{{item.Descripcion}}</td> 
+                <td></td> 
+                <td></td> 
+                <td></td> 
+                <td></td> 
               </tr>
             </tbody>
           </table>     

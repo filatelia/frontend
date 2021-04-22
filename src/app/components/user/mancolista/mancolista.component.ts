@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ExporterService } from 'src/app/services/exporter.service';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-mancolista',
   templateUrl: './mancolista.component.html',
@@ -16,20 +17,37 @@ export class MancolistaComponent implements OnInit {
   dataMancoSelected:any=[]
   mancolista: any=[]
   dataMancoLista:any=[];
+  pagination:any={
+    pages:0,
+    current:0,
+    link:'',
+    params:{},
+  };
+
   usuario: any={};
   name: string='';
   createForm: boolean=false;
   status: string='';
+  search: string=''
   dataStatus: any=[]
   api = environment.conect_url;
   constructor(
+    private route:ActivatedRoute,
     private exporterService:ExporterService,
     private clipboard: Clipboard,
     private restService: RestService,private sanitizer: DomSanitizer,private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    this.getMancoLista()
+    this.getParams();
+    this.pagination.link='/user/dashboard/mancolista'
     this.getStatusLista()
+  }
+  getParams(){
+    // this.route.snapshot.paramMap.get('pais')||'/peru';
+    this.route.queryParamMap.subscribe((params:any)=>{
+      this.pagination.params=params.params
+      this.getMancoLista()
+    })
   }
   async getStatusLista() {
     this.restService.getStatusMancolista().subscribe((resp:any)=>{
@@ -42,10 +60,12 @@ export class MancolistaComponent implements OnInit {
       });
   }
   selectedMancolLista(data:any){
-    this.restService.getMancolistaSelected(data.uid).subscribe((resp:any)=>{
-      this.mancolista=resp.data;
-     
-     
+    this.restService.getMancolistaSelected(data.uid,this.pagination.params?.page||1,10,this.search).subscribe((resp:any)=>{
+      let {estampillas,paginaListada,totalPaginasDisponibles}=resp
+      this.mancolista=estampillas||[];
+      this.pagination.pages=totalPaginasDisponibles;
+      this.pagination.current=paginaListada;
+
     });
   }
   openVerticallyCentered(content : any) {
@@ -59,7 +79,7 @@ export class MancolistaComponent implements OnInit {
   addLista(data:any){
     this.dataMancoLista=data;
     this.selectedMancolLista(data[0])
-    this.usuario=data[0].id_usuario;
+    // this.usuario=data[0].id_usuario;
   }
   addMancoLista(data:any){
     console.log(data)
@@ -73,11 +93,10 @@ export class MancolistaComponent implements OnInit {
     );
   }
   deleteMancolista(data:any){
-    this.addMancoLista({id_estampilla:data.id_estampilla,id_manco_list:data.id_mancolist_cat})
+    this.addMancoLista({id_estampilla:data.Estampillas._id,id_manco_list:data.IdCategoriaMancolistas})
   }
   changeStatus(data:any){
-    console.log(data)
-    this.addMancoLista({id_estampilla:data.id_estampilla,id_manco_list:data.id_mancolist_cat,estado_estampilla:data.estado_estampilla})
+    this.addMancoLista({id_estampilla:data.Estampillas._id,id_manco_list:data.IdCategoriaMancolistas,estado_estampilla:data.estado_estampilla})
   }
   copyLink(id:any){
 

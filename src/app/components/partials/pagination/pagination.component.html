@@ -1,0 +1,22 @@
+<!-- <a *ngIf="current>=1&&current<pages" [routerLink]="link" [queryParams]="{page:current+1}" class="btn btn--negro mt-5">Siguiente</a> -->
+<ul class="numero">
+    <li *ngIf="pageFirst!==1">
+        
+    </li>
+    <ng-container *ngFor="let p of pagesArray;let i=index">
+        <li>
+        <a *ngIf="p.page==current;else page" [routerLink]="link" [queryParams]="{page:p.page}" [class]="{'activo':p.page==current}">{{p.page}}</a>
+        <ng-template #page>
+            <a [routerLink]="link" [queryParams]="{page:p.page}" [class]="{'activo':p==current}">{{p.page}}</a>
+        </ng-template>
+        
+    </li>
+    <li *ngIf="p.page==(current+2)&&p.page<pages">
+        <a>
+        ...
+        </a>
+    </li>
+    </ng-container>
+    
+    
+</ul>

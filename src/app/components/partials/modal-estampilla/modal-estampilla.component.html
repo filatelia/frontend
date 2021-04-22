@@ -167,7 +167,7 @@
                 <div *ngIf="moneda_valor?.errors?.minlength">El mínimo es de 5 caracteres </div>
                 </div>
             </div>
-            <div class="form-group col-lg-12">
+            <div class="form-group col-lg-12" *ngIf="id_estampilla==''">
                 <label for="">Cargar imagenes</label>
                 <input (change)="addImages($event)" type="file" class="form-control">
                 <div class="p-1">

@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RestService } from 'src/app/services/rest.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-modal-estampilla',
@@ -79,7 +80,6 @@ export class ModalEstampillaComponent implements OnInit {
     if(!this.form4.valid) return;
     this.response.loading=true;
     var data=this.updateValueError();
-    console.log(data)
     this.restservice.agregarErrorEstampilla(data).subscribe(
       ((resp:any)=>{
         this.response=resp
@@ -103,6 +103,7 @@ export class ModalEstampillaComponent implements OnInit {
     var data=this.updateValue();
     
     if(this.id_estampilla!='') this.update(data)
+    else this.store(data)
   }
   update(data:any){
     this.restservice.updateEstampilla(data).subscribe(
@@ -112,11 +113,12 @@ export class ModalEstampillaComponent implements OnInit {
         if(resp.ok){
           this.id_estampilla=resp.msg.uid
           this.response.msg="Estampilla actualizada"
+          this.message('success', this.response.msg)
           setTimeout(()=>{
             this.response.msg=""
             this.closeVerticallyCentered()
           },1000)
-          
+          this.changeData.emit(resp)
         }
       }),
       ((err:any)=>{
@@ -146,6 +148,32 @@ export class ModalEstampillaComponent implements OnInit {
   
       })
     )
+  }
+  message(type:any,message:any){
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+    
+    Toast.fire({
+      icon: type,
+      title: message,
+    }).then(
+      result=>{
+        if(result.dismiss === Swal.DismissReason.timer){
+
+
+        }
+        
+      }
+    );
   }
   createFormGroup1(){
     return new FormGroup({
