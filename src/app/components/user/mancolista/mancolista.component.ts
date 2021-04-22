@@ -96,7 +96,7 @@ export class MancolistaComponent implements OnInit {
     this.addMancoLista({id_estampilla:data.Estampillas._id,id_manco_list:data.IdCategoriaMancolistas})
   }
   changeStatus(data:any){
-    this.addMancoLista({id_estampilla:data.Estampillas._id,id_manco_list:data.IdCategoriaMancolistas,estado_estampilla:data.estado_estampilla})
+    this.addMancoLista({id_estampilla:data.Estampillas._id,id_manco_list:data.IdCategoriaMancolistas,estado_estampilla:data.EstadoESperadoEstampilla})
   }
   copyLink(id:any){
 

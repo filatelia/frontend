@@ -110,28 +110,28 @@
         <table class="table table--normal" style="margin-top: 0px;">
           <thead>
             <tr>
-              <!-- <th width="15%">Img</th> -->
-              <th width="15%">N° - Tipo</th>
-              <th width="30%">Descripción</th>
-              <th width="15%">V. facial</th>
-              <th width="25%">V. nuevo - Usado </th>
-              <th width="30%">Estado</th>
+              <th width="13%">Img</th>
+              <th width="13%">N° - Tipo</th>
+              <th width="25%">Descripción</th>
+              <th width="13%">V. facial</th>
+              <th width="20%">V. nuevo - Usado </th>
+              <th width="40%">Estado</th>
               <th>Acciones</th>
             </tr>
           </thead>
           <tbody *ngFor="let data of mancolista">
             <tr>
-              <!-- <td>
+              <td>
                 <div class="circle-img">
-                  <img width="70px" height="70px" class="rounded-circle" [src]="sanitizeImageUrl(api+data.FOTO_ESTAMPILLAS?.imagen_url||'')" />
+                  <img width="70px" height="70px" class="rounded-circle" [src]="sanitizeImageUrl(api+data.UrlImagenEstampilla||'')" />
                 </div>
-              </td> -->
+              </td>
               <td>{{ data.Estampillas.NRO_ESTAMPILLAS }} - {{ data.Estampillas.TIPO }}</td>
               <td>{{ data.Estampillas.DESCRIPCION_ESTAMPILLA }}</td>
               <td> {{data.Estampillas.TIPO_MONEDA_VALOR_FACIAL}} {{ data.Estampillas.VALOR_FACIAL}} </td>
               <td> {{ data.Estampillas.MONEDA_VALOR_CATALOGO_NUEVO_USADO}} {{ data.Estampillas.VALOR_CATALOGO_NUEVO}} - {{ data.VALOR_DEL_CATALOGO_USADO}}</td>
               <td> 
-                <select class="form-control" (change)="changeStatus(data)" [(ngModel)]="data.estado_estampilla" [value]="data.estado_estampilla">
+                <select class="form-control" (change)="changeStatus(data)" [(ngModel)]="data.EstadoESperadoEstampilla" [value]="data.EstadoESperadoEstampilla">
                   <option value="">-- seleccione --</option>
                   <option *ngFor="let item of dataStatus" [value]="item.name">{{item.name}}</option>
               </select>
