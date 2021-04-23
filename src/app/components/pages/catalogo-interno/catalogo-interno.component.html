@@ -154,7 +154,7 @@
                                            <span data-toggle="tooltip" title="Valor catalogo usado">{{ data.VALOR_DEL_CATALOGO_USADO}}</span>
                                         </li>
                                     </ul>
-                                    <a href="javascript:void(0)" (click)="openVariantes(content,data.VARIANTES_ERRORES)" class="mainAdmin__boton">Ver variantes y errores</a>
+                                    <a href="javascript:void(0)" (click)="openVariantes(content,data)" class="mainAdmin__boton">Ver variantes y errores</a>
                                 </div>
                             </div>
                         </div>
@@ -211,7 +211,12 @@
     </div>
     <div class="modal-body">
       <form class="row">
-       
+        <div style="margin:0 auto;    text-align: center;">
+            <img  data-toggle="tooltip"  title="Imagen estampilla" [src]="sanitizeImageUrl(api+data_variantes.FOTO_ESTAMPILLAS.imagen_url||'')" alt="">
+            <h3 class="J-title-var">
+              SELLO PRINCIPAL
+            </h3>
+        </div>
         <table class="table table--normal">  
             <thead>
               <tr>
@@ -224,13 +229,17 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let item of data_variantes;let i=index">
-                <td>{{i+1}}</td> 
+              <tr *ngFor="let item of data_variantes.VARIANTES_ERRORES;let i=index">
+                <td>
+                 <div class="J-avatar">
+                  <img  data-toggle="tooltip"  title="Imagen variantes errores" [src]="sanitizeImageUrl(api+item.Imagen_variantes_errores||'')" alt="">
+                 </div>
+                </td> 
                 <td>{{item.Descripcion}}</td> 
-                <td></td> 
-                <td></td> 
-                <td></td> 
-                <td></td> 
+                <td>{{data_variantes.VALOR_FACIAL}}</td> 
+                <td>{{data_variantes.VALOR_CATALOGO_NUEVO}}</td> 
+                <td>{{data_variantes.VALOR_DEL_CATALOGO_USADO}}</td> 
+                <td>{{data_variantes.MONEDA_VALOR_CATALOGO_NUEVO_USADO}}</td> 
               </tr>
             </tbody>
           </table>     

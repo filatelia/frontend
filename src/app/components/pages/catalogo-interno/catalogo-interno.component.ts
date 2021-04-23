@@ -109,6 +109,7 @@ export class CatalogoInternoComponent implements OnInit {
     )
   }
   openVariantes(content : any,data:any){
+    console.log(data)
     this.data_variantes=data
     this.openVerticallyCentered(content)
   }
