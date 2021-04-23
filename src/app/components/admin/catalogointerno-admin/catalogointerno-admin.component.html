@@ -2,26 +2,31 @@
 <div class="mainAdmin__listado"> </div>
 <div class="row">
     <div class="J-header-btn">
-      
-      <a (click)="backPage()" href="javascript:void(0)" class="boton J-btn-link" >
-          <i class="fas fa-angle-left"></i><span>Volver a Catálogo</span>
-      </a>
+
+      <div class="col-lg-3">
+        <div class="dashboard__color__nombre">
+            <a (click)="backPage()" href="javascript:void(0)" class="boton">
+              <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                  viewBox="0 0 256 256" style="enable-background:new 0 0 256 256;" xml:space="preserve">
+                  <g>
+                      <polygon points="79.093,0 48.907,30.187 146.72,128 48.907,225.813 79.093,256 207.093,128 		"/>
+                  </g>
+              </svg>
   
-      <a href="javascript:void(0)" (click)="dataStamp=null" (click)="openVerticallyCentered(ImagenesEstampilla)" class="J-btn-link" >
+      </a>
+      <h2 class="titulo titulo--medianocatalogointernoadmin">Volver a Catálogo </h2>
+  </div>
+        </div>
+  
+      <a href="javascript:void(0)" (click)="dataStamp=null" (click)="openVerticallyCentered(ImagenesEstampilla)" class="titulo titulo--medianocatalogointernoadmin2" >
           Agregar estampilla
       </a>
-      <a href="javascript:void(0)" (click)="changeAddImage(contenidoImagenes)" class="J-btn-link" >
+      <a href="javascript:void(0)" (click)="changeAddImage(contenidoImagenes)" class="titulo titulo--medianocatalogointernoadmin2" >
           Agregar imagenes
       </a>
-
-      <div>
-        
-        <input type="number" class="form-control" placeholder="Cantidad de estampilla a subir" [(ngModel)]="cantidad">
-        <a target="_blank" rel="noopener noreferrer" [href]="url+'/reportes/generar-excel?id_catalogo='+id_catalogo+'&cantidad='+(cantidad==''?10:cantidad)"  class="mainAdmin__boton J-btn-link">
-          <div class="titulo--mediano3">Descargar excel</div>
-        </a>
-      </div>
-      
+      <a target="_blank" rel="noopener noreferrer" [href]="url+'/reportes/generar-excel/'+id_catalogo"  class="mainAdmin__boton J-btn-link">
+        <div class="titulo--mediano3">Descargar excel</div>
+      </a>
      
       <a href="javascript:void(0)" (click)="openVerticallyCentered(content)" class="mainAdmin__boton J-btn-link">
         <div class="icono2">
@@ -53,8 +58,11 @@
           <tbody *ngFor="let dato of dataEstampillas">
             <tr>
               <td>
-                <div class="circle-img">
-                  <img width="70px" height="70px" class="rounded-circle" [src]="sanitizeImageUrl(api+dato.FOTO_ESTAMPILLAS?.imagen_url||'')" />
+                <div class="circle-img" >
+                  <a href="javascript:void(0)" (click)="openIMG(Imagengrande)">
+                    <img width="70px" height="70px"  [src]="sanitizeImageUrl(api+dato.FOTO_ESTAMPILLAS?.imagen_url||'')" />
+                  </a>
+                  
                 </div>
               </td>
               <td>{{ dato.NRO_ESTAMPILLAS }} - {{ dato.TIPO }}</td>
@@ -62,17 +70,26 @@
               <td> {{dato.TIPO_MONEDA_VALOR_FACIAL}} {{ dato.VALOR_FACIAL}} </td>
               <td> {{ dato.MONEDA_VALOR_CATALOGO_NUEVO_USADO}} {{ dato.VALOR_CATALOGO_NUEVO}} - {{ dato.VALOR_DEL_CATALOGO_USADO}}</td>
               
-              <td> 
-                <a href="javascript:void(0)" (click)="eliminarElemento(dato.uid, dato.NRO_ESTAMPILLAS)">
-                  Eliminar  
+              <td class="editar" col-lg-11 m-auto > 
+                <a href="javascript:void(0)" (click)="eliminarElemento(dato.uid, dato.NRO_ESTAMPILLAS)" class="col-lg-6">
+                  <img src="assets/img/iconos/tash.png" alt="">
                 </a>
-                <a href="javascript:void(0)" (click)="updateStamp(dato,ImagenesEstampilla)" *ngIf="user.role=='admin'">
-                  Editar  
+                <a href="javascript:void(0)" (click)="updateStamp(dato,ImagenesEstampilla)" class="col-lg-6">
+                  <img src="assets/img/iconos/edit.png" alt="">
                 </a>
               </td>
             </tr>
+
+            <ng-template #Imagengrande let-modal ngClass="modal__admin col-lg-11" >
+              <div class="modal-header">
+                <img width="100%" height="100%"  [src]="sanitizeImageUrl(api+dato.FOTO_ESTAMPILLAS?.imagen_url||'')" />
+                             
+            
+              </div>
+            </ng-template>
           </tbody>
         </table>
+
       
       </div>
     </div>
@@ -250,3 +267,4 @@
   </div>
   <app-modal-estampilla (changeData)="mostrarDatos()" [catalogo]="id_catalogo" [data]="dataStamp"></app-modal-estampilla>
 </ng-template>
+

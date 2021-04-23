@@ -49,6 +49,10 @@ export class CatalogointernoAdminComponent implements  OnInit  {
   ) {
 
   }
+  openIMG(Imagengrande : any) {
+    this.modalService.open(Imagengrande , { centered: true, windowClass: "modal__admin"});
+
+  }
 
   ngOnInit(): void {
     // cargar todos los catalogos
@@ -187,6 +191,7 @@ export class CatalogointernoAdminComponent implements  OnInit  {
       }
     );
   }
+  
   openVerticallyCentered(content: any) {
     this.modalService.open(content, {
       centered: true,
@@ -269,7 +274,7 @@ export class CatalogointernoAdminComponent implements  OnInit  {
   /**
    * Subir archivo
    */
-
+  
   subirArchivo(): any {
     try {
       this.loading = true;
