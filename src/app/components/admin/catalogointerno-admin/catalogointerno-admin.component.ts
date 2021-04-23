@@ -10,6 +10,7 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 import { Location } from '@angular/common';
+import { TokenInterceptorService } from 'src/app/services/token-interceptor.service';
 @Component({
   selector: 'app-catalogointerno-admin',
   templateUrl: './catalogointerno-admin.component.html',
@@ -33,6 +34,8 @@ export class CatalogointernoAdminComponent implements  OnInit  {
   data: any;
   images:any=[];
   images_files:any=null;
+  user:any={};
+  cantidad:any='';
   constructor(
     private modalService: NgbModal,
     private sanitizer: DomSanitizer,
@@ -40,9 +43,12 @@ export class CatalogointernoAdminComponent implements  OnInit  {
     private router: Router,
     private location: Location,
     private activateRoute: ActivatedRoute,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private tokenInterceptorService: TokenInterceptorService,
+    
+  ) {
 
-  ) { }
+  }
 
   ngOnInit(): void {
     // cargar todos los catalogos
@@ -51,6 +57,16 @@ export class CatalogointernoAdminComponent implements  OnInit  {
     }
  
     this.mostrarDatos();
+    this.verLogeo();
+  }
+  verLogeo() {
+    const user = this.tokenInterceptorService.getUser();
+    if (user.ok) {
+      this.user = user;
+
+    } else {
+
+    }
   }
   refresh() {
     this.cd.detectChanges();
@@ -59,6 +75,15 @@ export class CatalogointernoAdminComponent implements  OnInit  {
 
   mostrarDatos() {
     this.rest.getAllCatalogoAdmin({id_catalogo:this.id_catalogo}).subscribe(
+      (resp:any) => {
+      this.dataEstampillas = resp.estampillas;
+      this.refresh()
+        
+    });
+  }
+  downloadExcel(){
+    var id_catalogo=this.id_catalogo;
+    this.rest.downloadExcel({id_catalogo:this.id_catalogo,cantidad:10}).subscribe(
       (resp:any) => {
       this.dataEstampillas = resp.estampillas;
       this.refresh()

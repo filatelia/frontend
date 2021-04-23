@@ -80,6 +80,8 @@ export class CatalogoInternoComponent implements OnInit {
   search: any='';
   start: number=0;
   end: number=0;
+
+  id_catalogo: any='';
   constructor(
     private tokenInterceptorService: TokenInterceptorService,
     private rest: RestService,
@@ -97,6 +99,14 @@ export class CatalogoInternoComponent implements OnInit {
     //tipo_busqueda
     this.getParams()
     this.verLogeo();
+    
+  }
+  getCatalogo(type:any,id:any){
+    this.rest.getCatalogoPaisTema(type,id).subscribe(
+      (resp:any)=>{
+        if(resp.ok)this.id_catalogo=resp.msg
+      }
+    )
   }
   openVariantes(content : any,data:any){
     this.data_variantes=data
@@ -134,12 +144,14 @@ export class CatalogoInternoComponent implements OnInit {
   buscarPorTema(){
     this.rest.getSelectTema(this.buscarPais).subscribe((resp:any) =>{
       this.tema=resp.data
+      this.getCatalogo('tema',this.tema.uid)
       this.buscarCatalogo();
     });
   }
   buscarPorPais(){
     this.rest.getSelectPais(this.buscarPais).subscribe(data =>{
       this.pais=data
+      this.getCatalogo('pais',this.pais.uid)
       this.buscarCatalogo();
     });
   }
@@ -205,9 +217,10 @@ export class CatalogoInternoComponent implements OnInit {
       let modalData={
         open:true,
         catalog:true,
-        data: this.catalog,
+        data: {
+          id_catalogo:this.id_catalogo,
+        },
       }
-      console.log(modalData)
       this.dataMancoSelected=modalData;
     }
     else{

@@ -94,6 +94,9 @@ export class RestService {
     return this.http.get(direccion);
   }
   
+  downloadExcel(body:any){
+    return  this.http.post(this.url+'/reportes/generar-excel',body);
+  }
   getCatalogoPaises():Observable<any>{
     let direccion = this.url + "/catalogo/paises";
     return this.http.get(direccion);
@@ -211,6 +214,9 @@ export class RestService {
   
   getSolicitudCatalogo(body:any):Observable<any>{
     return  this.http.get(this.url+'/solicitudes');
+  }
+  getCatalogoPaisTema(type:any,id:any):Observable<any>{
+    return  this.http.get(this.url+'/catalogo/uploads/excel/obtener-id-catalogo?tipo='+type+'&id='+id);
   }
   getIdCatalogo(body:any):Observable<any>{
     return  this.http.get(this.url+'/catalogo/uploads/excel/catalogos/'+body);

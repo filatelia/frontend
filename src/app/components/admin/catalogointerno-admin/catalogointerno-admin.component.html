@@ -13,9 +13,15 @@
       <a href="javascript:void(0)" (click)="changeAddImage(contenidoImagenes)" class="J-btn-link" >
           Agregar imagenes
       </a>
-      <a target="_blank" rel="noopener noreferrer" [href]="url+'/reportes/generar-excel/'+id_catalogo"  class="mainAdmin__boton J-btn-link">
-        <div class="titulo--mediano3">Descargar excel</div>
-      </a>
+
+      <div>
+        
+        <input type="number" class="form-control" placeholder="Cantidad de estampilla a subir" [(ngModel)]="cantidad">
+        <a target="_blank" rel="noopener noreferrer" [href]="url+'/reportes/generar-excel?id_catalogo='+id_catalogo+'&cantidad='+(cantidad==''?10:cantidad)"  class="mainAdmin__boton J-btn-link">
+          <div class="titulo--mediano3">Descargar excel</div>
+        </a>
+      </div>
+      
      
       <a href="javascript:void(0)" (click)="openVerticallyCentered(content)" class="mainAdmin__boton J-btn-link">
         <div class="icono2">
@@ -60,7 +66,7 @@
                 <a href="javascript:void(0)" (click)="eliminarElemento(dato.uid, dato.NRO_ESTAMPILLAS)">
                   Eliminar  
                 </a>
-                <a href="javascript:void(0)" (click)="updateStamp(dato,ImagenesEstampilla)">
+                <a href="javascript:void(0)" (click)="updateStamp(dato,ImagenesEstampilla)" *ngIf="user.role=='admin'">
                   Editar  
                 </a>
               </td>
